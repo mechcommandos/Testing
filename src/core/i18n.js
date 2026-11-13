@@ -5,6 +5,7 @@ const D = {
   ok: ['OK', 'OK'], cancel: ['Annuler', 'Cancel'], close: ['Fermer', 'Close'], later: ['Plus tard', 'Later'], claim: ['Récupérer', 'Claim'],
   cont: ['Continuer', 'Continue'], home: ['Accueil', 'Home'], retry: ['Réessayer', 'Retry'], next_stage: ['Niveau suivant', 'Next stage'],
   free: ['Gratuit', 'Free'], owned: ['Possédé', 'Owned'], equipped: ['Équipé', 'Equipped'], equip: ['Équiper', 'Equip'], buy: ['Acheter', 'Buy'],
+  locked: ['Verrouillé', 'Locked'], sk_plain: ['Nouvelle peinture pour LayJou', 'A fresh paint job for LayJou'], sk_rainbow: ['Couleurs animées en continu', 'Colors shift continuously'], sk_stars: ['Visière étoilée scintillante', 'Twinkling starry visor'],
   level: ['Niveau', 'Level'], lv: ['Niv.', 'Lv.'], max: ['MAX', 'MAX'], coins: ['Pièces', 'Coins'], credits: ['Crédits', 'Credits'],
   no_coins: ['Pas assez de pièces', 'Not enough coins'], no_credits: ['Pas assez de crédits', 'Not enough credits'],
   ad_none: ['Aucune vidéo disponible pour le moment', 'No video available right now'], get_more: ['En obtenir', 'Get more'],

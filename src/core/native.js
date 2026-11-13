@@ -17,8 +17,7 @@ export const Native = {
     try { const m = await import('@capacitor/haptics'); Haptics = m.Haptics; ImpactStyle = m.ImpactStyle; } catch { /* plugin absent */ }
     try {
       const { StatusBar, Style } = await import('@capacitor/status-bar');
-      await StatusBar.setStyle({ style: Style.Dark });
-      if (Capacitor.getPlatform() === 'android') { await StatusBar.setOverlaysWebView({ overlay: true }).catch(() => {}); await StatusBar.setBackgroundColor({ color: '#00000000' }).catch(() => {}); }
+      await StatusBar.setStyle({ style: Style.Dark }); // icônes claires sur fond sombre ; l'affichage bord à bord est géré par Capacitor (SystemBars)
     } catch { /* plugin absent */ }
     try {
       const m = await import('@capacitor/app'); App = m.App;
@@ -60,11 +59,11 @@ export const Native = {
       await LocalNotifications.cancel({ notifications: [{ id: 1 }, { id: 2 }, { id: 3 }] });
       const now = Date.now(), list = [];
       const tomorrow = new Date(now + 86400000); tomorrow.setHours(Math.min(20, Math.max(10, new Date().getHours())), 0, 0, 0);
-      list.push({ id: 1, title: t('n_daily_t'), body: t('n_daily_b'), schedule: { at: tomorrow, allowWhileIdle: true } });
+      list.push({ id: 1, title: t('n_daily_t'), body: t('n_daily_b'), schedule: { at: tomorrow } });
       const chest = Flow.chestReadyIn();
-      if (chest > 15 * 60000) list.push({ id: 2, title: t('n_chest_t'), body: t('n_chest_b'), schedule: { at: new Date(now + chest), allowWhileIdle: true } });
+      if (chest > 15 * 60000) list.push({ id: 2, title: t('n_chest_t'), body: t('n_chest_b'), schedule: { at: new Date(now + chest) } });
       const d3 = new Date(now + 3 * 86400000); d3.setHours(18, 0, 0, 0);
-      list.push({ id: 3, title: t('n_back_t'), body: t('n_back_b'), schedule: { at: d3, allowWhileIdle: true } });
+      list.push({ id: 3, title: t('n_back_t'), body: t('n_back_b'), schedule: { at: d3 } });
       await LocalNotifications.schedule({ notifications: list.map((n) => ({ ...n, smallIcon: 'ic_stat_layjou', iconColor: '#1cc3d2' })) });
     } catch (err) { console.warn('[notif]', err); }
   },

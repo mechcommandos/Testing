@@ -177,8 +177,8 @@ export const STAGES = WORLDS.flatMap((w, wi) =>
 
 export const stageCoins = (i, boss) => Math.round((80 * Math.pow(1.13, i) * (boss ? 2 : 1)) / 5) * 5;
 export const stageXp = (i, boss) => Math.round((22 + 7 * i) * (boss ? 2 : 1));
-export const stageEnemyHp = (i, boss) => 230 * Math.pow(1.12, i) * (boss ? 1.9 : 1);
-export const stageEnemyDmg = (i, boss) => 9 * Math.pow(1.085, i) * (boss ? 1.2 : 1);
+export const stageEnemyHp = (i, boss) => 600 * Math.pow(1.105, i) * (boss ? 1.7 : 1);
+export const stageEnemyDmg = (i, boss) => 9 * Math.pow(1.075, i) * (boss ? 1.2 : 1);
 
 /* ---------------------------- Boucle quotidienne ---------------------------- */
 

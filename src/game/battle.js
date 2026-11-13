@@ -56,7 +56,8 @@ export class Battle {
     this.cv.width = Math.round(cw * this.dpr); this.cv.height = Math.round(ch * this.dpr);
     this.s = cw / VW; this.W = VW; this.H = ch / this.s;
     this.gy = Math.max(300, this.H - 262);
-    this.zoom = clamp((this.gy - 110) / 340, 0.58, 1);
+    this.zoom = clamp((this.gy - 110) / 400, 0.58, 1.2);
+    this.px = this.zoom > 1 ? 300 : this.W / 2; // pivot du zoom : cadre les deux combattants
     this.bg = makeBackground(this.o.worldId, this.W, this.H, this.gy, this.dpr * this.s > 2.5 ? 2 : Math.min(2, this.dpr * this.s));
   }
 
@@ -66,11 +67,11 @@ export class Battle {
     const arch = ARCHETYPES[spec.m], d = this.o.diff, meta = MONSTER_META[spec.m];
     const scale = (spec.scale || 1) * (spec.boss ? 1.28 : 1) * (spec.m === 'antijou' ? 0.86 : 1);
     const hp = Math.round(stageEnemyHp(spec.power, spec.boss) * arch.hp * d.hp);
-    const baseX = 296 + (scale - 1) * 46;
+    const baseX = 296 - Math.max(0, scale - 1) * 40; // les géants reculent moins : leur tête reste dans le cadre
     this.e = { spec, type: spec.m, arch, meta, pal: MONSTER_PALS[spec.pal] || MONSTER_PALS.grape, scale, baseX, x: this.W + 240,
       hp, maxHp: hp, dmg: stageEnemyDmg(spec.power, spec.boss) * arch.dmg * d.dmg, stagger: 0, staggerIdle: 0,
       state: 'enter', t: 0, dur: 0.9, atk: null, wind: 0, strike: 0, hurt: 0, enraged: false, gapT: 1.2, ox: 0, oy: 0, rot: 0,
-      burnT: 0, burnDps: 0, freezeT: 0, fired: 0, lastAtk: null, count: 0, L: 0 };
+      burnT: 0, burnDps: 0, freezeT: 0, fired: 0, lastAtk: null, count: 0, L: 0, stunLock: 0 };
     this.o.hud.enemy(1, spec.name, !!spec.boss, this.wave);
   }
 
@@ -90,7 +91,7 @@ export class Battle {
     const e = this.e, id = this.chooseAttack(), a = ATTACKS[id];
     e.atk = { id, ...a }; e.lastAtk = id; e.count++;
     e.state = 'windup'; e.t = 0; e.dur = a.wind * this.o.diff.wind * (e.enraged ? 0.85 : 1); e.wind = 0; e.strike = 0; e.fired = 0;
-    e.L = Math.max(18, (e.baseX - REACH[e.type] * e.scale) - (HOME + 30)) + (id === 'rush' ? 26 : 0);
+    e.L = Math.max(18, (e.baseX - REACH[e.type] * e.scale) - (HOME + 30)) + (id === 'rush' ? 26 : 0); e.holdT = 0;
     this.tele = a.block ? 'block' : 'dodge';
     this.o.hud.telegraph(this.tele);
     this.o.sfx(a.block ? 'warn' : 'danger');
@@ -98,6 +99,7 @@ export class Battle {
 
   endAttack() {
     const e = this.e;
+    if (!e.atk) return; // l'attaque a déjà été annulée (joueur K.O., étourdissement…)
     e.state = 'recover'; e.t = 0; e.dur = e.atk.recover; this.tele = null; this.beam = null; this.o.hud.telegraph(null);
   }
 
@@ -137,8 +139,8 @@ export class Battle {
       this.fx.burst(cx, cy, [color, '#fff'], big ? 14 : 7, big ? 300 : 220, 'spark', 4);
       if (big || crit) { this.fx.ring(cx, cy, color, 8, 60, 0.3, 5); this.fx.quake(big ? 9 : 5); this.hitstop = Math.max(this.hitstop, big ? 0.07 : 0.04); }
     }
-    this.addEnergy(dmg / p.atkRef * 3.1);
-    if (e.state !== 'stunned') { e.stagger = Math.min(100, e.stagger + stagger); e.staggerIdle = 0; }
+    this.addEnergy(dmg / p.atkRef * 2.4);
+    if (e.state !== 'stunned' && e.stunLock <= 0) { e.stagger = Math.min(100, e.stagger + stagger * (e.spec.boss ? 0.6 : 1)); e.staggerIdle = 0; }
     if (e.hp <= 0) { this.killEnemy(); return; }
     if (e.spec.boss && !e.enraged && e.hp < e.maxHp * 0.5) { this.enrage(); return; }
     if (e.stagger >= 100 && e.state !== 'stunned') this.stunEnemy();
@@ -189,12 +191,10 @@ export class Battle {
         if (this.state !== 'fight' || p.dodgeCD > 0 || p.breakT > 0) return;
         p.dodgeT = DODGE_TIME; p.dodgeCD = this.o.stats.dodgeCd; p.act = null; p.queued = null; p.blocking = false; p.trail = [];
         this.o.sfx('dash'); this.fx.puff(p.x, this.gy - 4, 'rgba(255,255,255,0.8)', 5);
-        if (this.hintKey === 'dodge') { this.tut.dodge = true; this.o.onEvent('tut', 'dodge'); this.setHint(null); }
         break;
       case 'blockDown':
         if (this.state !== 'fight' || p.breakT > 0 || p.dodgeT > 0 || p.blockLock > 0 || p.blocking) return;
         p.blocking = true; p.blockStart = this.t; p.act = null; p.queued = null; this.o.sfx('shield');
-        if (this.hintKey === 'block') { this.tut.block = true; this.o.onEvent('tut', 'block'); this.setHint(null); }
         break;
       case 'blockUp':
         if (p.blocking) { p.blocking = false; p.blockLock = 0.3; }
@@ -236,9 +236,9 @@ export class Battle {
     const chainBonus = 1 + Math.min(0.3, p.chain * 0.02);
     if (act.kind === 'punch') {
       const crit = this.rollCrit();
-      const dmg = st.atk * (act.heavy ? 1.75 : 1) * chainBonus * (crit ? 1.8 : 1);
+      const dmg = st.atk * (act.heavy ? 1.25 : 0.6) * chainBonus * (crit ? 1.8 : 1);
       const [cx, cy] = this.enemyPoint(-e.meta.w * 0.3, e.meta.core[1] + rand(-22, 22));
-      this.hitEnemy(dmg, { stagger: act.heavy ? 13 : 6, crit, x: cx, y: cy, color: '#fff', big: act.heavy });
+      this.hitEnemy(dmg, { stagger: act.heavy ? 6 : 2.5, crit, x: cx, y: cy, color: '#fff', big: act.heavy });
       p.chain++; p.chainT = 1.6; this.stats.chainHits++; this.stats.maxChain = Math.max(this.stats.maxChain, p.chain);
       this.o.onEvent('combo'); this.o.hud.combo(p.chain);
       this.o.sfx(act.heavy ? 'hitHeavy' : 'hit'); this.o.buzz(act.heavy ? 'medium' : 'light');
@@ -287,7 +287,7 @@ export class Battle {
           this.fx.text(p.x + 20, this.gy - 160, this.o.tr('b_perfect'), '#7df3ff', 26, 1.0); this.fx.ring(ix + 26, iy - 20, '#aef6ff', 14, 96, 0.35, 8);
           this.fx.burst(ix + 26, iy - 20, ['#aef6ff', '#fff'], 12, 260, 'spark', 4); this.fx.blink('#aef6ff', 0.25);
           this.addEnergy(15); this.stats.perfects++; this.o.onEvent('perfect'); this.o.sfx('perfect'); this.o.buzz('medium'); this.hitstop = 0.06;
-          if (this.e.state !== 'stunned') { this.e.stagger = Math.min(100, this.e.stagger + 34); this.e.staggerIdle = 0; if (this.e.stagger >= 100) this.stunEnemy(2.2); }
+          if (this.e.state !== 'stunned' && this.e.stunLock <= 0) { this.e.stagger = Math.min(100, this.e.stagger + 30); this.e.staggerIdle = 0; if (this.e.stagger >= 100) this.stunEnemy(2.2); }
           return 'perfect';
         }
         dmg *= 0.25; this.fx.text(p.x + 16, this.gy - 150, this.o.tr('b_block'), '#cfefff', 18); this.fx.burst(ix + 26, iy - 20, '#aef6ff', 6, 180, 'spark', 3);
@@ -335,13 +335,13 @@ export class Battle {
     if (this.state !== 'fight' || !this.weak || this.paused) return;
     const r = this.cv.getBoundingClientRect();
     let x = (ev.clientX - r.left) / this.s, y = (ev.clientY - r.top) / this.s;
-    x = (x - this.W / 2) / this.zoom + this.W / 2; y = (y - this.gy) / this.zoom + this.gy;
+    x = (x - this.px) / this.zoom + this.px; y = (y - this.gy) / this.zoom + this.gy;
     const [wx, wy] = this.enemyPoint(...this.e.meta.weak[this.weak.i]);
     if (Math.hypot(x - wx, y - wy) < 40) {
       this.weak = null; this.weakCD = rand(3.2, 5.5);
       this.stats.weak++; this.o.onEvent('weak');
       this.fx.text(wx, wy - 34, this.o.tr('b_weak'), '#ffe14a', 22, 1.0); this.fx.burst(wx, wy, ['#ffe14a', '#fff'], 14, 280, 'star', 5);
-      this.hitEnemy(this.o.stats.atk * 2.4, { stagger: 28, crit: true, x: wx, y: wy, color: '#ffe14a', big: true });
+      this.hitEnemy(this.o.stats.atk * 2.4, { stagger: 22, crit: true, x: wx, y: wy, color: '#ffe14a', big: true });
       this.addEnergy(8); this.o.sfx('weak'); this.o.buzz('medium');
     }
   }
@@ -438,6 +438,7 @@ export class Battle {
       if (e.burnAcc >= 1) { const d = Math.floor(e.burnAcc); e.burnAcc -= d; e.hp -= d; this.stats.dmgDealt += d; if (Math.random() < 0.3) { const [cx, cy] = this.enemyPoint(rand(-40, 40), -rand(30, e.meta.h * 0.8)); this.fx.burst(cx, cy, ['#7dff5a', '#eaffd0'], 2, 90, 'dot', 4); } if (e.hp <= 0) { this.killEnemy(); return; } }
     }
     if (e.freezeT > 0) { e.freezeT -= dt; return; }
+    if (e.stunLock > 0) e.stunLock -= dt;
     if (e.state !== 'stunned') { e.staggerIdle += dt; if (e.staggerIdle > 2.2) e.stagger = Math.max(0, e.stagger - dt * 9); }
     switch (e.state) {
       case 'idle':
@@ -447,9 +448,11 @@ export class Battle {
         const need = e.atk.block ? 'block' : 'dodge';
         const holdAt = need === 'block' ? 0.62 : 0.9;
         if (!this.tut[need] && e.wind >= holdAt) {
-          if (this.hintKey !== need) this.setHint(need);
-          if (need === 'block' && p.blocking) { p.blockStart = this.t; }
-          break;
+          // le joueur a déjà la bonne réaction : leçon validée (et parade parfaite offerte)
+          const ok = need === 'block' ? p.blocking : p.dodgeT > 0;
+          if (ok) { this.tut[need] = true; this.o.onEvent('tut', need); if (need === 'block') p.blockStart = this.t; if (this.hintKey === need) this.setHint(null); }
+          else if ((e.holdT = (e.holdT || 0) + dt) < 6) { if (this.hintKey !== need) this.setHint(need); break; }
+          else if (this.hintKey === need) this.setHint(null); // pas de réaction : l'attaque part, la leçon reviendra
         }
         e.t += dt; e.wind = clamp(e.t / e.dur);
         if (e.wind >= 1) { e.state = 'strike'; e.t = 0; e.strike = 0; this.o.sfx(e.atk.type === 'melee' ? 'whoosh' : e.atk.type === 'beam' ? 'beam' : 'whoosh'); if (e.atk.type === 'beam') this.beam = { t: 0 }; }
@@ -478,7 +481,7 @@ export class Battle {
         break;
       }
       case 'recover': e.t += dt; if (e.t >= e.dur) this.toIdle(); break;
-      case 'stunned': e.t += dt; if (e.t >= e.dur) { e.stagger = 0; this.toIdle(0.45); } break;
+      case 'stunned': e.t += dt; if (e.t >= e.dur) { e.stagger = 0; e.stunLock = 3; this.toIdle(0.45); } break;
       case 'roar': e.t += dt; if (e.t >= e.dur) this.toIdle(0.4); break;
       default:
     }
@@ -596,7 +599,7 @@ export class Battle {
     if (this.fx.shake > 0.2) ctx.translate(rand(-1, 1) * this.fx.shake * 0.5, rand(-1, 1) * this.fx.shake * 0.5);
     this.bg.draw(ctx, t);
     // caméra : zoom autour du sol
-    ctx.translate(W / 2, gy); ctx.scale(this.zoom, this.zoom); ctx.translate(-W / 2, -gy);
+    ctx.translate(this.px, gy); ctx.scale(this.zoom, this.zoom); ctx.translate(-this.px, -gy);
 
     const ultK = this.ult ? clamp(Math.min(this.ult.t / 0.3, (1.9 - this.ult.t) / 0.3)) : 0;
     if (ultK > 0) { ctx.fillStyle = `rgba(20,6,50,${0.5 * ultK})`; ctx.fillRect(-W, -H, W * 3, H * 3); }

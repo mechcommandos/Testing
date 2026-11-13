@@ -29,7 +29,7 @@ export class HeroView {
     const dpr = Math.min(2, window.devicePixelRatio || 1);
     if (cv.width !== Math.round(w * dpr)) { cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr); }
     const ctx = cv.getContext('2d'); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, w, h);
-    const lk = this.look(), sc = (h - 34) / 208, gy = h - 24;
+    const lk = this.look(), sc = Math.min((h - 34) / 208, w / 196), gy = h - 24;
     // socle lumineux
     const g = ctx.createRadialGradient(w / 2, gy, 4, w / 2, gy, w * 0.46); g.addColorStop(0, 'rgba(86,214,245,0.55)'); g.addColorStop(0.6, 'rgba(255,92,157,0.18)'); g.addColorStop(1, 'rgba(255,92,157,0)');
     ctx.save(); ctx.translate(w / 2, gy); ctx.scale(1, 0.24); ctx.fillStyle = g; ctx.beginPath(); ctx.arc(0, 0, w * 0.46, 0, TAU); ctx.fill();
@@ -219,7 +219,7 @@ export function openDaily() {
   const st = Flow.dailyStatus();
   const cell = (r, i) => {
     const state = i < st.index || (!st.claimable && i === st.index) ? 'done' : i === st.index ? 'now' : '';
-    return `<div class="day ${state} ${i === 6 ? 'day-big' : ''}"><small>${t('d_day', { n: i + 1 })}</small><div class="day-ic">${r.chest ? IC.chest : r.credits ? IC.gem : IC.coin}</div><b>${r.credits ? r.credits : fmt(Math.round(r.coins * (1 + S.data.level * 0.05)))}</b>${state === 'done' ? `<span class="day-ok">${IC.check}</span>` : ''}</div>`;
+    return `<div class="day ${state} ${i === 6 ? 'day-big' : ''}"><small>${t('d_day', { n: i + 1 })}</small><div class="day-ic">${r.chest ? IC.chest : r.credits ? IC.gem : IC.coin}</div><b>${r.chest ? IC.gem + ' ' : ''}${r.credits ? r.credits : fmt(Math.round(r.coins * (1 + S.data.level * 0.05)))}</b>${state === 'done' ? `<span class="day-ok">${IC.check}</span>` : ''}</div>`;
   };
   const m = modal({ cls: 'modal-daily', html: `
     <h2>${IC.gift} ${t('d_title')}</h2><p>${t('d_sub')}</p>

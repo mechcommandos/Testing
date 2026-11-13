@@ -86,6 +86,7 @@ export function startBattle(o) {
     onEnd: finishBattle,
   });
   Audio.music(o.enemy.boss ? 'boss' : 'battle');
+  if (import.meta.env.DEV) window.__battle = battle;
 
   // commandes tactiles (pointerdown : réponse immédiate, multi-touch natif)
   for (const b of $$('.ctl', scr)) {

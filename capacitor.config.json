@@ -24,6 +24,11 @@
     "LocalNotifications": {
       "smallIcon": "ic_stat_layjou",
       "iconColor": "#1cc3d2"
+    },
+    "SystemBars": {
+      "insetsHandling": "css",
+      "initialViewportFitValueHint": "cover",
+      "style": "DARK"
     }
   }
 }

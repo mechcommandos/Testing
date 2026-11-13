@@ -9,11 +9,10 @@
     "build": "vite build",
     "preview": "vite preview",
     "sync": "npm run build && cap sync",
-    "assets": "node tools/render-assets.mjs && capacitor-assets generate --iconBackgroundColor '#0b1440' --iconBackgroundColorDark '#0b1440' --splashBackgroundColor '#0b1440' --splashBackgroundColorDark '#0b1440'",
+    "assets": "node tools/render-assets.cjs && capacitor-assets generate --android --ios --iconBackgroundColor \"#0b1440\" --iconBackgroundColorDark \"#0b1440\" --splashBackgroundColor \"#0b1440\" --splashBackgroundColorDark \"#060a2a\"",
     "android": "npm run sync && cd android && ./gradlew assembleDebug",
-    "android:release": "npm run sync && cd android && ./gradlew bundleRelease",
     "ios": "npm run sync && cap open ios",
-    "test:sim": "node tools/balance-sim.mjs"
+    "android:bundle": "npm run sync && cd android && ./gradlew bundleRelease"
   },
   "dependencies": {
     "@capacitor-community/admob": "^8.3.0",

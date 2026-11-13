@@ -9,6 +9,17 @@ const store = {}; // id -> produit du store (prix localisé)
 
 const def = (id) => CONFIG.iap.products.find((p) => p.id === id);
 
+const purchased = (tx) => tx.purchaseState === undefined || String(tx.purchaseState) === '1' || String(tx.purchaseState).toUpperCase() === 'PURCHASED';
+
+/** Une même transaction n'est jamais livrée deux fois (promesse d'achat + évènement du store). */
+function fresh(tx) {
+  const id = tx && tx.transactionId; if (!id) return true;
+  const seen = S.data.iapTx || (S.data.iapTx = []);
+  if (seen.includes(id)) return false;
+  seen.push(id); if (seen.length > 60) seen.shift();
+  return true;
+}
+
 /** Livre le contenu d'un produit. Les non-consommables sont idempotents. */
 function deliver(id) {
   const p = def(id); if (!p) return;
@@ -37,6 +48,8 @@ export const IAP = {
       this.available = true;
       const { products } = await NP.getProducts({ productIdentifiers: CONFIG.iap.products.map((p) => p.id), productType: INAPP });
       for (const p of products || []) if (!store[p.identifier]) store[p.identifier] = p;
+      // achats validés hors de l'écran d'achat (paiement différé, « Demander à acheter », code promo…)
+      NP.addListener('transactionUpdated', (tx) => { if (tx && def(tx.productIdentifier) && purchased(tx) && fresh(tx)) deliver(tx.productIdentifier); });
       await this.restore(true);
     } catch (err) { console.warn('[iap] init', err); }
   },
@@ -49,6 +62,7 @@ export const IAP = {
     const p = def(id); if (!p) return { ok: false, error: 'unknown' };
     if (p.type === 'nonconsumable' && this.owned(id)) return { ok: true };
     if (!native) { // mode démo navigateur : achat simulé, clairement identifié
+      if (!CONFIG.iap.webDemo) return { ok: false, error: 'unavailable' };
       const ok = window.confirm(`[DEMO] ${id} — ${p.fallbackPrice}\nSimuler l'achat ? / Simulate purchase?`);
       if (ok) deliver(id);
       return { ok, cancelled: !ok };
@@ -56,9 +70,9 @@ export const IAP = {
     if (!NP) return { ok: false, error: 'unavailable' };
     try {
       const tx = await NP.purchaseProduct({ productIdentifier: id, productType: INAPP, quantity: 1, isConsumable: p.type === 'consumable' });
-      // Android : purchaseState "1" = acheté (un paiement « en attente » ne doit rien livrer)
-      if (tx && tx.purchaseState !== undefined && String(tx.purchaseState) !== '1' && String(tx.purchaseState).toUpperCase() !== 'PURCHASED') return { ok: false, error: 'pending' };
-      deliver(id);
+      // Android : purchaseState "1" = acheté (un paiement « en attente » ne doit rien livrer tout de suite)
+      if (tx && !purchased(tx)) return { ok: false, error: 'pending' };
+      if (!tx || fresh(tx)) deliver(id);
       return { ok: true };
     } catch (err) {
       const msg = String((err && err.message) || err || '');

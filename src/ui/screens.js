@@ -126,7 +126,7 @@ export function renderHangar(node, tab) {
   else action = `<button class="btn btn-ghost is-disabled">${IC.lock}${t('hg_stage')}</button>`;
   const detail = type === 'weapon'
     ? `<div class="wstats">${[['w_dmg', it.dmg * (it.hits || 1) / 6], ['w_cd', 1 - it.cd / 5.5], ['w_stun', it.stagger / 55]].map(([k, v]) => `<div class="wstat"><small>${t(k)}</small><div class="bar"><i style="width:${Math.round(Math.min(1, v) * 100)}%"></i></div></div>`).join('')}</div><small class="muted">${L(it.desc)}</small>`
-    : type === 'accessory' ? `<small class="perk">${IC.up}${perkText(it.perk)}</small>` : `<small class="perk">${IC.star}${rar ? L(rar) : ''}</small>`;
+    : type === 'accessory' ? `<small class="perk">${IC.up}${perkText(it.perk)}</small>` : `<small class="muted" style="text-align:left">${t(it.rainbow ? 'sk_rainbow' : it.stars ? 'sk_stars' : 'sk_plain')}</small>`;
   node.innerHTML = `
     <div class="page page-hangar">
       <div class="hangar-top">
@@ -229,7 +229,7 @@ export function renderMap(node) {
       ${WORLDS.map((w, wi) => {
     const locked = d.stage < wi * 5;
     return `<div class="world ${locked ? 'is-locked' : ''}" style="background:${worldCss(w.id)};--wc:${w.color}">
-          <div class="world-head"><b>${wi + 1}. ${L(w.name)}</b>${locked ? `<span class="tag">${IC.lock}${t('map_locked')}</span>` : `<span class="tag tag-stars">${IC.star}${w.stages.reduce((s, _, si) => s + (d.stars[wi * 5 + si] || 0), 0)}/15</span>`}</div>
+          <div class="world-head"><b>${wi + 1}. ${L(w.name)}</b>${locked ? `<span class="tag">${IC.lock}${t('locked')}</span>` : `<span class="tag tag-stars">${IC.star}${w.stages.reduce((s, _, si) => s + (d.stars[wi * 5 + si] || 0), 0)}/15</span>`}</div>
           <div class="nodes">${w.stages.map((s, si) => {
     const idx = wi * 5 + si, state = idx < d.stage ? 'done' : idx === d.stage ? 'now' : 'lock', stars = d.stars[idx] || 0;
     return `<button class="node ${state} ${s.boss ? 'boss' : ''}" data-act="stage" data-i="${idx}">
@@ -254,7 +254,7 @@ export function renderMap(node) {
         <div class="rw-row"><span class="rw">${IC.coin}<b>${fmt(coins)}</b></span><span class="rw">${IC.xp}<b>${Math.round(stageXp(idx, s.boss) * (first ? 1 : 0.5))}</b></span>${first && s.boss ? `<span class="rw">${IC.gem}<b>${idx === 24 ? 50 : 15}</b></span>` : ''}</div>
         <button class="btn btn-play" data-act="go">${IC.swords}<span>${t('st_fight')}</span></button>`,
       actions: { go: () => { m.close(); UI.startStage(idx); } } });
-      renderMonsterThumb($('#stage-art', m.el), s.m, MONSTER_PALS[s.pal]);
+      renderMonsterThumb($('#stage-art', m.el), s.m, MONSTER_PALS[s.pal], { zoom: 0.86 });
     },
   });
 }

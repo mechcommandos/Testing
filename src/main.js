@@ -27,6 +27,8 @@ async function boot() {
   IAP.init().then(() => { if (currentScreen() === 'shop') go('shop'); });
 }
 
+if (import.meta.env.DEV) { import('./core/state.js').then((m) => { window.__S = m; }); window.__Flow = Flow; }
+
 boot().catch((err) => {
   console.error('[boot]', err);
   const b = document.getElementById('boot'); if (b) b.remove();

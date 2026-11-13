@@ -14,7 +14,7 @@ const fresh = () => ({
   owned: { skin: ['classic'], accessory: ['none'], weapon: ['blaster'] },
   equip: { skin: 'classic', accessory: 'none', weapon: 'blaster' },
   adProgress: {}, up: { atk: 0, hp: 0, energy: 0, crit: 0 },
-  boosts: 0, noAds: false, iapOwned: [],
+  boosts: 0, noAds: false, iapOwned: [], iapTx: [],
   settings: { sfx: true, music: true, haptics: true, notif: false, notifAsked: false, lang: null },
   tut: {},
   stats: { battles: 0, wins: 0, losses: 0, sessions: 0, videos: 0, playSec: 0, spent: 0 },

@@ -32,6 +32,8 @@ export const CONFIG = {
   },
 
   iap: {
+    /** Achats simulés dans le navigateur (développement / démo). Mettre false si la version web est publiée. */
+    webDemo: true,
     /** type: 'consumable' | 'nonconsumable' */
     products: [
       { id: 'credits_80', type: 'consumable', credits: 80, fallbackPrice: '0,99 €' },
