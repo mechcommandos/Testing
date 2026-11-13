@@ -1,8 +1,12 @@
+import { readFileSync } from 'node:fs';
 import { defineConfig } from 'vite';
+
+const pkg = JSON.parse(readFileSync(new URL('./package.json', import.meta.url), 'utf8')) as { version: string };
 
 // base relative : indispensable pour que l'app fonctionne dans la WebView Capacitor
 export default defineConfig({
   base: './',
+  define: { __APP_VERSION__: JSON.stringify(pkg.version) },
   build: {
     target: 'es2020',
     outDir: 'dist',
