@@ -1,0 +1,8 @@
+{
+  "appId": "com.layjou.bubble",
+  "appName": "LayJou Bubble",
+  "webDir": "www",
+  "backgroundColor": "#E6F4FB",
+  "android": { "backgroundColor": "#E6F4FB" },
+  "ios": { "backgroundColor": "#E6F4FB", "contentInset": "never" }
+}
