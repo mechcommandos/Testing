@@ -120,12 +120,19 @@ const canvas = $('stage');
 const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: 'high-performance' });
 renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
 const scene = new THREE.Scene();
-scene.background = new THREE.Color(COL.sky);
-scene.fog = new THREE.Fog(COL.sky, 45, 128);
+scene.background = (() => {
+  const c = document.createElement('canvas'); c.width = 4; c.height = 256;
+  const g = c.getContext('2d'); const gr = g.createLinearGradient(0, 0, 0, 256);
+  gr.addColorStop(0, '#6fbff2'); gr.addColorStop(0.5, '#dff3fc'); gr.addColorStop(1, '#f4fbff');
+  g.fillStyle = gr; g.fillRect(0, 0, 4, 256);
+  const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace;
+  return t;
+})();
+scene.fog = new THREE.Fog(0xdff3fc, 45, 128);
 const camera = new THREE.PerspectiveCamera(62, 1, 0.1, 300);
 let camBase = new THREE.Vector3(0, 4.4, 7.6);
 
-scene.add(new THREE.HemisphereLight(0xffffff, 0xb9e6f5, 2.2));
+scene.add(new THREE.HemisphereLight(0xffffff, 0xb9e6f5, 2.0));
 const sun = new THREE.DirectionalLight(0xffffff, 2.2);
 sun.position.set(4, 9, 6);
 scene.add(sun);
@@ -147,22 +154,30 @@ const M = {
   white: mat(COL.white), cyan: mat(COL.cyan), pink: mat(COL.pink), navy: mat(COL.navy, { roughness: 0.25 }),
   blue: mat(0x2f8cf0), dark: mat(0x06246b), mouth: mat(0xff7a7a),
   heart: mat(COL.pink, { emissive: 0xff2f86, emissiveIntensity: 0.35, roughness: 0.3 }),
-  block: mat(0x3558c9), blockTrim: mat(0x9fe8f2), post: mat(COL.cyanDeep),
+  post: mat(COL.cyanDeep),
 };
 
 /* ---------------- Décor ---------------- */
 const TILE = 8;
 const trackTex = (() => {
-  const c = document.createElement('canvas'); c.width = 256; c.height = 256;
+  const c = document.createElement('canvas'); c.width = 512; c.height = 512;
   const g = c.getContext('2d');
-  g.fillStyle = '#f6fcff'; g.fillRect(0, 0, 256, 256);
-  g.fillStyle = '#e4f5fb'; g.fillRect(0, 0, 256, 128);
-  g.fillStyle = '#19c3d6'; g.fillRect(0, 0, 10, 256); g.fillRect(246, 0, 10, 256);
+  g.fillStyle = '#eef8fc'; g.fillRect(0, 0, 512, 512);
+  const laneW = 512 * (LANE / (LANE * 3 + 0.6));
+  for (let l = -1; l <= 1; l++) {
+    const cx = 256 + l * laneW;
+    g.fillStyle = '#e1f1f8'; g.fillRect(cx - 58, 0, 116, 512);            // ballast clair
+    g.fillStyle = '#c3dbe8';
+    for (let y = 16; y < 512; y += 64) g.fillRect(cx - 50, y, 100, 22);   // traverses
+    g.fillStyle = '#7f9db3'; g.fillRect(cx - 36, 0, 9, 512); g.fillRect(cx + 27, 0, 9, 512); // rails
+    g.fillStyle = '#d8ecf5'; g.fillRect(cx - 34, 0, 3, 512); g.fillRect(cx + 29, 0, 3, 512); // reflets
+  }
   g.fillStyle = '#ffb3d2';
-  for (const x of [85, 171]) { g.fillRect(x - 3, 20, 6, 88); g.fillRect(x - 3, 148, 6, 88); }
+  for (const x of [256 - laneW / 2, 256 + laneW / 2]) g.fillRect(x - 4, 0, 8, 512);
+  g.fillStyle = '#19c3d6'; g.fillRect(0, 0, 14, 512); g.fillRect(498, 0, 14, 512);
   const t = new THREE.CanvasTexture(c);
   t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(1, 220 / TILE); t.colorSpace = THREE.SRGBColorSpace;
-  t.anisotropy = 4;
+  t.anisotropy = renderer.capabilities.getMaxAnisotropy();
   return t;
 })();
 const TRACK_W = LANE * 3 + 0.6;
@@ -181,32 +196,119 @@ scene.add(under);
 const scenery = []; // { mesh, par (parallaxe), span }
 const PASTEL = [0xffffff, 0xbfeef5, 0xffd3e6, 0x9fe1ee, 0xcfd9ff, 0xffe9f2];
 const boxGeo = new THREE.BoxGeometry(1, 1, 1);
-const cylGeo = new THREE.CylinderGeometry(0.5, 0.5, 1, 16);
-for (let i = 0; i < 44; i++) {
-  const side = i % 2 ? 1 : -1;
-  const w = rand(3, 6.5), h = 60, top = rand(-3, 15);
-  const m = new THREE.Mesh(Math.random() < 0.35 ? cylGeo : boxGeo, mat(pick(PASTEL), { roughness: 0.9 }));
-  m.scale.set(w, h, w);
-  m.position.set(side * rand(8.5, 26), top - h / 2, -i * (200 / 44) * 1 + 10);
-  scene.add(m);
-  const cap = new THREE.Mesh(m.geometry, Math.random() < 0.5 ? M.cyan : M.pink);
-  cap.scale.set(0.8, 0.012, 0.8); cap.position.y = 0.506;
-  m.add(cap);
-  scenery.push({ mesh: m, par: 1, span: 200 });
-}
-const cloudMat = new THREE.MeshBasicMaterial({ color: 0xffffff, fog: false, transparent: true, opacity: 0.9 });
+const cylGeo = new THREE.CylinderGeometry(0.5, 0.5, 1, 20);
 const sphGeo = new THREE.SphereGeometry(1, 14, 10);
-for (let i = 0; i < 12; i++) {
+const domeGeo = new THREE.SphereGeometry(0.5, 20, 10, 0, Math.PI * 2, 0, Math.PI / 2);
+const glow = { pink: new THREE.MeshBasicMaterial({ color: 0xff7fb5 }), warm: new THREE.MeshBasicMaterial({ color: 0xfff1b8 }) };
+const leaf = mat(0x7fdc9f, { roughness: 0.9 });
+
+// façade : grille de fenêtres, certaines allumées
+const windowTex = (() => {
+  const c = document.createElement('canvas'); c.width = 128; c.height = 256;
+  const g = c.getContext('2d');
+  g.fillStyle = '#ffffff'; g.fillRect(0, 0, 128, 256);
+  g.fillStyle = '#e9f1f7'; for (let y = 0; y < 256; y += 32) g.fillRect(0, y, 128, 3);
+  for (let r = 0; r < 8; r++) for (let q = 0; q < 4; q++) {
+    const lit = Math.random();
+    g.fillStyle = lit < 0.18 ? '#ffe9a6' : lit < 0.55 ? '#7fb2e6' : '#5c8fd0';
+    g.beginPath(); g.roundRect(q * 32 + 7, r * 32 + 9, 18, 17, 3); g.fill();
+    g.fillStyle = 'rgba(255,255,255,.35)'; g.fillRect(q * 32 + 7, r * 32 + 9, 18, 5);
+  }
+  const t = new THREE.CanvasTexture(c);
+  t.wrapS = t.wrapT = THREE.RepeatWrapping; t.colorSpace = THREE.SRGBColorSpace;
+  return t;
+})();
+function facade(color, around, height) {
+  const tex = windowTex.clone();
+  tex.repeat.set(Math.max(1, Math.round(around / 3.6)), height / 9.6); tex.needsUpdate = true;
+  return mat(color, { map: tex, roughness: 0.85 });
+}
+function tower(i) {
   const g = new THREE.Group();
-  for (let k = 0; k < 4; k++) {
+  const side = i % 2 ? 1 : -1;
+  const w = rand(3.2, 6.5), H = 60, top = rand(-2, 15);
+  const round = Math.random() < 0.35;
+  const color = pick(PASTEL), accent = pick([M.cyan, M.pink, M.white]);
+  g.add(part(round ? cylGeo : boxGeo, facade(color, round ? w * 3.14 : w, H), 0, -H / 2, 0, w, H, w));
+  let roof = 0;
+  if (round) {
+    g.add(part(cylGeo, accent, 0, 0.1, 0, w * 1.08, 0.3, w * 1.08));
+    g.add(part(domeGeo, mat(color), 0, 0.25, 0, w * 0.92, w * 0.7, w * 0.92));
+    roof = 0.25 + w * 0.35;
+  } else {
+    g.add(part(boxGeo, accent, 0, 0.12, 0, w * 1.07, 0.26, w * 1.07));
+    roof = 0.25;
+    const r = Math.random();
+    if (r < 0.45) {                       // étage en retrait
+      const h2 = rand(2, 5), w2 = w * 0.62;
+      g.add(part(boxGeo, facade(color, w2, h2), 0, roof + h2 / 2, 0, w2, h2, w2));
+      g.add(part(boxGeo, accent, 0, roof + h2 + 0.1, 0, w2 * 1.1, 0.2, w2 * 1.1));
+      roof += h2 + 0.2;
+    } else if (r < 0.8) {                 // jardin sur le toit
+      for (let k = 0; k < 3; k++) {
+        const s = rand(0.5, 0.9);
+        g.add(part(sphGeo, leaf, rand(-0.3, 0.3) * w, roof + s * 0.8, rand(-0.3, 0.3) * w, s, s, s));
+      }
+    }
+  }
+  if (Math.random() < 0.55) {             // antenne, comme celle du robot
+    const ah = rand(1.6, 3.6);
+    g.add(part(cylGeo, M.cyan, 0, roof + ah / 2, 0, 0.1, ah, 0.1));
+    g.add(part(sphGeo, glow.pink, 0, roof + ah + 0.2, 0, 0.26, 0.26, 0.26));
+  }
+  g.position.set(side * rand(8.5, 26), top, -i * (200 / 44) + 10);
+  scene.add(g);
+  scenery.push({ mesh: g, par: 1, span: 200 });
+}
+for (let i = 0; i < 44; i++) tower(i);
+
+// lampadaires le long de la voie
+for (let i = 0; i < 20; i++) {
+  const side = i % 2 ? 1 : -1;
+  const g = new THREE.Group();
+  g.add(part(cylGeo, M.white, 0, 1.6, 0, 0.12, 3.2, 0.12));
+  g.add(part(boxGeo, M.cyan, -side * 0.35, 3.2, 0, 0.9, 0.1, 0.14));
+  g.add(part(sphGeo, glow.warm, -side * 0.75, 3.08, 0, 0.17, 0.17, 0.17));
+  g.position.set(side * (TRACK_W / 2 + 0.55), 0, -Math.floor(i / 2) * 20 - 5);
+  scene.add(g);
+  scenery.push({ mesh: g, par: 1, span: 200 });
+}
+
+// nuages
+const cloudMat = new THREE.MeshBasicMaterial({ color: 0xffffff, fog: false, transparent: true, opacity: 0.92 });
+for (let i = 0; i < 14; i++) {
+  const g = new THREE.Group();
+  for (let k = 0; k < 5; k++) {
     const s = new THREE.Mesh(sphGeo, cloudMat);
-    s.scale.set(rand(2, 4), rand(1.2, 2), rand(1.5, 2.5)); s.position.set((k - 1.5) * 2.4, rand(-0.4, 0.4), 0);
+    const r = rand(1.4, 2.6) * (k === 2 ? 1.3 : 1);
+    s.scale.set(r * 1.5, r, r * 1.2); s.position.set((k - 2) * 2.2, rand(-0.3, 0.5) + (k === 2 ? 0.6 : 0), rand(-0.5, 0.5));
     g.add(s);
   }
-  g.position.set((i % 2 ? 1 : -1) * rand(22, 60), rand(-10, 22), -rand(20, 220));
+  g.position.set((i % 2 ? 1 : -1) * rand(22, 60), rand(-12, 24), -rand(20, 220));
   scene.add(g);
   scenery.push({ mesh: g, par: 0.25, span: 230 });
 }
+
+// montgolfières au loin
+function stripeTex(css) {
+  const c = document.createElement('canvas'); c.width = 128; c.height = 8;
+  const g = c.getContext('2d');
+  for (let k = 0; k < 8; k++) { g.fillStyle = k % 2 ? '#ffffff' : css; g.fillRect(k * 16, 0, 16, 8); }
+  const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace;
+  return t;
+}
+const balloonMats = ['#ff5fa2', '#19c3d6', '#7f8cf5'].map((c) => new THREE.MeshStandardMaterial({ map: stripeTex(c), roughness: 0.7 }));
+for (let i = 0; i < 6; i++) {
+  const g = new THREE.Group();
+  g.add(part(new THREE.SphereGeometry(1, 24, 16), balloonMats[i % 3], 0, 0, 0, 3.2, 3.8, 3.2));
+  g.add(part(new THREE.CylinderGeometry(1.7, 0.7, 2.2, 16), balloonMats[i % 3], 0, -3.6, 0));
+  g.add(part(boxGeo, M.navy, 0, -5.6, 0, 1.1, 0.9, 1.1));
+  g.position.set((i % 2 ? 1 : -1) * rand(20, 46), rand(7, 26), -30 - i * 36);
+  scene.add(g);
+  scenery.push({ mesh: g, par: 0.35, span: 230 });
+}
+
+// portiques au-dessus de la voie
 for (let i = 0; i < 3; i++) {
   const arch = new THREE.Mesh(new THREE.TorusGeometry(TRACK_W / 2 + 0.9, 0.22, 10, 40, Math.PI), i % 2 ? M.pink : M.cyan);
   arch.position.set(0, 0, -40 - i * 70);
@@ -304,9 +406,58 @@ const G = {
   stripe: new THREE.BoxGeometry(1.92, 0.14, 0.37),
   post: new THREE.CylinderGeometry(0.11, 0.11, 2.6, 12),
   gateBar: new THREE.BoxGeometry(2.1, 0.7, 0.4),
-  block: new THREE.BoxGeometry(1.95, 2.6, 5),
-  blockTrim: new THREE.BoxGeometry(1.99, 0.3, 5.04),
-  blockFace: new THREE.BoxGeometry(1.5, 0.9, 0.06),
+};
+
+// Train à grande vitesse : caisse extrudée + nez profilé (le nez pointe vers +z, vers le joueur)
+const TRAIN = { body: 5.6, nose: 3.4, y0: 0.35, y1: 2.5, hw: 0.95 };
+TRAIN.len = TRAIN.body + TRAIN.nose;
+TRAIN.sy = (t) => 1 - 0.72 * Math.pow(t, 1.2);          // hauteur relative du nez
+TRAIN.top = (t) => TRAIN.y0 + (TRAIN.y1 - TRAIN.y0) * TRAIN.sy(t);
+(function buildTrainGeo() {
+  const { hw, y0, y1 } = TRAIN, rt = 0.7, rb = 0.2, P = Math.PI;
+  const sh = new THREE.Shape();
+  sh.moveTo(-hw + rb, y0); sh.lineTo(hw - rb, y0); sh.absarc(hw - rb, y0 + rb, rb, -P / 2, 0);
+  sh.lineTo(hw, y1 - rt); sh.absarc(hw - rt, y1 - rt, rt, 0, P / 2);
+  sh.lineTo(-hw + rt, y1); sh.absarc(-hw + rt, y1 - rt, rt, P / 2, P);
+  sh.lineTo(-hw, y0 + rb); sh.absarc(-hw + rb, y0 + rb, rb, P, P * 1.5);
+  const body = new THREE.ExtrudeGeometry(sh, { depth: TRAIN.body, bevelEnabled: false, curveSegments: 8 });
+  body.translate(0, 0, -TRAIN.len / 2);
+  G.trainBody = body;
+
+  const pts = sh.getPoints(8);
+  if (pts[0].distanceTo(pts[pts.length - 1]) < 1e-4) pts.pop();
+  const n = pts.length, R = 12, pos = [], idx = [];
+  for (let i = 0; i <= R; i++) {
+    const t = i / R;
+    const sx = 1 - 0.62 * Math.pow(t, 2.1), sy = TRAIN.sy(t);
+    for (const p of pts) pos.push(p.x * sx, y0 + (p.y - y0) * sy, t * TRAIN.nose);
+  }
+  const low = [];                          // bas de caisse : couleur de la livrée
+  for (let i = 0; i < R; i++) for (let j = 0; j < n; j++) {
+    const j2 = (j + 1) % n, a = i * n + j, b = i * n + j2, c = a + n, d = b + n;
+    (pts[j].y < 1.12 && pts[j2].y < 1.12 ? low : idx).push(a, b, d, a, d, c);
+  }
+  const tip = pos.length / 3;
+  pos.push(0, y0 + (y1 - y0) * 0.14, TRAIN.nose + 0.22);
+  for (let j = 0; j < n; j++) low.push(R * n + j, R * n + (j + 1) % n, tip);
+  const nose = new THREE.BufferGeometry();
+  nose.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
+  nose.setIndex(idx.concat(low)); nose.computeVertexNormals();
+  nose.addGroup(0, idx.length, 0); nose.addGroup(idx.length, low.length, 1);
+  nose.translate(0, 0, TRAIN.body - TRAIN.len / 2);
+  G.trainNose = nose;
+  G.trainBand = new THREE.BoxGeometry(1.94, 0.44, TRAIN.body - 0.5);
+  G.trainStripe = new THREE.BoxGeometry(1.93, 0.16, TRAIN.body);
+  G.trainLine = new THREE.BoxGeometry(1.93, 0.06, TRAIN.body);
+  G.trainUnder = new THREE.BoxGeometry(1.5, 0.4, TRAIN.len - 1.4);
+  G.trainBogie = new THREE.BoxGeometry(1.72, 0.34, 1.3);
+})();
+const TM = {
+  shell: mat(0xe4ecf4, { roughness: 0.3, metalness: 0.2 }),
+  glass: mat(0x0b2a6b, { roughness: 0.12, metalness: 0.3 }),
+  under: mat(0x33415f, { roughness: 0.8 }),
+  light: new THREE.MeshBasicMaterial({ color: 0xfff6c9 }),
+  liveries: [[M.cyan, M.pink], [M.pink, M.cyan], [mat(0x3558c9), M.cyan]],
 };
 function iconTexture(kind) {
   const c = document.createElement('canvas'); c.width = c.height = 128;
@@ -349,13 +500,22 @@ function addObstacle(type, lane, z) {
     g.add(part(G.stripe, M.white, 0, 1.6, 0, 1.08, 1, 1.12));
     box = { hw: 1.0, hz: 0.22, y0: 1.25, y1: 2.6 };
   } else {
-    g.add(part(G.block, M.block, 0, 1.3, 0));
-    g.add(part(G.blockTrim, M.blockTrim, 0, 2.3, 0));
-    g.add(part(G.blockTrim, M.blockTrim, 0, 0.25, 0));
-    g.add(part(G.blockFace, M.white, 0, 1.3, 2.51));
-    for (const s of [-1, 1]) g.add(part(sphGeo, M.navy, s * 0.35, 1.38, 2.55, 0.13, 0.17, 0.03));
-    z -= 2.5;
-    box = { hw: 0.97, hz: 2.5, y0: 0, y1: 2.6 };
+    const [c1, c2] = pick(TM.liveries);
+    const zc = -TRAIN.nose / 2, zn = TRAIN.body - TRAIN.len / 2; // centre de la caisse, début du nez
+    g.add(part(G.trainBody, TM.shell, 0, 0, 0));
+    g.add(part(G.trainNose, [TM.shell, c1], 0, 0, 0));
+    g.add(part(G.trainBand, TM.glass, 0, 1.52, zc));
+    g.add(part(G.trainStripe, c1, 0, 0.98, zc));
+    g.add(part(G.trainLine, c2, 0, 0.8, zc));
+    const glass = part(sphGeo, TM.glass, 0, TRAIN.top(0.42) - 0.07, zn + 0.42 * TRAIN.nose, 0.5, 0.16, 0.8); // pare-brise
+    glass.rotation.x = 0.4;
+    g.add(glass);
+    for (const s of [-1, 1]) g.add(part(sphGeo, TM.light, s * 0.2, 0.72, TRAIN.len / 2 + 0.03, 0.09, 0.07, 0.09));
+    g.add(part(G.trainUnder, TM.under, 0, 0.2, -0.5));
+    for (const zb of [-TRAIN.len / 2 + 1.2, zn - 0.8]) g.add(part(G.trainBogie, TM.under, 0, 0.19, zb));
+    g.add(part(boxGeo, TM.under, 0, 2.56, zc - 1, 0.7, 0.12, 1.4));    // pantographe replié
+    z -= TRAIN.len / 2;
+    box = { hw: 0.97, hz: TRAIN.len / 2, y0: 0, y1: 2.6 };
   }
   g.position.set(x, 0, z);
   return addObj({ kind: 'obst', type, mesh: g, ...box });
