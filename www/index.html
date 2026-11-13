@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#e8f4fb">
+<title>LayJou Puzzle</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===== Accueil ===== -->
+<section id="home" class="screen active">
+  <div class="home-top">
+    <div class="pill coins"><span>🪙</span><b data-bind="coins">0</b></div>
+    <button class="round-btn" id="btn-sound" aria-label="Son">🔊</button>
+  </div>
+  <h1 class="logo"><span class="l1">LayJou</span><span class="l2">Puzzle</span></h1>
+  <div class="mascot-wrap">
+    <div class="bubble" id="home-bubble"></div>
+    <img class="mascot float" src="assets/mascot.png" alt="LayJou">
+    <div class="shadow"></div>
+  </div>
+  <button class="btn big primary" id="btn-play"></button>
+  <p class="tagline" data-i18n="tagline"></p>
+</section>
+
+<!-- ===== Jeu ===== -->
+<section id="game" class="screen">
+  <header class="hud">
+    <button class="round-btn" id="btn-pause" aria-label="Pause">⏸</button>
+    <div class="hud-mid">
+      <div class="level-label"><span data-i18n="level"></span> <b data-bind="level">1</b></div>
+      <div class="timer"><div class="timer-fill" id="timer-fill"></div><span id="timer-text">0:00</span></div>
+    </div>
+    <div class="pill coins small"><span>🪙</span><b data-bind="coins">0</b></div>
+  </header>
+  <div class="helper">
+    <img class="mascot mini" id="mini-mascot" src="assets/mascot.png" alt="">
+    <div class="bubble side" id="game-bubble"></div>
+    <div class="progress"><div id="progress-fill"></div></div>
+  </div>
+  <main id="board-wrap"><div id="board"></div></main>
+  <footer class="boosters">
+    <button class="booster" data-booster="magnet"><span class="ico">🧲</span><i class="count"></i><small data-i18n="magnet"></small></button>
+    <button class="booster" data-booster="shuffle"><span class="ico">🔀</span><i class="count"></i><small data-i18n="shuffle"></small></button>
+    <button class="booster" data-booster="freeze"><span class="ico">❄️</span><i class="count"></i><small data-i18n="freeze"></small></button>
+  </footer>
+</section>
+
+<!-- ===== Dialogues ===== -->
+<div id="overlay" class="overlay hidden">
+  <div class="dialog" id="dialog">
+    <img class="mascot dlg" id="dlg-mascot" src="assets/mascot.png" alt="">
+    <h2 id="dlg-title"></h2>
+    <div id="dlg-stars" class="stars"></div>
+    <p id="dlg-text"></p>
+    <div id="dlg-actions" class="actions"></div>
+  </div>
+</div>
+
+<div id="confetti"></div>
+
+<script src="js/config.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/ads.js"></script>
+<script src="js/game.js"></script>
+</body>
+</html>
