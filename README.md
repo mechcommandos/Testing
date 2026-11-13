@@ -26,3 +26,15 @@ puis ouvrir http://localhost:8000.
 - `vendor/` : three.js r160 (licence MIT)
 
 La progression (record, cœurs, missions, améliorations, série de jours) est enregistrée dans le `localStorage` du navigateur.
+
+## APK Android
+
+`android/` contient une petite application qui affiche le jeu dans une WebView plein écran (fichiers embarqués, jouable hors ligne). Elle se construit sans Gradle, avec les build-tools et la plateforme du SDK Android :
+
+```
+ANDROID_BT=$ANDROID_HOME/build-tools/34.0.0 \
+ANDROID_JAR=$ANDROID_HOME/platforms/android-34/android.jar \
+android/build.sh
+```
+
+L'APK est signé avec une clé de test créée au premier build (`android/build/debug.keystore`).
