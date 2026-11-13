@@ -1,7 +1,7 @@
 import * as THREE from './vendor/three.module.min.js';
 
 /* =========================================================
-   Robo Rush — endless runner sur 3 voies
+   LayJou Run — endless runner sur 3 voies
    ========================================================= */
 
 const $ = (id) => document.getElementById(id);

@@ -1,4 +1,4 @@
-# Robo Rush
+# LayJou Run
 
 Jeu de course sans fin sur 3 voies, en 3D (three.js), avec le petit robot comme héros.
 
