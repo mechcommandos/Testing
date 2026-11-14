@@ -25,12 +25,12 @@ export function basePose() {
     hfx: 40, hfy: -50, hbx: -40, hby: -50, bendF: 6, bendB: -6,
     ffx: 15, ffy: 0, ffr: 0, fbx: -15, fby: 0, fbr: 0,
     wAngle: 0, shield: 0, glow: 0, lookX: 0, lookY: 0, blink: 0,
-    eyes: 'open', mouth: 'smile', fistF: 0, fistB: 0, weaponOn: 1,
+    eyes: 'open', mouth: 'smile', fistF: 0, fistB: 0, weaponOn: 1, hsF: 1, hsB: 1, fsF: 1, fsB: 1,
   };
 }
 
 const NUM_KEYS = ['rootRot', 'rootX', 'rootY', 'bob', 'lean', 'headTilt', 'turn', 'squash', 'hfx', 'hfy', 'hbx', 'hby', 'bendF', 'bendB',
-  'ffx', 'ffy', 'ffr', 'fbx', 'fby', 'fbr', 'wAngle', 'shield', 'glow', 'lookX', 'lookY', 'fistF', 'fistB', 'weaponOn'];
+  'ffx', 'ffy', 'ffr', 'fbx', 'fby', 'fbr', 'wAngle', 'shield', 'glow', 'lookX', 'lookY', 'fistF', 'fistB', 'weaponOn', 'hsF', 'hsB', 'fsF', 'fsB'];
 
 /** Interpolation douce d'une pose vers une autre (k = 0..1). */
 export function blendPose(cur, target, k) {
@@ -197,24 +197,32 @@ function limb(ctx, x0, y0, x1, y1, w, bend, pal, dashOffset = 0) {
   ctx.globalAlpha = 1;
 }
 
-function hand(ctx, x, y, pal, fist, ang = -Math.PI / 2) {
-  const r = 10 + fist * 1.2;
+function hand(ctx, x, y, pal, fist, ang = -Math.PI / 2, k = 1) {
+  const r = (10 + fist * 1.2) * k;
   if (fist <= 0.5) {
     // doigts de moufle, orientés dans le prolongement du bras
     ctx.fillStyle = pal.main;
     for (const [da, rr, d] of [[-1.25, 4.6, 0.92], [-0.42, 4.5, 1.0], [0.2, 4.6, 1.02], [0.8, 4.2, 0.96]]) {
-      circle(ctx, x + Math.cos(ang + da) * r * d, y + Math.sin(ang + da) * r * d, rr); ctx.fill();
+      circle(ctx, x + Math.cos(ang + da) * r * d, y + Math.sin(ang + da) * r * d, rr * k); ctx.fill();
     }
   }
-  circle(ctx, x, y, r + 1.1); ctx.fillStyle = pal.mainDark; ctx.fill();
+  if (fist > 0.5) {
+    // phalanges : trois bosses sur l'avant du poing
+    for (let i = -1; i <= 1; i++) {
+      const a = ang + i * 0.5, bx = x + Math.cos(a) * r * 0.74, by = y + Math.sin(a) * r * 0.74;
+      circle(ctx, bx, by, r * 0.37 + 1.1 * k); ctx.fillStyle = pal.mainDark; ctx.fill();
+      circle(ctx, bx, by, r * 0.37); ctx.fillStyle = pal.main; ctx.fill();
+    }
+  }
+  circle(ctx, x, y, r + 1.1 * k); ctx.fillStyle = pal.mainDark; ctx.fill();
   const g = ctx.createRadialGradient(x - r * 0.35, y - r * 0.4, 1, x, y, r);
   g.addColorStop(0, lighten(pal.main)); g.addColorStop(0.55, pal.main); g.addColorStop(1, pal.mainDark);
   circle(ctx, x, y, r); ctx.fillStyle = g; ctx.fill();
   if (fist > 0.5) {
-    ctx.strokeStyle = pal.mainDark; ctx.lineWidth = 1.2; ctx.globalAlpha = 0.55;
+    ctx.strokeStyle = pal.mainDark; ctx.lineWidth = 1.2 * k; ctx.globalAlpha = 0.55;
     for (let i = -1; i <= 1; i++) {
       const a = ang + i * 0.42;
-      ctx.beginPath(); ctx.arc(x + Math.cos(a) * r * 0.5, y + Math.sin(a) * r * 0.5, 2.4, a - 1.2, a + 1.2); ctx.stroke();
+      ctx.beginPath(); ctx.arc(x + Math.cos(a) * r * 0.62, y + Math.sin(a) * r * 0.62, r * 0.3, a - 1.15, a + 1.15); ctx.stroke();
     }
     ctx.globalAlpha = 1;
   }
@@ -230,8 +238,8 @@ function lighten(c) {
   return c;
 }
 
-function shoe(ctx, x, y, rot, pal) {
-  ctx.save(); ctx.translate(x, y); ctx.rotate(rot);
+function shoe(ctx, x, y, rot, pal, k = 1) {
+  ctx.save(); ctx.translate(x, y); ctx.rotate(rot); ctx.scale(k, k);
   // tige
   ctx.beginPath(); ctx.moveTo(-12, -6); ctx.bezierCurveTo(-13, -19, -4, -22, 3, -21); ctx.bezierCurveTo(12, -20, 17, -14, 17, -6); ctx.closePath();
   const g = ctx.createLinearGradient(0, -22, 0, -4); g.addColorStop(0, lighten(pal.main)); g.addColorStop(0.5, pal.main); g.addColorStop(1, pal.mainDark);
@@ -563,20 +571,20 @@ export function drawLayjou(ctx, o) {
   // 2. bras arrière (passe devant le corps quand il croise vers l'avant)
   const backArm = () => {
     limb(ctx, sbx, sby, p.hbx, p.hby, 12.5, p.bendB, pal);
-    hand(ctx, p.hbx, p.hby, pal, p.fistB, Math.atan2(p.hby - sby, p.hbx - sbx));
+    hand(ctx, p.hbx, p.hby, pal, p.fistB, Math.atan2(p.hby - sby, p.hbx - sbx), p.hsB ?? 1);
   };
   const backArmFront = p.hbx > 6;
   if (!backArmFront) backArm();
 
   // 3. jambes + chaussures (jambe arrière d'abord)
-  const legs = [[hipBx, hipBy, p.fbx, p.fby, p.fbr], [hipFx, hipFy, p.ffx, p.ffy, p.ffr]];
-  for (const [hx, hy, fx, fy, fr] of legs) {
-    const ax = fx - 2, ay = fy - 14;
+  const legs = [[hipBx, hipBy, p.fbx, p.fby, p.fbr, p.fsB ?? 1], [hipFx, hipFy, p.ffx, p.ffy, p.ffr, p.fsF ?? 1]];
+  for (const [hx, hy, fx, fy, fr, fs] of legs) {
+    const ax = fx - 2 * Math.cos(fr) * fs + 14 * Math.sin(fr) * fs, ay = fy - 14 * Math.cos(fr) * fs - 2 * Math.sin(fr) * fs; // cheville : suit la rotation du pied
     limb(ctx, hx, hy, ax, ay, 16.5, 2.5, pal, 5);
     const kx = lerp(hx, ax, 0.5) + 2.5 + turn * 2, ky = lerp(hy, ay, 0.5);
     circle(ctx, kx, ky, 6.6); ctx.fillStyle = pal.accent; ctx.fill();
     ctx.globalAlpha = 0.5; circle(ctx, kx - 1.6, ky - 2, 2.2); ctx.fillStyle = '#fff'; ctx.fill(); ctx.globalAlpha = 1;
-    shoe(ctx, fx, fy, fr, pal);
+    shoe(ctx, fx, fy, fr, pal, fs);
   }
 
   // 4. torse
@@ -677,9 +685,9 @@ export function drawLayjou(ctx, o) {
     ctx.save(); ctx.translate(p.hfx, p.hfy); ctx.rotate(p.wAngle); ctx.scale(1.35, 1.35); ctx.translate(4, 0);
     drawWeapon(ctx, o.weapon, t, o.weaponColor);
     ctx.restore();
-    hand(ctx, p.hfx, p.hfy, pal, 1, p.wAngle);
+    hand(ctx, p.hfx, p.hfy, pal, 1, p.wAngle, p.hsF ?? 1);
   } else {
-    hand(ctx, p.hfx, p.hfy, pal, p.fistF, Math.atan2(p.hfy - sfy, p.hfx - sfx));
+    hand(ctx, p.hfx, p.hfy, pal, p.fistF, Math.atan2(p.hfy - sfy, p.hfx - sfx), p.hsF ?? 1);
   }
 
   // 7. bouclier d'énergie
