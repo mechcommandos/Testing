@@ -7,7 +7,7 @@
     "start": "npx serve www",
     "test": "node tests/engine.test.mjs",
     "sync": "cap sync",
-    "assets": "capacitor-assets generate --iconBackgroundColor '#E6F4FB' --iconBackgroundColorDark '#0B3A8F' --splashBackgroundColor '#E6F4FB' --splashBackgroundColorDark '#E6F4FB'",
+    "assets": "capacitor-assets generate --iconBackgroundColor '#2EA8F5' --iconBackgroundColorDark '#2EA8F5' --splashBackgroundColor '#1C6FD7' --splashBackgroundColorDark '#0C3078'",
     "android:apk": "cap sync android && cd android && ./gradlew assembleDebug",
     "android:open": "cap open android",
     "ios:open": "cap sync ios && cap open ios"
