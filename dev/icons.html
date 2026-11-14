@@ -286,7 +286,48 @@ const run = {
   },
 };
 
-const GAMES = { battle, bubble: bubbleGame, puzzle, run };
+/* =============================== BLOCKS =============================== */
+const BLK = { red: ['#ff9a9a', '#ff4f5e', '#b0103a'], yellow: ['#fff3a6', '#ffcf2e', '#d98600'], green: ['#c9ffa8', '#5fd83a', '#1c8a2a'], blue: ['#bfe6ff', '#3aa0ff', '#1848c0'], purple: ['#e6c9ff', '#a55cff', '#571fb4'], orange: ['#ffdca8', '#ff9a2e', '#d45400'], pink: ['#ffd0e8', '#ff62a8', '#c01c6c'], white: ['#ffffff', '#fff7c2', '#ffe14a'] };
+function block(c, x, y, s, col) { // coin haut-gauche, côté s
+  const [l, m, d] = BLK[col];
+  c.save();
+  c.beginPath(); c.roundRect(x + s * 0.04, y + s * 0.08, s * 0.92, s * 0.92, s * 0.2); c.fillStyle = d; c.fill();
+  c.beginPath(); c.roundRect(x + s * 0.04, y + s * 0.02, s * 0.92, s * 0.88, s * 0.2); c.fillStyle = lin(c, 0, y, 0, y + s, [[0, l], [0.45, m], [1, m]]); c.fill();
+  c.globalAlpha = 0.55; c.fillStyle = '#fff'; c.beginPath(); c.roundRect(x + s * 0.16, y + s * 0.12, s * 0.5, s * 0.16, s * 0.08); c.fill();
+  c.globalAlpha = 0.22; c.beginPath(); c.roundRect(x + s * 0.2, y + s * 0.26, s * 0.6, s * 0.46, s * 0.12); c.fill();
+  c.restore();
+}
+const blocksGame = {
+  word: 'BLOCKS', splash: '#0f9d76', splashDark: '#06402f', accent: ['#7dff9a', '#12a877'],
+  bg(c) {
+    c.fillStyle = lin(c, 0, -100, 0, 1124, [[0, '#8dffb0'], [0.45, '#22c98a'], [1, '#0a7d6e']]); c.fillRect(...FILL);
+    rays(c, 380, 380, 2200, 18, 0.15, '#fff', 0.09, 0.4);
+    glow(c, 380, 380, 560, 'rgba(255,255,255,0.3)');
+  },
+  fg(c) {
+    // plateau incliné
+    const S0 = 104, bx = 70, by = 96, n = 6;
+    c.save(); c.translate(430, 430); c.rotate(-0.09); c.translate(-430, -430);
+    c.save(); c.shadowColor = 'rgba(0,40,40,0.5)'; c.shadowBlur = 40; c.shadowOffsetY = 20; c.beginPath(); c.roundRect(bx - 26, by - 26, n * S0 + 52, n * S0 + 52, 46); c.fillStyle = '#10255e'; c.fill(); c.restore();
+    c.beginPath(); c.roundRect(bx - 26, by - 26, n * S0 + 52, n * S0 + 52, 46); c.strokeStyle = '#fff'; c.lineWidth = 12; c.stroke();
+    for (let i = 0; i < n; i++) for (let j = 0; j < n; j++) { c.beginPath(); c.roundRect(bx + i * S0 + 5, by + j * S0 + 5, S0 - 10, S0 - 10, 18); c.fillStyle = (i + j) % 2 ? '#1b3684' : '#17307a'; c.fill(); }
+    const cells = [[0, 0, 'purple'], [1, 0, 'purple'], [0, 1, 'purple'], [4, 0, 'orange'], [5, 0, 'orange'], [5, 1, 'orange'], [0, 4, 'blue'], [0, 5, 'blue'], [1, 5, 'blue'], [2, 5, 'red'], [1, 4, 'green']];
+    for (const [i, j, col] of cells) block(c, bx + i * S0, by + j * S0, S0, col);
+    // ligne complète qui s'efface
+    const ry = by + 2 * S0;
+    c.save(); c.shadowColor = '#fff7b0'; c.shadowBlur = 60; c.beginPath(); c.roundRect(bx - 40, ry - 8, n * S0 + 80, S0 + 16, 40); c.fillStyle = 'rgba(255,250,190,0.6)'; c.fill(); c.restore();
+    ['pink', 'yellow', 'green', 'blue', 'red', 'purple'].forEach((col, i) => block(c, bx + i * S0, ry, S0, i > 3 ? 'white' : col));
+    c.restore();
+    for (const [x, y, r, rot] of [[690, 250, 40, 0.3], [56, 330, 30, 0.1], [560, 390, 26, 0.6], [770, 90, 22, 0], [300, 64, 18, 0.4]]) spark(c, x, y, r, '#fff', rot);
+    // héros : dépose une pièce en L
+    const s = 4.05, hx0 = 650, hy0 = 1216, handX = 356, handY = 760, P = 116;
+    sticker(c, (l) => { l.save(); l.translate(handX - 40, handY - 60); l.rotate(-0.14); for (const [i, j] of [[0, -1], [0, 0], [1, 0], [-1, 0]]) block(l, i * P - P / 2, j * P - P / 2, P, 'yellow'); l.restore(); }, { outline: 9, blur: 22, dy: 12, shadow: 'rgba(0,40,40,0.5)' });
+    hero(c, { x: hx0, y: hy0, scale: s, facing: -1, pose: pose('wave', { turn: 0.24, headTilt: -0.05, bob: 0, hfx: (hx0 - handX) / s, hfy: (handY - hy0) / s, bendF: 12, fistF: 1, hsF: 1.2, hbx: -50, hby: -46, bendB: -10, fistB: 1, eyes: 'open', mouth: 'open', lookX: 0.7, lookY: -0.2, fbx: -15, fby: 0, fbr: 0, ffx: 15 }) });
+    sticker(c, (l) => { block(l, 880, 870, 120, 'pink'); block(l, 880, 990, 120, 'pink'); }, { outline: 8, blur: 18, dy: 10, shadow: 'rgba(0,40,40,0.45)' });
+  },
+};
+
+const GAMES = { battle, bubble: bubbleGame, puzzle, run, blocks: blocksGame };
 
 /* ------------------------------ rendus ------------------------------ */
 function vignette(c) { c.save(); c.fillStyle = rad(c, 512, 500, 420, 900, [[0, 'rgba(0,0,0,0)'], [1, 'rgba(10,0,40,0.3)']]); c.fillRect(...FILL); c.restore(); }
@@ -347,10 +388,10 @@ if (kind === 'icon' || kind === 'fg' || kind === 'bg') {
   c.lineWidth = 26; c.lineCap = 'round'; c.strokeStyle = '#fff'; c.beginPath(); c.arc(512, 590, 60, 0.25, Math.PI - 0.25); c.stroke();
   c.beginPath(); c.roundRect(372, 800, 280, 150, 70); c.fill();
 } else if (kind === 'sheet') { // planche d'aperçu des 4 icônes
-  const W = 1600, H = 1180; cv.width = W; cv.height = H; const c = cv.getContext('2d'); PX = 1024;
+  const W = 1985, H = 1180; cv.width = W; cv.height = H; const c = cv.getContext('2d'); PX = 1024;
   c.fillStyle = lin(c, 0, 0, W, H, [[0, '#1b2140'], [1, '#0d1024']]); c.fillRect(0, 0, W, H);
   c.fillStyle = '#fff'; c.font = '700 44px "Fredoka Variable"'; c.textAlign = 'left'; c.fillText('LayJou Games — nouvelles icônes', 60, 78);
-  const order = ['bubble', 'battle', 'puzzle', 'run'];
+  const order = ['bubble', 'battle', 'puzzle', 'run', 'blocks'];
   order.forEach((id, i) => {
     const x = 60 + i * 385, G = GAMES[id];
     roundedIcon(c, G, x, 120, 340); c.fillStyle = '#fff'; c.font = '600 34px "Fredoka Variable"'; c.textAlign = 'center'; c.fillText('LayJou ' + G.word[0] + G.word.slice(1).toLowerCase(), x + 170, 506);
