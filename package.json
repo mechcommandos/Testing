@@ -1,7 +1,7 @@
 {
   "name": "layjou-puzzle",
   "version": "1.0.0",
-  "description": "LayJou Puzzle — jeu de tri par 3 (Capacitor)",
+  "description": "Layjou Puzzle — jeu de tri par 3 (Capacitor)",
   "scripts": {
     "serve": "npx --yes serve www",
     "sync": "cap sync",

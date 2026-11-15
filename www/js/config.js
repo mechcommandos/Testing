@@ -1,5 +1,5 @@
 /*
- * Configuration LayJou Puzzle.
+ * Configuration Layjou Puzzle.
  *
  * Les identifiants ci-dessous sont les identifiants de TEST officiels de Google.
  * Avant de publier :

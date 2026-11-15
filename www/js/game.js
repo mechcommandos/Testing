@@ -1,4 +1,4 @@
-/* LayJou Puzzle — logique du jeu (tri par 3 sur étagères) */
+/* Layjou Puzzle — logique du jeu (tri par 3 sur étagères) */
 (function () {
   'use strict';
   const CFG = window.LAYJOU_CONFIG.game;

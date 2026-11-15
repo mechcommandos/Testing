@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">LayJou Puzzle</string>
-    <string name="title_activity_main">LayJou Puzzle</string>
+    <string name="app_name">Layjou Puzzle</string>
+    <string name="title_activity_main">Layjou Puzzle</string>
     <string name="package_name">com.layjou.puzzle</string>
     <string name="custom_url_scheme">com.layjou.puzzle</string>
     <!-- ID AdMob de TEST Google : remplacez-le par le vôtre avant publication -->

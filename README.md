@@ -1,8 +1,8 @@
-# LayJou Puzzle
+# Layjou Puzzle
 
 Jeu de tri « par 3 » : déplace les objets entre les étagères, réunis 3 objets
 identiques sur la même étagère pour les faire disparaître, et vide tout le rayon
-avant la fin du chrono. Le robot LayJou t'accompagne pendant la partie.
+avant la fin du chrono. Le robot Layjou t'accompagne pendant la partie.
 
 - **Techno** : HTML/CSS/JS sans dépendance (dossier `www/`) + **Capacitor 8** (Android & iOS)
 - **Publicité** : vidéos récompensées **AdMob** (`@capacitor-community/admob`)
@@ -18,7 +18,7 @@ avant la fin du chrono. Le robot LayJou t'accompagne pendant la partie.
 | `android/` | Projet Android Studio (Gradle) |
 | `ios/` | Projet Xcode (Swift Package Manager, pas de CocoaPods) |
 | `resources/` | Icône et écran de démarrage sources |
-| `release/LayJouPuzzle-debug.apk` | APK de test installable |
+| `release/LayjouPuzzle-debug.apk` | APK de test installable |
 
 ## Lancer / compiler
 
