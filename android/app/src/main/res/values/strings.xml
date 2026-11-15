@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">LayJou Run</string>
-    <string name="title_activity_main">LayJou Run</string>
+    <string name="app_name">Layjou Run</string>
+    <string name="title_activity_main">Layjou Run</string>
     <string name="package_name">com.layjou.run</string>
     <string name="custom_url_scheme">com.layjou.run</string>
     <!-- Identifiant de TEST de Google : à remplacer par votre identifiant d'application AdMob -->

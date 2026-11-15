@@ -2,7 +2,7 @@ import * as THREE from './vendor/three.module.min.js';
 import { ads } from './ads.js';
 
 /* =========================================================
-   LayJou Run — endless runner sur 3 voies
+   Layjou Run — endless runner sur 3 voies
    ========================================================= */
 
 const $ = (id) => document.getElementById(id);
