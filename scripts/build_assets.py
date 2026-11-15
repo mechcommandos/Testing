@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Pipeline d'assets de LayJou Blocks.
+Pipeline d'assets de Layjou Blocks.
 
 À partir de l'illustration d'origine (assets/source/layjou-original.png, fond blanc) :
   1. détoure le personnage (flood-fill du fond depuis les bords) ;

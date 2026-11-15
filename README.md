@@ -1,14 +1,14 @@
-# LayJou Blocks
+# Layjou Blocks
 
-Puzzle de blocs 8 × 8 avec LayJou le robot. Application Capacitor 8 (Android + iOS), Vite + TypeScript, sans framework.
+Puzzle de blocs 8 × 8 avec Layjou le robot. Application Capacitor 8 (Android + iOS), Vite + TypeScript, sans framework.
 
-- **APK de démonstration** : [`release/LayJouBlocks-1.0.0-debug.apk`](release/LayJouBlocks-1.0.0-debug.apk)
+- **APK de démonstration** : [`release/LayjouBlocks-1.0.0-debug.apk`](release/LayjouBlocks-1.0.0-debug.apk)
 - **Sources iOS** : `ios/App/App.xcodeproj` (à ouvrir dans Xcode sur un Mac)
 
 ## Le jeu
 
 - Glisser 3 pièces sur le plateau, compléter lignes et colonnes, enchaîner les combos.
-- **LayJou** réagit à la partie (expressions, bulles, animations) et porte skins et accessoires.
+- **Layjou** réagit à la partie (expressions, bulles, animations) et porte skins et accessoires.
 - **Armes** : Marteau (3 × 3), Laser (ligne + colonne), Chroma (une couleur), Recycleur (nouvelles pièces).
 - **Jauge cœur** : 10 lignes effacées = une arme offerte.
 - **Progression** : niveaux, 3 missions par jour, cadeau quotidien sur 7 jours, cadeau gratuit toutes les 4 h.

@@ -1,6 +1,6 @@
 /* ============================================================
-   LayJou Blocks — direction artistique « labo bonbon »
-   Fond clair menthe → rose, plateau = l'écran bleu nuit de LayJou,
+   Layjou Blocks — direction artistique « labo bonbon »
+   Fond clair menthe → rose, plateau = l'écran bleu nuit de Layjou,
    blocs gélifiés aux couleurs de la mascotte.
    ============================================================ */
 :root {
@@ -395,6 +395,7 @@ button:disabled {
   paint-order: stroke fill;
   filter: drop-shadow(0 5px 0 rgba(13, 155, 176, 0.3));
 }
+.logo-img { display: block; width: clamp(220px, 72vw, 340px); margin: 0 auto 2px; filter: drop-shadow(0 5px 0 rgba(13, 155, 176, 0.25)); }
 .logo .lay { color: var(--cyan); }
 .logo .jou { color: var(--pink); }
 .logo-tiles {

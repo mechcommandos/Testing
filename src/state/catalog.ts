@@ -1,4 +1,4 @@
-/** Catalogue des objets cosmétiques : skins et accessoires de LayJou. */
+/** Catalogue des objets cosmétiques : skins et accessoires de Layjou. */
 
 export type Slot = 'skin' | 'head' | 'face' | 'neck';
 

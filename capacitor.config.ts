@@ -2,7 +2,7 @@ import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'com.layjou.blocks',
-  appName: 'LayJou Blocks',
+  appName: 'Layjou Blocks',
   webDir: 'dist',
   backgroundColor: '#DFF7FAFF',
   android: {

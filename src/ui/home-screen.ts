@@ -17,8 +17,8 @@ const LOGO_TILES = ['B', 'L', 'O', 'C', 'K', 'S'];
 export function logo(): HTMLElement {
   return h(
     'div',
-    { class: 'logo', role: 'img', 'aria-label': 'LayJou Blocks' },
-    h('div', { class: 'logo-name' }, h('span', { class: 'lay' }, 'Lay'), h('span', { class: 'jou' }, 'Jou')),
+    { class: 'logo', role: 'img', 'aria-label': 'Layjou Blocks' },
+    h('img', { class: 'logo-img', src: './layjou-logo.png', alt: 'Layjou', draggable: 'false' }),
     h('div', { class: 'logo-tiles' }, LOGO_TILES.map((l, i) => h('i', { class: `blk c${[1, 2, 3, 4, 6, 5][i]}` }, l))),
   );
 }
@@ -70,7 +70,7 @@ export function createHomeScreen(play: (resume: boolean) => void, rebuild: () =>
     mascot.equip(p.equipped as never);
   };
 
-  const hero = h('button', { class: 'hero', 'aria-label': 'LayJou', onclick: () => {
+  const hero = h('button', { class: 'hero', 'aria-label': 'Layjou', onclick: () => {
     mascot.act('hop');
     mascot.flash('joy', 900);
     mascot.say(say('sayPoke'));

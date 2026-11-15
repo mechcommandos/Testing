@@ -1,5 +1,5 @@
 /**
- * LayJou : l'illustration d'origine + des calques SVG par-dessus (expressions du visage,
+ * Layjou : l'illustration d'origine + des calques SVG par-dessus (expressions du visage,
  * accessoires). Les coordonnées des calques sont celles de l'image d'origine (1080 × 1456) ;
  * l'image exportée a simplement PAD pixels de marge (voir scripts/build_assets.py).
  */
@@ -147,7 +147,7 @@ export class Mascot {
   private baseMood: Mood = 'happy';
 
   constructor(equipped: Equipped) {
-    this.img = h('img', { class: 'mascot-img', alt: 'LayJou', draggable: 'false' });
+    this.img = h('img', { class: 'mascot-img', alt: 'Layjou', draggable: 'false' });
     this.back = h('div', { class: 'mascot-layer' });
     this.front = h('div', { class: 'mascot-layer' });
     this.bubble = h('div', { class: 'bubble' });

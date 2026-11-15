@@ -375,7 +375,7 @@ export function openWardrobe(): void {
   render();
 }
 
-/** Vignette d'un accessoire : LayJou cadré sur la zone concernée. */
+/** Vignette d'un accessoire : Layjou cadré sur la zone concernée. */
 function accessoryThumb(id: string): string {
   const eq = { skin: 'classic', head: null, face: null, neck: null } as Record<string, string | null>;
   const slot = itemsBySlot('head').some((i) => i.id === id) ? 'head' : itemsBySlot('face').some((i) => i.id === id) ? 'face' : 'neck';
@@ -512,6 +512,6 @@ export function openSettings(onLangChange: () => void): void {
       ? h('button', { class: 'set-row tap', onclick: () => void ads.showPrivacyOptions() }, h('span', { class: 'set-ic', html: ic.shield }), h('b', null, t('privacy')))
       : null,
     h('div', { class: 'howto' }, h('b', { html: `${ic.info} ${t('howTo')}` }), h('p', null, t('howToText'))),
-    h('p', { class: 'hint' }, `LayJou Blocks · ${t('version')} ${__APP_VERSION__}`),
+    h('p', { class: 'hint' }, `Layjou Blocks · ${t('version')} ${__APP_VERSION__}`),
   );
 }

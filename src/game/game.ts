@@ -19,7 +19,7 @@ import { shapeById, type Piece } from './shapes';
 export type WeaponId = 'hammer' | 'laser' | 'chroma' | 'recycle';
 export const WEAPON_IDS: WeaponId[] = ['hammer', 'laser', 'chroma', 'recycle'];
 
-/** Lignes nécessaires pour remplir la jauge « cœur » de LayJou. */
+/** Lignes nécessaires pour remplir la jauge « cœur » de Layjou. */
 export const ENERGY_MAX = 10;
 /** Poses sans ligne tolérées avant que le combo ne retombe. */
 export const COMBO_GRACE = 3;
@@ -259,7 +259,7 @@ export class Game {
     this.deal(true);
   }
 
-  /** « Continuer » : LayJou efface les 2 lignes et 2 colonnes les plus chargées, puis nouvelle donne. */
+  /** « Continuer » : Layjou efface les 2 lignes et 2 colonnes les plus chargées, puis nouvelle donne. */
   revive(): BlastOutcome {
     const count = (cells: number[]) => cells.filter((i) => this.board[i] !== 0).length;
     const rows = Array.from({ length: SIZE }, (_, r) => r)

@@ -2,7 +2,7 @@
   "name": "layjou-blocks",
   "version": "1.0.0",
   "private": true,
-  "description": "LayJou Blocks — puzzle de blocs avec LayJou le robot (Capacitor, Android & iOS)",
+  "description": "Layjou Blocks — puzzle de blocs avec Layjou le robot (Capacitor, Android & iOS)",
   "type": "module",
   "scripts": {
     "dev": "vite",
