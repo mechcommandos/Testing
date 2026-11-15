@@ -1,4 +1,4 @@
-// LayJou Bubble — UI: screens, board rendering, animations, input, modals.
+// Layjou Bubble — UI: screens, board rendering, animations, input, modals.
 import { Board } from './engine.js';
 import { getLevel, LEVEL_COUNT } from './levels.js';
 import { initAds, showRewarded } from './ads.js';
@@ -25,7 +25,7 @@ const STRINGS = {
     extra: (n) => `+${n} coups ! On continue !`,
     pause: 'Pause', resume: 'Reprendre', restart: 'Recommencer',
     shuffle: 'Plus de combinaisons… je mélange !',
-    cheers: ['Bien joué !', 'Super !', 'Génial !', 'Incroyable !', 'LayJou adore !'],
+    cheers: ['Bien joué !', 'Super !', 'Génial !', 'Incroyable !', 'Layjou adore !'],
     lowMoves: 'Attention, plus que quelques coups !',
     fakeAd: 'Publicité (simulation — les vraies pubs AdMob s’affichent dans l’application)',
     bonus: (n) => `Bonus coups restants : +${n}`,
@@ -46,7 +46,7 @@ const STRINGS = {
     extra: (n) => `+${n} moves! Keep going!`,
     pause: 'Paused', resume: 'Resume', restart: 'Restart',
     shuffle: 'No more matches… shuffling!',
-    cheers: ['Nice!', 'Great!', 'Awesome!', 'Incredible!', 'LayJou loves it!'],
+    cheers: ['Nice!', 'Great!', 'Awesome!', 'Incredible!', 'Layjou loves it!'],
     lowMoves: 'Careful, only a few moves left!',
     fakeAd: 'Advertisement (simulated — real AdMob ads show in the app)',
     bonus: (n) => `Remaining moves bonus: +${n}`,

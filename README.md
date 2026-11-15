@@ -1,6 +1,6 @@
-# LayJou Bubble
+# Layjou Bubble
 
-Jeu de match-3 avec le robot **LayJou** : échange deux bulles voisines pour en aligner 3 ou plus.
+Jeu de match-3 avec le robot **Layjou** : échange deux bulles voisines pour en aligner 3 ou plus.
 Web (HTML/CSS/JS sans framework) empaqueté avec **Capacitor 8** pour Android et iOS, pubs récompensées **AdMob** pour continuer une partie.
 
 ## Le jeu

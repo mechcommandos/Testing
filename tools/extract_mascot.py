@@ -1,4 +1,4 @@
-"""Extract the LayJou mascot from the source screenshot: crop + remove the flat background."""
+"""Extract the Layjou mascot from the source screenshot: crop + remove the flat background."""
 import sys
 from collections import deque
 from PIL import Image, ImageFilter

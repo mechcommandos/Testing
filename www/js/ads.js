@@ -1,4 +1,4 @@
-// LayJou Bubble — rewarded ads through @capacitor-community/admob.
+// Layjou Bubble — rewarded ads through @capacitor-community/admob.
 // In a plain browser (no native shell) a short simulated ad is shown so the flow can be tested.
 
 const cfg = window.LAYJOU_CONFIG.admob;

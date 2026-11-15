@@ -1,4 +1,4 @@
-// LayJou Bubble — configuration.
+// Layjou Bubble — configuration.
 // The ad unit IDs below are Google's official TEST IDs. Before publishing:
 //   1. replace them with your own rewarded ad unit IDs from https://apps.admob.com
 //   2. set `testing` to false

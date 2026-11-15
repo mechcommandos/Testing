@@ -1,4 +1,4 @@
-// LayJou Bubble — pure game logic (no DOM). The UI replays the "steps" this module returns.
+// Layjou Bubble — pure game logic (no DOM). The UI replays the "steps" this module returns.
 
 let nextId = 1;
 

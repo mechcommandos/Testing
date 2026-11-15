@@ -1,4 +1,4 @@
-// LayJou Bubble — level definitions (8 columns x 9 rows).
+// Layjou Bubble — level definitions (8 columns x 9 rows).
 
 const LAYOUTS = [
   ['........', '........', '........', '........', '........', '........', '........', '........', '........'],

@@ -217,3 +217,4 @@ button { font: inherit; color: inherit; border: 0; cursor: pointer; }
 .fake-ad { position: fixed; inset: 0; z-index: 40; display: none; flex-direction: column; align-items: center; justify-content: center; gap: 18px; background: #101827; color: #fff; text-align: center; padding: 30px; }
 .fake-ad.show { display: flex; }
 .fake-ad b { font-size: 64px; }
+.logo img { display: block; width: min(78vw, 340px); height: auto; margin: 0 auto 2px; filter: drop-shadow(0 6px 6px rgba(11,58,143,.18)); }

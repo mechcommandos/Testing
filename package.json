@@ -1,7 +1,7 @@
 {
   "name": "layjou-bubble",
   "version": "1.0.0",
-  "description": "LayJou Bubble — jeu de match-3 avec le robot LayJou (Capacitor + AdMob)",
+  "description": "Layjou Bubble — jeu de match-3 avec le robot Layjou (Capacitor + AdMob)",
   "private": true,
   "scripts": {
     "start": "npx serve www",
