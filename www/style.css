@@ -221,4 +221,4 @@ button { font: inherit; color: inherit; border: 0; background: none; cursor: poi
 }
 
 .logo-img { display: block; width: min(78vw, 360px); height: auto; margin: 0 auto 6px;
-  background: #fff; border-radius: 22px; padding: 10px 16px; box-shadow: 0 5px 0 var(--navy); }
+  filter: drop-shadow(0 3px 0 #fff); }
