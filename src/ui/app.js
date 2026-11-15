@@ -108,7 +108,7 @@ function renderHome(node) {
   const goal = Flow.nextGoals()[0];
   node.innerHTML = `
     <div class="home">
-      <div class="logo"><span class="logo-a">Lay<i>J</i>ou</span><span class="logo-b">BATTLE</span></div>
+      <div class="logo"><img class="logo-a" src="./layjou-logo.png" alt="Layjou" draggable="false"><span class="logo-b">BATTLE</span></div>
       <div class="home-mid">
         <div class="side">
           <button class="side-btn" data-act="daily">${IC.gift}<span>${t('h_daily')}</span><i class="dot" id="dot-daily" hidden></i></button>
@@ -296,7 +296,7 @@ function openSettings() {
     <div class="set-row"><span>${t('set_lang')}</span><div class="seg"><button data-act="lang" data-l="fr" class="${lang() === 'fr' ? 'on' : ''}">FR</button><button data-act="lang" data-l="en" class="${lang() === 'en' ? 'on' : ''}">EN</button></div></div>
     <button class="btn btn-ghost btn-wide" data-act="restore">${t('s_restore')}</button>
     ${Native.native ? `<button class="btn btn-ghost btn-wide" data-act="privacy">${t('set_privacy')}</button>` : ''}
-    <p class="muted">LayJou Battle v${CONFIG.version}</p>`,
+    <p class="muted">Layjou Battle v${CONFIG.version}</p>`,
   actions: {
     toggle: async (n) => {
       const k = n.dataset.key;

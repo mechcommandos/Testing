@@ -1,5 +1,5 @@
 /**
- * LayJou Battle — configuration centrale.
+ * Layjou Battle — configuration centrale.
  *
  * ⚠️ AVANT PUBLICATION SUR LES STORES :
  *  1. Remplacer les identifiants AdMob de test ci-dessous par les vôtres

@@ -2,7 +2,7 @@
 <canvas id="c"></canvas>
 <script type="module">
 /* ------------------------------------------------------------------ *
- *  Atelier d'icônes « LayJou Games » — une composition 1024×1024 par
+ *  Atelier d'icônes « Layjou Games » — une composition 1024×1024 par
  *  jeu, rendue avec le moteur vectoriel du projet.
  *    ?game=battle|bubble|puzzle|run
  *    &kind=icon | fg | bg (calques adaptatifs Android) | splash | splash-dark | feature | sheet
@@ -54,7 +54,7 @@ function sticker(c, draw, { outline = 13, color = '#fff', shadow = 'rgba(12,4,40
   return L;
 }
 
-function hero(c, o) { // LayJou avec contour autocollant
+function hero(c, o) { // Layjou avec contour autocollant
   sticker(c, (l) => drawLayjou(l, { skin: 'classic', t: 0.5, ...o }), { outline: o.outline ?? 12, blur: 40, dy: 18 });
 }
 function pose(base, over) { const P = poseOf(base, 0.5, 0.5); P.blink = 0; return Object.assign(P, over); }
@@ -343,10 +343,10 @@ function render(g, px, layer = 'all', k = 1) {
 }
 
 function wordmark(c, cx, cy, k, word, colors) {
-  c.save(); c.textBaseline = 'middle'; c.lineJoin = 'round'; c.font = `700 ${150 * k}px "Fredoka Variable"`;
-  const w1 = c.measureText('Lay').width, w2 = c.measureText('J').width, w3 = c.measureText('ou').width, x0 = cx - (w1 + w2 + w3) / 2;
-  c.textAlign = 'left';
-  for (const [dy, c1, c2] of [[16 * k, 'rgba(10,0,50,0.45)', 'rgba(10,0,50,0.45)'], [8 * k, '#1fb9cf', '#ff3f8a'], [0, '#ffffff', '#ffb3d6']]) { c.fillStyle = c1; c.fillText('Lay', x0, cy + dy); c.fillText('ou', x0 + w1 + w2, cy + dy); c.fillStyle = c2; c.fillText('J', x0 + w1, cy + dy); }
+  c.save(); c.textBaseline = 'middle'; c.lineJoin = 'round';
+  // logo officiel Layjou.com (contour blanc « autocollant », fond transparent)
+  const lw = 560 * k, lh = lw * LOGO.height / LOGO.width;
+  c.save(); c.shadowColor = 'rgba(10,0,50,0.45)'; c.shadowBlur = 18 * k; c.shadowOffsetY = 8 * k; c.drawImage(LOGO, cx - lw / 2, cy - lh * 0.62, lw, lh); c.restore();
   const sp = 46 * k, bw = (word.length * sp + 70 * k);
   c.translate(cx, cy + 116 * k); c.rotate(-0.035);
   c.fillStyle = 'rgba(10,0,50,0.45)'; c.beginPath(); c.roundRect(-bw / 2, -24 * k, bw, 64 * k, 20 * k); c.fill();
@@ -366,6 +366,7 @@ function roundedIcon(c, g, x, y, s, radius = 0.225) { // icône masquée façon 
 }
 
 await document.fonts.load('700 100px "Fredoka Variable"');
+const LOGO = new Image(); LOGO.src = '/resources/layjou-logo-outline.png'; await LOGO.decode();
 const cv = document.getElementById('c'), g = GAMES[game];
 if (kind === 'icon' || kind === 'fg' || kind === 'bg') {
   cv.width = cv.height = size; cv.getContext('2d').drawImage(render(g, size, kind === 'icon' ? 'all' : kind, 1), 0, 0);
@@ -390,11 +391,11 @@ if (kind === 'icon' || kind === 'fg' || kind === 'bg') {
 } else if (kind === 'sheet') { // planche d'aperçu des 4 icônes
   const W = 1985, H = 1180; cv.width = W; cv.height = H; const c = cv.getContext('2d'); PX = 1024;
   c.fillStyle = lin(c, 0, 0, W, H, [[0, '#1b2140'], [1, '#0d1024']]); c.fillRect(0, 0, W, H);
-  c.fillStyle = '#fff'; c.font = '700 44px "Fredoka Variable"'; c.textAlign = 'left'; c.fillText('LayJou Games — nouvelles icônes', 60, 78);
+  c.fillStyle = '#fff'; c.font = '700 44px "Fredoka Variable"'; c.textAlign = 'left'; c.fillText('Layjou Games — nouvelles icônes', 60, 78);
   const order = ['bubble', 'battle', 'puzzle', 'run', 'blocks'];
   order.forEach((id, i) => {
     const x = 60 + i * 385, G = GAMES[id];
-    roundedIcon(c, G, x, 120, 340); c.fillStyle = '#fff'; c.font = '600 34px "Fredoka Variable"'; c.textAlign = 'center'; c.fillText('LayJou ' + G.word[0] + G.word.slice(1).toLowerCase(), x + 170, 506);
+    roundedIcon(c, G, x, 120, 340); c.fillStyle = '#fff'; c.font = '600 34px "Fredoka Variable"'; c.textAlign = 'center'; c.fillText('Layjou ' + G.word[0] + G.word.slice(1).toLowerCase(), x + 170, 506);
     // rendu circulaire (certains lanceurs Android) + petites tailles
     const ic = render(G, 512);
     c.save(); c.beginPath(); c.arc(x + 100, 680, 96, 0, TAU); c.clip(); c.drawImage(ic, x + 4, 584, 192, 192); c.restore(); // cercle inscrit = masque rond des lanceurs Android

@@ -1,7 +1,7 @@
 /**
- * Génère les visuels des 4 jeux LayJou (Battle, Bubble, Puzzle, Run) dans brand/ :
+ * Génère les visuels des 4 jeux Layjou (Battle, Bubble, Puzzle, Run) dans brand/ :
  * icône complète, calques adaptatifs Android, écrans de démarrage, icône et bannière Play Store.
- * Le jeu de fichiers de LayJou Battle est aussi copié dans assets/ (source de `capacitor-assets`).
+ * Le jeu de fichiers de Layjou Battle est aussi copié dans assets/ (source de `capacitor-assets`).
  *
  *   npm i -D playwright && npx playwright install chromium   (une seule fois)
  *   npm run icons          → brand/ + assets/
@@ -41,7 +41,7 @@ const FILES = [
 
   for (const g of GAMES) for (const [kind, size, name] of FILES) await shot(g, kind, size, `brand/layjou-${g}/${name}`);
   await shot('battle', 'sheet', 1024, 'brand/preview.png');
-  // LayJou Battle : sources de capacitor-assets + favicon + icône de notification
+  // Layjou Battle : sources de capacitor-assets + favicon + icône de notification
   for (const f of ['icon-only.png', 'icon-foreground.png', 'icon-background.png', 'splash.png', 'splash-dark.png']) fs.copyFileSync(path.join(root, 'brand/layjou-battle', f), path.join(root, 'assets', f));
   await shot('battle', 'icon', 192, 'public/favicon.png');
   await shot('battle', 'stat', 96, 'assets/ic_stat_layjou.png');

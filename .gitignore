@@ -25,3 +25,4 @@ ios/DerivedData/
 ios/App/App/public/
 ios/App/App/capacitor.config.json
 xcuserdata/
+release/*-source.zip

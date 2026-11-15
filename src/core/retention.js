@@ -1,5 +1,5 @@
 /* ------------------------------------------------------------------ *
- *  FLOW ENGINE — l'algorithme de rétention de LayJou Battle.
+ *  FLOW ENGINE — l'algorithme de rétention de Layjou Battle.
  *
  *  Objectif : garder le joueur dans la « zone de flow » (ni frustré,
  *  ni blasé) et lui donner à chaque instant une raison de rejouer.

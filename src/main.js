@@ -1,4 +1,4 @@
-/* LayJou Battle — point d'entrée. */
+/* Layjou Battle — point d'entrée. */
 import '@fontsource-variable/fredoka';
 import './styles.css';
 import { loadState } from './core/state.js';

@@ -1,13 +1,13 @@
-# LayJou Battle 🤖💖
+# Layjou Battle 🤖💖
 
 Jeu de combat de robots en temps réel pour **Android et iOS**, construit avec **Capacitor 8** (HTML5 Canvas + Vite, sans moteur tiers).
-LayJou, le petit robot au cœur rose, affronte des monstres géants à travers 5 mondes et 25 niveaux, puis dans une Arène infinie.
+Layjou, le petit robot au cœur rose, affronte des monstres géants à travers 5 mondes et 25 niveaux, puis dans une Arène infinie.
 
 | | |
 |---|---|
 | Identifiant d'application | `com.layjou.battle` |
 | Version | 1.0.0 |
-| APK de test | [`release/LayJouBattle-1.0.0-debug.apk`](release/) |
+| APK de test | [`release/LayjouBattle-1.0.0-debug.apk`](release/) |
 | Langues | Français, Anglais (détection automatique) |
 
 ---

@@ -1,12 +1,12 @@
 /* ------------------------------------------------------------------ *
- *  LayJou Battle — catalogue du jeu (skins, accessoires, armes,
+ *  Layjou Battle — catalogue du jeu (skins, accessoires, armes,
  *  améliorations, monstres, mondes, récompenses).
  * ------------------------------------------------------------------ */
 
 /** price: { coins } | { credits } | { ads: n } (vidéos à regarder) | { level: n } | { iap: productId } | null (gratuit) */
 
 export const SKINS = [
-  { id: 'classic', name: { fr: 'LayJou Classique', en: 'Classic LayJou' }, rarity: 'common', price: null,
+  { id: 'classic', name: { fr: 'Layjou Classique', en: 'Classic Layjou' }, rarity: 'common', price: null,
     pal: { main: '#1cc3d2', mainDark: '#0e9fb3', accent: '#ff5c9d', accentLight: '#ff9cc4', shell: '#ffffff', shellShade: '#d5e2f3', visor: '#0c3a96', visorLight: '#1a56c4', eye: '#1f7fe8', eyeRing: '#56d6f5', mouth: '#f0506e', tongue: '#ff9a8a' } },
   { id: 'fraise', name: { fr: 'Fraise Pop', en: 'Strawberry Pop' }, rarity: 'common', price: { coins: 1200 },
     pal: { main: '#ff5d7a', mainDark: '#e03a5c', accent: '#7be35a', accentLight: '#b9f59f', shell: '#fff6f2', shellShade: '#f3d6d0', visor: '#5a1030', visorLight: '#8a1f4c', eye: '#ff7fa6', eyeRing: '#ffc2d4', mouth: '#ff8fb0', tongue: '#ffd0dc' } },

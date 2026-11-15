@@ -1,7 +1,7 @@
 {
   "name": "layjou-battle",
   "version": "1.0.0",
-  "description": "LayJou Battle — jeu de combat de robots (Capacitor, Android & iOS)",
+  "description": "Layjou Battle — jeu de combat de robots (Capacitor, Android & iOS)",
   "private": true,
   "type": "module",
   "scripts": {

@@ -1,5 +1,5 @@
 /* ------------------------------------------------------------------ *
- *  LayJou — rendu vectoriel animable du héros.
+ *  Layjou — rendu vectoriel animable du héros.
  *  Repère local : origine aux pieds, y négatif vers le haut,
  *  hauteur totale ≈ 200 unités (antenne comprise).
  * ------------------------------------------------------------------ */
@@ -705,7 +705,7 @@ export function drawLayjou(ctx, o) {
   ctx.restore();
 }
 
-/** Dessine LayJou dans un petit canvas autonome (vignettes de boutique, icônes). */
+/** Dessine Layjou dans un petit canvas autonome (vignettes de boutique, icônes). */
 export function renderLayjouThumb(canvas, { skin = 'classic', accessory = 'none', weapon = null, pose = 'wave', t = 0.6, zoom = 1, headOnly = false } = {}) {
   const dpr = Math.min(2, window.devicePixelRatio || 1);
   const w = canvas.clientWidth || canvas.width, h = canvas.clientHeight || canvas.height;

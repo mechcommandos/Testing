@@ -1,7 +1,7 @@
 /* ------------------------------------------------------------------ *
  *  Monstres — rendu vectoriel procédural.
  *  Repère local : origine au sol, le monstre regarde vers la GAUCHE
- *  (vers LayJou). m = { t, pal, wind, strike, kind, stun, enraged, hurt }
+ *  (vers Layjou). m = { t, pal, wind, strike, kind, stun, enraged, hurt }
  * ------------------------------------------------------------------ */
 import { TAU, clamp, lerp, arc, easeOut, easeIn } from '../core/util.js';
 import { drawLayjou, poseOf, blendPose } from './layjou.js';
@@ -23,7 +23,7 @@ const ell = (ctx, x, y, rx, ry, rot = 0) => { ctx.beginPath(); ctx.ellipse(x, y,
 const lin = (ctx, x0, y0, x1, y1, c0, c1) => { const g = ctx.createLinearGradient(x0, y0, x1, y1); g.addColorStop(0, c0); g.addColorStop(1, c1); return g; };
 const rad = (ctx, x, y, r0, r1, c0, c1) => { const g = ctx.createRadialGradient(x, y, r0, x, y, r1); g.addColorStop(0, c0); g.addColorStop(1, c1); return g; };
 
-/** Œil de monstre : regard vers LayJou, paupière fâchée, variantes sonné / touché. */
+/** Œil de monstre : regard vers Layjou, paupière fâchée, variantes sonné / touché. */
 function eye(ctx, x, y, r, m, o = {}) {
   const lidColor = o.lid || m.pal.b, iris = o.iris || m.pal.c;
   if (m.stun) {
