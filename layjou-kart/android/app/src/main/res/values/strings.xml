@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Layjou Kart</string>
+    <string name="title_activity_main">Layjou Kart</string>
+    <string name="package_name">com.layjou.kart</string>
+    <string name="custom_url_scheme">com.layjou.kart</string>
+    <!-- Identifiant d'application AdMob de TEST fourni par Google : à remplacer avant publication -->
+    <string name="admob_app_id" translatable="false">ca-app-pub-3940256099942544~3347511713</string>
+</resources>

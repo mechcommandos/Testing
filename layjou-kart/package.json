@@ -1,0 +1,39 @@
+{
+  "name": "layjou-kart",
+  "version": "1.0.0",
+  "description": "Layjou Kart — jeu de course de karts avec Layjou le robot (Capacitor, Android & iOS)",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "build:sandbox": "vite build --mode sandbox",
+    "preview": "vite preview",
+    "sync": "npm run build && cap sync",
+    "icons": "node tools/render-assets.cjs",
+    "assets": "node tools/render-assets.cjs && capacitor-assets generate --android --ios --iconBackgroundColor \"#2a1a6e\" --iconBackgroundColorDark \"#2a1a6e\" --splashBackgroundColor \"#2a1a6e\" --splashBackgroundColorDark \"#120a36\"",
+    "android:demo": "npm run build:sandbox && cap sync android && cd android && ./gradlew assembleDebug",
+    "android": "npm run sync && cd android && ./gradlew assembleDebug",
+    "android:bundle": "npm run sync && cd android && ./gradlew bundleRelease",
+    "ios": "npm run sync && cap open ios"
+  },
+  "dependencies": {
+    "@capacitor-community/admob": "^8.3.0",
+    "@capacitor/android": "^8.6.2",
+    "@capacitor/app": "^8.1.2",
+    "@capacitor/core": "^8.6.2",
+    "@capacitor/haptics": "^8.0.2",
+    "@capacitor/ios": "^8.6.2",
+    "@capacitor/local-notifications": "^8.3.1",
+    "@capacitor/preferences": "^8.0.1",
+    "@capacitor/splash-screen": "^8.0.2",
+    "@capacitor/status-bar": "^8.0.4",
+    "@capgo/native-purchases": "^8.9.13",
+    "@fontsource-variable/fredoka": "^5.3.0"
+  },
+  "devDependencies": {
+    "@capacitor/assets": "^4.0.0",
+    "@capacitor/cli": "^8.6.2",
+    "vite": "^8.3.8"
+  }
+}
