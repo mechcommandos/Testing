@@ -1,0 +1,5 @@
+# Fichier app-ads.txt — à publier tel quel à la racine du site déclaré dans les fiches store,
+# par exemple https://layjou.com/app-ads.txt (un seul fichier pour tous les jeux).
+# Remplacer pub-0000000000000000 par votre identifiant d'éditeur AdMob
+# (AdMob › Paramètres › Informations sur le compte), puis supprimer ces lignes de commentaire.
+google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0

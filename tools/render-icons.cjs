@@ -10,7 +10,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const GAMES = ['battle', 'bubble', 'puzzle', 'run', 'blocks'];
+const GAMES = ['battle', 'bubble', 'puzzle', 'run', 'blocks', 'kart'];
 const FILES = [
   ['icon', 1024, 'icon-only.png'], ['fg', 1024, 'icon-foreground.png'], ['bg', 1024, 'icon-background.png'],
   ['splash', 2732, 'splash.png'], ['splash-dark', 2732, 'splash-dark.png'],

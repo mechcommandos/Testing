@@ -59,6 +59,10 @@ Ces mécaniques restent loyales : pas de faux compte à rebours, pas de difficul
 
 ---
 
+## Publication sur les stores
+
+Le dossier [`store/`](store/README.md) contient le guide de publication Google Play / App Store des 6 jeux Layjou : fiches à copier-coller (FR/EN), captures d'écran prêtes à envoyer, réponses aux formulaires de confidentialité, politique de confidentialité et `app-ads.txt`. Les icônes des 6 jeux sont dans [`brand/`](brand/) (régénérables avec `npm run icons`).
+
 ## Démarrage
 
 Prérequis : Node 20+, JDK 21 et Android SDK (API 36) pour Android ; macOS + Xcode 16+ pour iOS.

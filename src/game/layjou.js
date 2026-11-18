@@ -197,7 +197,7 @@ function limb(ctx, x0, y0, x1, y1, w, bend, pal, dashOffset = 0) {
   ctx.globalAlpha = 1;
 }
 
-function hand(ctx, x, y, pal, fist, ang = -Math.PI / 2, k = 1) {
+export function hand(ctx, x, y, pal, fist, ang = -Math.PI / 2, k = 1) {
   const r = (10 + fist * 1.2) * k;
   if (fist <= 0.5) {
     // doigts de moufle, orientés dans le prolongement du bras
