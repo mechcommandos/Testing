@@ -6,7 +6,13 @@
 <!--page-->
 <title>Layjou Run</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@600;800&display=swap">
+<!-- Polices embarquées dans l'app (aucun appel réseau vers Google Fonts, jeu jouable hors connexion) -->
+<style>
+@font-face { font-family: 'Baloo 2'; font-weight: 600; font-display: swap; src: url(fonts/baloo-2-latin-600-normal.woff2) format('woff2'); }
+@font-face { font-family: 'Baloo 2'; font-weight: 800; font-display: swap; src: url(fonts/baloo-2-latin-800-normal.woff2) format('woff2'); }
+@font-face { font-family: 'Nunito'; font-weight: 600; font-display: swap; src: url(fonts/nunito-latin-600-normal.woff2) format('woff2'); }
+@font-face { font-family: 'Nunito'; font-weight: 800; font-display: swap; src: url(fonts/nunito-latin-800-normal.woff2) format('woff2'); }
+</style>
 <style>
 /* Layout: full-screen 3D runner; rounded "toy" panels float over it, HUD pinned to the top corners. */
 :root {
