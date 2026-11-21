@@ -1,0 +1,38 @@
+{
+  "name": "layjou-puzzle",
+  "version": "1.0.0",
+  "description": "Layjou Puzzle — jeu de tri par 3 (Capacitor)",
+  "scripts": {
+    "serve": "npx --yes serve www",
+    "sync": "cap sync",
+    "android": "cap sync android && cd android && ./gradlew assembleDebug",
+    "ios": "cap sync ios && cap open ios",
+    "android:demo": "node tools/demo-ads.mjs on && (npx cap sync android && cd android && ./gradlew assembleDebug); s=$?; node tools/demo-ads.mjs off; npx cap sync android >/dev/null; exit $s",
+    "android:bundle": "npx cap sync android && cd android && ./gradlew bundleRelease"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mechcommandos/Testing.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mechcommandos/Testing/issues"
+  },
+  "homepage": "https://github.com/mechcommandos/Testing#readme",
+  "dependencies": {
+    "@capacitor-community/admob": "^8.3.0",
+    "@capacitor/android": "^8.6.2",
+    "@capacitor/app": "^8.1.2",
+    "@capacitor/core": "^8.6.2",
+    "@capacitor/haptics": "^8.0.2",
+    "@capacitor/ios": "^8.6.2",
+    "@capacitor/splash-screen": "^8.0.2",
+    "@capacitor/status-bar": "^8.0.4"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^8.6.2"
+  },
+  "private": true
+}

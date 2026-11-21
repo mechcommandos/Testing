@@ -10,7 +10,7 @@ import { SplashScreen } from '@capacitor/splash-screen';
 import { StatusBar, Style } from '@capacitor/status-bar';
 import { detectLang, setLang } from './i18n';
 import { ads } from './services/ads';
-import { suspendAudio, unlockAudio } from './services/audio';
+import { haptic, suspendAudio, unlockAudio } from './services/audio';
 import { iap } from './services/iap';
 import { store } from './state/store';
 import { initFx } from './ui/fx';
@@ -76,7 +76,7 @@ async function boot(): Promise<void> {
       if (game) game.pause();
       else void App.exitApp();
     });
-    void App.addListener('pause', () => void store.flush());
+    void App.addListener('pause', () => { haptic.stopAll(); void store.flush(); });
     await SplashScreen.hide({ fadeOutDuration: 250 });
   }
 

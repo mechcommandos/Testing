@@ -4,6 +4,6 @@
     <string name="title_activity_main">Layjou Blocks</string>
     <string name="package_name">com.layjou.blocks</string>
     <string name="custom_url_scheme">com.layjou.blocks</string>
-    <!-- ⚠️ Identifiant AdMob de TEST (Google). Remplace-le par le tien avant publication. -->
-    <string name="admob_app_id">ca-app-pub-3940256099942544~3347511713</string>
+    <!-- Identifiant d\'application AdMob (compte pub-6003645213510535) -->
+    <string name="admob_app_id">ca-app-pub-6003645213510535~7951613295</string>
 </resources>

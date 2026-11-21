@@ -45,8 +45,8 @@ export function createHomeScreen(play: (resume: boolean) => void, rebuild: () =>
     fill(top, 
       h('div', { class: 'lvl-chip' }, h('b', null, String(p.level)), h('div', { class: 'bar' }, h('i', { style: { width: `${(p.xp / need) * 100}%` } }))),
       h('span', { class: 'pill', html: `${ic.coin}<b>${fmt(p.coins)}</b>` }),
-      h('button', { class: 'pill', html: `${ic.credit}<b>${fmt(p.credits)}</b><span class="plus">+</span>`, onclick: () => openShop('credits') }),
-      h('button', { class: 'round', 'aria-label': t('settings'), html: ic.gear, onclick: () => openSettings(rebuild) }),
+      h('button', { class: 'pill', html: `${ic.credit}<b>${fmt(p.credits)}</b><span class="plus">+</span>`, onclick: () => { haptic.tap(); openShop('credits'); } }),
+      h('button', { class: 'round', 'aria-label': t('settings'), html: ic.gear, onclick: () => { haptic.tap(); openSettings(rebuild); } }),
     );
     bestEl.innerHTML = p.best > 0 ? `${ic.crown}<span>${t('best')}</span><b>${fmt(p.best)}</b>` : '';
     const saved = !!p.saved;
@@ -58,7 +58,7 @@ export function createHomeScreen(play: (resume: boolean) => void, rebuild: () =>
         h('span', null, saved ? t('resume') : t('play')),
       ),
       saved
-        ? h('button', { class: 'link', onclick: () => { sfx.tap(); play(false); } }, `${t('newGame')} · ${t('score')} ${fmt(p.saved!.score)}`)
+        ? h('button', { class: 'link', onclick: () => { sfx.tap(); haptic.light(); play(false); } }, `${t('newGame')} · ${t('score')} ${fmt(p.saved!.score)}`)
         : null,
     );
     fill(nav, 

@@ -1,0 +1,34 @@
+{
+  "appId": "com.layjou.kart",
+  "appName": "Layjou Kart",
+  "webDir": "dist",
+  "backgroundColor": "#2a1a6e",
+  "android": {
+    "backgroundColor": "#2a1a6e",
+    "allowMixedContent": false
+  },
+  "ios": {
+    "backgroundColor": "#2a1a6e",
+    "contentInset": "never",
+    "scrollEnabled": false
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchAutoHide": true,
+      "launchShowDuration": 900,
+      "launchFadeOutDuration": 250,
+      "backgroundColor": "#2a1a6e",
+      "androidScaleType": "CENTER_CROP",
+      "showSpinner": false
+    },
+    "LocalNotifications": {
+      "smallIcon": "ic_stat_layjou",
+      "iconColor": "#1cc3d2"
+    },
+    "SystemBars": {
+      "insetsHandling": "css",
+      "initialViewportFitValueHint": "cover",
+      "style": "DARK"
+    }
+  }
+}

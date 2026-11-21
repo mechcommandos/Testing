@@ -1,0 +1,8 @@
+node_modules/
+.DS_Store
+*.log
+
+# Signature (secrets : ne jamais versionner)
+keystore.properties
+*.keystore
+*.jks

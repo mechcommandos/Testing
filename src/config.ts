@@ -10,17 +10,24 @@ import type { WeaponId } from './game/game';
  */
 export const SANDBOX: boolean = import.meta.env.DEV || import.meta.env.MODE === 'sandbox';
 
+/** Politique de confidentialité (lien dans les réglages ; exigé par Apple et Google). */
+export const PRIVACY_URL = 'https://layjou.com/confidentialite/';
+
 export const ADMOB = {
   /**
-   * ⚠️ Identifiants de TEST officiels de Google. Remplace-les par les tiens (AdMob > Blocs d'annonces)
-   * et passe `testing` à false pour la production. Les identifiants d'APPLICATION AdMob se règlent,
-   * eux, dans android/app/src/main/res/values/strings.xml et ios/App/App/Info.plist.
+   * Compte AdMob pub-6003645213510535. L'identifiant d'APPLICATION (ca-app-pub-6003645213510535~7951613295)
+   * est dans android/app/src/main/res/values/strings.xml et ios/App/App/Info.plist.
    */
   rewarded: {
-    android: 'ca-app-pub-3940256099942544/5224354917',
-    ios: 'ca-app-pub-3940256099942544/1712485313',
+    android: 'ca-app-pub-6003645213510535/3086524765',
+    ios: 'ca-app-pub-6003645213510535/3086524765',
   },
-  testing: true,
+  /**
+   * Annonces de test en développement et dans l'APK de démo (`npm run android:debug`),
+   * vraies annonces dans le build de production (`npm run build`, `npm run android:release`).
+   * Ne cliquez jamais sur vos propres annonces réelles : déclarez votre téléphone dans AdMob › Paramètres › Appareils de test.
+   */
+  testing: import.meta.env.MODE !== 'production',
   /** Mets true si ton public cible inclut les enfants (programme Familles / COPPA). */
   childDirected: false,
 };
