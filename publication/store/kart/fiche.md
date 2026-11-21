@@ -5,7 +5,7 @@
 > Questionnaires communs aux 6 jeux (sécurité des données, confidentialité, public cible…) : [../formulaires.md](../formulaires.md)
 
 ## 1. Fichiers à envoyer
-- **Google Play** : `LayjouKart-1.0.0-release.aab` (dossier `android-aab/` du kit ; dans le dépôt : `layjou-kart/release/LayjouKart-1.0.0-release.aab`), signé avec votre clé d'envoi.
+- **Google Play** : `LayjouKart-1.0.0-release.aab` (archive `Layjou-AAB-Google-Play.zip` ; dans le dépôt : `layjou-kart/release/LayjouKart-1.0.0-release.aab`), signé avec votre clé d'envoi.
 - **App Store** : votre fichier `.ipa` (voir le guide, « Étape 3 — Recompiler les IPA »).
 - Icône Play Store 512 × 512 (PNG 32 bits) : `brand/layjou-kart/store/play-icon-512.png`
 - Bannière Play Store 1024 × 500 (PNG 24 bits) : `brand/layjou-kart/store/feature-graphic-1024x500.png`

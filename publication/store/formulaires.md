@@ -1,6 +1,6 @@
 # Formulaires des consoles — réponses pour les 6 jeux Layjou
 
-Ces réponses décrivent **les fichiers fournis dans ce kit** (AAB du dossier `android-aab/`, et IPA recompilées depuis les sources actuelles). Si vous modifiez la configuration publicitaire (par exemple pour viser les enfants, voir § 1), plusieurs réponses changent : elles sont signalées.
+Ces réponses décrivent **les fichiers fournis dans ce kit** (AAB de l'archive `Layjou-AAB-Google-Play.zip`, et IPA recompilées depuis les sources actuelles). Si vous modifiez la configuration publicitaire (par exemple pour viser les enfants, voir § 1), plusieurs réponses changent : elles sont signalées.
 
 Ce que font les 6 jeux (vérifié dans le code) :
 - Aucun compte, aucune donnée personnelle demandée, aucun serveur à nous : la progression reste **sur l'appareil**.

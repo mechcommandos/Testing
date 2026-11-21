@@ -383,7 +383,7 @@ def fiche(g, d):
 > Questionnaires communs aux 6 jeux (sécurité des données, confidentialité, public cible…) : [../formulaires.md](../formulaires.md)
 
 ## 1. Fichiers à envoyer
-- **Google Play** : `{os.path.basename(d['aab'])}` (dossier `android-aab/` du kit ; dans le dépôt : `{d['aab']}`), signé avec votre clé d'envoi.
+- **Google Play** : `{os.path.basename(d['aab'])}` (archive `Layjou-AAB-Google-Play.zip` ; dans le dépôt : `{d['aab']}`), signé avec votre clé d'envoi.
 - **App Store** : votre fichier `.ipa` (voir le guide, « Étape 3 — Recompiler les IPA »).
 - Icône Play Store 512 × 512 (PNG 32 bits) : `brand/layjou-{g}/store/play-icon-512.png`
 - Bannière Play Store 1024 × 500 (PNG 24 bits) : `brand/layjou-{g}/store/feature-graphic-1024x500.png`

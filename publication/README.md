@@ -23,7 +23,7 @@ Tout ce qu'il faut pour remplir les fiches et les formulaires des 6 jeux, en fra
 | `store/<jeu>/captures-brutes/` | Les mêmes écrans sans légende ; `iap-en/` = capture de la boutique pour la vérification des achats Apple |
 | `brand/layjou-<jeu>/store/` | Icône Play 512 × 512 (PNG 32 bits) et bannière 1024 × 500 (PNG 24 bits) |
 | `site/` | Pages à mettre en ligne sur layjou.com : politique de confidentialité, assistance, `app-ads.txt` |
-| `android-aab/` (dans le zip) | Les 6 App Bundles signés à envoyer sur Google Play (code de version 2) |
+| `Layjou-AAB-Google-Play.zip` (envoyé à part) | Les 6 App Bundles signés à envoyer sur Google Play (code de version 2) ; dans le dépôt : `*/release/*-release.aab` |
 | `store/politique-de-confidentialite.md`, `store/assistance.md` | Textes sources des pages du site |
 | `outils/` | Scripts qui ont produit les captures, les fiches et le site (pour les régénérer après une mise à jour) |
 
@@ -56,7 +56,7 @@ Tout ce qu'il faut pour remplir les fiches et les formulaires des 6 jeux, en fra
 3. **Fiche principale** : nom, description courte, description complète (fiche § 2 et § 4), icône 512, bannière 1024 × 500, captures `google-play/fr/`. Ajouter ensuite la traduction **Anglais (États-Unis)** avec les textes EN et les captures `google-play/en/` (sauf Layjou Run, en français uniquement).
 4. **Catégorie et coordonnées** : catégorie de la fiche, e-mail, site `https://layjou.com`.
 5. **Produits intégrés** (Battle, Blocks, Kart) : Monétiser › Produits › Produits intégrés, avec exactement les identifiants de la fiche (§ 6).
-6. **Test fermé** : créer la piste, téléverser l'AAB du dossier `android-aab/`, accepter **Play App Signing**, inviter les testeurs. Vérifiez sur de vrais téléphones les vidéos, les achats et le lien « Politique de confidentialité ».
+6. **Test fermé** : créer la piste, téléverser l'AAB du jeu (archive `Layjou-AAB-Google-Play.zip`), accepter **Play App Signing**, inviter les testeurs. Vérifiez sur de vrais téléphones les vidéos, les achats et le lien « Politique de confidentialité ».
 7. **Demander l'accès à la production**, puis publier. Ensuite, dans AdMob, associer chaque app à sa fiche.
 
 Les AAB sont signés avec votre clé d'envoi `layjou-upload` (celle que je vous ai envoyée) : gardez le fichier `.jks` et ses mots de passe en lieu sûr, ils sont nécessaires pour chaque mise à jour.
