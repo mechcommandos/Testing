@@ -1,5 +1,5 @@
 /** Fenêtres : boutique, style, missions, cadeau quotidien, réglages + notifications. */
-import { CREDIT_PACKS, ECONOMY, WEAPON_PRICES } from '../config';
+import { CREDIT_PACKS, ECONOMY, PRIVACY_URL, WEAPON_PRICES } from '../config';
 import { WEAPON_IDS, type WeaponId } from '../game/game';
 import { fmt, fmtDuration, getLang, setLang, t, td, type Lang } from '../i18n';
 import { ads } from '../services/ads';
@@ -511,6 +511,7 @@ export function openSettings(onLangChange: () => void): void {
     ads.hasPrivacyOptions()
       ? h('button', { class: 'set-row tap', onclick: () => void ads.showPrivacyOptions() }, h('span', { class: 'set-ic', html: ic.shield }), h('b', null, t('privacy')))
       : null,
+    h('button', { class: 'set-row tap', onclick: () => window.open(PRIVACY_URL, '_blank') }, h('span', { class: 'set-ic', html: ic.info }), h('b', null, t('privacyPolicy'))),
     h('div', { class: 'howto' }, h('b', { html: `${ic.info} ${t('howTo')}` }), h('p', null, t('howToText'))),
     h('p', { class: 'hint' }, `Layjou Blocks · ${t('version')} ${__APP_VERSION__}`),
   );

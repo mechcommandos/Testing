@@ -290,6 +290,7 @@ function openSettings() {
     <div class="set-row"><span>${t('set_lang')}</span><div class="seg"><button data-act="lang" data-l="fr" class="${lang() === 'fr' ? 'on' : ''}">FR</button><button data-act="lang" data-l="en" class="${lang() === 'en' ? 'on' : ''}">EN</button></div></div>
     <button class="btn btn-ghost btn-wide" data-act="restore">${t('set_restore')}</button>
     ${Native.native ? `<button class="btn btn-ghost btn-wide" data-act="privacy">${t('set_privacy')}</button>` : ''}
+    <button class="btn btn-ghost btn-wide" data-act="policy">${t('set_policy')}</button>
     <p class="muted">Layjou Kart · ${t('set_version', { v: CONFIG.version })}</p>`,
   actions: {
     toggle: async (n) => {
@@ -303,6 +304,7 @@ function openSettings() {
     lang: (n) => { s.lang = n.dataset.l; save(); m.close(); initApp(); },
     restore: async () => { const n = await IAP.restore(); toast(t('s_restored', { n })); },
     privacy: () => Ads.privacyOptions(),
+    policy: () => window.open(CONFIG.privacyUrl, '_blank'),
   } });
 }
 

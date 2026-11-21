@@ -556,7 +556,9 @@
   paintSound();
   paintVibe();
   goHome();
-  Ads.init();
+  $('#lnk-policy').addEventListener('click', (e) => { e.preventDefault(); window.open(window.LAYJOU_CONFIG.privacyUrl, '_blank'); });
+  $('#btn-ad-privacy').addEventListener('click', () => Ads.showPrivacyOptions());
+  Promise.resolve(Ads.init()).then(() => { $('#btn-ad-privacy').hidden = !Ads.hasPrivacyOptions(); });
   const Splash = window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.SplashScreen;
   if (Splash && Splash.hide) Splash.hide();
 

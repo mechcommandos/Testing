@@ -100,7 +100,7 @@ const D = {
   set_title: ['Réglages', 'Settings'], set_sfx: ['Effets sonores', 'Sound effects'], set_music: ['Musique', 'Music'], set_haptics: ['Vibrations', 'Vibration'],
   set_notif: ['Rappels', 'Reminders'], set_assist: ['Pilotage assisté', 'Assisted steering'], set_assist_sub: ['Aide à rester sur la piste', 'Helps you stay on track'],
   set_sens: ['Sensibilité', 'Sensitivity'], set_quality: ['Qualité graphique', 'Graphics quality'], set_q_high: ['Haute', 'High'], set_q_low: ['Économie', 'Battery saver'],
-  set_lang: ['Langue', 'Language'], set_privacy: ['Confidentialité des pubs', 'Ad privacy'], set_restore: ['Restaurer les achats', 'Restore purchases'], set_version: ['Version {v}', 'Version {v}'],
+  set_lang: ['Langue', 'Language'], set_privacy: ['Confidentialité des pubs', 'Ad privacy'], set_policy: ['Politique de confidentialité', 'Privacy policy'], set_restore: ['Restaurer les achats', 'Restore purchases'], set_version: ['Version {v}', 'Version {v}'],
   n_ask_title: ['Activer les rappels ?', 'Turn on reminders?'], n_ask_sub: ['Layjou te prévient quand ton cadeau du jour et ton coffre gratuit sont prêts.', 'Layjou lets you know when your daily gift and free chest are ready.'],
   n_daily_t: ['Ton cadeau du jour t’attend 🎁', 'Your daily gift is waiting 🎁'], n_daily_b: ['Layjou a préparé une récompense. Viens la chercher !', 'Layjou prepared a reward. Come and get it!'],
   n_chest_t: ['Coffre gratuit prêt !', 'Free chest ready!'], n_chest_b: ['Ton coffre est plein de pièces. Ouvre-le !', 'Your chest is full of coins. Open it!'],

@@ -30,11 +30,11 @@ export function renderShop(node, focus) {
         <div class="offer-txt"><span class="tag tag-hot">−70 %</span><b>${t('s_starter')}</b><small>${t('s_starter_desc')}</small></div>
         <button class="btn btn-gold" data-act="iap" data-id="starter_pack" ${starterOwned ? 'disabled' : ''}>${starterOwned ? IC.check + t('s_bought') : IAP.price('starter_pack')}</button>
       </div>
-      <div class="offer offer-noads ${noAds ? 'is-owned' : ''}">
+      ${CONFIG.ads.interstitial.enabled ? `<div class="offer offer-noads ${noAds ? 'is-owned' : ''}">
         <div class="offer-ic">${IC.noads}</div>
         <div class="offer-txt"><b>${t('s_noads')}</b><small>${t('s_noads_desc')}</small></div>
         <button class="btn btn-cyan" data-act="iap" data-id="remove_ads" ${noAds ? 'disabled' : ''}>${noAds ? IC.check + t('s_bought') : IAP.price('remove_ads')}</button>
-      </div>
+      </div>` : ''}
 
       <h3 id="shop-credits">${IC.gem} ${t('credits')}</h3>
       <div class="grid grid-3">

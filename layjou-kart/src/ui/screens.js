@@ -261,7 +261,7 @@ export function renderShop(node, arg) {
           <span class="pack-gems">${IC.gem.repeat(Math.min(3, i + 1))}</span><b>${fmt(p.credits)}</b>${p.bonus ? `<small>${t('s_bonus', { n: p.bonus })}</small>` : '<small>&nbsp;</small>'}
           <span class="pack-price">${IAP.price(id)}</span>
         </button>`; }).join('')}</div>
-      ${d.noAds ? '' : `<button class="offer" data-act="iap" data-id="remove_ads"><span class="offer-ic">${IC.noads}</span><span class="offer-txt"><b>${t('s_noads')}</b><small>${t('s_noads_sub')}</small></span><span class="offer-price">${IAP.price('remove_ads')}</span></button>`}
+      ${d.noAds || !CONFIG.ads.interstitial.enabled ? '' : `<button class="offer" data-act="iap" data-id="remove_ads"><span class="offer-ic">${IC.noads}</span><span class="offer-txt"><b>${t('s_noads')}</b><small>${t('s_noads_sub')}</small></span><span class="offer-price">${IAP.price('remove_ads')}</span></button>`}
       <h3 id="coins">${IC.coin} ${t('s_coins')}</h3>
       <div class="packs packs-3">${CONFIG.economy.coinPacks.map((c, i) => `
         <button class="pack pack-coins" data-act="coins" data-i="${i}"><span class="pack-gems">${IC.coin.repeat(i + 1)}</span><b>${fmt(c.coins)}</b><small>&nbsp;</small><span class="pack-price">${IC.gem}${c.credits}</span></button>`).join('')}</div>

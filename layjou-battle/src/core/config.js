@@ -11,6 +11,8 @@
 export const CONFIG = {
   appId: 'com.layjou.battle',
   version: '1.0.0',
+  /** Politique de confidentialité (lien dans les réglages ; exigé par Apple et Google). */
+  privacyUrl: 'https://layjou.com/confidentialite/',
 
   ads: {
     /**

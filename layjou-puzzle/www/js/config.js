@@ -14,6 +14,8 @@ window.LAYJOU_CONFIG = {
       ios: 'ca-app-pub-6003645213510535/3086524765',
     },
   },
+  // Politique de confidentialité (lien dans l'écran d'accueil ; exigé par Apple et Google).
+  privacyUrl: 'https://layjou.com/confidentialite/',
   game: {
     continueSeconds: 60,     // temps ajouté après une vidéo récompensée
     maxContinues: 3,         // nombre de "continuer" par partie

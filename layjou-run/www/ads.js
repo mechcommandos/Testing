@@ -12,6 +12,8 @@ const REWARDED_UNITS = {
 // Annonces de test : false pour les stores ; `npm run android:demo` le passe à true le temps de compiler l'APK de démo.
 // Ne cliquez jamais sur vos propres annonces réelles : déclarez votre téléphone dans AdMob › Paramètres › Appareils de test.
 const TEST_ADS = false;
+// Politique de confidentialité (lien dans le menu ; exigé par Apple et Google).
+export const PRIVACY_URL = 'https://layjou.com/confidentialite/';
 
 const core = window.capacitorExports;
 const platform = core?.Capacitor?.getPlatform?.() ?? 'web';
@@ -24,6 +26,7 @@ let retryTimer = 0;
 export const ads = {
   available: !!AdMob && !!REWARDED_UNITS[platform],
   ready: false,
+  privacyRequired: false,
   onChange: () => {},
 
   async init() {
@@ -32,6 +35,7 @@ export const ads = {
       // Consentement (RGPD) puis autorisation de suivi sur iOS
       let consent = await AdMob.requestConsentInfo();
       if (consent.isConsentFormAvailable && consent.status === 'REQUIRED') consent = await AdMob.showConsentForm();
+      this.privacyRequired = String(consent.privacyOptionsRequirementStatus) === 'REQUIRED';
       if (consent.canRequestAds === false) { this.available = false; this.onChange(); return; }
     } catch (e) { /* pas de formulaire configuré : on continue */ }
     try {
@@ -44,6 +48,19 @@ export const ads = {
       AdMob.addListener('onRewardedVideoAdFailedToShow', () => finish());
       this.load();
     } catch (e) { this.available = false; this.onChange(); }
+  },
+
+  /** Vrai quand les règles de consentement de Google exigent un accès aux options de confidentialité (EEE, Royaume-Uni, Suisse). */
+  hasPrivacyOptions() { return !!AdMob && this.privacyRequired; },
+
+  /** Formulaire de Google pour modifier son consentement publicitaire ; réactive les vidéos si le joueur les accepte. */
+  async showPrivacyOptions() {
+    if (!AdMob) return;
+    try {
+      await AdMob.showPrivacyOptionsForm();
+      const c = await AdMob.requestConsentInfo();
+      if (c.canRequestAds && !this.available && REWARDED_UNITS[platform]) { this.available = true; await this.init(); this.onChange(); }
+    } catch (e) { /* formulaire indisponible */ }
   },
 
   async load() {

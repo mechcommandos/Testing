@@ -1,7 +1,7 @@
 /**
  * Captures brutes des 6 jeux Layjou pour les stores, prises automatiquement dans de vraies parties.
  *
- *   node publication/outils/captures.cjs [jeu ...] [--formats=phone,ipad] [--langs=fr,en]
+ *   node publication/outils/captures.cjs [jeu ...] [--formats=phone,ipad,iap] [--langs=fr,en]
  *
  * Sortie : publication/store/<jeu>/captures-brutes/<format>-<langue>/NN-<nom>.jpg
  *   phone : 1206 × 2622 (iPhone avec Dynamic Island, écran moyen ; sert aussi à Google Play)
@@ -21,6 +21,8 @@ const OUT = path.join(REPO, 'publication', 'store');
 const FORMATS = {
   phone: { viewport: { width: 402, height: 874 }, deviceScaleFactor: 3, isMobile: true },
   ipad: { viewport: { width: 1032, height: 1376 }, deviceScaleFactor: 2, isMobile: true },
+  // écran Boutique pour la vérification des achats intégrés par Apple (non composé pour les stores)
+  iap: { viewport: { width: 402, height: 874 }, deviceScaleFactor: 3, isMobile: true },
 };
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const today = () => { const d = new Date(); return Math.floor((d.getTime() - d.getTimezoneOffset() * 60000) / 86400000); };
@@ -64,6 +66,7 @@ const SCENARIOS = {
       'course-derapage': async (page) => { await kartRace(page, 'candy-0', 8.4); },
       'tunnel-neon': async (page) => { await kartRace(page, 'harbor-0', 15.8); },
       'lune-givree': async (page) => { await kartRace(page, 'frost-2', 9.5); },
+      boutique: async (page) => { await tapForce(page, '[data-tab="shop"]'); await sleep(1000); },
       garage: async (page) => { await tapForce(page, '[data-tab="garage"]'); await sleep(500); await tapForce(page, '[data-act="tab"][data-t="kart"]'); await sleep(400); await tapForce(page, '[data-act="pick"][data-id="requin"]'); await sleep(900); },
       podium: async (page) => {
         await kartRace(page, 'candy-1', 4.5, false);
@@ -72,7 +75,7 @@ const SCENARIOS = {
       },
       accueil: async () => { await sleep(600); },
     },
-    sets: { phone: ['course-derapage', 'tunnel-neon', 'lune-givree', 'garage', 'podium'], ipad: ['course-derapage', 'tunnel-neon', 'garage'] },
+    sets: { phone: ['course-derapage', 'tunnel-neon', 'lune-givree', 'garage', 'podium'], ipad: ['course-derapage', 'tunnel-neon', 'garage'], iap: ['boutique'] },
   },
   battle: {
     url: 'http://127.0.0.1:5192/',
@@ -84,7 +87,7 @@ const SCENARIOS = {
       boutique: async (page) => { await tapForce(page, '[data-tab="shop"]'); await sleep(900); },
       accueil: async () => { await sleep(800); },
     },
-    sets: { phone: ['combat', 'hangar', 'carte', 'boutique', 'accueil'], ipad: ['combat', 'hangar', 'accueil'] },
+    sets: { phone: ['combat', 'hangar', 'carte', 'boutique', 'accueil'], ipad: ['combat', 'hangar', 'accueil'], iap: ['boutique'] },
   },
   blocks: {
     url: 'http://127.0.0.1:5193/',
@@ -108,7 +111,7 @@ const SCENARIOS = {
       missions: async (page) => { await tapForce(page, '.nav-btn.n3'); await sleep(1000); },
       accueil: async () => { await sleep(800); },
     },
-    sets: { phone: ['plateau', 'style', 'boutique', 'missions', 'accueil'], ipad: ['plateau', 'style', 'accueil'] },
+    sets: { phone: ['plateau', 'style', 'boutique', 'missions', 'accueil'], ipad: ['plateau', 'style', 'accueil'], iap: ['boutique'] },
   },
   bubble: {
     url: 'http://127.0.0.1:5194/',

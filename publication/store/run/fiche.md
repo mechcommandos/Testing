@@ -1,19 +1,27 @@
 # Layjou Run — fiche de publication
 
-> Statut : **Prêt (APK de test compilé, projet iOS synchronisé)**
-> Identifiant de l'app : `com.layjou.run` · Version : 1.0 (code de version 1)
+> Identifiant : `com.layjou.run` · Version Android 1.0 (code 2) · Version iOS 1.0 (build 2)
+> Langues de la fiche : **français uniquement**
+> Questionnaires communs aux 6 jeux (sécurité des données, confidentialité, public cible…) : [../formulaires.md](../formulaires.md)
 
-## Visuels
-- Icône Play Store 512 × 512 : `brand/layjou-run/store/play-icon-512.png`
-- Bannière Play Store 1024 × 500 : `brand/layjou-run/store/feature-graphic-1024x500.png`
-- Icône App Store 1024 × 1024 : `brand/layjou-run/icon-only.png` (à intégrer au projet Xcode via `npx capacitor-assets generate`)
-- Google Play (1080 × 1920) : `store/run/google-play/` — 5 captures
-- App Store iPhone (1206 × 2622) : `store/run/app-store-iphone/` — 5 captures
-- Captures brutes sans légende : `store/run/captures-brutes/`
+## 1. Fichiers à envoyer
+- **Google Play** : `LayjouRun-1.0-release.aab` (dossier `android-aab/` du kit ; dans le dépôt : `layjou-run/release/LayjouRun-1.0-release.aab`), signé avec votre clé d'envoi.
+- **App Store** : votre fichier `.ipa` (voir le guide, « Étape 3 — Recompiler les IPA »).
+- Icône Play Store 512 × 512 (PNG 32 bits) : `brand/layjou-run/store/play-icon-512.png`
+- Bannière Play Store 1024 × 500 (PNG 24 bits) : `brand/layjou-run/store/feature-graphic-1024x500.png`
+- L'icône App Store vient de l'IPA (rien à envoyer).
 
-## Google Play — fiche principale
+| Emplacement | Taille | Dossiers (nombre d'images) |
+|---|---|---|
+| Google Play — téléphone | 1080 × 1920 | `store/run/google-play/fr/` (5) |
+| App Store — iPhone (6,3" Dynamic Island) | 1206 × 2622 | `store/run/app-store-iphone/fr/` (5) |
+| App Store — iPad 13" | 2064 × 2752 | `store/run/app-store-ipad/fr/` (3) |
 
-**Titre** (28/30 car.)
+Envoyez les captures dans l'ordre des numéros (les 3 premières sont les plus vues). Sans légende : `store/run/captures-brutes/`.
+
+## 2. Google Play — fiche principale
+
+**Nom de l'application** (28/30 car.)
 ```
 Layjou Run : course sans fin
 ```
@@ -21,40 +29,43 @@ Layjou Run : course sans fin
 ```
 Cours sur les rails avec Layjou, esquive les trains et ramasse les cœurs !
 ```
-**Short description — EN** (63/80 car.)
-```
-Run the rails with Layjou, dodge the trains and collect hearts!
-```
+
 **Catégorie** : Jeux › Arcade · **Contient des annonces** : oui · **Achats intégrés** : non
+**Adresse e-mail** : [votre e-mail de contact] · **Site Web** : `https://layjou.com` · **Politique de confidentialité** : `https://layjou.com/confidentialite/`
 
-## App Store Connect
+## 3. App Store Connect
 
-| Champ | FR | EN |
-|---|---|---|
-| Nom (10/30 car.) | Layjou Run | Layjou Run |
-| Sous-titre | Cours, saute, esquive ! (23/30 car.) | Run, jump and dodge! (20/30 car.) |
-| Catégorie | Jeux › Action (secondaire : Arcade) | |
+| Champ | Valeur |
+|---|---|
+| Nom (10/30 car.) | `Layjou Run` |
+| Sous-titre — FR (23/30 car.) | `Cours, saute, esquive !` |
+| Catégorie | Jeux › Action (secondaire : Arcade) |
+| URL d'assistance | `https://layjou.com/support/` |
+| URL de confidentialité | `https://layjou.com/confidentialite/` |
+| Copyright | `2026 [Nom de l'éditeur]` |
+| Prix | Gratuit |
+| Connexion requise pour la vérification | Non |
 
 **Texte promotionnel — FR** (95/170 car.)
 ```
 Une course 3D sans fin : esquive les trains, ramasse les cœurs et bats ton record chaque jour !
 ```
-**Promotional text — EN** (80/170 car.)
-```
-An endless 3D run: dodge trains, grab hearts and beat your high score every day!
-```
-**Mots-clés — FR** (63/100 octets, les lettres accentuées comptent double)
+**Mots-clés — FR** (63/100 octets ; les lettres accentuées comptent double)
 ```
 course,runner,train,rails,saut,esquive,arcade,robot,sans fin,3d
 ```
-**Keywords — EN** (63/100 octets)
+
+**Notes pour la vérification (App Review › Notes)** — en anglais :
 ```
-runner,endless,train,rails,jump,dodge,arcade,robot,dash,3d,city
+No account or sign-in is needed: all content is available right away. There are no in-app purchases. The interface is in French.
+The only ad is an optional rewarded video to continue a run once ("Continuer avec une vidéo").
+The privacy policy link ("Politique de confidentialité") is at the bottom of the main menu, next to "Confidentialité des pubs" (Google consent form, shown in the EEA/UK).
+The App Tracking Transparency prompt appears before personalized ads; the game works exactly the same if tracking is declined.
 ```
 
-## Description complète (Play et App Store)
+## 4. Description complète (Google Play et App Store)
 
-**FR** (807/4000 car.)
+**FR** (873/4000 car.)
 ```
 Layjou, le petit robot au cœur rose, t'emmène dans une aventure pleine de couleurs !
 
@@ -68,6 +79,7 @@ Layjou file à toute vitesse sur les voies ferrées de la ville. Glisse à gauch
 POURQUOI TU VAS ADORER
 • Des parties courtes, parfaites pour les pauses
 • Une prise en main immédiate, une vraie progression
+• Des vibrations qui font ressentir chaque action (désactivables)
 • Des récompenses chaque jour
 • Jouable hors connexion
 • Gratuit, en français
@@ -77,44 +89,22 @@ Jeu gratuit, financé par des vidéos publicitaires facultatives.
 Retrouve tous les jeux Layjou : Battle, Bubble, Puzzle, Run, Blocks et Kart.
 ```
 
-**EN** (688/4000 car.)
-```
-Layjou, the little robot with a pink heart, takes you on a colorful adventure!
+## 5. Classification par âge
 
-Layjou dashes across the city's railways. Swipe left or right to switch lanes, up to jump and down to slide under the gates!
+**Google Play (questionnaire IARC)** — Catégorie : **Jeu**. Peur, sexualité, langage grossier, substances, humour grossier, jeux d'argent (réels ou simulés) : **Non**. Interaction entre utilisateurs, partage de la position, accès Internet illimité : **Non**.
+Violence : **Non**. Achats numériques : **Non**.
+→ Résultat attendu : **PEGI 3**
 
-• 3D running on 3 lanes
-• Magnet, Shield and Score ×2 power-ups… upgrade them with your hearts
-• Daily missions and login bonuses
-• Every run gets faster and crazier
+**App Store (questionnaire d'âge)** — Contrôles intégrés : contrôle parental **Non**, vérification de l'âge **Non** · Fonctionnalités : accès Web illimité **Non**, contenu généré par les utilisateurs **Non**, réseaux sociaux **Non**, messagerie et chat **Non**, partage de position **Non**, **Publicité : Oui** · Thèmes pour adultes, médical/bien-être, sexualité/nudité : **Aucun** · Jeux d'argent, jeux d'argent simulés, concours : **Non**
+Violence : **Aucune** · Coffres à butin : **Non**
+→ Classification attendue : **4+** (App Store Connect l'affiche dès les réponses saisies). « Conçu pour les enfants » : **Non**.
 
-WHY YOU'LL LOVE IT
-• Short sessions, perfect for a quick break
-• Easy to pick up, with real progression
-• Rewards every day
-• Playable offline
-• Free to play (French-only interface for now)
+## 6. Publicités et achats intégrés
 
-Free to play, supported by optional video ads.
+**Publicités (AdMob)** : Vidéo récompensée uniquement : continuer la course, une fois par partie.
 
-Discover all the Layjou games: Battle, Bubble, Puzzle, Run, Blocks and Kart.
-```
+**Achats intégrés**
+Aucun achat intégré : rien à créer dans les consoles.
 
-## Classification
-PEGI 3 probable — Apple : 4+ probable.
-Répondre au questionnaire IARC (Play) et au questionnaire d'âge (App Store) avec ces éléments : pas de sang, pas de langage grossier, pas d'interaction entre joueurs, pas de chat, pas de jeu d'argent, publicités.
-
-## Publicités (AdMob)
-Vidéo récompensée uniquement (continuer la course, une fois par partie). Créer dans AdMob une app par plateforme (Android et iOS) et les blocs d'annonces correspondants.
-
-## Achats intégrés
-Aucun achat intégré : rien à créer dans les consoles (pas de profil marchand ni d'accord « Paid Apps » nécessaires pour ce jeu).
-
-## À faire dans le code avant l'envoi
-- [ ] AdMob : blocs d'annonces dans `www/ads.js` (`REWARDED_UNITS`). Ce projet n'a pas de drapeau de test : déclarer vos appareils de test dans AdMob avant d'installer une version avec les vrais identifiants.
-- [ ] AdMob : `admob_app_id` (Android) et `GADApplicationIdentifier` (iOS), compléter `SKAdNetworkItems`.
-- [ ] Ajouter dans les réglages un bouton « Confidentialité des pubs » qui appelle `AdMob.showPrivacyOptionsForm()` : exigé par le formulaire de consentement RGPD (UMP) pour les joueurs européens.
-- [ ] Les polices sont chargées depuis Google Fonts au démarrage : les embarquer dans l'app évite cet appel réseau (confidentialité et jeu hors ligne).
-- [ ] Interface uniquement en français : ne cocher que le français dans les langues de la fiche, ou traduire avant de publier en anglais.
-- [ ] Android : aucune signature release configurée → créer un keystore et un `signingConfig`.
-- [ ] Appliquer la nouvelle icône (dossier `brand/layjou-run/`).
+## 7. À savoir
+- Interface uniquement en français : fiche en français seulement (ne pas ajouter l'anglais dans les langues de la fiche).

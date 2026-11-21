@@ -2,6 +2,7 @@
   const STR = {
     fr: {
       tagline: 'Range 3 objets identiques sur la même étagère !',
+      policy: 'Politique de confidentialité', adPrivacy: 'Confidentialité des pubs',
       play: 'Niveau {n}',
       level: 'Niveau',
       magnet: 'Aimant', shuffle: 'Mélange', freeze: 'Gel',
@@ -37,6 +38,7 @@
     },
     en: {
       tagline: 'Sort 3 matching goods onto the same shelf!',
+      policy: 'Privacy policy', adPrivacy: 'Ad privacy options',
       play: 'Level {n}',
       level: 'Level',
       magnet: 'Magnet', shuffle: 'Shuffle', freeze: 'Freeze',

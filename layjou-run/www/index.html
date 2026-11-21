@@ -142,6 +142,9 @@ h2 { font-size: 30px; }
 .shop-item .info small { color: var(--ink-soft); }
 .shop-item .btn { font-size: 16px; padding: 8px 12px; min-height: 44px; flex: none; }
 .hint { font-size: 13px; color: var(--ink-soft); margin: 0; }
+.legal { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 14px; margin: 0; font-size: 12.5px; }
+.legal a, .legal button { color: var(--ink-soft); text-decoration: underline; background: none; border: 0; padding: 4px; font: inherit; cursor: pointer; }
+.legal [hidden] { display: none; }
 .record { color: var(--pink-deep); font-weight: 800; margin: 0; }
 .big { font-family: var(--font-display); font-weight: 800; font-size: 64px; line-height: 1; font-variant-numeric: tabular-nums; }
 </style>
@@ -190,6 +193,7 @@ h2 { font-size: 30px; }
       <button class="btn" id="vibeBtn">Vibrations : oui</button>
     </div>
     <p class="hint">Glisse à gauche ou à droite pour changer de voie, vers le haut pour sauter, vers le bas pour passer dessous. Au clavier : flèches.</p>
+    <p class="legal"><a id="policyLnk" href="#">Politique de confidentialité</a><button id="adPrivacyBtn" type="button" hidden>Confidentialité des pubs</button></p>
   </div>
 </div>
 

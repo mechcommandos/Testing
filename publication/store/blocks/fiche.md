@@ -1,19 +1,27 @@
 # Layjou Blocks — fiche de publication
 
-> Statut : **Prêt (APK de test compilé, projet iOS synchronisé)**
-> Identifiant de l'app : `com.layjou.blocks` · Version : 1.0 (code de version 1)
+> Identifiant : `com.layjou.blocks` · Version Android 1.0 (code 2) · Version iOS 1.0 (build 2)
+> Langues de la fiche : français (langue par défaut) et anglais
+> Questionnaires communs aux 6 jeux (sécurité des données, confidentialité, public cible…) : [../formulaires.md](../formulaires.md)
 
-## Visuels
-- Icône Play Store 512 × 512 : `brand/layjou-blocks/store/play-icon-512.png`
-- Bannière Play Store 1024 × 500 : `brand/layjou-blocks/store/feature-graphic-1024x500.png`
-- Icône App Store 1024 × 1024 : `brand/layjou-blocks/icon-only.png` (à intégrer au projet Xcode via `npx capacitor-assets generate`)
-- Google Play (1080 × 1920) : `store/blocks/google-play/` — 5 captures
-- App Store iPhone (1206 × 2622) : `store/blocks/app-store-iphone/` — 5 captures
-- Captures brutes sans légende : `store/blocks/captures-brutes/`
+## 1. Fichiers à envoyer
+- **Google Play** : `LayjouBlocks-1.0.0-release.aab` (dossier `android-aab/` du kit ; dans le dépôt : `release/LayjouBlocks-1.0.0-release.aab`), signé avec votre clé d'envoi.
+- **App Store** : votre fichier `.ipa` (voir le guide, « Étape 3 — Recompiler les IPA »).
+- Icône Play Store 512 × 512 (PNG 32 bits) : `brand/layjou-blocks/store/play-icon-512.png`
+- Bannière Play Store 1024 × 500 (PNG 24 bits) : `brand/layjou-blocks/store/feature-graphic-1024x500.png`
+- L'icône App Store vient de l'IPA (rien à envoyer).
 
-## Google Play — fiche principale
+| Emplacement | Taille | Dossiers (nombre d'images) |
+|---|---|---|
+| Google Play — téléphone | 1080 × 1920 | `store/blocks/google-play/fr/` (5) · `store/blocks/google-play/en/` (5) |
+| App Store — iPhone (6,3" Dynamic Island) | 1206 × 2622 | `store/blocks/app-store-iphone/fr/` (5) · `store/blocks/app-store-iphone/en/` (5) |
+| App Store — iPad 13" | 2064 × 2752 | `store/blocks/app-store-ipad/fr/` (3) · `store/blocks/app-store-ipad/en/` (3) |
 
-**Titre** (28/30 car.)
+Envoyez les captures dans l'ordre des numéros (les 3 premières sont les plus vues). Sans légende : `store/blocks/captures-brutes/`.
+
+## 2. Google Play — fiche principale
+
+**Nom de l'application** (28/30 car.)
 ```
 Layjou Blocks : puzzle blocs
 ```
@@ -25,36 +33,54 @@ Place les pièces, complète des lignes et enchaîne les combos avec Layjou !
 ```
 Place the pieces, clear lines and chain combos with Layjou!
 ```
+
 **Catégorie** : Jeux › Puzzle · **Contient des annonces** : oui · **Achats intégrés** : oui
+**Adresse e-mail** : [votre e-mail de contact] · **Site Web** : `https://layjou.com` · **Politique de confidentialité** : `https://layjou.com/confidentialite/`
 
-## App Store Connect
+## 3. App Store Connect
 
-| Champ | FR | EN |
-|---|---|---|
-| Nom (13/30 car.) | Layjou Blocks | Layjou Blocks |
-| Sous-titre | Puzzle de blocs avec Layjou (27/30 car.) | Block puzzle with Layjou (24/30 car.) |
-| Catégorie | Jeux › Puzzle (secondaire : Casual) | |
+| Champ | Valeur |
+|---|---|
+| Nom (13/30 car.) | `Layjou Blocks` |
+| Sous-titre — FR (27/30 car.) | `Puzzle de blocs avec Layjou` |
+| Catégorie | Jeux › Puzzle (secondaire : Casual) |
+| URL d'assistance | `https://layjou.com/support/` |
+| URL de confidentialité | `https://layjou.com/confidentialite/` |
+| Copyright | `2026 [Nom de l'éditeur]` |
+| Prix | Gratuit |
+| Connexion requise pour la vérification | Non |
 
 **Texte promotionnel — FR** (87/170 car.)
 ```
 Un puzzle de blocs addictif : armes magiques, missions du jour et un robot à habiller !
 ```
+**Mots-clés — FR** (65/100 octets ; les lettres accentuées comptent double)
+```
+blocs,puzzle,lignes,grille,8x8,casse-tête,combo,cube,robot,relax
+```
+**Sous-titre — EN** (24/30 car.) : `Block puzzle with Layjou`
+
 **Promotional text — EN** (79/170 car.)
 ```
 An addictive block puzzle: magic tools, daily missions and a robot to dress up!
-```
-**Mots-clés — FR** (65/100 octets, les lettres accentuées comptent double)
-```
-blocs,puzzle,lignes,grille,8x8,casse-tête,combo,cube,robot,relax
 ```
 **Keywords — EN** (64/100 octets)
 ```
 block,puzzle,lines,grid,8x8,brain,combo,cube,robot,relax,classic
 ```
 
-## Description complète (Play et App Store)
+**Notes pour la vérification (App Review › Notes)** — en anglais :
+```
+No account or sign-in is needed: all content is available right away.
+Rewarded video ads are always optional (continue a game, double bolts, free tool).
+In-app purchases: Shop button (bottom bar of the home screen) > Credit packs. "Restore purchases" is at the bottom of the Shop.
+Settings (gear icon) contain the privacy policy link and "Ad privacy" (Google consent form, shown in the EEA/UK).
+The App Tracking Transparency prompt appears before personalized ads; the game works exactly the same if tracking is declined.
+```
 
-**FR** (999/4000 car.)
+## 4. Description complète (Google Play et App Store)
+
+**FR** (1065/4000 car.)
 ```
 Layjou, le petit robot au cœur rose, t'emmène dans une aventure pleine de couleurs !
 
@@ -69,6 +95,7 @@ Glisse les trois pièces proposées sur le plateau 8 × 8 et complète des ligne
 POURQUOI TU VAS ADORER
 • Des parties courtes, parfaites pour les pauses
 • Une prise en main immédiate, une vraie progression
+• Des vibrations qui font ressentir chaque action (désactivables)
 • Des récompenses chaque jour
 • Jouable hors connexion
 • Gratuit, en français et en anglais
@@ -78,7 +105,7 @@ Jeu gratuit avec achats intégrés facultatifs et publicités. Tu peux désactiv
 Retrouve tous les jeux Layjou : Battle, Bubble, Puzzle, Run, Blocks et Kart.
 ```
 
-**EN** (850/4000 car.)
+**EN** (917/4000 car.)
 ```
 Layjou, the little robot with a pink heart, takes you on a colorful adventure!
 
@@ -93,6 +120,7 @@ Drag the three pieces onto the 8 × 8 board and complete rows or columns to clea
 WHY YOU'LL LOVE IT
 • Short sessions, perfect for a quick break
 • Easy to pick up, with real progression
+• Haptic feedback you can feel with every move (can be turned off)
 • Rewards every day
 • Playable offline
 • Free to play, in English and French
@@ -102,26 +130,31 @@ Free to play with optional in-app purchases and ads. You can disable in-app purc
 Discover all the Layjou games: Battle, Bubble, Puzzle, Run, Blocks and Kart.
 ```
 
-## Classification
-PEGI 3 probable — Apple : 4+ probable (les « armes » sont des outils de puzzle).
-Répondre au questionnaire IARC (Play) et au questionnaire d'âge (App Store) avec ces éléments : pas de sang, pas de langage grossier, pas d'interaction entre joueurs, pas de chat, pas de jeu d'argent, achats intégrés, publicités.
+## 5. Classification par âge
 
-## Publicités (AdMob)
-Vidéos récompensées (continuer, doubler les boulons, arme gratuite, +60 boulons). Créer dans AdMob une app par plateforme (Android et iOS) et les blocs d'annonces correspondants.
+**Google Play (questionnaire IARC)** — Catégorie : **Jeu**. Peur, sexualité, langage grossier, substances, humour grossier, jeux d'argent (réels ou simulés) : **Non**. Interaction entre utilisateurs, partage de la position, accès Internet illimité : **Non**.
+Violence : **Non** (le « Marteau » et le « Laser » sont des outils qui cassent des blocs). Achats numériques : **Oui**. Objets aléatoires achetables : **Non**.
+→ Résultat attendu : **PEGI 3 + mention « Achats intégrés »**
 
-## Achats intégrés
-| Identifiant (identique dans les deux stores) | Type | Contenu | Prix de référence |
+**App Store (questionnaire d'âge)** — Contrôles intégrés : contrôle parental **Non**, vérification de l'âge **Non** · Fonctionnalités : accès Web illimité **Non**, contenu généré par les utilisateurs **Non**, réseaux sociaux **Non**, messagerie et chat **Non**, partage de position **Non**, **Publicité : Oui** · Thèmes pour adultes, médical/bien-être, sexualité/nudité : **Aucun** · Jeux d'argent, jeux d'argent simulés, concours : **Non**
+Violence : **Aucune** · Armes : **Aucune** (outils de puzzle) · Coffres à butin : **Non**
+→ Classification attendue : **4+** (App Store Connect l'affiche dès les réponses saisies). « Conçu pour les enfants » : **Non**.
+
+## 6. Publicités et achats intégrés
+
+**Publicités (AdMob)** : Vidéos récompensées uniquement : continuer la partie (2 fois), doubler les boulons, arme gratuite, +60 boulons (5 fois par jour).
+
+**Achats intégrés**
+| Identifiant (identique dans les deux stores) | Type | Contenu (nom affiché) | Prix de référence |
 |---|---|---|---|
 | `layjou_credits_80` | Consommable | 80 crédits | 0,99 € |
 | `layjou_credits_500` | Consommable | 500 crédits | 4,99 € |
 | `layjou_credits_1200` | Consommable | 1 200 crédits | 9,99 € |
 | `layjou_credits_3000` | Consommable | 3 000 crédits | 19,99 € |
 
-Les prix réels viennent des consoles (paliers de prix par pays) ; le prix de référence ne sert que hors ligne.
+Prix réels : choisissez le palier le plus proche dans chaque console (le prix de référence ne sert qu'hors ligne). Pour chaque produit Apple, la capture de vérification demandée est prête : `store/blocks/captures-brutes/iap-en/01-boutique.jpg` (écran Boutique) ; note de vérification : « Credits are a virtual currency spent in the in-game shop on cosmetics, karts/weapons and coin packs. »
 
-## À faire dans le code avant l'envoi
-- [ ] AdMob : blocs d'annonces dans `src/config.ts` (`ADMOB`), `testing: false`.
-- [ ] AdMob : `admob_app_id` (Android) et `GADApplicationIdentifier` (iOS), compléter `SKAdNetworkItems`.
-- [ ] Construire avec `npm run android:release` (jamais le mode `sandbox`, qui simule pubs et achats).
-- [ ] Android : aucune signature release configurée dans `build.gradle` → créer un keystore et un `signingConfig`.
-- [ ] Appliquer la nouvelle icône (dossier `brand/layjou-blocks/`).
+Attention : les identifiants de Blocks commencent par `layjou_` (différents de ceux de Battle et Kart).
+
+## 7. À savoir
+- Rien de particulier.

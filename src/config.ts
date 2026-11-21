@@ -10,6 +10,9 @@ import type { WeaponId } from './game/game';
  */
 export const SANDBOX: boolean = import.meta.env.DEV || import.meta.env.MODE === 'sandbox';
 
+/** Politique de confidentialité (lien dans les réglages ; exigé par Apple et Google). */
+export const PRIVACY_URL = 'https://layjou.com/confidentialite/';
+
 export const ADMOB = {
   /**
    * Compte AdMob pub-6003645213510535. L'identifiant d'APPLICATION (ca-app-pub-6003645213510535~7951613295)

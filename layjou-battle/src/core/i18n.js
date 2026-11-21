@@ -81,7 +81,7 @@ const D = {
   n_chest_t: ['Coffre gratuit prêt !', 'Free chest ready!'], n_chest_b: ['Ouvre-le avant ton prochain combat.', 'Open it before your next battle.'],
   n_back_t: ['Layjou a besoin de toi !', 'Layjou needs you!'], n_back_b: ['Les monstres envahissent la ville. Reviens te battre !', 'Monsters are invading the city. Come back and fight!'],
   set_title: ['Réglages', 'Settings'], set_sfx: ['Effets sonores', 'Sound effects'], set_music: ['Musique', 'Music'], set_haptics: ['Vibrations', 'Haptics'],
-  set_notif: ['Rappels', 'Reminders'], set_lang: ['Langue', 'Language'], set_privacy: ['Confidentialité des pubs', 'Ad privacy options'],
+  set_notif: ['Rappels', 'Reminders'], set_lang: ['Langue', 'Language'], set_privacy: ['Confidentialité des pubs', 'Ad privacy options'], set_policy: ['Politique de confidentialité', 'Privacy policy'],
   boost_on: ['Boost Super activé !', 'Super boost active!'], mission_done: ['Mission terminée !', 'Mission complete!'],
   st_fight: ['Combattre', 'Fight'], st_cleared: ['Terminé', 'Cleared'],
 };

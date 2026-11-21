@@ -1,7 +1,7 @@
 // Layjou Bubble — UI: screens, board rendering, animations, input, modals.
 import { Board } from './engine.js';
 import { getLevel, LEVEL_COUNT } from './levels.js';
-import { initAds, showRewarded } from './ads.js';
+import { initAds, showRewarded, hasPrivacyOptions, showPrivacyOptions } from './ads.js';
 
 const $ = (id) => document.getElementById(id);
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -10,6 +10,7 @@ const CONTINUE_MOVES = window.LAYJOU_CONFIG.continueMoves;
 // ---------- i18n ----------
 const STRINGS = {
   fr: {
+    policy: 'Politique de confidentialité', adPrivacy: 'Confidentialité des pubs',
     play: 'Jouer', levels: 'Niveaux', soundOn: '🔊 Son activé', soundOff: '🔇 Son coupé', vibeOn: '📳 Vibrations activées', vibeOff: '📴 Vibrations coupées',
     level: 'Niveau', moves: 'Coups', goal: 'Objectif', score: 'Score',
     goalScore: (n) => `Atteins ${n} points !`,
@@ -31,6 +32,7 @@ const STRINGS = {
     bonus: (n) => `Bonus coups restants : +${n}`,
   },
   en: {
+    policy: 'Privacy policy', adPrivacy: 'Ad privacy options',
     play: 'Play', levels: 'Levels', soundOn: '🔊 Sound on', soundOff: '🔇 Sound off', vibeOn: '📳 Vibration on', vibeOff: '📴 Vibration off',
     level: 'Level', moves: 'Moves', goal: 'Goal', score: 'Score',
     goalScore: (n) => `Reach ${n} points!`,
@@ -555,7 +557,12 @@ $('btnSound').addEventListener('click', toggleSound);
 $('btnVibe').addEventListener('click', toggleVibe);
 document.documentElement.lang = T === STRINGS.fr ? 'fr' : 'en';
 
-initAds();
+$('lnkPolicy').textContent = T.policy;
+$('lnkPolicy').addEventListener('click', (e) => { e.preventDefault(); window.open(window.LAYJOU_CONFIG.privacyUrl, '_blank'); });
+$('btnAdPrivacy').textContent = T.adPrivacy;
+$('btnAdPrivacy').addEventListener('click', () => showPrivacyOptions());
+
+initAds().then(() => { $('btnAdPrivacy').hidden = !hasPrivacyOptions(); });
 
 // Debug/test hook (used by tests/ui.test.mjs).
 window.__layjou = { get board() { return board; }, get busy() { return busy; }, startLevel };

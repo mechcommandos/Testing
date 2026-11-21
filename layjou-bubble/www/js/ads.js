@@ -9,6 +9,7 @@ const platform = native ? cap.Capacitor.getPlatform() : 'web';
 const adId = cfg.rewarded[platform];
 
 let ready = false;
+let privacyRequired = false;
 let loading = null;
 
 function preload() {
@@ -30,6 +31,7 @@ export async function initAds() {
     try {
       const info = await AdMob.requestConsentInfo();
       if (info.isConsentFormAvailable && info.status === 'REQUIRED') await AdMob.showConsentForm();
+      privacyRequired = String(info.privacyOptionsRequirementStatus) === 'REQUIRED';
     } catch (e) { console.warn('[ads] consent', e); }
     // iOS App Tracking Transparency prompt.
     if (platform === 'ios') { try { await AdMob.requestTrackingAuthorization(); } catch (e) { /* ignore */ } }
@@ -37,6 +39,14 @@ export async function initAds() {
   } catch (e) {
     console.warn('[ads] init failed', e);
   }
+}
+
+/** True when Google's consent rules require an "ad privacy options" entry point (EEA, UK, Switzerland). */
+export function hasPrivacyOptions() { return !!AdMob && privacyRequired; }
+/** Opens Google's privacy options form so the player can change their ad consent choices. */
+export async function showPrivacyOptions() {
+  if (!AdMob) return;
+  try { await AdMob.showPrivacyOptionsForm(); } catch (e) { console.warn('[ads] privacy options', e); }
 }
 
 /**

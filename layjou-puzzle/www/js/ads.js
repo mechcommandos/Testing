@@ -18,6 +18,14 @@
     return platform === 'ios' ? cfg.rewarded.ios : cfg.rewarded.android;
   }
 
+  let privacyRequired = false;
+  /** Vrai quand les règles de consentement de Google exigent un accès aux options de confidentialité (EEE, Royaume-Uni, Suisse). */
+  function hasPrivacyOptions() { return !!AdMob && privacyRequired; }
+  async function showPrivacyOptions() {
+    if (!AdMob) return;
+    try { await AdMob.showPrivacyOptionsForm(); } catch (e) { console.warn('privacy options', e); }
+  }
+
   async function init() {
     if (!AdMob) return;
     if (initDone) return initDone;
@@ -30,6 +38,7 @@
           if (info && info.isConsentFormAvailable && info.status === 'REQUIRED') {
             await AdMob.showConsentForm();
           }
+          privacyRequired = !!info && String(info.privacyOptionsRequirementStatus) === 'REQUIRED';
         } catch (e) { console.warn('consent', e); }
         if (platform === 'ios') {
           try {
@@ -94,5 +103,5 @@
     });
   }
 
-  window.Ads = { init, preload, showRewarded, isNative };
+  window.Ads = { init, preload, showRewarded, isNative, hasPrivacyOptions, showPrivacyOptions };
 })();

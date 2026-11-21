@@ -1,5 +1,5 @@
 import * as THREE from './vendor/three.module.min.js';
-import { ads } from './ads.js';
+import { ads, PRIVACY_URL } from './ads.js';
 
 /* =========================================================
    Layjou Run — endless runner sur 3 voies
@@ -717,7 +717,9 @@ $('adBtn').onclick = async () => {
   if (ok && state === 'over') { run.adRevived = true; revive(); }
   else { refreshAdBtn(); if (!ok) toast('Vidéo interrompue : pas de reprise'); }
 };
-ads.init();
+$('policyLnk').onclick = (e) => { e.preventDefault(); window.open(PRIVACY_URL, '_blank'); };
+$('adPrivacyBtn').onclick = () => ads.showPrivacyOptions();
+ads.init().then(() => { $('adPrivacyBtn').hidden = !ads.hasPrivacyOptions(); });
 
 let lastHud = {};
 function hud() {
