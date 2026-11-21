@@ -5,6 +5,7 @@ import { Ads } from '../core/ads.js';
 import { IAP } from '../core/iap.js';
 import { Audio } from '../core/audio.js';
 import { Native } from '../core/native.js';
+import { Haptic } from '../core/haptics.js';
 import { CONFIG } from '../core/config.js';
 import { t, L, lang } from '../core/i18n.js';
 import { fmt, fmtTime, TAU } from '../core/util.js';
@@ -175,7 +176,7 @@ export async function queuePopups(list) { for (const fn of list) await fn(); }
 
 export function showChest(titleKey, r) {
   return new Promise((resolve) => {
-    Audio.sfx('chest');
+    Audio.sfx('chest'); Haptic.boom(); setTimeout(() => Haptic.celebrate(), 300);
     modal({ cls: 'modal-chest', dismissible: false, onClose: resolve, html: `
       <div class="burst"></div><div class="chest-ic">${IC.chest}</div>
       <h2>${t(titleKey)}</h2><div class="rw-row big">${reward(r)}</div>
@@ -198,7 +199,7 @@ function openChestWait() {
 
 export function levelUps(levels) {
   return levels.map((lvl) => () => new Promise((resolve) => {
-    const coins = 150 * lvl, credits = 5 + Math.floor(lvl / 5) * 5; addCoins(coins); addCredits(credits); Audio.sfx('levelup');
+    const coins = 150 * lvl, credits = 5 + Math.floor(lvl / 5) * 5; addCoins(coins); addCredits(credits); Audio.sfx('levelup'); Haptic.celebrate();
     modal({ cls: 'modal-level', dismissible: false, onClose: resolve, html: `
       <div class="burst"></div><div class="lvl-badge big"><span>${lvl}</span></div>
       <h2>${t('lv_title')}</h2><p>${t('lv_sub')}</p><div class="rw-row big">${reward({ coins, credits })}</div>
@@ -218,7 +219,7 @@ export function openDaily() {
     <button class="btn btn-primary ${st.claimable ? '' : 'is-disabled'}" data-act="take">${st.claimable ? t('claim') : t('d_come')}</button>`,
   actions: { take: (n) => {
     const r = Flow.claimDaily(); if (!r) return;
-    Audio.sfx('coin'); fly(n, $(r.credits ? '#top-credits' : '#top-coins'), r.credits ? IC.gem : IC.coin);
+    Audio.sfx('coin'); Haptic.success(); fly(n, $(r.credits ? '#top-credits' : '#top-coins'), r.credits ? IC.gem : IC.coin);
     m.close(); const after = () => { if (current === 'home') go('home'); };
     if (r.chest) showChest('d_title', r.chest).then(after); else after();
   } } });
@@ -240,7 +241,7 @@ export function openMissions() {
       </div><p class="muted">${t('m_reset')}</p>`;
   };
   const m = modal({ cls: 'modal-missions', html: `<div id="missions-body">${draw()}</div>`, actions: {
-    claim: (n) => { const r = Flow.claimMission(+n.dataset.i); if (r) { Audio.sfx('coin'); fly(n, $('#top-coins'), IC.coin); $('#missions-body', m.el).innerHTML = draw(); } },
+    claim: (n) => { const r = Flow.claimMission(+n.dataset.i); if (r) { Audio.sfx('coin'); Haptic.success(); fly(n, $('#top-coins'), IC.coin); $('#missions-body', m.el).innerHTML = draw(); } },
     bonus: () => { const r = Flow.claimMissionsBonus(); if (r) { m.close(); showChest('m_bonus', { ...r.chest, credits: (r.chest.credits || 0) + r.credits }).then(() => current === 'home' && go('home')); } },
   }, onClose: () => current === 'home' && go('home') });
 }
@@ -268,9 +269,9 @@ export function openWheel() {
     const wheel = $('#wheel', m.el); $('#wheel-actions', m.el).innerHTML = '';
     rot = Math.ceil(rot / 360) * 360 + 360 * 5 + (360 - (index * seg + seg / 2));
     wheel.style.transition = 'transform 4.2s cubic-bezier(.12,.72,.1,1)'; wheel.style.transform = `rotate(${rot}deg)`;
-    let ticks = 0; const iv = setInterval(() => { Audio.sfx('spin'); if (++ticks > 26) clearInterval(iv); }, 140);
+    let ticks = 0; const iv = setInterval(() => { Audio.sfx('spin'); Haptic.select(); if (++ticks > 26) clearInterval(iv); }, 140);
     setTimeout(() => {
-      clearInterval(iv); Flow.grantWheel(prize); Audio.sfx('buy'); spinning = false;
+      clearInterval(iv); Flow.grantWheel(prize); Audio.sfx('buy'); Haptic.celebrate(); spinning = false;
       toast(prize.turbo ? `+1 ${t('w_turbo')}` : prize.credits ? `+${prize.credits} ${t('credits')}` : `+${fmt(prize.coins)} ${t('coins')}`, prize.turbo ? IC.bolt : prize.credits ? IC.gem : IC.coin);
       if (m.el.isConnected) $('#wheel-actions', m.el).innerHTML = btns();
     }, 4400);
@@ -333,7 +334,7 @@ export function handleBack() {
   return false;
 }
 
-export function appPause() { if (inRace()) racePause(); Audio.mute(true); save(true); Native.scheduleReminders(); }
+export function appPause() { Haptic.stopAll(); if (inRace()) racePause(); Audio.mute(true); save(true); Native.scheduleReminders(); }
 export function appResume() {
   Audio.mute(false); Native.clearReminders();
   if (Date.now() - (S.data.lastSeen || 0) > 30 * 60000) { Flow.sessionStart(); if (!inRace() && !hasModal()) onAppOpen(); }

@@ -16,6 +16,7 @@ import { MAXV } from '../game/race.js';
 import { $, $$, UI, bindActions, modal, toast, fly } from './dom.js';
 import { IC } from './icons.js';
 import { startRace } from './race-ui.js';
+import { Haptic } from '../core/haptics.js';
 
 const starsHtml = (n, cls = '') => `<span class="stars ${cls}">${[0, 1, 2].map((i) => `<i class="st ${i < n ? 'on' : ''}">${IC.star}</i>`).join('')}</span>`;
 const evIcon = (ev) => (ev.kind === 'race' ? IC.flag : ev.kind === 'duel' ? IC.skull : ev.kind === 'coins' ? IC.coin : IC.clock);
@@ -216,8 +217,8 @@ function buyItem(node, btn) {
   const [type, list] = TYPES.find((x) => x[0] === gTab);
   const it = byId(list, gSel), p = it.price;
   const kind = p.coins ? 'coins' : 'credits', cost = p.coins || p.credits;
-  if (!spend(kind, cost)) { Audio.sfx('error'); toast(t(kind === 'coins' ? 'no_coins' : 'no_credits'), kind === 'coins' ? IC.coin : IC.gem); if (kind === 'credits') UI.go('shop', 'credits'); return; }
-  grant(type, it.id); equip(type, it.id); Audio.sfx('buy');
+  if (!spend(kind, cost)) { Audio.sfx('error'); Haptic.error(); toast(t(kind === 'coins' ? 'no_coins' : 'no_credits'), kind === 'coins' ? IC.coin : IC.gem); if (kind === 'credits') UI.go('shop', 'credits'); return; }
+  grant(type, it.id); equip(type, it.id); Audio.sfx('buy'); Haptic.celebrate();
   toast(L(it.name), IC.check);
   renderGarage(node);
 }
@@ -279,14 +280,14 @@ export function renderShop(node, arg) {
       iap: async (n) => {
         const id = n.dataset.id;
         const r = await IAP.buy(id);
-        if (r.ok) { Audio.sfx('buy'); toast(t('s_thanks'), IC.check); fly(n, $('#top-credits'), IC.gem, 10); renderShop(node); }
+        if (r.ok) { Audio.sfx('buy'); Haptic.celebrate(); toast(t('s_thanks'), IC.check); fly(n, $('#top-credits'), IC.gem, 10); renderShop(node); }
         else if (r.error === 'pending') toast(t('s_pending'));
         else if (!r.cancelled) toast(t('s_fail'));
       },
       coins: (n) => {
         const c = CONFIG.economy.coinPacks[+n.dataset.i];
-        if (!spend('credits', c.credits)) { Audio.sfx('error'); toast(t('no_credits'), IC.gem); return; }
-        addCoins(c.coins); Audio.sfx('buy'); fly(n, $('#top-coins'), IC.coin, 10);
+        if (!spend('credits', c.credits)) { Audio.sfx('error'); Haptic.error(); toast(t('no_credits'), IC.gem); return; }
+        addCoins(c.coins); Audio.sfx('buy'); Haptic.success(); fly(n, $('#top-coins'), IC.coin, 10);
       },
       restore: async () => { const k = await IAP.restore(); toast(t('s_restored', { n: k })); renderShop(node); },
     });

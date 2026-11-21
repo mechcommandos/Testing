@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Layjou Bubble</string>
+    <string name="title_activity_main">Layjou Bubble</string>
+    <string name="package_name">com.layjou.bubble</string>
+    <string name="custom_url_scheme">com.layjou.bubble</string>
+    <!-- Identifiant d\'application AdMob (compte pub-6003645213510535) -->
+    <string name="admob_app_id">ca-app-pub-6003645213510535~7951613295</string>
+</resources>

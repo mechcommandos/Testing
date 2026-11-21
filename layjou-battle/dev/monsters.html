@@ -1,0 +1,16 @@
+<!doctype html><html><body style="margin:0;background:#2a3a7a">
+<canvas id="c" width="1500" height="1000"></canvas>
+<script type="module">
+import { drawMonster, MONSTER_META } from '/src/game/monsters.js';
+import { MONSTER_PALS } from '/src/game/data.js';
+const q = new URLSearchParams(location.search);
+const ctx = document.getElementById('c').getContext('2d');
+const types = ['blob','crab','wasp','golem','octo','dragon','antijou'];
+const pals = ['grape','orange','yellow','slate','pink','green','glitch'];
+const wind = +(q.get('w') || 0), strike = +(q.get('s') || 0), kind = q.get('k') || null, stun = q.get('stun') === '1';
+types.forEach((ty, i) => { const x = 190 + (i % 4) * 370, y = 440 + Math.floor(i / 4) * 480;
+  ctx.fillStyle='rgba(0,0,0,.25)'; ctx.beginPath(); ctx.ellipse(x, y, 100, 14, 0, 0, 7); ctx.fill();
+  drawMonster(ctx, ty, { x, y, scale: 1.35, pal: MONSTER_PALS[q.get('p') || pals[i]], t: +(q.get('t')||1.2), wind, strike, kind, stun, enraged: q.get('e')==='1' });
+  if (q.get('meta')) { const M = MONSTER_META[ty]; ctx.fillStyle='#0f0'; for (const [wx,wy] of M.weak) { ctx.beginPath(); ctx.arc(x+wx*1.35,y+wy*1.35,6,0,7); ctx.fill(); } ctx.fillStyle='#f00'; ctx.beginPath(); ctx.arc(x+M.mouth[0]*1.35,y+M.mouth[1]*1.35,6,0,7); ctx.fill(); }
+});
+</script></body></html>

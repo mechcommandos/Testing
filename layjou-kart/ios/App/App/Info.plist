@@ -62,9 +62,9 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
-	<!-- AdMob : identifiant d'application de TEST fourni par Google, à remplacer avant publication -->
+	<!-- AdMob : identifiant d'application du compte pub-6003645213510535 -->
 	<key>GADApplicationIdentifier</key>
-	<string>ca-app-pub-3940256099942544~1458002511</string>
+	<string>ca-app-pub-6003645213510535~7951613295</string>
 	<!-- Ajouter les autres identifiants SKAdNetwork listés par Google : https://developers.google.com/admob/ios/quick-start#update_your_infoplist -->
 	<key>SKAdNetworkItems</key>
 	<array>

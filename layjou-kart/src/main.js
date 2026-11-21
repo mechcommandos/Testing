@@ -9,10 +9,13 @@ import { Audio } from './core/audio.js';
 import { Native } from './core/native.js';
 import { initApp, onAppOpen, handleBack, appPause, appResume, currentScreen, go } from './ui/app.js';
 import { loadLogo } from './game/scenery.js';
+import { Haptic } from './core/haptics.js';
+import { S } from './core/state.js';
 
 async function boot() {
   await loadState();
   Flow.sessionStart();
+  Haptic.setEnabled(() => S.data.settings.haptics !== false);
   initApp();
   loadLogo();
   // l'audio ne peut démarrer qu'après un premier geste de l'utilisateur

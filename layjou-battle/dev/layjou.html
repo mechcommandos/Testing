@@ -1,0 +1,27 @@
+<!doctype html><html><body style="margin:0;background:#e6f4fb">
+<canvas id="c" width="1500" height="1000"></canvas>
+<script type="module">
+import { drawLayjou, poseOf } from '/src/game/layjou.js';
+import { SKINS, ACCESSORIES, WEAPONS } from '/src/game/data.js';
+const q = new URLSearchParams(location.search);
+const ctx = document.getElementById('c').getContext('2d');
+const mode = q.get('m') || 'poses';
+if (mode === 'big') {
+  drawLayjou(ctx, { x: 420, y: 960, scale: 4.6, pose: poseOf('wave', 0.6, 0), skin: 'classic', t: 0.6 });
+  drawLayjou(ctx, { x: 1120, y: 960, scale: 4.2, pose: poseOf('idle', 0.6, 0), skin: 'classic', weapon: 'blaster', t: 0.6 });
+} else if (mode === 'poses') {
+  const names = ['wave','proud','idle','punch1','punch2','punch3','shoot','slash','block','dodge','hit','break','ko','victory','ult'];
+  names.forEach((n, i) => { const x = 150 + (i % 5) * 290, y = 310 + Math.floor(i / 5) * 320;
+    drawLayjou(ctx, { x, y, scale: 1.25, pose: poseOf(n, 0.6, 0.5), skin: 'classic', weapon: i % 5 === 1 ? 'saber' : 'blaster', t: 0.6 });
+    ctx.fillStyle = '#123'; ctx.font = '16px sans-serif'; ctx.fillText(n, x - 20, y + 22); });
+} else if (mode === 'skins') {
+  SKINS.forEach((s, i) => { const x = 150 + (i % 5) * 290, y = 310 + Math.floor(i / 5) * 320;
+    drawLayjou(ctx, { x, y, scale: 1.25, pose: poseOf('wave', 0.6, 0.5), skin: s.id, t: 0.6 + i }); });
+  ACCESSORIES.slice(1,6).forEach((s, i) => { const x = 150 + (i % 5) * 290, y = 950;
+    drawLayjou(ctx, { x, y, scale: 1.25, pose: poseOf('proud', 0.6, 0.5), skin: 'classic', accessory: s.id, weapon: WEAPONS[i].id, t: 0.6 }); });
+} else {
+  ACCESSORIES.slice(6).forEach((s, i) => { const x = 150 + (i % 5) * 290, y = 310;
+    drawLayjou(ctx, { x, y, scale: 1.25, pose: poseOf('proud', 0.6, 0.5), skin: 'classic', accessory: s.id, weapon: WEAPONS[(i+5)%7].id, t: 0.6 }); });
+}
+document.title = 'ready';
+</script></body></html>

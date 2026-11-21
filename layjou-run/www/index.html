@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!--page-->
+<title>Layjou Run</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@600;800&display=swap">
+<style>
+/* Layout: full-screen 3D runner; rounded "toy" panels float over it, HUD pinned to the top corners. */
+:root {
+  --sky: #d9f1fb;
+  --panel: #ffffff;
+  --ink: #0b2f8a;
+  --ink-soft: #5a74b8;
+  --cyan: #19c3d6;
+  --cyan-deep: #0e9fb3;
+  --pink: #ff5fa2;
+  --pink-deep: #e2428a;
+  --line: #d5ecf6;
+  --font-display: "Baloo 2", "Trebuchet MS", system-ui, sans-serif;
+  --font-body: "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --gutter-l: max(16px, env(safe-area-inset-left, 0px));
+  --gutter-r: max(16px, env(safe-area-inset-right, 0px));
+}
+html, body { height: 100%; margin: 0; }
+[hidden] { display: none !important; }
+body {
+  background: var(--sky); color: var(--ink);
+  font-family: var(--font-body); font-weight: 600; font-size: 15px;
+  overflow: hidden; touch-action: none; user-select: none; -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+#stage { position: fixed; inset: 0; width: 100%; height: 100%; display: block; }
+
+/* ---------- HUD ---------- */
+#hud {
+  position: fixed; inset: 0 0 auto 0; z-index: 2;
+  padding-top: calc(env(safe-area-inset-top, 0px) + 12px);
+  padding-left: var(--gutter-l); padding-right: var(--gutter-r);
+  display: flex; justify-content: space-between; align-items: flex-start; gap: 12px;
+  pointer-events: none;
+}
+.hud-col { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+.hud-col.right { align-items: flex-end; }
+.chip {
+  background: var(--panel); color: var(--ink); border-radius: 999px;
+  padding: 4px 14px; font-family: var(--font-display); font-weight: 800; font-size: 22px; line-height: 1.3;
+  box-shadow: 0 4px 0 rgba(11, 47, 138, .14);
+  display: flex; align-items: center; gap: 8px; font-variant-numeric: tabular-nums;
+}
+.chip svg { width: 20px; height: 20px; flex: none; }
+.chip.small { font-size: 16px; }
+#pauseBtn { pointer-events: auto; }
+.icon-btn {
+  width: 44px; height: 44px; border-radius: 50%; border: 0; cursor: pointer;
+  background: var(--panel); color: var(--ink); display: grid; place-items: center;
+  box-shadow: 0 4px 0 rgba(11, 47, 138, .14);
+}
+.icon-btn svg { width: 20px; height: 20px; }
+#powers { display: flex; flex-direction: column; gap: 6px; }
+.power {
+  background: var(--panel); border-radius: 14px; padding: 6px 10px; width: 112px;
+  display: grid; grid-template-columns: 20px 1fr; gap: 8px; align-items: center;
+  box-shadow: 0 3px 0 rgba(11, 47, 138, .14);
+}
+.power svg { width: 20px; height: 20px; }
+.bar { height: 8px; border-radius: 99px; background: var(--line); overflow: hidden; }
+.bar i { display: block; height: 100%; width: 100%; background: var(--cyan); border-radius: 99px; transform-origin: left; }
+.power.double .bar i { background: var(--pink); }
+
+#toast {
+  position: fixed; z-index: 4; left: 50%; top: calc(env(safe-area-inset-top, 0px) + 76px);
+  transform: translate(-50%, -12px); opacity: 0; transition: opacity .25s, transform .25s;
+  background: var(--ink); color: #ffffff; padding: 8px 18px; border-radius: 999px;
+  font-weight: 800; text-align: center; max-width: calc(100% - 32px); pointer-events: none;
+}
+#toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+/* ---------- Panels ---------- */
+.screen {
+  position: fixed; inset: 0; z-index: 3;
+  padding-block: calc(env(safe-area-inset-top, 0px) + 16px) calc(env(safe-area-inset-bottom, 0px) + 16px);
+  padding-left: var(--gutter-l); padding-right: var(--gutter-r);
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(217, 241, 251, .55);
+}
+.card {
+  width: 100%; max-width: 380px; max-height: 100%; overflow-y: auto; touch-action: pan-y;
+  background: var(--panel); border-radius: 30px; padding: 20px;
+  box-shadow: 0 10px 0 rgba(11, 47, 138, .12), 0 24px 50px rgba(11, 47, 138, .18);
+  display: flex; flex-direction: column; gap: 14px; text-align: center;
+}
+h1, h2 { font-family: var(--font-display); font-weight: 800; margin: 0; line-height: 1; text-wrap: balance; }
+h1 { font-size: 46px; letter-spacing: -.5px; }
+h1 span { color: var(--pink); }
+.brand { display: flex; flex-direction: column; align-items: center; gap: 0; }
+.brand img { width: min(260px, 80%); height: auto; }
+.brand span { margin-top: -4px; font-size: 40px; letter-spacing: .12em; text-transform: uppercase; }
+h2 { font-size: 30px; }
+.hero { position: relative; height: 150px; }
+.hero img { height: 150px; width: auto; animation: bob 2.4s ease-in-out infinite; }
+@keyframes bob { 50% { transform: translateY(-8px) rotate(-2deg); } }
+@media (prefers-reduced-motion: reduce) { .hero img { animation: none; } }
+.stats { display: flex; gap: 10px; }
+.stat { flex: 1; background: var(--sky); border-radius: 18px; padding: 8px 6px; min-width: 0; }
+.stat b { display: block; font-family: var(--font-display); font-size: 24px; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.stat small { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); font-weight: 800; }
+.btn {
+  border: 0; cursor: pointer; border-radius: 20px; padding: 12px 18px; min-height: 48px;
+  font-family: var(--font-display); font-weight: 800; font-size: 20px; color: var(--ink);
+  background: var(--sky); box-shadow: 0 5px 0 var(--line);
+}
+.btn:active { transform: translateY(3px); box-shadow: 0 2px 0 var(--line); }
+.btn.primary { background: var(--pink); color: #ffffff; box-shadow: 0 6px 0 var(--pink-deep); font-size: 26px; }
+.btn.primary:active { box-shadow: 0 3px 0 var(--pink-deep); }
+.btn.cyan { background: var(--cyan); color: #ffffff; box-shadow: 0 5px 0 var(--cyan-deep); }
+.btn:disabled { opacity: .45; cursor: default; }
+.btn:focus-visible, .icon-btn:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+.row { display: flex; gap: 10px; flex-wrap: wrap; }
+.row > * { flex: 1; min-width: 0; }
+.daily { background: var(--ink); color: #ffffff; border-radius: 16px; padding: 8px 12px; font-weight: 800; }
+.list { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+.list-title { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); font-weight: 800; text-align: left; }
+.item { background: var(--sky); border-radius: 16px; padding: 10px 12px; display: flex; flex-direction: column; gap: 6px; }
+.item-top { display: flex; justify-content: space-between; gap: 10px; align-items: center; }
+.item-top span:first-child { min-width: 0; }
+.reward { font-weight: 800; color: var(--pink-deep); white-space: nowrap; }
+.item .bar { background: #ffffff; }
+.item.done { opacity: .6; }
+.shop-item { flex-direction: row; align-items: center; gap: 10px; }
+.shop-item svg { width: 28px; height: 28px; flex: none; }
+.shop-item .info { flex: 1; min-width: 0; }
+.shop-item .info b { display: block; font-family: var(--font-display); font-size: 18px; line-height: 1.2; }
+.shop-item .info small { color: var(--ink-soft); }
+.shop-item .btn { font-size: 16px; padding: 8px 12px; min-height: 44px; flex: none; }
+.hint { font-size: 13px; color: var(--ink-soft); margin: 0; }
+.record { color: var(--pink-deep); font-weight: 800; margin: 0; }
+.big { font-family: var(--font-display); font-weight: 800; font-size: 64px; line-height: 1; font-variant-numeric: tabular-nums; }
+</style>
+<!--/head-->
+</head>
+<body>
+<!--body-->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-heart" viewBox="0 0 24 24"><path fill="#ff5fa2" d="M12 21s-8.5-5.3-8.5-11.2A4.8 4.8 0 0 1 12 6.9a4.8 4.8 0 0 1 8.5 2.9C20.500 15.700 12 21 12 21z"/></symbol>
+  <symbol id="i-magnet" viewBox="0 0 24 24"><path fill="none" stroke="#e2428a" stroke-width="5" d="M5.500 3v9a6.500 6.500 0 0 0 13 0V3"/><path fill="none" stroke="#0b2f8a" stroke-width="5" d="M5.500 3v4M18.500 3v4"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path fill="#19c3d6" d="M12 2 4 5v6c0 5 3.400 9.300 8 11 4.600-1.700 8-6 8-11V5z"/><path fill="#ffffff" d="M12 5.200 7 7v4c0 3.300 2 6.300 5 7.700z"/></symbol>
+  <symbol id="i-double" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#ff5fa2"/><text x="12" y="16.500" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="12" fill="#ffffff">×2</text></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24"><rect x="5" y="4" width="5" height="16" rx="1.500" fill="currentColor"/><rect x="14" y="4" width="5" height="16" rx="1.500" fill="currentColor"/></symbol>
+</svg>
+
+<canvas id="stage" aria-label="Zone de jeu"></canvas>
+
+<div id="hud" hidden>
+  <div class="hud-col">
+    <div class="chip" id="scoreChip" aria-label="Score">0</div>
+    <div id="powers"></div>
+  </div>
+  <div class="hud-col right">
+    <button class="icon-btn" id="pauseBtn" aria-label="Pause"><svg><use href="#i-pause"/></svg></button>
+    <div class="chip small"><svg><use href="#i-heart"/></svg><span id="heartChip">0</span></div>
+  </div>
+</div>
+<div id="toast" role="status"></div>
+
+<div class="screen" id="menu">
+  <div class="card">
+    <div class="hero"><img src="assets/robot.png" alt="Le petit robot qui salue"></div>
+    <h1 class="brand"><img src="assets/layjou-logo.png" alt="Layjou"><span>Run</span></h1>
+    <div class="daily" id="daily" hidden></div>
+    <div class="stats">
+      <div class="stat"><b id="mBest">0</b><small>Record</small></div>
+      <div class="stat"><b id="mHearts">0</b><small>Cœurs</small></div>
+      <div class="stat"><b id="mStreak">1</b><small>Jours de suite</small></div>
+    </div>
+    <button class="btn primary" id="playBtn">Jouer</button>
+    <div class="list-title">Missions</div>
+    <div class="list" id="missions"></div>
+    <div class="row">
+      <button class="btn cyan" id="shopBtn">Améliorations</button>
+      <button class="btn" id="muteBtn">Son : oui</button>
+      <button class="btn" id="vibeBtn">Vibrations : oui</button>
+    </div>
+    <p class="hint">Glisse à gauche ou à droite pour changer de voie, vers le haut pour sauter, vers le bas pour passer dessous. Au clavier : flèches.</p>
+  </div>
+</div>
+
+<div class="screen" id="shop" hidden>
+  <div class="card">
+    <h2>Améliorations</h2>
+    <div class="chip small" style="align-self:center"><svg><use href="#i-heart"/></svg><span id="sHearts">0</span></div>
+    <div class="list" id="shopList"></div>
+    <button class="btn" id="shopBack">Retour</button>
+  </div>
+</div>
+
+<div class="screen" id="pause" hidden>
+  <div class="card">
+    <h2>Pause</h2>
+    <button class="btn primary" id="resumeBtn">Reprendre</button>
+    <button class="btn" id="quitBtn">Menu</button>
+  </div>
+</div>
+
+<div class="screen" id="over" hidden>
+  <div class="card">
+    <h2>Aïe ! Bien couru</h2>
+    <div class="big" id="oScore">0</div>
+    <p class="record" id="oRecord"></p>
+    <div class="stats">
+      <div class="stat"><b id="oHearts">0</b><small>Cœurs gagnés</small></div>
+      <div class="stat"><b id="oBest">0</b><small>Record</small></div>
+    </div>
+    <button class="btn cyan" id="adBtn" hidden>Continuer avec une vidéo</button>
+    <button class="btn cyan" id="reviveBtn">Continuer (100 cœurs)</button>
+    <button class="btn primary" id="againBtn">Rejouer</button>
+    <button class="btn" id="menuBtn">Menu</button>
+  </div>
+</div>
+
+<script src="vendor/capacitor.js"></script>
+<script src="haptique.js"></script>
+<script type="module" src="game.js"></script>
+</body>
+</html>

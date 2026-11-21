@@ -156,7 +156,7 @@ export function openShop(focus?: 'credits' | 'weapons'): void {
                 el.classList.remove('busy');
                 if (res === 'ok') {
                   sfx.reward();
-                  haptic.success();
+                  haptic.celebrate();
                   confetti(60);
                   toast(t('purchaseOk', { n: fmt(pack.credits) }), 'good');
                 } else if (res === 'cancelled') toast(t('purchaseCancelled'));
@@ -246,14 +246,14 @@ export function buyWeapon(w: WeaponId, mode: 'coins' | 'credits'): boolean {
   if (mode === 'coins') {
     if (!store.spendCoins(price.coins)) {
       toast(t('notEnoughCoins'), 'bad');
-      sfx.invalid();
+      sfx.invalid(); haptic.error();
       return false;
     }
     store.addWeapon(w, 1);
   } else {
     if (!store.spendCredits(price.credits5)) {
       toast(t('notEnoughCredits'), 'bad');
-      sfx.invalid();
+      sfx.invalid(); haptic.error();
       return false;
     }
     store.addWeapon(w, 5);
@@ -314,13 +314,13 @@ export function openWardrobe(): void {
     fill(wallet, walletRow());
     fill(tabs, 
       ...TABS.map(([slot, label]) =>
-        h('button', { class: `tab ${slot === tab ? 'on' : ''}`, onclick: () => { tab = slot; sfx.tap(); render(); } }, label),
+        h('button', { class: `tab ${slot === tab ? 'on' : ''}`, onclick: () => { tab = slot; sfx.tap(); haptic.select(); render(); } }, label),
       ),
     );
     const cards: HTMLElement[] = [];
     if (tab !== 'skin') {
       cards.push(
-        h('button', { class: `item ${preview[tab] === null ? 'sel' : ''}`, onclick: () => { sfx.tap(); select(null); } },
+        h('button', { class: `item ${preview[tab] === null ? 'sel' : ''}`, onclick: () => { sfx.tap(); haptic.select(); select(null); } },
           h('span', { class: 'item-none', html: ic.none }), h('small', null, t('remove'))),
       );
     }
@@ -333,7 +333,7 @@ export function openWardrobe(): void {
       cards.push(
         h(
           'button',
-          { class: `item ${preview[tab] === item.id ? 'sel' : ''} ${owned ? 'owned' : ''}`, onclick: () => { sfx.tap(); select(item); } },
+          { class: `item ${preview[tab] === item.id ? 'sel' : ''} ${owned ? 'owned' : ''}`, onclick: () => { sfx.tap(); haptic.select(); select(item); } },
           thumb,
           h('small', null, td('i_' + item.id)),
           owned
@@ -353,7 +353,7 @@ export function openWardrobe(): void {
           const res = store.buyItem(cur.id);
           if (res === 'ok') {
             sfx.reward();
-            haptic.success();
+            haptic.celebrate();
             mascot.flash('wow', 1500);
             mascot.act('cheer');
             const box = stage.getBoundingClientRect();
@@ -361,7 +361,7 @@ export function openWardrobe(): void {
             toast(t('purchased'), 'good');
             render();
           } else {
-            sfx.invalid();
+            sfx.invalid(); haptic.error(); haptic.error();
             toast(t(res === 'coins' ? 'notEnoughCoins' : 'notEnoughCredits'), 'bad');
             if (res === 'credits') openShop('credits');
           }

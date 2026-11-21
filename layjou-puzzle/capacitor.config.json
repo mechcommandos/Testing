@@ -1,0 +1,16 @@
+{
+  "appId": "com.layjou.puzzle",
+  "appName": "Layjou Puzzle",
+  "webDir": "www",
+  "backgroundColor": "#6a3ad5",
+  "android": { "backgroundColor": "#6a3ad5" },
+  "ios": { "backgroundColor": "#6a3ad5", "contentInset": "never" },
+  "plugins": {
+    "SplashScreen": {
+      "launchAutoHide": true,
+      "launchShowDuration": 1200,
+      "backgroundColor": "#6a3ad5",
+      "showSpinner": false
+    }
+  }
+}

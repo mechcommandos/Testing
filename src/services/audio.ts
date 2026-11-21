@@ -2,7 +2,7 @@
  * Effets sonores synthétisés (WebAudio) : aucun fichier audio à charger.
  * Les effacements jouent des notes d'une gamme pentatonique qui montent avec le combo.
  */
-import { Haptics, ImpactStyle, NotificationType } from '@capacitor/haptics';
+import { Haptic } from './haptics';
 import { store } from '../state/store';
 
 let ctx: AudioContext | null = null;
@@ -118,14 +118,6 @@ export const sfx = {
   gameOver: () => [392, 330, 262, 196].forEach((f, i) => tone({ f, dur: 0.34, type: 'triangle', vol: 0.2, at: i * 0.16 })),
 };
 
-// ---------- vibrations ----------
-const on = () => store.p.settings.haptics;
-const safe = (p: Promise<unknown>) => void p.catch(() => undefined);
-
-export const haptic = {
-  light: () => on() && safe(Haptics.impact({ style: ImpactStyle.Light })),
-  medium: () => on() && safe(Haptics.impact({ style: ImpactStyle.Medium })),
-  heavy: () => on() && safe(Haptics.impact({ style: ImpactStyle.Heavy })),
-  success: () => on() && safe(Haptics.notification({ type: NotificationType.Success })),
-  warning: () => on() && safe(Haptics.notification({ type: NotificationType.Warning })),
-};
+// ---------- vibrations (voir services/haptics.ts : impacts, motifs, combos, explosions) ----------
+Haptic.setEnabled(() => store.p.settings.haptics);
+export const haptic = Haptic;

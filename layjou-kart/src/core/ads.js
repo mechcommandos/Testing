@@ -19,7 +19,7 @@ async function loadRewarded() {
   rewardedLoading = false;
 }
 async function loadInterstitial() {
-  if (!AdMob || interReady || interLoading || S.data.noAds) return;
+  if (!AdMob || interReady || interLoading || S.data.noAds || !CONFIG.ads.interstitial.enabled || !unit('interstitial')) return;
   interLoading = true;
   try { await AdMob.prepareInterstitial(adOpts('interstitial')); interReady = true; } catch { interReady = false; }
   interLoading = false;

@@ -3,9 +3,10 @@ import { Capacitor } from '@capacitor/core';
 import { S, save } from './state.js';
 import { Flow } from './retention.js';
 import { t } from './i18n.js';
+import { Haptic } from './haptics.js';
 
 const native = Capacitor.isNativePlatform();
-let Haptics = null, ImpactStyle = null, LocalNotifications = null, App = null;
+let LocalNotifications = null, App = null;
 
 export const Native = {
   native,
@@ -14,7 +15,6 @@ export const Native = {
       document.addEventListener('visibilitychange', () => (document.hidden ? onPause() : onResume()));
       return;
     }
-    try { const m = await import('@capacitor/haptics'); Haptics = m.Haptics; ImpactStyle = m.ImpactStyle; } catch { /* plugin absent */ }
     try {
       const { StatusBar, Style } = await import('@capacitor/status-bar');
       await StatusBar.setStyle({ style: Style.Dark }); // icônes claires sur fond sombre ; l'affichage bord à bord est géré par Capacitor (SystemBars)
@@ -32,11 +32,8 @@ export const Native = {
     try { const { SplashScreen } = await import('@capacitor/splash-screen'); await SplashScreen.hide({ fadeOutDuration: 250 }); } catch { /* plugin absent */ }
   },
 
-  buzz(kind = 'light') {
-    if (!S.data.settings.haptics) return;
-    if (Haptics) { Haptics.impact({ style: kind === 'heavy' ? ImpactStyle.Heavy : kind === 'medium' ? ImpactStyle.Medium : ImpactStyle.Light }).catch(() => {}); }
-    else if (navigator.vibrate) { try { navigator.vibrate(kind === 'heavy' ? 30 : kind === 'medium' ? 16 : 8); } catch { /* non supporté */ } }
-  },
+  /** Compatibilité : impulsion simple (voir core/haptics.js pour les effets riches). */
+  buzz(kind = 'light') { (Haptic[kind] || Haptic.light)(); },
 
   /** Demande l'autorisation de notifier (proposée après une victoire, jamais au lancement). */
   async enableNotifications() {

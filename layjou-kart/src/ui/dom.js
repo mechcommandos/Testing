@@ -2,6 +2,7 @@
 import { Audio } from '../core/audio.js';
 import { fmt } from '../core/util.js';
 import { IC } from './icons.js';
+import { Haptic } from '../core/haptics.js';
 
 export const $ = (sel, root = document) => root.querySelector(sel);
 export const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
@@ -21,7 +22,7 @@ export function bindActions(root, handlers) {
     const node = ev.target.closest('[data-act]');
     if (!node || !root.contains(node) || node.disabled || node.classList.contains('is-disabled')) return;
     const fn = handlers[node.dataset.act];
-    if (fn) { if (!node.dataset.quiet) Audio.sfx('click'); fn(node, ev); }
+    if (fn) { if (!node.dataset.quiet) { Audio.sfx('click'); Haptic.tap(); } fn(node, ev); }
   });
 }
 
@@ -88,7 +89,7 @@ export function fly(fromEl, toEl, icon, n = 8) {
     document.body.appendChild(node);
     const dx = b.left + b.width / 2 - sx, dy = b.top + b.height / 2 - sy;
     node.animate([{ transform: 'translate(0,0) scale(.4)', opacity: 0 }, { transform: `translate(${(Math.random() - 0.5) * 50}px,${-30 - Math.random() * 30}px) scale(1.1)`, opacity: 1, offset: 0.25 }, { transform: `translate(${dx}px,${dy}px) scale(.5)`, opacity: 0.9 }],
-      { duration: 650 + i * 45, delay: i * 35, easing: 'cubic-bezier(.5,0,.3,1)', fill: 'forwards' }).onfinish = () => { node.remove(); if (i === 0) { toEl.classList.remove('bump'); void toEl.offsetWidth; toEl.classList.add('bump'); } };
+      { duration: 650 + i * 45, delay: i * 35, easing: 'cubic-bezier(.5,0,.3,1)', fill: 'forwards' }).onfinish = () => { node.remove(); if (i < 4) Haptic.select(); if (i === 0) { toEl.classList.remove('bump'); void toEl.offsetWidth; toEl.classList.add('bump'); } };
   }
 }
 

@@ -4,11 +4,12 @@ import { Flow, session } from '../core/retention.js';
 import { Ads } from '../core/ads.js';
 import { Audio, Engine } from '../core/audio.js';
 import { Native } from '../core/native.js';
+import { Haptic } from '../core/haptics.js';
 import { CONFIG } from '../core/config.js';
 import { t, L, placeStr } from '../core/i18n.js';
 import { fmt, lerp, clamp, TAU } from '../core/util.js';
 import { WORLDS, EVENTS, RIVALS, MONSTER_PALS, WEAPONS, ACCESSORIES, ITEMS, WORLD_UNLOCK, starThresholds, byId } from '../game/data.js';
-import { Race, MAXV } from '../game/race.js';
+import { Race, MAXV, wdiff } from '../game/race.js';
 import { Renderer } from '../game/render.js';
 import { FX } from '../game/fx.js';
 import { buildRivalSprites } from '../game/kart-art.js';
@@ -91,9 +92,24 @@ function frame(now) {
   R.update(dt);
   handleEvents();
   if (R.state === 'race' || R.state === 'countdown') Engine.set(clamp(R.player.speed / MAXV, 0, 1.4), R.player.boostT > 0);
+  rumble();
   renderer.draw(R, dt, fx);
   updateHud(dt);
   if (finishTimer > 0) { finishTimer -= dt; if (finishTimer <= 0) afterFinish(); }
+}
+
+/** Grondements continus : dérapage qui se charge (de plus en plus vite), hors-piste, turbo. */
+function rumble() {
+  const p = R.player, live = R.state === 'race' && !p.finished;
+  if (live && p.drifting && p.air <= 0 && p.spinT <= 0) {
+    const lv = p.driftLv;
+    if (lv === 0) Haptic.loop('drift', 'select', 300);
+    else Haptic.loop('drift', lv === 3 ? 'medium' : 'light', lv === 1 ? 210 : lv === 2 ? 150 : 105);
+  } else Haptic.stop('drift');
+  if (live && Math.abs(p.x) > 1.06 && p.speed > 2200 && p.air <= 0 && p.boostT <= 0 && p.starT <= 0) Haptic.loop('road', 'light', 80);
+  else Haptic.stop('road');
+  if (live && (p.boostT > 0.2 || p.starT > 0) && !p.drifting) Haptic.loop('boost', 'select', 130);
+  else Haptic.stop('boost');
 }
 
 function sfx(name, gap = 0) {
@@ -120,38 +136,38 @@ function handleEvents() {
   const p = R.player;
   for (const e of R.events) {
     switch (e.type) {
-      case 'count': msg(String(e.n), 'm-count', 700); sfx('count'); Native.buzz('light'); break;
-      case 'go': msg(t('r_go'), 'm-go', 800); sfx('go'); Engine.start(); if (!S.data.tut.steer) hint('hint_steer', 'steer', 4500); break;
-      case 'rocket': msg(t('r_rocket'), 'm-gold', 1100); sfx('rocket'); Native.buzz('medium'); break;
-      case 'stall': msg(t('r_stall'), 'm-small', 900); sfx('error'); break;
-      case 'lap': if (e.final) { msg(t('r_final'), 'm-gold', 1400); sfx('finalLap'); Audio.music('final'); } else { msg(`${t('r_lap')} ${e.lap}/${R.laps}`, '', 1000); sfx('lap'); } break;
+      case 'count': msg(String(e.n), 'm-count', 700); sfx('count'); Haptic.medium(); break;
+      case 'go': msg(t('r_go'), 'm-go', 800); sfx('go'); Haptic.pattern([['heavy', 0], ['success', 90]]); Engine.start(); if (!S.data.tut.steer) hint('hint_steer', 'steer', 4500); break;
+      case 'rocket': msg(t('r_rocket'), 'm-gold', 1100); sfx('rocket'); Haptic.boom(); break;
+      case 'stall': msg(t('r_stall'), 'm-small', 900); sfx('error'); Haptic.error(); break;
+      case 'lap': if (e.final) { msg(t('r_final'), 'm-gold', 1400); sfx('finalLap'); Audio.music('final'); Haptic.pattern([['warning', 0], ['heavy', 260]]); } else { msg(`${t('r_lap')} ${e.lap}/${R.laps}`, '', 1000); sfx('lap'); Haptic.pattern([['medium', 0], ['medium', 120]]); } break;
       case 'roll': rollT = 1.1; rollItem = e.item; break;
-      case 'itemReady': sfx('item'); hud.item.classList.add('pop'); setTimeout(() => hud.item && hud.item.classList.remove('pop'), 300); if (!S.data.tut.item) hint('hint_item', 'item', 5000); break;
-      case 'use': if (e.who === p) { const it = e.item; sfx(it === 'turbo' || it === 'turbo3' || it === 'star' ? 'boost' : it === 'shield' ? 'shield' : it === 'storm' ? 'zap' : 'throw'); Native.buzz('light'); } else if (e.item === 'storm') sfx('zap'); break;
-      case 'boost': sfx('boost', 150); break;
+      case 'itemReady': sfx('item'); Haptic.pattern([['medium', 0], ['light', 80]]); hud.item.classList.add('pop'); setTimeout(() => hud.item && hud.item.classList.remove('pop'), 300); if (!S.data.tut.item) hint('hint_item', 'item', 5000); break;
+      case 'use': if (e.who === p) { const it = e.item; sfx(it === 'turbo' || it === 'turbo3' || it === 'star' ? 'boost' : it === 'shield' ? 'shield' : it === 'storm' ? 'zap' : 'throw'); if (it === 'shield') Haptic.pattern([['medium', 0], ['select', 90]]); else if (it === 'storm') Haptic.boom(); else if (it !== 'turbo' && it !== 'turbo3' && it !== 'star') Haptic.light(); } else if (e.item === 'storm') sfx('zap'); break;
+      case 'boost': sfx('boost', 150); if (e.lv >= 3) Haptic.boom(); else Haptic.surge(); break;
       case 'pad': msg(t('r_pad'), 'm-small', 600); break;
-      case 'driftStart': sfx('skid', 300); if (!S.data.tut.drift && S.data.stats.races === 0) hint('hint_drift', 'drift', 4500); break;
-      case 'driftLevel': sfx('drift' + e.lv); if (e.lv === 3) Native.buzz('light'); break;
-      case 'coin': sfx('coin', 70); break;
-      case 'box': sfx('box', 80); break;
-      case 'points': pointsPop(e); break;
-      case 'hurt': sfx('hurt'); fx.flash = 1; fx.flashColor = '255,60,90'; fx.shake = 0.6; Native.buzz('heavy'); break;
-      case 'hitRival': msg(t('r_hit'), 'm-hit', 700); sfx('hit', 100); Native.buzz('medium'); break;
-      case 'shieldPop': sfx('block'); msg(t('r_shield'), 'm-small', 700); break;
-      case 'blocked': msg(t('r_blocked'), 'm-small', 700); break;
-      case 'crash': sfx('crash', 300); fx.shake = 0.5; Native.buzz('medium'); break;
-      case 'bump': sfx('bump', 250); Native.buzz('light'); break;
-      case 'jump': sfx('jump'); if (!S.data.tut.jump) hint('hint_jump', 'jump', 3000); break;
-      case 'trick': sfx('trick'); msg(t('r_trick'), 'm-gold', 700); break;
-      case 'land': sfx('land', 200); break;
-      case 'special': { sfx('ult'); const wd = byId(WEAPONS, e.weapon); msg(L(wd.name), 'm-special', 1100); fx.flash = 0.7; fx.flashColor = hexRgb(wd.color); Native.buzz('heavy'); break; }
-      case 'specialReady': sfx('ping'); hud.sp.classList.add('ready'); if (!S.data.tut.special) hint('hint_special', 'special', 4200); break;
-      case 'zap': sfx('zap'); fx.flash = 0.8; fx.flashColor = '200,170,255'; fx.shake = 0.4; break;
-      case 'boom': sfx('boom', 150); fx.shake = Math.max(fx.shake, 0.35); break;
-      case 'overtake': sfx('overtake', 200); break;
+      case 'driftStart': sfx('skid', 300); Haptic.light(); if (!S.data.tut.drift && S.data.stats.races === 0) hint('hint_drift', 'drift', 4500); break;
+      case 'driftLevel': sfx('drift' + e.lv); if (e.lv === 1) Haptic.light(); else if (e.lv === 2) Haptic.pattern([['medium', 0], ['light', 70]]); else Haptic.pattern([['heavy', 0], ['medium', 70], ['heavy', 140]]); break;
+      case 'coin': sfx('coin', 70); Haptic.select(); break;
+      case 'box': sfx('box', 80); Haptic.light(); break;
+      case 'points': pointsPop(e); if (e.combo === 3 || e.combo === 5 || e.combo === 8 || e.combo === 11) Haptic.combo(e.combo); break;
+      case 'hurt': sfx('hurt'); fx.flash = 1; fx.flashColor = '255,60,90'; fx.shake = 0.6; Haptic.hurt(); break;
+      case 'hitRival': msg(t('r_hit'), 'm-hit', 700); sfx('hit', 100); Haptic.pattern([['medium', 0], ['light', 80]]); break;
+      case 'shieldPop': sfx('block'); Haptic.pattern([['heavy', 0], ['select', 100]]); msg(t('r_shield'), 'm-small', 700); break;
+      case 'blocked': msg(t('r_blocked'), 'm-small', 700); Haptic.light(); break;
+      case 'crash': sfx('crash', 300); fx.shake = 0.5; Haptic.pattern([['heavy', 0], ['medium', 90]]); break;
+      case 'bump': sfx('bump', 250); Haptic.medium(); break;
+      case 'jump': sfx('jump'); Haptic.light(); if (!S.data.tut.jump) hint('hint_jump', 'jump', 3000); break;
+      case 'trick': sfx('trick'); msg(t('r_trick'), 'm-gold', 700); Haptic.pattern([['select', 0], ['light', 60], ['medium', 120]]); break;
+      case 'land': sfx('land', 200); Haptic.heavy(); break;
+      case 'special': { sfx('ult'); const wd = byId(WEAPONS, e.weapon); msg(L(wd.name), 'm-special', 1100); fx.flash = 0.7; fx.flashColor = hexRgb(wd.color); Haptic.boom(); break; }
+      case 'specialReady': sfx('ping'); Haptic.success(); hud.sp.classList.add('ready'); if (!S.data.tut.special) hint('hint_special', 'special', 4200); break;
+      case 'zap': sfx('zap'); Haptic.pattern([['heavy', 0], ['warning', 90]]); fx.flash = 0.8; fx.flashColor = '200,170,255'; fx.shake = 0.4; break;
+      case 'boom': { sfx('boom', 150); fx.shake = Math.max(fx.shake, 0.35); const near = Math.abs(wdiff(e.z, R.zOf(p), R.L)) < 4000; if (near) Haptic.boom(); else Haptic.light(); break; }
+      case 'overtake': sfx('overtake', 200); Haptic.pattern([['light', 0], ['select', 70]]); break;
       case 'finish': onFinish(e); break;
-      case 'timeup': msg(t('r_timeup'), 'm-gold', 1300); Engine.stop(); sfx('lose'); setTimeout(offerTime, 900); break;
-      case 'extended': msg(t('r_go'), 'm-go', 800); sfx('revive'); Engine.start(); hud.sp.classList.add('ready'); break;
+      case 'timeup': msg(t('r_timeup'), 'm-gold', 1300); Engine.stop(); sfx('lose'); Haptic.stopAll(); Haptic.warning(); setTimeout(offerTime, 900); break;
+      case 'extended': msg(t('r_go'), 'm-go', 800); sfx('revive'); Haptic.boom(); Engine.start(); hud.sp.classList.add('ready'); break;
       default:
     }
   }
@@ -179,7 +195,7 @@ function updateHud(dt) {
   set('combo', hud.combo, p.combo > 1 && p.comboT > 0 ? '×' + (1 + Math.min(10, p.combo - 1) * 0.1).toFixed(1) : '');
   // objet / roulette
   let icon = '';
-  if (rollT > 0) { rollT -= dt; const keysI = Object.keys(ITEMS); icon = keysI[Math.floor(performance.now() / 70) % keysI.length]; if (Math.floor(performance.now() / 70) !== hudCache.rollTick) { hudCache.rollTick = Math.floor(performance.now() / 70); sfx('roll'); } }
+  if (rollT > 0) { rollT -= dt; const keysI = Object.keys(ITEMS); icon = keysI[Math.floor(performance.now() / 70) % keysI.length]; if (Math.floor(performance.now() / 70) !== hudCache.rollTick) { hudCache.rollTick = Math.floor(performance.now() / 70); sfx('roll'); if (hudCache.rollTick % 2 === 0) Haptic.select(); } }
   else icon = p.item || '';
   if (hudCache.icon !== icon) { hudCache.icon = icon; hud.itemIc.innerHTML = icon ? ITEM_IC[icon] : ''; hud.item.classList.toggle('has', !!icon); }
   set('uses', hud.uses, p.item && p.uses > 1 ? '×' + p.uses : '');
@@ -242,7 +258,7 @@ function tap() {
 /* ================================== pause ================================== */
 export function racePause() {
   if (!R || R.state === 'paused' || R.state === 'done' || R.state === 'decision') return;
-  const prev = R.state; R.state = 'paused'; Engine.stop();
+  const prev = R.state; R.state = 'paused'; Engine.stop(); Haptic.stopAll();
   const m = modal({ cls: 'modal-pause', dismissible: true, onClose: () => { if (R && R.state === 'paused') { R.state = prev; last = performance.now(); if (prev === 'race') Engine.start(); } }, html: `
     <h2>${IC.pause} ${t('pause')}</h2>
     <button class="btn btn-primary btn-wide" data-act="close">${IC.play}${t('resume')}</button>
@@ -257,7 +273,7 @@ export function raceResume() { /* la reprise se fait depuis la fenêtre de pause
 export function raceBack() { if (R && (R.state === 'race' || R.state === 'countdown')) racePause(); }
 
 function endRace() {
-  running = false; cancelAnimationFrame(raf); Engine.stop(); podiumRun = false;
+  running = false; cancelAnimationFrame(raf); Engine.stop(); Haptic.stopAll(); podiumRun = false;
   window.onkeydown = null; window.onkeyup = null; window.onresize = null; keys.clear();
   R = null; if (root) { root.innerHTML = ''; root.hidden = true; }
 }
@@ -270,6 +286,7 @@ function onFinish(e) {
   const good = R.mode === 'race' ? pl <= 3 : R.mode === 'duel' ? pl === 1 : true;
   msg(t('r_finish'), good ? 'm-gold' : '', 1500);
   sfx(good ? 'win' : 'lose');
+  Haptic.stopAll(); if (good) Haptic.celebrate(); else Haptic.fail();
   if (good) for (let i = 0; i < 60; i++) fx.spawn({ type: 'confetti', x: Math.random() * renderer.W, y: -20 - Math.random() * 200, vx: (Math.random() - 0.5) * 120, vy: 200 + Math.random() * 300, g: 120, life: 3, size: 6 * renderer.dpr, color: ['#ff5c9d', '#39e4ff', '#ffd24a', '#7be35a', '#a56bff'][i % 5], drag: 0.99 });
   finishTimer = 1.7;
 }
@@ -291,7 +308,7 @@ function offerExtend() {
     <button class="btn btn-ghost" data-act="no">${t('ext_no')}</button>`,
   actions: {
     video: async () => { const ok = await Ads.showRewarded(t('ext_title')); if (!ok) return toast(t('ad_none')); videoUsed = true; m.close(); R.extendLap(); last = performance.now(); },
-    gem: () => { if (!spend('credits', cost)) { Audio.sfx('error'); toast(t('no_credits'), IC.gem); return; } session.paidExt = paid + 1; m.close(); R.extendLap(); last = performance.now(); },
+    gem: () => { if (!spend('credits', cost)) { Audio.sfx('error'); Haptic.error(); toast(t('no_credits'), IC.gem); return; } session.paidExt = paid + 1; m.close(); R.extendLap(); last = performance.now(); },
     no: () => { m.close(); R.state = 'done'; showResults(); },
   } });
 }
@@ -308,7 +325,7 @@ function offerTime() {
     <button class="btn btn-ghost" data-act="no">${t('ext_no')}</button>`,
   actions: {
     video: async () => { const ok = await Ads.showRewarded(t('time_title')); if (!ok) return toast(t('ad_none')); videoUsed = true; m.close(); R.addTime(s); last = performance.now(); },
-    gem: () => { if (!spend('credits', cost)) { Audio.sfx('error'); toast(t('no_credits'), IC.gem); return; } m.close(); R.addTime(s); last = performance.now(); },
+    gem: () => { if (!spend('credits', cost)) { Audio.sfx('error'); Haptic.error(); toast(t('no_credits'), IC.gem); return; } m.close(); R.addTime(s); last = performance.now(); },
     no: () => { m.close(); R.endChallenge(); },
   } });
 }
@@ -375,6 +392,7 @@ function showResults() {
   requestAnimationFrame(() => panel.classList.add('in'));
   countUp($('#res-score', panel), 0, res.score, 1100);
   if (stars) setTimeout(() => Audio.sfx('star'), 350);
+  Haptic.pattern([[0.25, 0.47, 0.69].slice(0, stars).map((d, i) => [i === 2 ? 'heavy' : 'medium', Math.round(d * 1000)])].flat());
   if ($('#podium', panel)) drawPodium($('#podium', panel), res.order.slice(0, 3));
   let doubled = false;
   bindActions(panel, {
@@ -382,7 +400,7 @@ function showResults() {
       if (doubled) return;
       const ok = await Ads.showRewarded(t('res_double'));
       if (!ok) return toast(t('ad_none'));
-      doubled = true; addCoins(coins); Audio.sfx('coin'); n.classList.add('is-disabled'); fly(n, $('#res-coins', panel), IC.coin, 8);
+      doubled = true; addCoins(coins); Audio.sfx('coin'); Haptic.celebrate(); n.classList.add('is-disabled'); fly(n, $('#res-coins', panel), IC.coin, 8);
       $('#res-coins', panel).textContent = '+' + fmt(coins * 2);
     },
     next: () => leave(() => startRace(next)),

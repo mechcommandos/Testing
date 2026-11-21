@@ -177,13 +177,13 @@ export function createGameScreen(resume: boolean, goHome: () => void, replayGame
     if (!store.p.tutorialDone) { store.p.tutorialDone = true; store.commit(); }
     out.placed.forEach((i) => setCell(i, out.color, 'plop'));
     sfx.place();
-    haptic.light();
+    haptic.medium();
     const anchor = out.placed[Math.floor(out.placed.length / 2)];
 
     if (out.lineCount > 0) {
       await sleep(70);
       sfx.clear(out.lineCount, out.streak);
-      if (out.lineCount >= 2) haptic.heavy(); else haptic.medium();
+      haptic.combo(out.lineCount + out.streak);
       replay(boardWrap, out.lineCount >= 2 ? 'shake2' : 'shake1');
       const wait = explode(out.cleared, out.clearedColors, anchor);
       pop(`+${fmt(out.gained)}`, anchor, 'big');
@@ -191,6 +191,7 @@ export function createGameScreen(resume: boolean, goHome: () => void, replayGame
       if (out.perfect) {
         banner(t('perfect'), 'gold');
         sfx.perfect();
+        haptic.celebrate();
         confetti(90);
       } else if (power >= 2) {
         banner(t(`praise${clamp(power - 1, 1, 5)}` as 'praise1'), `p${clamp(power - 1, 1, 5)}`);
@@ -211,14 +212,14 @@ export function createGameScreen(resume: boolean, goHome: () => void, replayGame
       const w = WEAPON_IDS[Math.floor(Math.random() * 3)];
       store.addWeapon(w, 1);
       sfx.reward();
-      haptic.success();
+      haptic.pattern([['success', 0], ['medium', 160], ['heavy', 280]]);
       const r = energyEl.getBoundingClientRect();
       sparkle(r.left + 14, r.top + r.height / 2, '#FF4F9A', 16);
       banner(t('heartFull', { w: td('w_' + w) }), 'heart');
       replay(weaponBtns.get(w)!, 'gain');
     }
     renderTray(out.refilled);
-    if (out.refilled) sfx.whoosh();
+    if (out.refilled) { sfx.whoosh(); haptic.select(); }
     store.saveGame(game.snapshot());
     busy = false;
     afterMove();
@@ -234,7 +235,7 @@ export function createGameScreen(resume: boolean, goHome: () => void, replayGame
     stuckEl.classList.remove('show');
     if (fill > 0.62) {
       mascot.setMood('worried');
-      if (Date.now() - dangerSaid > 9000) { dangerSaid = Date.now(); mascot.say(say('sayDanger')); }
+      if (Date.now() - dangerSaid > 9000) { dangerSaid = Date.now(); mascot.say(say('sayDanger')); haptic.warning(); }
     } else mascot.setMood('happy');
     boardWrap.classList.toggle('danger', fill > 0.62);
     if (store.p.best > 0 && game.score > store.p.best && !bestEl.dataset.cheered) {
@@ -242,6 +243,7 @@ export function createGameScreen(resume: boolean, goHome: () => void, replayGame
       banner(t('newRecord'), 'gold');
       confetti(70);
       sfx.levelUp();
+      haptic.celebrate();
     }
   }
 
@@ -268,6 +270,7 @@ export function createGameScreen(resume: boolean, goHome: () => void, replayGame
     document.body.appendChild(drag);
     src.style.visibility = 'hidden';
     sfx.pick();
+    haptic.select();
     let target: { r: number; c: number } | null = null;
     let marked: HTMLElement[] = [];
 
@@ -323,6 +326,7 @@ export function createGameScreen(resume: boolean, goHome: () => void, replayGame
       } else {
         // retour dans le plateau de pièces
         sfx.invalid();
+        haptic.pattern([['light', 0], ['light', 90]]);
         const back = slot.getBoundingClientRect();
         drag.classList.add('back');
         drag.style.transform = `translate(${back.left + back.width / 2 - (shape.w * pitch) / 2}px, ${back.top + back.height / 2 - (shape.h * pitch) / 2}px) scale(.45)`;
@@ -385,7 +389,7 @@ export function createGameScreen(resume: boolean, goHome: () => void, replayGame
     if (!at) return;
     const w = aiming;
     const out = game.fireWeapon(w, at.r, at.c);
-    if (!out) { sfx.invalid(); return; }
+    if (!out) { sfx.invalid(); haptic.error(); return; }
     store.addWeapon(w, -1);
     store.trackLive('weapons', 1);
     setAim(null);
@@ -397,7 +401,7 @@ export function createGameScreen(resume: boolean, goHome: () => void, replayGame
     mascot.act('fire');
     mascot.flash('wow', 900);
     sfx[sound]();
-    haptic.heavy();
+    haptic.boom();
     replay(boardWrap, 'shake2');
     if (out.gained) pop(`+${out.gained}`, origin, 'big');
     await explode(out.cells, out.colors, origin);
@@ -418,7 +422,7 @@ export function createGameScreen(resume: boolean, goHome: () => void, replayGame
       h('p', { class: 'hint' }, td('wd_' + w)),
       ads.available()
         ? btn(h('span', { html: `${t('video')} · <b>+1</b>` }), 'cyan big', async () => {
-            if (await watchAd()) { store.addWeapon(w, 1); sfx.reward(); done(); }
+            if (await watchAd()) { store.addWeapon(w, 1); sfx.reward(); haptic.success(); done(); }
           }, ic.video)
         : null,
       h(
@@ -483,9 +487,9 @@ export function createGameScreen(resume: boolean, goHome: () => void, replayGame
         : null,
       btn(h('span', { html: `${t('continue')} &nbsp;${ic.credit}<b>${cost}</b>` }), 'pink big', () => {
         if (store.spendCredits(cost)) void revive();
-        else { toast(t('notEnoughCredits'), 'bad'); sfx.invalid(); openShop('credits'); }
+        else { toast(t('notEnoughCredits'), 'bad'); sfx.invalid(); haptic.error(); openShop('credits'); }
       }),
-      h('button', { class: 'link', onclick: () => { m.close(); endGame(); } }, t('noThanks')),
+      h('button', { class: 'link', onclick: () => { haptic.tap(); m.close(); endGame(); } }, t('noThanks')),
     );
   }
 
@@ -494,6 +498,8 @@ export function createGameScreen(resume: boolean, goHome: () => void, replayGame
     ended = true;
     stuckEl.classList.remove('show');
     sfx.gameOver();
+    haptic.stopAll();
+    haptic.fail();
     const rewards = store.finishGame({
       score: game.score,
       lines: game.lines,
@@ -514,6 +520,7 @@ export function createGameScreen(resume: boolean, goHome: () => void, replayGame
       face.act('cheer');
       confetti(140);
       sfx.levelUp();
+      haptic.celebrate();
     } else face.setMood('happy');
     let coins = r.coins;
     const coinsEl = h('b', { dataset: { value: '0' } }, '0');
@@ -524,6 +531,7 @@ export function createGameScreen(resume: boolean, goHome: () => void, replayGame
           coins *= 2;
           countTo(coinsEl, coins, fmt, 600);
           sfx.coin();
+          haptic.celebrate();
           doubleBtn!.replaceWith(h('span', { class: 'doubled' }, t('doubled')));
         }, ic.video)
       : null;
@@ -552,10 +560,10 @@ export function createGameScreen(resume: boolean, goHome: () => void, replayGame
       ...r.levelsGained.map((l) => h('div', { class: 'res-level' }, h('b', null, t('levelUp', { n: l.level })), rewardChips(l.reward))),
       store.missionsClaimable() > 0 ? h('p', { class: 'res-near' }, `🎯 ${t('missions')} : ${store.missionsClaimable()} ✓`) : null,
       btn(t('playAgain'), 'pink big', () => { m.close(); replayGame(); }, ic.play),
-      h('button', { class: 'link', onclick: () => { m.close(); goHome(); } }, t('quit')),
+      h('button', { class: 'link', onclick: () => { haptic.tap(); m.close(); goHome(); } }, t('quit')),
     );
     setTimeout(() => countTo(coinsEl, coins, fmt, 900), 250);
-    if (r.levelsGained.length) setTimeout(() => { sfx.levelUp(); confetti(60); }, 700);
+    if (r.levelsGained.length) setTimeout(() => { sfx.levelUp(); haptic.celebrate(); confetti(60); }, 700);
   }
 
   // ---------- pause ----------

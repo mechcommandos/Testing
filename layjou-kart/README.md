@@ -131,10 +131,7 @@ L'archive `release/LayjouKart-ios-sources.zip` contient le projet complet, avec 
 
 ## À faire avant de publier
 
-1. **AdMob** : remplacer les identifiants de test.
-   - Blocs d'annonces dans [`src/core/config.js`](src/core/config.js) (`ads.android`, `ads.ios`), puis passer `useTestAds` à `false`.
-   - Identifiant d'application Android dans `android/app/src/main/res/values/strings.xml` (`admob_app_id`).
-   - Identifiant d'application iOS dans `ios/App/App/Info.plist` (`GADApplicationIdentifier`). Compléter aussi `SKAdNetworkItems` avec la [liste de Google](https://developers.google.com/admob/ios/quick-start#update_your_infoplist) : seul l'identifiant de Google (`cstr6suwn9.skadnetwork`) est présent.
+1. **AdMob** : les identifiants du compte sont en place (voir la section AdMob ci-dessous). Pour réactiver les interstitiels, créer un bloc *Interstitiel* dans AdMob, le renseigner dans `src/core/config.js` (`ads.android.interstitial`, `ads.ios.interstitial`) et passer `ads.interstitial.enabled` à `true`.
 2. **Produits intégrés** : créer dans Google Play Console et App Store Connect les produits dont les identifiants figurent dans `config.js` :
    - consommables : `credits_80`, `credits_450`, `credits_1000`, `credits_2200`, `credits_6000` ;
    - non consommables : `starter_pack`, `remove_ads`.
@@ -147,6 +144,29 @@ L'archive `release/LayjouKart-ios-sources.zip` contient le projet complet, avec 
    - vérifier les règles de chaque store sur les achats intégrés et les publicités pour enfants.
 5. **Validation des achats** : les achats sont livrés côté client. En production, valider les reçus côté serveur (`purchaseToken` sur Android, `jwsRepresentation` sur iOS) avant de créditer.
 6. **Fiche store** : icône et bannière prêtes dans `store/`. Ajouter les captures d'écran, la politique de confidentialité (obligatoire avec AdMob), la classification du contenu et la déclaration de sécurité des données.
+
+## AdMob (compte pub-6003645213510535)
+
+| Quoi | Valeur | Où |
+| --- | --- | --- |
+| Identifiant d'application | `ca-app-pub-6003645213510535~7951613295` | `android/app/src/main/res/values/strings.xml` (`admob_app_id`) et `ios/App/App/Info.plist` (`GADApplicationIdentifier`) |
+| Bloc d'annonces avec récompense | `ca-app-pub-6003645213510535/3086524765` | `src/core/config.js` → `ads.android.rewarded` et `ads.ios.rewarded` |
+
+- **Mode test** : annonces de test avec `npm run dev` et dans l'APK de démo (`npm run android:demo`), vraies annonces avec `npm run build`, `npm run sync` et `npm run android:bundle` (réglage automatique : `useTestAds` dans `src/core/config.js`).
+- **Ne cliquez jamais sur vos propres annonces réelles.** Déclarez votre téléphone dans AdMob › Paramètres › Appareils de test.
+- **app-ads.txt** : publiez le fichier [`app-ads.txt`](/app-ads.txt) de la racine du dépôt à la racine du site indiqué dans les fiches des stores (par exemple `https://layjou.com/app-ads.txt`).
+- **Un identifiant par jeu et par plateforme** : le même identifiant d'application sert aujourd'hui aux 6 jeux, sur Android et iOS. AdMob prévoit une application par jeu et par plateforme (12 au total). Créez-les dans AdMob, puis remplacez les identifiants ci-dessus, sinon les statistiques se mélangent et la diffusion peut être limitée une fois les apps associées aux stores.
+- **iOS** : compléter `SKAdNetworkItems` dans `Info.plist` avec la [liste de Google](https://developers.google.com/admob/ios/quick-start#update_your_infoplist). Seul l'identifiant de Google (`cstr6suwn9.skadnetwork`) est présent.
+- **Interstitiels** : désactivés tant qu'aucun bloc *Interstitiel* n'est créé (seul un bloc avec récompense a été fourni).
+
+## Retours haptiques
+
+Le module `src/core/haptics.js` pilote le moteur haptique d'iOS et le vibreur d'Android (avec repli `navigator.vibrate` dans le navigateur) :
+- **effets de base :** cran discret, chocs léger, moyen et fort, motifs de succès, d'alerte et d'erreur ;
+- **effets composés :** crescendo de combo, explosion, poussée, fête, échec, et vibrations continues ;
+- **limiteur :** deux impulsions sont espacées d'au moins 40 ms, sauf si la seconde est plus forte.
+
+Le joueur peut couper les vibrations : réglage « Vibrations » de la fenêtre Réglages.
 
 ## Structure
 

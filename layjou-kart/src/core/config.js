@@ -13,20 +13,25 @@ export const CONFIG = {
   version: '1.0.0',
 
   ads: {
-    useTestAds: true,
+    /**
+     * Annonces de test dans les builds de démo / développement (`npm run dev`, `npm run android:demo`),
+     * vraies annonces dans le build de production (`npm run build`, `npm run sync`, `npm run android:bundle`).
+     * Ne cliquez jamais sur vos propres annonces réelles : ajoutez votre téléphone dans AdMob › Paramètres › Appareils de test.
+     */
+    useTestAds: import.meta.env.MODE !== 'production',
     /** true si l'app vise un public enfant (COPPA / programme Familles) : pubs non personnalisées + contenu « G ». */
     childDirected: false,
-    // identifiants de TEST officiels de Google (ne rapportent rien)
+    // Compte AdMob pub-6003645213510535 — application ca-app-pub-6003645213510535~7951613295
     android: {
-      rewarded: 'ca-app-pub-3940256099942544/5224354917',
-      interstitial: 'ca-app-pub-3940256099942544/1033173712',
+      rewarded: 'ca-app-pub-6003645213510535/3086524765',
+      interstitial: '', // à créer dans AdMob (format Interstitiel), puis réactiver `interstitial.enabled`
     },
     ios: {
-      rewarded: 'ca-app-pub-3940256099942544/1712485313',
-      interstitial: 'ca-app-pub-3940256099942544/4411468910',
+      rewarded: 'ca-app-pub-6003645213510535/3086524765',
+      interstitial: '',
     },
     /** Interstitiels : volontairement rares pour ne pas casser la rétention. */
-    interstitial: { enabled: true, skipFirstRaces: 4, everyNRaces: 3, minSecondsBetween: 180 },
+    interstitial: { enabled: false, skipFirstRaces: 4, everyNRaces: 3, minSecondsBetween: 180 },
     /** Plafond quotidien de vidéos récompensées « crédits gratuits ». */
     freeCreditsPerDay: 5,
     freeCreditsAmount: 8,
