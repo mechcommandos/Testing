@@ -74,7 +74,7 @@ npm test               # tests de la logique de jeu
 npm run assets         # régénère les skins depuis assets/source/layjou-original.png
 
 npm run android:debug  # APK de démonstration (achats simulés)
-npm run android:release # AAB de production (signature à configurer)
+npm run android:release # AAB de production signé (voir « Publier sur Google Play »)
 npm run ios:sync       # prépare le projet Xcode
 ```
 
@@ -82,6 +82,21 @@ Le mode « bac à sable » (`npm run dev`, `npm run build:sandbox`) simule les a
 
 Prérequis Android : JDK 21, SDK Android 36, et `android/local.properties` contenant `sdk.dir=…`.
 Prérequis iOS : un Mac avec Xcode ; les dépendances natives sont résolues par Swift Package Manager à l'ouverture du projet.
+
+## Publier sur Google Play (App Bundle signé)
+
+Le fichier prêt à envoyer est [`release/LayjouBlocks-1.0.0-release.aab`](release/LayjouBlocks-1.0.0-release.aab) : App Bundle de production (vraies annonces, achats réels), signé avec la clé d'envoi Layjou (`layjou-upload-key.jks`, alias `layjou-upload`, la même pour les 6 jeux). La clé et son mot de passe ne sont **jamais** dans ce dépôt : gardez-les en lieu sûr.
+
+Pour recompiler, créez `android/keystore.properties` (ignoré par Git) :
+
+```properties
+storeFile=/chemin/absolu/layjou-upload-key.jks
+storePassword=********
+keyAlias=layjou-upload
+keyPassword=********
+```
+
+ou définissez les variables d'environnement `LAYJOU_KEYSTORE`, `LAYJOU_KEYSTORE_PASSWORD`, `LAYJOU_KEY_ALIAS` et `LAYJOU_KEY_PASSWORD`, puis `npm run android:release` → `android/app/build/outputs/bundle/release/app-release.aab`. Augmentez `versionCode` dans `android/app/build.gradle` à chaque mise à jour.
 
 ## Limites connues
 

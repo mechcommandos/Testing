@@ -1,1 +1,6 @@
 node_modules/
+
+# Signature (secrets : ne jamais versionner)
+keystore.properties
+*.keystore
+*.jks

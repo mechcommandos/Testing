@@ -43,6 +43,21 @@ npx cap open ios
 
 Dans Xcode : choisir son équipe dans *Signing & Capabilities*, puis lancer sur un simulateur ou un iPhone.
 
+## Publier sur Google Play (App Bundle signé)
+
+Le fichier prêt à envoyer est [`release/LayjouRun-1.0-release.aab`](release/LayjouRun-1.0-release.aab) : App Bundle de production (vraies annonces, achats réels), signé avec la clé d'envoi Layjou (`layjou-upload-key.jks`, alias `layjou-upload`, la même pour les 6 jeux). La clé et son mot de passe ne sont **jamais** dans ce dépôt : gardez-les en lieu sûr.
+
+Pour recompiler, créez `android/keystore.properties` (ignoré par Git) :
+
+```properties
+storeFile=/chemin/absolu/layjou-upload-key.jks
+storePassword=********
+keyAlias=layjou-upload
+keyPassword=********
+```
+
+ou définissez les variables d'environnement `LAYJOU_KEYSTORE`, `LAYJOU_KEYSTORE_PASSWORD`, `LAYJOU_KEY_ALIAS` et `LAYJOU_KEY_PASSWORD`, puis `npm run android:bundle` → `android/app/build/outputs/bundle/release/app-release.aab`. Augmentez `versionCode` dans `android/app/build.gradle` à chaque mise à jour.
+
 ## Publicité : vidéo récompensée AdMob
 
 À la fin d'une partie, le bouton « Continuer avec une vidéo » relance la course si le joueur regarde

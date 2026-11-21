@@ -1,5 +1,14 @@
 apply plugin: 'com.android.application'
 
+// Signature de la version release (App Bundle pour Google Play), au choix :
+//  - android/keystore.properties (non versionné) : storeFile, storePassword, keyAlias, keyPassword
+//  - variables d'environnement : LAYJOU_KEYSTORE, LAYJOU_KEYSTORE_PASSWORD, LAYJOU_KEY_ALIAS, LAYJOU_KEY_PASSWORD
+def keystoreProps = new Properties()
+def keystoreFile = rootProject.file('keystore.properties')
+if (keystoreFile.exists()) { keystoreFile.withInputStream { keystoreProps.load(it) } }
+def signingValue = { String prop, String env -> keystoreProps[prop] ?: System.getenv(env) }
+def releaseStore = signingValue('storeFile', 'LAYJOU_KEYSTORE')
+
 android {
     namespace = "com.layjou.run"
     compileSdk = rootProject.ext.compileSdkVersion
@@ -16,8 +25,19 @@ android {
             ignoreAssetsPattern = '!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'
         }
     }
+    signingConfigs {
+        release {
+            if (releaseStore) {
+                storeFile file(releaseStore)
+                storePassword signingValue('storePassword', 'LAYJOU_KEYSTORE_PASSWORD')
+                keyAlias signingValue('keyAlias', 'LAYJOU_KEY_ALIAS')
+                keyPassword signingValue('keyPassword', 'LAYJOU_KEY_PASSWORD')
+            }
+        }
+    }
     buildTypes {
         release {
+            if (releaseStore) { signingConfig signingConfigs.release }
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }

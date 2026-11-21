@@ -60,6 +60,21 @@ Le joueur peut couper les vibrations : bouton 📳 de l'accueil.
 
 L'APK fourni est un build **debug** (signature de test) : parfait pour essayer le jeu, mais le Play Store exige un build *release* signé avec votre propre clé (`./gradlew bundleRelease` + keystore dans Android Studio).
 
+## Publier sur Google Play (App Bundle signé)
+
+Le fichier prêt à envoyer est [`release/LayjouPuzzle-1.0-release.aab`](release/LayjouPuzzle-1.0-release.aab) : App Bundle de production (vraies annonces, achats réels), signé avec la clé d'envoi Layjou (`layjou-upload-key.jks`, alias `layjou-upload`, la même pour les 6 jeux). La clé et son mot de passe ne sont **jamais** dans ce dépôt : gardez-les en lieu sûr.
+
+Pour recompiler, créez `android/keystore.properties` (ignoré par Git) :
+
+```properties
+storeFile=/chemin/absolu/layjou-upload-key.jks
+storePassword=********
+keyAlias=layjou-upload
+keyPassword=********
+```
+
+ou définissez les variables d'environnement `LAYJOU_KEYSTORE`, `LAYJOU_KEYSTORE_PASSWORD`, `LAYJOU_KEY_ALIAS` et `LAYJOU_KEY_PASSWORD`, puis `npm run android:bundle` → `android/app/build/outputs/bundle/release/app-release.aab`. Augmentez `versionCode` dans `android/app/build.gradle` à chaque mise à jour.
+
 ## Réglages du jeu
 
 `www/js/config.js` : secondes offertes par vidéo, nombre de « continuer », prix des bonus.

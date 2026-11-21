@@ -83,16 +83,21 @@ Clavier : `J` frappe · `K` arme · `L` Super · `Espace` parer · `A` esquive.
 npm run android                      # → android/app/build/outputs/apk/debug/app-debug.apk
 ```
 
-Version publiable (App Bundle signé) : créer `android/keystore.properties` (non versionné) :
+#### Publier sur Google Play (App Bundle signé)
+
+Le fichier prêt à envoyer est [`release/LayjouBattle-1.0.0-release.aab`](release/LayjouBattle-1.0.0-release.aab) : App Bundle de production (vraies annonces, achats réels), signé avec la clé d'envoi Layjou (`layjou-upload-key.jks`, alias `layjou-upload`, la même pour les 6 jeux). La clé et son mot de passe ne sont **jamais** dans ce dépôt : gardez-les en lieu sûr.
+
+Pour recompiler, créez `android/keystore.properties` (ignoré par Git) :
 
 ```properties
-storeFile=/chemin/absolu/layjou.keystore
+storeFile=/chemin/absolu/layjou-upload-key.jks
 storePassword=********
-keyAlias=layjou
+keyAlias=layjou-upload
 keyPassword=********
 ```
 
-puis `npm run android:bundle` → `android/app/build/outputs/bundle/release/app-release.aab`.
+ou définissez les variables d'environnement `LAYJOU_KEYSTORE`, `LAYJOU_KEYSTORE_PASSWORD`, `LAYJOU_KEY_ALIAS` et `LAYJOU_KEY_PASSWORD`, puis `npm run android:bundle` → `android/app/build/outputs/bundle/release/app-release.aab`. Augmentez `versionCode` dans `android/app/build.gradle` à chaque mise à jour.
+
 
 ### iOS
 
