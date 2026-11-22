@@ -12,6 +12,7 @@ import {
   AdmobConsentStatus,
   MaxAdContentRating,
   RewardAdPluginEvents,
+  InterstitialAdPluginEvents,
 } from '@capacitor-community/admob';
 import { ADMOB, SANDBOX } from '../config';
 import { t } from '../i18n';
@@ -53,7 +54,36 @@ async function preload(): Promise<boolean> {
   return loading;
 }
 
+// ---------- interstitiels (rares) ----------
+let interLoaded = false;
+let interGames = 0;
+let interSince = 0;
+let interLast = Date.now();
+function preloadInter(): void {
+  const I = ADMOB.interstitial;
+  if (!native || !ready || !I.enabled || interLoaded) return;
+  AdMob.prepareInterstitial({ adId: platform === 'ios' ? I.ios : I.android, isTesting: ADMOB.testing })
+    .then(() => { interLoaded = true; })
+    .catch((e) => console.warn('[ads] interstitiel', e));
+}
+
 export const ads = {
+  /** À appeler à chaque fin de partie : affiche parfois un interstitiel et attend sa fermeture. */
+  async maybeInterstitial(): Promise<void> {
+    const I = ADMOB.interstitial;
+    interGames++; interSince++;
+    if (!native || !ready || !I.enabled) return;
+    if (!interLoaded) { preloadInter(); return; }
+    if (interGames <= I.skipFirstGames || interSince < I.everyNGames || Date.now() - interLast < I.minSecondsBetween * 1000) return;
+    await new Promise<void>((resolve) => {
+      const hs: Promise<{ remove: () => Promise<void> }>[] = [];
+      const done = () => { hs.forEach((h) => void h.then((x) => x.remove())); interLoaded = false; interSince = 0; interLast = Date.now(); preloadInter(); resolve(); };
+      hs.push(AdMob.addListener(InterstitialAdPluginEvents.Dismissed, done), AdMob.addListener(InterstitialAdPluginEvents.FailedToShow, done));
+      suspendAudio();
+      AdMob.showInterstitial().catch(done);
+    });
+  },
+
   async init(): Promise<void> {
     if (!native) return;
     try {
@@ -81,6 +111,7 @@ export const ads = {
       ready = true;
     }
     void preload();
+    preloadInter();
   },
 
   /** Une vidéo peut-elle être proposée ? (en bac à sable web : toujours) */

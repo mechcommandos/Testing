@@ -1,0 +1,29 @@
+{
+  "name": "layjou-bubble",
+  "version": "1.0.0",
+  "description": "Layjou Bubble — jeu de match-3 avec le robot Layjou (Capacitor + AdMob)",
+  "private": true,
+  "scripts": {
+    "start": "npx serve www",
+    "test": "node tests/engine.test.mjs",
+    "sync": "cap sync",
+    "assets": "capacitor-assets generate --iconBackgroundColor '#2EA8F5' --iconBackgroundColorDark '#2EA8F5' --splashBackgroundColor '#1C6FD7' --splashBackgroundColorDark '#0C3078'",
+    "android:apk": "cap sync android && cd android && ./gradlew assembleDebug",
+    "android:open": "cap open android",
+    "ios:open": "cap sync ios && cap open ios",
+    "android:demo": "node tools/demo-ads.mjs on && (npx cap sync android && cd android && ./gradlew assembleDebug); s=$?; node tools/demo-ads.mjs off; npx cap sync android >/dev/null; exit $s",
+    "android:bundle": "npx cap sync android && cd android && ./gradlew bundleRelease"
+  },
+  "dependencies": {
+    "@capacitor-community/admob": "^8.3.0",
+    "@capacitor/android": "^8.6.2",
+    "@capacitor/core": "^8.6.2",
+    "@capacitor/haptics": "^8.0.2",
+    "@capacitor/ios": "^8.6.2"
+  },
+  "devDependencies": {
+    "@capacitor/assets": "^4.0.0",
+    "@capacitor/cli": "^8.6.2"
+  },
+  "type": "module"
+}

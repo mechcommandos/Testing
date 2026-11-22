@@ -144,6 +144,7 @@ const fr = {
   haptics: 'Vibrations',
   language: 'Langue',
   privacy: 'Confidentialité des publicités',
+  privacyPolicy: 'Politique de confidentialité',
   howTo: 'Comment jouer',
   howToText:
     'Glisse les pièces sur le plateau. Complète une ligne ou une colonne pour l’effacer. Enchaîne les lignes pour faire monter le combo, et remplis le cœur de Layjou pour gagner une arme !',
@@ -291,6 +292,7 @@ const en: Dict = {
   haptics: 'Vibration',
   language: 'Language',
   privacy: 'Ad privacy',
+  privacyPolicy: 'Privacy policy',
   howTo: 'How to play',
   howToText:
     'Drag pieces onto the board. Fill a row or a column to clear it. Chain clears to raise your combo, and fill Layjou’s heart to win a weapon!',

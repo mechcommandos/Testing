@@ -1,0 +1,38 @@
+{
+  "name": "layjou-battle",
+  "version": "1.0.0",
+  "description": "Layjou Battle — jeu de combat de robots (Capacitor, Android & iOS)",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "sync": "npm run build && cap sync",
+    "assets": "node tools/render-icons.cjs && capacitor-assets generate --android --ios --iconBackgroundColor \"#3a0a34\" --iconBackgroundColorDark \"#3a0a34\" --splashBackgroundColor \"#3a0a34\" --splashBackgroundColorDark \"#1e0520\"",
+    "android": "npm run sync && cd android && ./gradlew assembleDebug",
+    "ios": "npm run sync && cap open ios",
+    "android:bundle": "npm run sync && cd android && ./gradlew bundleRelease",
+    "icons": "node tools/render-icons.cjs",
+    "android:demo": "vite build --mode demo && cap sync android && cd android && ./gradlew assembleDebug"
+  },
+  "dependencies": {
+    "@capacitor-community/admob": "^8.3.0",
+    "@capacitor/android": "^8.6.2",
+    "@capacitor/app": "^8.1.2",
+    "@capacitor/core": "^8.6.2",
+    "@capacitor/haptics": "^8.0.2",
+    "@capacitor/ios": "^8.6.2",
+    "@capacitor/local-notifications": "^8.3.1",
+    "@capacitor/preferences": "^8.0.1",
+    "@capacitor/splash-screen": "^8.0.2",
+    "@capacitor/status-bar": "^8.0.4",
+    "@capgo/native-purchases": "^8.9.13",
+    "@fontsource-variable/fredoka": "^5.3.0"
+  },
+  "devDependencies": {
+    "@capacitor/assets": "^4.0.0",
+    "@capacitor/cli": "^8.6.2",
+    "vite": "^8.3.8"
+  }
+}

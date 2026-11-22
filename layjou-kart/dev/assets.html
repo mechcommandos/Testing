@@ -1,0 +1,96 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>assets</title>
+<style>html,body{margin:0;background:#000}canvas{display:block}</style></head>
+<body><canvas id="c"></canvas>
+<script type="module">
+import '@fontsource-variable/fredoka';
+import { drawKartFront } from '/src/game/kart-art.js';
+import { drawLayjou, poseOf, heartPath } from '/src/game/layjou.js';
+import { drawMonster } from '/src/game/monsters.js';
+import { MONSTER_PALS } from '/src/game/data.js';
+
+const q = new URLSearchParams(location.search);
+const kind = q.get('kind') || 'icon', size = +(q.get('size') || 1024);
+const W = kind === 'feature' ? 1024 : size, H = kind === 'feature' ? 500 : size;
+const cv = document.getElementById('c'); cv.width = W; cv.height = H;
+const c = cv.getContext('2d');
+const logo = await new Promise((r) => { const i = new Image(); i.onload = () => r(i); i.src = '/layjou-logo.png'; });
+await document.fonts.load('700 100px "Fredoka Variable"');
+
+function bg(w, h, dark) {
+  const g = c.createRadialGradient(w / 2, h * 0.3, 10, w / 2, h * 0.5, Math.max(w, h) * 0.8);
+  g.addColorStop(0, dark ? '#3a1f9a' : '#6a3ce0'); g.addColorStop(0.55, dark ? '#1c0f5a' : '#2f1a8a'); g.addColorStop(1, dark ? '#0c0628' : '#160d44');
+  c.fillStyle = g; c.fillRect(0, 0, w, h);
+  c.save(); c.globalAlpha = 0.08; c.fillStyle = '#fff';
+  for (let i = -10; i < 30; i++) { c.save(); c.translate(i * w * 0.08, 0); c.rotate(0.45); c.fillRect(0, -h, w * 0.025, h * 3); c.restore(); }
+  c.restore();
+}
+function road(w, h, y0) {
+  // route en perspective sous le kart
+  c.save();
+  c.beginPath(); c.moveTo(w * 0.42, y0); c.lineTo(w * 0.58, y0); c.lineTo(w * 1.15, h); c.lineTo(-w * 0.15, h); c.closePath();
+  const g = c.createLinearGradient(0, y0, 0, h); g.addColorStop(0, '#5a4aa8'); g.addColorStop(1, '#8c80b8'); c.fillStyle = g; c.fill();
+  for (const s of [-1, 1]) { c.beginPath(); c.moveTo(w / 2 + s * w * 0.08, y0); c.lineTo(w / 2 + s * w * 0.1, y0); c.lineTo(w / 2 + s * w * 0.75, h); c.lineTo(w / 2 + s * w * 0.65, h); c.closePath(); c.fillStyle = '#ff5c9d'; c.fill(); }
+  c.restore();
+}
+function speedLines(w, h, cx, cy) {
+  c.save(); c.strokeStyle = 'rgba(255,255,255,.5)'; c.lineCap = 'round';
+  for (let i = 0; i < 18; i++) { const a = (i / 18) * Math.PI * 2 + 0.1, r0 = Math.max(w, h) * 0.42, r1 = r0 + Math.max(w, h) * 0.12; c.lineWidth = w * 0.006; c.beginPath(); c.moveTo(cx + Math.cos(a) * r0, cy + Math.sin(a) * r0); c.lineTo(cx + Math.cos(a) * r1, cy + Math.sin(a) * r1); c.stroke(); }
+  c.restore();
+}
+function kart(x, y, s, steer = 0.25, t = 1.3) { c.save(); c.translate(x, y); c.scale(s, s); drawKartFront(c, { shape: 'round', skin: 'classic', accessory: 'none', t, steer }); c.restore(); }
+function wordmark(x, y, s) {
+  c.save(); c.translate(x, y); c.scale(s, s);
+  c.save(); c.transform(1, 0, -0.2, 1, 0, 0); c.rotate(-0.03);
+  const g = c.createLinearGradient(-140, 0, 140, 0); g.addColorStop(0, '#ffd24a'); g.addColorStop(0.4, '#ff8a3d'); g.addColorStop(0.8, '#ff5c9d');
+  c.fillStyle = '#a01f62'; c.beginPath(); c.roundRect(-150, -38, 300, 84, 18); c.fill();
+  c.fillStyle = g; c.beginPath(); c.roundRect(-150, -46, 300, 84, 18); c.fill();
+  c.font = 'italic 700 70px "Fredoka Variable", Fredoka, sans-serif'; c.textAlign = 'center'; c.textBaseline = 'middle';
+  c.fillStyle = 'rgba(120,20,70,.55)'; c.fillText('KART', 4, 2); c.fillStyle = '#fff'; c.fillText('KART', 0, -4);
+  c.restore();
+  for (const sx of [-1, 1]) for (let i = 0; i < 4; i++) for (let j = 0; j < 8; j++) if ((i + j) % 2) { c.fillStyle = '#fff'; c.fillRect(sx * 170 - 14 + i * 7 - (sx > 0 ? 0 : 14), -28 + j * 7, 7, 7); } else { c.fillStyle = '#1a1033'; c.fillRect(sx * 170 - 14 + i * 7 - (sx > 0 ? 0 : 14), -28 + j * 7, 7, 7); }
+  c.restore();
+}
+function logoImg(x, y, w) {
+  const h = w * logo.naturalHeight / logo.naturalWidth;
+  c.save(); c.shadowColor = '#fff'; c.shadowBlur = w * 0.012; for (let i = 0; i < 4; i++) c.drawImage(logo, x - w / 2, y - h / 2, w, h); c.restore();
+  c.drawImage(logo, x - w / 2, y - h / 2, w, h);
+}
+
+if (kind === 'icon' || kind === 'bg' || kind === 'fg') {
+  const S = W;
+  if (kind !== 'fg') { bg(S, S); speedLines(S, S, S / 2, S * 0.55); road(S, S, S * 0.62); }
+  if (kind !== 'bg') {
+    const k = kind === 'fg' ? 0.66 : 1;
+    c.save(); c.translate(S / 2, S / 2); c.scale(k, k); c.translate(-S / 2, -S / 2);
+    // halo
+    const g = c.createRadialGradient(S / 2, S * 0.5, 10, S / 2, S * 0.5, S * 0.42); g.addColorStop(0, 'rgba(255,214,90,.55)'); g.addColorStop(1, 'rgba(255,214,90,0)');
+    c.fillStyle = g; c.fillRect(0, 0, S, S);
+    kart(S / 2, S * 0.86, S / 205, 0.2);
+    c.restore();
+  }
+} else if (kind === 'splash' || kind === 'splash-dark') {
+  bg(W, H, kind === 'splash-dark'); speedLines(W, H, W / 2, H * 0.5);
+  const u = W / 1000;
+  logoImg(W / 2, H * 0.335, 420 * u);
+  wordmark(W / 2, H * 0.43, 1.2 * u);
+  const g = c.createRadialGradient(W / 2, H * 0.62, 10, W / 2, H * 0.62, 300 * u); g.addColorStop(0, 'rgba(255,214,90,.5)'); g.addColorStop(1, 'rgba(255,214,90,0)');
+  c.fillStyle = g; c.fillRect(0, 0, W, H);
+  kart(W / 2, H * 0.7, 1.5 * u, 0.15);
+} else if (kind === 'feature') {
+  bg(W, H); speedLines(W, H, W * 0.7, H * 0.55); road(W, H, H * 0.55);
+  logoImg(W * 0.27, H * 0.33, 400);
+  wordmark(W * 0.27, H * 0.56, 1.05);
+  const rivals = [['blob', 'grape', 0.56, 0.86, 0.3], ['crab', 'orange', 0.915, 0.93, 0.3], ['wasp', 'yellow', 0.86, 0.5, 0.28]];
+  for (const [ty, pal, fx, fy, sc] of rivals) { c.save(); c.translate(W * fx, H * fy); drawMonster(c, ty, { x: 0, y: 0, scale: sc, pal: MONSTER_PALS[pal], t: 1.2 }); c.restore(); }
+  kart(W * 0.74, H * 0.96, 2.1, 0.3);
+} else if (kind === 'stat') {
+  // icône de notification (silhouette blanche)
+  c.fillStyle = '#fff'; c.translate(W / 2, H / 2); const s = W / 24;
+  c.beginPath(); c.ellipse(0, s * 1.5, s * 9, s * 7.5, 0, 0, Math.PI * 2); c.fill();
+  c.beginPath(); c.arc(0, -s * 8.5, s * 1.8, 0, Math.PI * 2); c.fill(); c.fillRect(-s * 0.5, -s * 7, s, s * 2);
+  c.globalCompositeOperation = 'destination-out'; c.beginPath(); c.ellipse(0, s * 2, s * 6.5, s * 4.8, 0, 0, Math.PI * 2); c.fill();
+  c.globalCompositeOperation = 'source-over'; heartPath(c, 0, s * 2.2, s * 2.2); c.fill();
+}
+document.title = 'ready';
+</script></body></html>
