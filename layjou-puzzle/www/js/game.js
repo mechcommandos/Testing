@@ -190,7 +190,8 @@
     $$('.screen').forEach((s) => s.classList.toggle('active', s.id === id));
   }
 
-  function startLevel() {
+  function startLevel() { Promise.resolve(Ads.maybeInterstitial()).then(startLevelNow); }
+  function startLevelNow() {
     const g = generate(save.level);
     const triples = g.total / 3;
     const perTriple = Math.max(4.5, 7.5 - save.level * 0.12);

@@ -72,7 +72,7 @@ match 3,bubble,puzzle,combo,robot,brain,levels,colors,ice,swap,pop
 **Notes pour la vérification (App Review › Notes)** — en anglais :
 ```
 No account or sign-in is needed: all content is available right away. There are no in-app purchases.
-The only ad is an optional rewarded video offered when the player runs out of moves (+5 moves).
+Ads: occasional interstitials between levels/runs and an optional rewarded video offered when the player runs out of moves (+5 moves).
 The privacy policy link is at the bottom of the home screen, next to "Ad privacy options" (Google consent form, shown in the EEA/UK).
 The App Tracking Transparency prompt appears before personalized ads; the game works exactly the same if tracking is declined.
 ```
@@ -139,7 +139,7 @@ Violence : **Aucune** · Coffres à butin : **Non**
 
 ## 6. Publicités et achats intégrés
 
-**Publicités (AdMob)** : Vidéo récompensée uniquement : +5 coups quand il n'en reste plus.
+**Publicités (AdMob)** : Vidéo récompensée : +5 coups quand il n'en reste plus. Interstitiels rares entre deux niveaux (jamais avant le 4ᵉ, au plus un niveau sur 3, 2 min 30 minimum).
 
 **Achats intégrés**
 Aucun achat intégré : rien à créer dans les consoles.

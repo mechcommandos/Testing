@@ -124,8 +124,8 @@ Les sources iOS sont générées et configurées ; la compilation nécessite un 
 
 | Quoi | Valeur | Où |
 | --- | --- | --- |
-| Identifiant d'application | `ca-app-pub-6003645213510535~7951613295` | `android/app/src/main/res/values/strings.xml` (`admob_app_id`) et `ios/App/App/Info.plist` (`GADApplicationIdentifier`) |
-| Bloc d'annonces avec récompense | `ca-app-pub-6003645213510535/3086524765` | `src/core/config.js` → `ads.android.rewarded` et `ads.ios.rewarded` |
+| Identifiant d'application | `ca-app-pub-6003645213510535~4833816740` | `android/app/src/main/res/values/strings.xml` (`admob_app_id`) et `ios/App/App/Info.plist` (`GADApplicationIdentifier`) |
+| Bloc d'annonces avec récompense | `ca-app-pub-6003645213510535/3309442507` | `src/core/config.js` → `ads.android.rewarded` et `ads.ios.rewarded` |
 
 - **Mode test** : annonces de test avec `npm run dev` et dans l'APK de démo (`npm run android:demo`), vraies annonces avec `npm run build`, `npm run sync` et `npm run android:bundle` (réglage automatique : `useTestAds` dans `src/core/config.js`).
 - **Ne cliquez jamais sur vos propres annonces réelles.** Déclarez votre téléphone dans AdMob › Paramètres › Appareils de test.

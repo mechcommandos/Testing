@@ -47,8 +47,8 @@ Si le jeu vise les enfants, passer `ADMOB.childDirected` à `true` et suivre le 
 
 | Quoi | Valeur | Où |
 | --- | --- | --- |
-| Identifiant d'application | `ca-app-pub-6003645213510535~7951613295` | `android/app/src/main/res/values/strings.xml` (`admob_app_id`) et `ios/App/App/Info.plist` (`GADApplicationIdentifier`) |
-| Bloc d'annonces avec récompense | `ca-app-pub-6003645213510535/3086524765` | `src/config.ts` → `ADMOB.rewarded` |
+| Identifiant d'application | `ca-app-pub-6003645213510535~4833816740` | `android/app/src/main/res/values/strings.xml` (`admob_app_id`) et `ios/App/App/Info.plist` (`GADApplicationIdentifier`) |
+| Bloc d'annonces avec récompense | `ca-app-pub-6003645213510535/3309442507` | `src/config.ts` → `ADMOB.rewarded` |
 
 - **Mode test** : annonces de test avec `npm run dev` et dans l'APK de démo (`npm run android:debug`), vraies annonces avec `npm run build` et `npm run android:release` (réglage automatique dans `src/config.ts`).
 - **Ne cliquez jamais sur vos propres annonces réelles.** Déclarez votre téléphone dans AdMob › Paramètres › Appareils de test.

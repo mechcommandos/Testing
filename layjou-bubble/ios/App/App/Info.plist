@@ -65,7 +65,7 @@
 	<true/>
 	<!-- Google TEST AdMob App ID: replace with your own before publishing -->
 	<key>GADApplicationIdentifier</key>
-	<string>ca-app-pub-6003645213510535~7951613295</string>
+	<string>ca-app-pub-6003645213510535~4833816740</string>
 	<key>NSUserTrackingUsageDescription</key>
 	<string>Cet identifiant sert à vous proposer des publicités plus pertinentes.</string>
 	<key>SKAdNetworkItems</key>

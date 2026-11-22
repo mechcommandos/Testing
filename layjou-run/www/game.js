@@ -570,7 +570,8 @@ let state = 'menu'; // menu | play | pause | dying | over
 let run = null;
 const player = { lane: 1, x: 0, y: 0, vy: 0, slide: 0, phase: 0, tilt: 0, lean: 0, dive: false };
 
-function newRun() {
+function newRun() { ads.maybeInterstitial().then(newRunNow); }
+function newRunNow() {
   clearObjs();
   run = { dist: 0, score: 0, hearts: 0, speed: 13, nextRow: 30, nextPower: rand(120, 200),
     powers: { magnet: 0, shield: 0, double: 0 }, invuln: 0, revived: false, shake: 0, dieT: 0, newBest: false };

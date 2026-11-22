@@ -72,7 +72,7 @@ block,puzzle,lines,grid,8x8,brain,combo,cube,robot,relax,classic
 **Notes pour la vérification (App Review › Notes)** — en anglais :
 ```
 No account or sign-in is needed: all content is available right away.
-Rewarded video ads are always optional (continue a game, double bolts, free tool).
+Rewarded video ads are always optional; occasional interstitials appear between games (continue a game, double bolts, free tool).
 In-app purchases: Shop button (bottom bar of the home screen) > Credit packs. "Restore purchases" is at the bottom of the Shop.
 Settings (gear icon) contain the privacy policy link and "Ad privacy" (Google consent form, shown in the EEA/UK).
 The App Tracking Transparency prompt appears before personalized ads; the game works exactly the same if tracking is declined.
@@ -142,7 +142,7 @@ Violence : **Aucune** · Armes : **Aucune** (outils de puzzle) · Coffres à but
 
 ## 6. Publicités et achats intégrés
 
-**Publicités (AdMob)** : Vidéos récompensées uniquement : continuer la partie (2 fois), doubler les boulons, arme gratuite, +60 boulons (5 fois par jour).
+**Publicités (AdMob)** : Vidéos récompensées : continuer la partie (2 fois), doubler les boulons, arme gratuite, +60 boulons (5 fois par jour). Interstitiels rares en fin de partie (jamais avant la 4ᵉ, au plus une partie sur 3, 2 min 30 minimum).
 
 **Achats intégrés**
 | Identifiant (identique dans les deux stores) | Type | Contenu (nom affiché) | Prix de référence |

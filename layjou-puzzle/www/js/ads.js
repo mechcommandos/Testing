@@ -19,6 +19,25 @@
   }
 
   let privacyRequired = false;
+  let interLoaded = false, interGames = 0, interSince = 0, interLast = Date.now();
+  function preloadInter() {
+  const I = cfg.interstitial;
+  if (!AdMob || !I || !I.enabled || interLoaded) return;
+  AdMob.prepareInterstitial({ adId: I[platform], isTesting: cfg.testMode }).then(() => { interLoaded = true; }).catch((e) => console.warn('[ads] interstitiel', e));
+  }
+  async function maybeInterstitial() {
+  const I = cfg.interstitial;
+  interGames++; interSince++;
+  if (!AdMob || !I || !I.enabled) return;
+  if (!interLoaded) { preloadInter(); return; }
+  if (interGames <= I.skipFirstGames || interSince < I.everyNGames || Date.now() - interLast < I.minSecondsBetween * 1000) return;
+  await new Promise((resolve) => {
+    const hs = [];
+    const done = () => { hs.forEach((h) => Promise.resolve(h).then((x) => x && x.remove && x.remove())); interLoaded = false; interSince = 0; interLast = Date.now(); preloadInter(); resolve(); };
+    hs.push(AdMob.addListener('interstitialAdDismissed', done), AdMob.addListener('interstitialAdFailedToShow', done));
+    AdMob.showInterstitial().catch(done);
+  });
+  }
   /** Vrai quand les règles de consentement de Google exigent un accès aux options de confidentialité (EEE, Royaume-Uni, Suisse). */
   function hasPrivacyOptions() { return !!AdMob && privacyRequired; }
   async function showPrivacyOptions() {
@@ -48,6 +67,7 @@
         }
       } catch (e) { console.warn('admob init', e); }
       preload();
+      preloadInter();
     })();
     return initDone;
   }
@@ -103,5 +123,5 @@
     });
   }
 
-  window.Ads = { init, preload, showRewarded, isNative, hasPrivacyOptions, showPrivacyOptions };
+  window.Ads = { init, preload, showRewarded, isNative, hasPrivacyOptions, showPrivacyOptions, maybeInterstitial };
 })();

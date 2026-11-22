@@ -4,7 +4,7 @@ Ces réponses décrivent **les fichiers fournis dans ce kit** (AAB de l'archive 
 
 Ce que font les 6 jeux (vérifié dans le code) :
 - Aucun compte, aucune donnée personnelle demandée, aucun serveur à nous : la progression reste **sur l'appareil**.
-- Publicités **Google AdMob**, vidéos récompensées uniquement (les interstitiels sont désactivés dans Battle et Kart, absents ailleurs).
+- Publicités **Google AdMob** : vidéos récompensées facultatives et interstitiels rares entre deux parties (jamais pendant les premières, au plus une fois toutes les 3 parties) ; dans Battle et Kart, l'achat « Sans Pubs » supprime les interstitiels.
 - Formulaire de consentement de Google (UMP) pour l'Europe, le Royaume-Uni et la Suisse, et accès à « Confidentialité des pubs » dans le jeu.
 - iOS : la fenêtre App Tracking Transparency (ATT) s'affiche avant les annonces personnalisées.
 - Android : autorisation `AD_ID` présente (identifiant publicitaire utilisé pour les annonces).
@@ -141,7 +141,7 @@ Catégorie **Jeu** ; adresse e-mail de contact. Puis :
 
 ## 8. AdMob
 
-1. **Créer une app AdMob par jeu et par plateforme** (12 apps) et un bloc « Récompensé » dans chacune. Aujourd'hui les 6 jeux utilisent la même app (`~7951613295`) et le même bloc (`/3086524765`) sur Android et iOS : les annonces fonctionnent, mais une app AdMob ne peut être associée qu'à **une** fiche de store, donc 11 des 12 versions apparaîtront comme non associées (moins d'annonces, suivi des revenus confus, risque de limitation). Envoyez-moi les 12 identifiants d'app et de bloc : je les intègre et je recompile.
+1. **Créer une app AdMob par jeu et par plateforme** (12 apps) et un bloc « Récompensé » dans chacune. Aujourd'hui les 6 jeux utilisent la même app (`~4833816740`), le même bloc récompensé (`/3309442507`) et le même bloc interstitiel (`/6710677647`) sur Android et iOS : les annonces fonctionnent, mais une app AdMob ne peut être associée qu'à **une** fiche de store, donc 11 des 12 versions apparaîtront comme non associées (moins d'annonces, suivi des revenus confus, risque de limitation). Envoyez-moi les 12 identifiants d'app et de bloc : je les intègre et je recompile.
 2. Publier `app-ads.txt` à la racine de `https://layjou.com` (fichier prêt : `site/app-ads.txt`) et déclarer `https://layjou.com` comme site du développeur dans les deux consoles.
 3. Après publication : AdMob › Applications › associer chaque app à sa fiche Google Play ou App Store ; AdMob examine l'app (quelques jours) avant de servir toutes les annonces.
 4. Configurer le message RGPD (Confidentialité et messages › RGPD) et le message ATT pour iOS (facultatif, s'affiche avant la fenêtre d'Apple).

@@ -72,7 +72,7 @@ kart,racing,car,drift,turbo,track,driver,robot,arcade,speed,race,go-kart
 **Notes pour la vérification (App Review › Notes)** — en anglais :
 ```
 No account or sign-in is needed: all content is available right away.
-Rewarded video ads are always optional (e.g. extra lap/time to finish a race, double rewards, free chest).
+Rewarded video ads are always optional; occasional interstitials appear between games (e.g. extra lap/time to finish a race, double rewards, free chest).
 In-app purchases: Shop tab (bottom bar) > Credits / Starter Pack. "Restore purchases" is in Settings (gear icon on the home screen) and in the Shop.
 Settings also contain the privacy policy link and "Ad privacy" (Google consent form, shown in the EEA/UK).
 The App Tracking Transparency prompt appears before personalized ads; the game works exactly the same if tracking is declined.
@@ -148,7 +148,7 @@ Violence de dessin animé ou fantastique : **Rare/légère** · Violence réalis
 
 ## 6. Publicités et achats intégrés
 
-**Publicités (AdMob)** : Vidéos récompensées uniquement : tour ou temps supplémentaire pour finir une course, doubler les gains, coffre gratuit, tour de roue, crédits gratuits, déblocage d'objets. Interstitiels désactivés.
+**Publicités (AdMob)** : Vidéos récompensées uniquement : tour ou temps supplémentaire pour finir une course, doubler les gains, coffre gratuit, tour de roue, crédits gratuits, déblocage d'objets. Interstitiels rares entre les courses (jamais avant la 5ᵉ, au plus une course sur 3, 3 min minimum), supprimés par l'achat « Sans Pubs ».
 
 **Achats intégrés**
 | Identifiant (identique dans les deux stores) | Type | Contenu (nom affiché) | Prix de référence |
@@ -158,12 +158,11 @@ Violence de dessin animé ou fantastique : **Rare/légère** · Violence réalis
 | `credits_1000` | Consommable | 1 000 crédits | 9,99 € |
 | `credits_2200` | Consommable | 2 200 crédits | 19,99 € |
 | `credits_6000` | Consommable | 6 000 crédits | 49,99 € |
+| `remove_ads` | Non consommable | Sans Pubs : supprime les interstitiels, pour toujours (les vidéos bonus restent au choix) | 3,99 € |
 | `starter_pack` | Non consommable | Pack de Départ : skin Galaxie Violette, kart Fusée Bonbon, 300 crédits, 6 000 pièces | 2,99 € |
 
 Prix réels : choisissez le palier le plus proche dans chaque console (le prix de référence ne sert qu'hors ligne). Pour chaque produit Apple, la capture de vérification demandée est prête : `store/kart/captures-brutes/iap-en/01-boutique.jpg` (écran Boutique) ; note de vérification : « Credits are a virtual currency spent in the in-game shop on cosmetics, karts/weapons and coin packs. »
 Le bouton « Restaurer les achats » exigé par Apple pour les non-consommables est déjà dans le jeu.
-
-`remove_ads` (« Sans Pubs », non consommable, 3,99 €) existe dans le code mais **n'est pas affiché** tant que les interstitiels sont désactivés (aucune pub imposée aujourd'hui) : ne le créez dans les consoles que le jour où vous activerez les interstitiels.
 
 ## 7. À savoir
 - Sur iPad, le jeu s'affiche dans une colonne de téléphone (bandes sombres sur les côtés) : les captures iPad le montrent tel quel.

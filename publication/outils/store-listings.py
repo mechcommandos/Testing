@@ -56,8 +56,8 @@ CREDITS_IAP = [
     ('credits_2200', 'Consommable', '2 200 crédits', '19,99 €'),
     ('credits_6000', 'Consommable', '6 000 crédits', '49,99 €'),
 ]
-REMOVE_ADS_NOTE = ('`remove_ads` (« Sans Pubs », non consommable, 3,99 €) existe dans le code mais **n\'est pas affiché** tant que les '
-                   'interstitiels sont désactivés (aucune pub imposée aujourd\'hui) : ne le créez dans les consoles que le jour où vous activerez les interstitiels.')
+REMOVE_ADS = ('remove_ads', 'Non consommable', 'Sans Pubs : supprime les interstitiels, pour toujours (les vidéos bonus restent au choix)', '3,99 €')
+REMOVE_ADS_NOTE = ''
 
 # Réponses communes aux questionnaires d'âge (tout ce qui n'est pas listé = Aucun / Non)
 APPLE_COMMON = ('Contrôles intégrés : contrôle parental **Non**, vérification de l\'âge **Non** · Fonctionnalités : accès Web illimité **Non**, '
@@ -98,15 +98,15 @@ GAMES = {
 • 6 karts, 10 skins and 10 accessories to collect, each with its own perk
 • Assisted steering, adjustable sensitivity and a battery saver mode
 • Daily missions, lucky wheel, chests and a daily gift""",
-        ads='Vidéos récompensées uniquement : tour ou temps supplémentaire pour finir une course, doubler les gains, coffre gratuit, tour de roue, crédits gratuits, déblocage d\'objets. Interstitiels désactivés.',
-        iap=CREDITS_IAP + [('starter_pack', 'Non consommable', 'Pack de Départ : skin Galaxie Violette, kart Fusée Bonbon, 300 crédits, 6 000 pièces', '2,99 €')],
+        ads='Vidéos récompensées uniquement : tour ou temps supplémentaire pour finir une course, doubler les gains, coffre gratuit, tour de roue, crédits gratuits, déblocage d\'objets. Interstitiels rares entre les courses (jamais avant la 5ᵉ, au plus une course sur 3, 3 min minimum), supprimés par l\'achat « Sans Pubs ».',
+        iap=CREDITS_IAP + [REMOVE_ADS, ('starter_pack', 'Non consommable', 'Pack de Départ : skin Galaxie Violette, kart Fusée Bonbon, 300 crédits, 6 000 pièces', '2,99 €')],
         iap_note=REMOVE_ADS_NOTE,
         iarc='Violence : **Oui** — violence de dessin animé ou fantastique (les karts touchés par un objet font un tête-à-queue), envers des personnages non humains et non réalistes ; pas de sang. Achats numériques : **Oui**. Objets aléatoires achetables avec de l\'argent réel : **Oui** (un coffre au contenu aléatoire peut être ouvert plus tôt avec des crédits).',
         iarc_expected='PEGI 3 ou 7 + mention « Achats intégrés (dont objets aléatoires) »',
         apple='Violence de dessin animé ou fantastique : **Rare/légère** · Violence réaliste : **Aucune** · Armes : armes fantaisistes (blaster, sabre laser) — si la question « Guns or Other Weapons » est posée, **Rare/légère** · **Coffres à butin (Loot Boxes) : Oui**',
         apple_expected='9+',
         review_en="""No account or sign-in is needed: all content is available right away.
-Rewarded video ads are always optional (e.g. extra lap/time to finish a race, double rewards, free chest).
+Rewarded video ads are always optional; occasional interstitials appear between games (e.g. extra lap/time to finish a race, double rewards, free chest).
 In-app purchases: Shop tab (bottom bar) > Credits / Starter Pack. "Restore purchases" is in Settings (gear icon on the home screen) and in the Shop.
 Settings also contain the privacy policy link and "Ad privacy" (Google consent form, shown in the EEA/UK).
 The App Tracking Transparency prompt appears before personalized ads; the game works exactly the same if tracking is declined.""",
@@ -141,15 +141,15 @@ The App Tracking Transparency prompt appears before personalized ads; the game w
 • 10 skins, 10 accessories and 7 weapons to collect
 • Upgrade your power, armor and critical hits in the Lab
 • Daily missions, lucky wheel, chests and a daily gift""",
-        ads='Vidéos récompensées uniquement : continuer un combat, doubler les pièces, tour de roue, crédits gratuits, déblocage d\'objets. Interstitiels désactivés.',
-        iap=CREDITS_IAP + [('starter_pack', 'Non consommable', 'Pack de Départ : skin Galaxie, Sabre Laser, 300 crédits, 5 000 pièces', '2,99 €')],
-        iap_note='**App Store : identifiants préfixés `battle_`** (`battle_credits_80`, …, `battle_starter_pack`), car un identifiant de produit est unique pour tout le compte Apple et Kart utilise déjà les identifiants courts. Google Play garde les identifiants du tableau. Le jeu fait la correspondance automatiquement.\n\n' + REMOVE_ADS_NOTE,
+        ads='Vidéos récompensées uniquement : continuer un combat, doubler les pièces, tour de roue, crédits gratuits, déblocage d\'objets. Interstitiels rares entre les combats (jamais avant le 5ᵉ, au plus un combat sur 3, 2 min 30 minimum), supprimés par l\'achat « Sans Pubs ».',
+        iap=CREDITS_IAP + [REMOVE_ADS, ('starter_pack', 'Non consommable', 'Pack de Départ : skin Galaxie, Sabre Laser, 300 crédits, 5 000 pièces', '2,99 €')],
+        iap_note='**App Store : identifiants préfixés `battle_`** (`battle_credits_80`, …, `battle_starter_pack`, `battle_remove_ads`), car un identifiant de produit est unique pour tout le compte Apple et Kart utilise déjà les identifiants courts. Google Play garde les identifiants du tableau. Le jeu fait la correspondance automatiquement.\n\n' + REMOVE_ADS_NOTE,
         iarc='Violence : **Oui** — violence de dessin animé ou fantastique (un petit robot affronte des monstres géants), envers des personnages non humains et non réalistes ; pas de sang ni de démembrement. Achats numériques : **Oui**. Objets aléatoires achetables avec de l\'argent réel : **Non** (les coffres s\'ouvrent gratuitement, avec le temps).',
         iarc_expected='PEGI 7 + mention « Achats intégrés »',
         apple='Violence de dessin animé ou fantastique : **Rare/légère** (coups sans sang sur des monstres de dessin animé ; « Fréquente/intense » donnerait 13+) · Violence réaliste : **Aucune** · Armes : armes fantaisistes (sabre laser, blaster) — si la question « Guns or Other Weapons » est posée, **Rare/légère** · Coffres à butin : **Non**',
         apple_expected='9+',
         review_en="""No account or sign-in is needed: all content is available right away.
-Rewarded video ads are always optional (continue a battle, double coins, wheel spin, free credits).
+Rewarded video ads are always optional; occasional interstitials appear between games (continue a battle, double coins, wheel spin, free credits).
 In-app purchases: Shop tab (bottom bar) > Starter Pack / Credits. "Restore purchases" is in Settings (gear icon on the home screen) and in the Shop.
 Settings also contain the privacy policy link and "Ad privacy options" (Google consent form, shown in the EEA/UK).
 The App Tracking Transparency prompt appears before personalized ads; the game works exactly the same if tracking is declined.""",
@@ -181,7 +181,7 @@ The App Tracking Transparency prompt appears before personalized ads; the game w
 • Layjou reacts to your game: joy, worry, pride…
 • 7 skins and accessories to dress up your robot
 • 3 daily missions, a daily gift and automatic game saving""",
-        ads='Vidéos récompensées uniquement : continuer la partie (2 fois), doubler les boulons, arme gratuite, +60 boulons (5 fois par jour).',
+        ads='Vidéos récompensées : continuer la partie (2 fois), doubler les boulons, arme gratuite, +60 boulons (5 fois par jour). Interstitiels rares en fin de partie (jamais avant la 4ᵉ, au plus une partie sur 3, 2 min 30 minimum).',
         iap=[('layjou_credits_80', 'Consommable', '80 crédits', '0,99 €'), ('layjou_credits_500', 'Consommable', '500 crédits', '4,99 €'),
              ('layjou_credits_1200', 'Consommable', '1 200 crédits', '9,99 €'), ('layjou_credits_3000', 'Consommable', '3 000 crédits', '19,99 €')],
         iap_note='Attention : les identifiants de Blocks commencent par `layjou_` (différents de ceux de Battle et Kart).',
@@ -190,7 +190,7 @@ The App Tracking Transparency prompt appears before personalized ads; the game w
         apple='Violence : **Aucune** · Armes : **Aucune** (outils de puzzle) · Coffres à butin : **Non**',
         apple_expected='4+',
         review_en="""No account or sign-in is needed: all content is available right away.
-Rewarded video ads are always optional (continue a game, double bolts, free tool).
+Rewarded video ads are always optional; occasional interstitials appear between games (continue a game, double bolts, free tool).
 In-app purchases: Shop button (bottom bar of the home screen) > Credit packs. "Restore purchases" is at the bottom of the Shop.
 Settings (gear icon) contain the privacy policy link and "Ad privacy" (Google consent form, shown in the EEA/UK).
 The App Tracking Transparency prompt appears before personalized ads; the game works exactly the same if tracking is declined.""",
@@ -219,11 +219,11 @@ The App Tracking Transparency prompt appears before personalized ads; the game w
 • Line, bomb and rainbow special bubbles… combine them together
 • Up to 3 stars per level
 • Layjou cheers you on and reacts to every move""",
-        ads='Vidéo récompensée uniquement : +5 coups quand il n\'en reste plus.', iap=[], iap_note='',
+        ads='Vidéo récompensée : +5 coups quand il n\'en reste plus. Interstitiels rares entre deux niveaux (jamais avant le 4ᵉ, au plus un niveau sur 3, 2 min 30 minimum).', iap=[], iap_note='',
         iarc='Violence : **Non**. Achats numériques : **Non**.', iarc_expected='PEGI 3',
         apple='Violence : **Aucune** · Coffres à butin : **Non**', apple_expected='4+',
         review_en="""No account or sign-in is needed: all content is available right away. There are no in-app purchases.
-The only ad is an optional rewarded video offered when the player runs out of moves (+5 moves).
+Ads: occasional interstitials between levels/runs and an optional rewarded video offered when the player runs out of moves (+5 moves).
 The privacy policy link is at the bottom of the home screen, next to "Ad privacy options" (Google consent form, shown in the EEA/UK).
 The App Tracking Transparency prompt appears before personalized ads; the game works exactly the same if tracking is declined.""",
         notes=['La version iOS déjà compilée n\'a pas la déclaration de chiffrement : App Store Connect posera la question à l\'envoi → répondre que l\'app n\'utilise que le chiffrement standard exempté (HTTPS).'],
@@ -251,11 +251,11 @@ The App Tracking Transparency prompt appears before personalized ads; the game w
 • A timer and combos for the quickest players
 • 3 boosters: Magnet, Shuffle and Freeze
 • Difficulty that ramps up gently, level after level""",
-        ads='Vidéos récompensées uniquement : +60 s pour continuer (3 fois par partie), bonus gratuit.', iap=[], iap_note='',
+        ads='Vidéos récompensées : +60 s pour continuer (3 fois par partie), bonus gratuit. Interstitiels rares entre deux niveaux (jamais avant le 4ᵉ, au plus un niveau sur 3, 2 min 30 minimum).', iap=[], iap_note='',
         iarc='Violence : **Non**. Achats numériques : **Non**.', iarc_expected='PEGI 3',
         apple='Violence : **Aucune** · Coffres à butin : **Non**', apple_expected='4+',
         review_en="""No account or sign-in is needed: all content is available right away. There are no in-app purchases.
-Rewarded videos are optional: +60 seconds to continue a level, or a free booster.
+Occasional interstitials appear between levels. Rewarded videos are optional: +60 seconds to continue a level, or a free booster.
 The privacy policy link is at the bottom of the home screen, next to "Ad privacy options" (Google consent form, shown in the EEA/UK).
 The App Tracking Transparency prompt appears before personalized ads; the game works exactly the same if tracking is declined.""",
         notes=['Les objets sont des emojis : leur dessin varie selon le téléphone (les captures montrent ceux de Google).'],
@@ -283,12 +283,12 @@ The App Tracking Transparency prompt appears before personalized ads; the game w
 • Magnet, Shield and Score ×2 power-ups… upgrade them with your hearts
 • Daily missions and login bonuses
 • Every run gets faster and crazier""",
-        ads='Vidéo récompensée uniquement : continuer la course, une fois par partie.', iap=[], iap_note='',
+        ads='Vidéo récompensée : continuer la course, une fois par partie. Interstitiels rares avant une nouvelle course (jamais avant la 4ᵉ, au plus une course sur 3, 2 min 30 minimum).', iap=[], iap_note='',
         lang_fr=', en français', lang_en=' (French-only interface for now)', french_only=True,
         iarc='Violence : **Non**. Achats numériques : **Non**.', iarc_expected='PEGI 3',
         apple='Violence : **Aucune** · Coffres à butin : **Non**', apple_expected='4+',
         review_en="""No account or sign-in is needed: all content is available right away. There are no in-app purchases. The interface is in French.
-The only ad is an optional rewarded video to continue a run once ("Continuer avec une vidéo").
+Ads: occasional interstitials between levels/runs and an optional rewarded video to continue a run once ("Continuer avec une vidéo").
 The privacy policy link ("Politique de confidentialité") is at the bottom of the main menu, next to "Confidentialité des pubs" (Google consent form, shown in the EEA/UK).
 The App Tracking Transparency prompt appears before personalized ads; the game works exactly the same if tracking is declined.""",
         notes=['Interface uniquement en français : fiche en français seulement (ne pas ajouter l\'anglais dans les langues de la fiche).'],

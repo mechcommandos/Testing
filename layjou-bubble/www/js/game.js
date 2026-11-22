@@ -1,7 +1,7 @@
 // Layjou Bubble — UI: screens, board rendering, animations, input, modals.
 import { Board } from './engine.js';
 import { getLevel, LEVEL_COUNT } from './levels.js';
-import { initAds, showRewarded, hasPrivacyOptions, showPrivacyOptions } from './ads.js';
+import { initAds, showRewarded, hasPrivacyOptions, showPrivacyOptions, maybeInterstitial } from './ads.js';
 
 const $ = (id) => document.getElementById(id);
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -169,7 +169,8 @@ function say(text, cheer = false, hold = 2200) {
   if (hold) speechTimer = setTimeout(() => { sp.textContent = goalText(); }, hold);
 }
 
-function startLevel(n) {
+function startLevel(n) { maybeInterstitial().then(() => startLevelNow(n)); }
+function startLevelNow(n) {
   level = getLevel(n);
   board = new Board(level);
   over = false;

@@ -10,6 +10,26 @@ const adId = cfg.rewarded[platform];
 
 let ready = false;
 let privacyRequired = false;
+let interLoaded = false, interGames = 0, interSince = 0, interLast = Date.now();
+function preloadInter() {
+  const I = cfg.interstitial;
+  if (!AdMob || !I || !I.enabled || interLoaded) return;
+  AdMob.prepareInterstitial({ adId: I[platform], isTesting: cfg.testing }).then(() => { interLoaded = true; }).catch((e) => console.warn('[ads] interstitiel', e));
+}
+/** Avant chaque niveau : affiche parfois un interstitiel et attend sa fermeture. */
+export async function maybeInterstitial() {
+  const I = cfg.interstitial;
+  interGames++; interSince++;
+  if (!AdMob || !I || !I.enabled) return;
+  if (!interLoaded) { preloadInter(); return; }
+  if (interGames <= I.skipFirstGames || interSince < I.everyNGames || Date.now() - interLast < I.minSecondsBetween * 1000) return;
+  await new Promise((resolve) => {
+    const hs = [];
+    const done = () => { hs.forEach((h) => Promise.resolve(h).then((x) => x && x.remove && x.remove())); interLoaded = false; interSince = 0; interLast = Date.now(); preloadInter(); resolve(); };
+    hs.push(AdMob.addListener('interstitialAdDismissed', done), AdMob.addListener('interstitialAdFailedToShow', done));
+    AdMob.showInterstitial().catch(done);
+  });
+}
 let loading = null;
 
 function preload() {
@@ -36,6 +56,7 @@ export async function initAds() {
     // iOS App Tracking Transparency prompt.
     if (platform === 'ios') { try { await AdMob.requestTrackingAuthorization(); } catch (e) { /* ignore */ } }
     preload();
+    preloadInter();
   } catch (e) {
     console.warn('[ads] init failed', e);
   }

@@ -15,18 +15,20 @@ export const PRIVACY_URL = 'https://layjou.com/confidentialite/';
 
 export const ADMOB = {
   /**
-   * Compte AdMob pub-6003645213510535. L'identifiant d'APPLICATION (ca-app-pub-6003645213510535~7951613295)
+   * Compte AdMob pub-6003645213510535. L'identifiant d'APPLICATION (ca-app-pub-6003645213510535~4833816740)
    * est dans android/app/src/main/res/values/strings.xml et ios/App/App/Info.plist.
    */
   rewarded: {
-    android: 'ca-app-pub-6003645213510535/3086524765',
-    ios: 'ca-app-pub-6003645213510535/3086524765',
+    android: 'ca-app-pub-6003645213510535/3309442507',
+    ios: 'ca-app-pub-6003645213510535/3309442507',
   },
   /**
    * Annonces de test en développement et dans l'APK de démo (`npm run android:debug`),
    * vraies annonces dans le build de production (`npm run build`, `npm run android:release`).
    * Ne cliquez jamais sur vos propres annonces réelles : déclarez votre téléphone dans AdMob › Paramètres › Appareils de test.
    */
+  /** Interstitiels : rares (jamais avant la 4ᵉ partie, au plus une fois toutes les 3 parties, 150 s minimum entre deux). */
+  interstitial: { android: 'ca-app-pub-6003645213510535/6710677647', ios: 'ca-app-pub-6003645213510535/6710677647', enabled: true, skipFirstGames: 3, everyNGames: 3, minSecondsBetween: 150 },
   testing: import.meta.env.MODE !== 'production',
   /** Mets true si ton public cible inclut les enfants (programme Familles / COPPA). */
   childDirected: false,

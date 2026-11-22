@@ -509,7 +509,7 @@ export function createGameScreen(resume: boolean, goHome: () => void, replayGame
       weaponsUsed: game.weaponsUsed,
     });
     void store.flush();
-    setTimeout(() => showResults(rewards), 500);
+    setTimeout(() => { void ads.maybeInterstitial().then(() => showResults(rewards)); }, 500);
   }
 
   function showResults(r: GameRewards): void {

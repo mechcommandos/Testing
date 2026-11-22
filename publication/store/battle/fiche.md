@@ -72,7 +72,7 @@ robot,fight,monster,boss,arena,action,cute,hero,kaiju,brawler,mech
 **Notes pour la vérification (App Review › Notes)** — en anglais :
 ```
 No account or sign-in is needed: all content is available right away.
-Rewarded video ads are always optional (continue a battle, double coins, wheel spin, free credits).
+Rewarded video ads are always optional; occasional interstitials appear between games (continue a battle, double coins, wheel spin, free credits).
 In-app purchases: Shop tab (bottom bar) > Starter Pack / Credits. "Restore purchases" is in Settings (gear icon on the home screen) and in the Shop.
 Settings also contain the privacy policy link and "Ad privacy options" (Google consent form, shown in the EEA/UK).
 The App Tracking Transparency prompt appears before personalized ads; the game works exactly the same if tracking is declined.
@@ -146,7 +146,7 @@ Violence de dessin animé ou fantastique : **Rare/légère** (coups sans sang su
 
 ## 6. Publicités et achats intégrés
 
-**Publicités (AdMob)** : Vidéos récompensées uniquement : continuer un combat, doubler les pièces, tour de roue, crédits gratuits, déblocage d'objets. Interstitiels désactivés.
+**Publicités (AdMob)** : Vidéos récompensées uniquement : continuer un combat, doubler les pièces, tour de roue, crédits gratuits, déblocage d'objets. Interstitiels rares entre les combats (jamais avant le 5ᵉ, au plus un combat sur 3, 2 min 30 minimum), supprimés par l'achat « Sans Pubs ».
 
 **Achats intégrés**
 | Identifiant (identique dans les deux stores) | Type | Contenu (nom affiché) | Prix de référence |
@@ -156,14 +156,15 @@ Violence de dessin animé ou fantastique : **Rare/légère** (coups sans sang su
 | `credits_1000` | Consommable | 1 000 crédits | 9,99 € |
 | `credits_2200` | Consommable | 2 200 crédits | 19,99 € |
 | `credits_6000` | Consommable | 6 000 crédits | 49,99 € |
+| `remove_ads` | Non consommable | Sans Pubs : supprime les interstitiels, pour toujours (les vidéos bonus restent au choix) | 3,99 € |
 | `starter_pack` | Non consommable | Pack de Départ : skin Galaxie, Sabre Laser, 300 crédits, 5 000 pièces | 2,99 € |
 
 Prix réels : choisissez le palier le plus proche dans chaque console (le prix de référence ne sert qu'hors ligne). Pour chaque produit Apple, la capture de vérification demandée est prête : `store/battle/captures-brutes/iap-en/01-boutique.jpg` (écran Boutique) ; note de vérification : « Credits are a virtual currency spent in the in-game shop on cosmetics, karts/weapons and coin packs. »
 Le bouton « Restaurer les achats » exigé par Apple pour les non-consommables est déjà dans le jeu.
 
-**App Store : identifiants préfixés `battle_`** (`battle_credits_80`, …, `battle_starter_pack`), car un identifiant de produit est unique pour tout le compte Apple et Kart utilise déjà les identifiants courts. Google Play garde les identifiants du tableau. Le jeu fait la correspondance automatiquement.
+**App Store : identifiants préfixés `battle_`** (`battle_credits_80`, …, `battle_starter_pack`, `battle_remove_ads`), car un identifiant de produit est unique pour tout le compte Apple et Kart utilise déjà les identifiants courts. Google Play garde les identifiants du tableau. Le jeu fait la correspondance automatiquement.
 
-`remove_ads` (« Sans Pubs », non consommable, 3,99 €) existe dans le code mais **n'est pas affiché** tant que les interstitiels sont désactivés (aucune pub imposée aujourd'hui) : ne le créez dans les consoles que le jour où vous activerez les interstitiels.
+
 
 ## 7. À savoir
 - Sur iPad, le jeu s'affiche dans une colonne de téléphone (bandes sombres sur les côtés) : les captures iPad le montrent tel quel.

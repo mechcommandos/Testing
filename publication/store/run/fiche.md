@@ -58,7 +58,7 @@ course,runner,train,rails,saut,esquive,arcade,robot,sans fin,3d
 **Notes pour la vérification (App Review › Notes)** — en anglais :
 ```
 No account or sign-in is needed: all content is available right away. There are no in-app purchases. The interface is in French.
-The only ad is an optional rewarded video to continue a run once ("Continuer avec une vidéo").
+Ads: occasional interstitials between levels/runs and an optional rewarded video to continue a run once ("Continuer avec une vidéo").
 The privacy policy link ("Politique de confidentialité") is at the bottom of the main menu, next to "Confidentialité des pubs" (Google consent form, shown in the EEA/UK).
 The App Tracking Transparency prompt appears before personalized ads; the game works exactly the same if tracking is declined.
 ```
@@ -101,7 +101,7 @@ Violence : **Aucune** · Coffres à butin : **Non**
 
 ## 6. Publicités et achats intégrés
 
-**Publicités (AdMob)** : Vidéo récompensée uniquement : continuer la course, une fois par partie.
+**Publicités (AdMob)** : Vidéo récompensée : continuer la course, une fois par partie. Interstitiels rares avant une nouvelle course (jamais avant la 4ᵉ, au plus une course sur 3, 2 min 30 minimum).
 
 **Achats intégrés**
 Aucun achat intégré : rien à créer dans les consoles.

@@ -68,7 +68,7 @@ Vos IPA actuelles ne contiennent pas les correctifs suivants, faits depuis :
 - bouton « Confidentialité des pubs » dans Bubble, Puzzle et Run (consentement RGPD) ;
 - manifeste de confidentialité `PrivacyInfo.xcprivacy` (API « à raison déclarée ») ;
 - déclaration de chiffrement de Bubble, polices intégrées dans Run ;
-- offre « Sans Pubs » masquée dans Battle et Kart tant qu'aucune pub imposée n'existe ;
+- nouveaux identifiants AdMob et interstitiels rares dans les 6 jeux (« Sans Pubs » de retour dans Battle et Kart) ;
 - **numéro de build 2**, pour pouvoir envoyer même si un build 1 est déjà sur TestFlight.
 
 Pour chaque jeu, depuis la branche à jour du dépôt :
@@ -97,7 +97,7 @@ Puis ouvrir `ios/App/App.xcodeproj` dans Xcode : choisir votre équipe (Signing 
 
 ## Points d'attention
 
-- **AdMob** : les 6 jeux partagent aujourd'hui la même app et le même bloc d'annonces sur Android et iOS. Ça fonctionne, mais une app AdMob ne s'associe qu'à une seule fiche de store. Créez 12 apps AdMob (6 jeux × 2 plateformes) avec chacune un bloc « Récompensé » et envoyez-moi les identifiants : je les intègre et je recompile.
+- **AdMob** : les 6 jeux partagent aujourd'hui la même app (`~4833816740`), le même bloc récompensé et le même bloc interstitiel sur Android et iOS. Ça fonctionne, mais une app AdMob ne s'associe qu'à une seule fiche de store. Créez 12 apps AdMob (6 jeux × 2 plateformes) avec chacune un bloc « Récompensé » et envoyez-moi les identifiants : je les intègre et je recompile.
 - **iPad** : Kart et Battle s'affichent sur iPad dans une colonne de téléphone (bandes sombres sur les côtés) ; les captures iPad le montrent tel quel. Si vous préférez ne pas proposer l'iPad, réglez « Supported Destinations » sur iPhone seulement dans Xcode avant d'archiver : les captures iPad ne seront plus demandées. Ce choix ne peut plus être annulé une fois l'app publiée avec l'iPad.
 - **Run** est en français uniquement : fiche en français seulement (pas de localisation anglaise).
 - **APK de démonstration** (`*-debug.apk`, `*-demo.apk`) : ce sont des versions de test, avec des pubs de test ; elles ne contiennent pas encore les derniers correctifs. Seuls les AAB sont à publier.

@@ -72,7 +72,7 @@ sort,goods,shelf,triple,match 3,organize,brain,relax,puzzle,tidy
 **Notes pour la vérification (App Review › Notes)** — en anglais :
 ```
 No account or sign-in is needed: all content is available right away. There are no in-app purchases.
-Rewarded videos are optional: +60 seconds to continue a level, or a free booster.
+Occasional interstitials appear between levels. Rewarded videos are optional: +60 seconds to continue a level, or a free booster.
 The privacy policy link is at the bottom of the home screen, next to "Ad privacy options" (Google consent form, shown in the EEA/UK).
 The App Tracking Transparency prompt appears before personalized ads; the game works exactly the same if tracking is declined.
 ```
@@ -139,7 +139,7 @@ Violence : **Aucune** · Coffres à butin : **Non**
 
 ## 6. Publicités et achats intégrés
 
-**Publicités (AdMob)** : Vidéos récompensées uniquement : +60 s pour continuer (3 fois par partie), bonus gratuit.
+**Publicités (AdMob)** : Vidéos récompensées : +60 s pour continuer (3 fois par partie), bonus gratuit. Interstitiels rares entre deux niveaux (jamais avant le 4ᵉ, au plus un niveau sur 3, 2 min 30 minimum).
 
 **Achats intégrés**
 Aucun achat intégré : rien à créer dans les consoles.

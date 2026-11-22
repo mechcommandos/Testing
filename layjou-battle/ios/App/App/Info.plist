@@ -71,7 +71,7 @@
 	<false/>
 	<!-- AdMob : identifiant d'application du compte pub-6003645213510535 -->
 	<key>GADApplicationIdentifier</key>
-	<string>ca-app-pub-6003645213510535~7951613295</string>
+	<string>ca-app-pub-6003645213510535~4833816740</string>
 	<!-- Ajouter les autres identifiants SKAdNetwork listés par Google : https://developers.google.com/admob/ios/quick-start#update_your_infoplist -->
 	<key>SKAdNetworkItems</key>
 	<array>

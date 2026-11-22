@@ -67,8 +67,8 @@ la vidéo jusqu'au bout (une fois par partie). Le bouton n'existe que dans les a
 
 | Quoi | Valeur | Où |
 | --- | --- | --- |
-| Identifiant d'application | `ca-app-pub-6003645213510535~7951613295` | `android/app/src/main/res/values/strings.xml` (`admob_app_id`) et `ios/App/App/Info.plist` (`GADApplicationIdentifier`) |
-| Bloc d'annonces avec récompense | `ca-app-pub-6003645213510535/3086524765` | `www/ads.js` → `REWARDED_UNITS` |
+| Identifiant d'application | `ca-app-pub-6003645213510535~4833816740` | `android/app/src/main/res/values/strings.xml` (`admob_app_id`) et `ios/App/App/Info.plist` (`GADApplicationIdentifier`) |
+| Bloc d'annonces avec récompense | `ca-app-pub-6003645213510535/3309442507` | `www/ads.js` → `REWARDED_UNITS` |
 
 - **Mode test** : `TEST_ADS` reste à `false` dans `www/ads.js` pour les stores. `npm run android:demo` le passe à `true` le temps de compiler l'APK de démo, puis le remet à `false`.
 - **Ne cliquez jamais sur vos propres annonces réelles.** Déclarez votre téléphone dans AdMob › Paramètres › Appareils de test.

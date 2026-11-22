@@ -23,17 +23,17 @@ export const CONFIG = {
     useTestAds: import.meta.env.MODE !== 'production',
     /** true si l'app vise un public enfant (COPPA / programme Familles) : pubs non personnalisées + contenu « G ». */
     childDirected: false,
-    // Compte AdMob pub-6003645213510535 — application ca-app-pub-6003645213510535~7951613295
+    // Compte AdMob pub-6003645213510535 — application ca-app-pub-6003645213510535~4833816740
     android: {
-      rewarded: 'ca-app-pub-6003645213510535/3086524765',
-      interstitial: '', // à créer dans AdMob (format Interstitiel), puis réactiver `interstitial.enabled`
+      rewarded: 'ca-app-pub-6003645213510535/3309442507',
+      interstitial: 'ca-app-pub-6003645213510535/6710677647',
     },
     ios: {
-      rewarded: 'ca-app-pub-6003645213510535/3086524765',
-      interstitial: '',
+      rewarded: 'ca-app-pub-6003645213510535/3309442507',
+      interstitial: 'ca-app-pub-6003645213510535/6710677647',
     },
     /** Interstitiels : volontairement rares pour ne pas casser la rétention. */
-    interstitial: { enabled: false, skipFirstBattles: 4, everyNBattles: 3, minSecondsBetween: 150 },
+    interstitial: { enabled: true, skipFirstBattles: 4, everyNBattles: 3, minSecondsBetween: 150 },
     /** Plafond quotidien de vidéos récompensées « crédits gratuits ». */
     freeCreditsPerDay: 5,
     freeCreditsAmount: 8,

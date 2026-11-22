@@ -5,5 +5,5 @@
     <string name="package_name">com.layjou.battle</string>
     <string name="custom_url_scheme">com.layjou.battle</string>
     <!-- Identifiant d\'application AdMob (compte pub-6003645213510535) -->
-    <string name="admob_app_id" translatable="false">ca-app-pub-6003645213510535~7951613295</string>
+    <string name="admob_app_id" translatable="false">ca-app-pub-6003645213510535~4833816740</string>
 </resources>
