@@ -161,6 +161,8 @@ Violence de dessin animé ou fantastique : **Rare/légère** (coups sans sang su
 Prix réels : choisissez le palier le plus proche dans chaque console (le prix de référence ne sert qu'hors ligne). Pour chaque produit Apple, la capture de vérification demandée est prête : `store/battle/captures-brutes/iap-en/01-boutique.jpg` (écran Boutique) ; note de vérification : « Credits are a virtual currency spent in the in-game shop on cosmetics, karts/weapons and coin packs. »
 Le bouton « Restaurer les achats » exigé par Apple pour les non-consommables est déjà dans le jeu.
 
+**App Store : identifiants préfixés `battle_`** (`battle_credits_80`, …, `battle_starter_pack`), car un identifiant de produit est unique pour tout le compte Apple et Kart utilise déjà les identifiants courts. Google Play garde les identifiants du tableau. Le jeu fait la correspondance automatiquement.
+
 `remove_ads` (« Sans Pubs », non consommable, 3,99 €) existe dans le code mais **n'est pas affiché** tant que les interstitiels sont désactivés (aucune pub imposée aujourd'hui) : ne le créez dans les consoles que le jour où vous activerez les interstitiels.
 
 ## 7. À savoir

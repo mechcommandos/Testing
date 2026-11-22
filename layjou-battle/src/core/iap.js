@@ -7,7 +7,11 @@ const native = Capacitor.isNativePlatform();
 let NP = null, INAPP = 'inapp';
 const store = {}; // id -> produit du store (prix localisé)
 
-const def = (id) => CONFIG.iap.products.find((p) => p.id === id);
+/** Identifiant dans le store (préfixé sur iOS) ↔ identifiant interne du jeu. */
+const ios = () => Capacitor.getPlatform() === 'ios';
+const sid = (id) => (ios() ? (CONFIG.iap.iosPrefix || '') + id : id);
+const lid = (s) => (ios() && CONFIG.iap.iosPrefix && String(s).startsWith(CONFIG.iap.iosPrefix) ? String(s).slice(CONFIG.iap.iosPrefix.length) : s);
+const def = (id) => CONFIG.iap.products.find((p) => p.id === lid(id));
 
 const purchased = (tx) => tx.purchaseState === undefined || String(tx.purchaseState) === '1' || String(tx.purchaseState).toUpperCase() === 'PURCHASED';
 
@@ -46,10 +50,10 @@ export const IAP = {
       const { isBillingSupported } = await NP.isBillingSupported();
       if (!isBillingSupported) { NP = null; return; }
       this.available = true;
-      const { products } = await NP.getProducts({ productIdentifiers: CONFIG.iap.products.map((p) => p.id), productType: INAPP });
-      for (const p of products || []) if (!store[p.identifier]) store[p.identifier] = p;
+      const { products } = await NP.getProducts({ productIdentifiers: CONFIG.iap.products.map((p) => sid(p.id)), productType: INAPP });
+      for (const p of products || []) if (!store[lid(p.identifier)]) store[lid(p.identifier)] = p;
       // achats validés hors de l'écran d'achat (paiement différé, « Demander à acheter », code promo…)
-      NP.addListener('transactionUpdated', (tx) => { if (tx && def(tx.productIdentifier) && purchased(tx) && fresh(tx)) deliver(tx.productIdentifier); });
+      NP.addListener('transactionUpdated', (tx) => { if (tx && def(tx.productIdentifier) && purchased(tx) && fresh(tx)) deliver(lid(tx.productIdentifier)); });
       await this.restore(true);
     } catch (err) { console.warn('[iap] init', err); }
   },
@@ -69,7 +73,7 @@ export const IAP = {
     }
     if (!NP) return { ok: false, error: 'unavailable' };
     try {
-      const tx = await NP.purchaseProduct({ productIdentifier: id, productType: INAPP, quantity: 1, isConsumable: p.type === 'consumable' });
+      const tx = await NP.purchaseProduct({ productIdentifier: sid(id), productType: INAPP, quantity: 1, isConsumable: p.type === 'consumable' });
       // Android : purchaseState "1" = acheté (un paiement « en attente » ne doit rien livrer tout de suite)
       if (tx && !purchased(tx)) return { ok: false, error: 'pending' };
       if (!tx || fresh(tx)) deliver(id);

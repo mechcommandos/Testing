@@ -143,7 +143,7 @@ The App Tracking Transparency prompt appears before personalized ads; the game w
 • Daily missions, lucky wheel, chests and a daily gift""",
         ads='Vidéos récompensées uniquement : continuer un combat, doubler les pièces, tour de roue, crédits gratuits, déblocage d\'objets. Interstitiels désactivés.',
         iap=CREDITS_IAP + [('starter_pack', 'Non consommable', 'Pack de Départ : skin Galaxie, Sabre Laser, 300 crédits, 5 000 pièces', '2,99 €')],
-        iap_note=REMOVE_ADS_NOTE,
+        iap_note='**App Store : identifiants préfixés `battle_`** (`battle_credits_80`, …, `battle_starter_pack`), car un identifiant de produit est unique pour tout le compte Apple et Kart utilise déjà les identifiants courts. Google Play garde les identifiants du tableau. Le jeu fait la correspondance automatiquement.\n\n' + REMOVE_ADS_NOTE,
         iarc='Violence : **Oui** — violence de dessin animé ou fantastique (un petit robot affronte des monstres géants), envers des personnages non humains et non réalistes ; pas de sang ni de démembrement. Achats numériques : **Oui**. Objets aléatoires achetables avec de l\'argent réel : **Non** (les coffres s\'ouvrent gratuitement, avec le temps).',
         iarc_expected='PEGI 7 + mention « Achats intégrés »',
         apple='Violence de dessin animé ou fantastique : **Rare/légère** (coups sans sang sur des monstres de dessin animé ; « Fréquente/intense » donnerait 13+) · Violence réaliste : **Aucune** · Armes : armes fantaisistes (sabre laser, blaster) — si la question « Guns or Other Weapons » est posée, **Rare/légère** · Coffres à butin : **Non**',

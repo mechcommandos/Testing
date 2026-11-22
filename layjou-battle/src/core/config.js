@@ -42,6 +42,9 @@ export const CONFIG = {
   iap: {
     /** Achats simulés dans le navigateur (développement / démo). Mettre false si la version web est publiée. */
     webDemo: true,
+    /** Sur l'App Store, un identifiant de produit est unique pour tout le compte développeur : Kart utilise déjà
+     *  « credits_80 »… donc Battle préfixe ses identifiants iOS (« battle_credits_80 »). Google Play garde les identifiants courts. */
+    iosPrefix: 'battle_',
     /** type: 'consumable' | 'nonconsumable' */
     products: [
       { id: 'credits_80', type: 'consumable', credits: 80, fallbackPrice: '0,99 €' },
