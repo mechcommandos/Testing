@@ -1,0 +1,100 @@
+{
+    "version": 1,
+    "review": "Situations et conseils à faire relire (prévention numérique pour 7–12 ans). Aucune donnée personnelle n'est jamais demandée dans le jeu.",
+    "scenarios": [
+        {
+            "id": "mot-de-passe", "level": 0, "picto": "cadenas",
+            "steps": [{ "text": "Un camarade te demande ton mot de passe pour jouer à ta place.", "choices": [
+                { "id": "a", "text": "Je garde mon mot de passe secret, même pour un ami.", "best": true, "why": "Un mot de passe, c’est comme une brosse à dents : on ne le prête pas. Seuls tes parents peuvent le connaître." },
+                { "id": "b", "text": "Je lui donne, c’est mon ami.", "why": "Même un ami pourrait l’utiliser sans faire exprès, ou le répéter. Un mot de passe reste secret." },
+                { "id": "c", "text": "Je l’écris sur la porte de la classe.", "why": "Tout le monde pourrait le lire. Un mot de passe reste secret." }] }]
+        },
+        {
+            "id": "photo", "level": 0, "picto": "tablette",
+            "steps": [{ "text": "Tu veux envoyer une photo d’un copain sur Internet.", "choices": [
+                { "id": "a", "text": "Je lui demande d’abord s’il est d’accord, et j’en parle à un adulte.", "best": true, "why": "On demande toujours la permission avant de partager la photo de quelqu’un. Une photo en ligne peut être vue par beaucoup de monde." },
+                { "id": "b", "text": "Je l’envoie, c’est drôle.", "why": "Ce qui est drôle pour toi peut gêner ton copain. Il faut d’abord son accord." },
+                { "id": "c", "text": "Je l’envoie à tout le monde en même temps.", "why": "Une photo partagée ne se rattrape pas facilement. Demande d’abord l’accord de ton copain et parles-en à un adulte." }] }]
+        },
+        {
+            "id": "image-bizarre", "level": 0, "picto": "alerte",
+            "steps": [{ "text": "Pendant une vidéo, une image te fait peur ou te met mal à l’aise.", "choices": [
+                { "id": "a", "text": "J’arrête et j’en parle tout de suite à un adulte.", "best": true, "why": "Tu as bien fait : un adulte peut t’aider et empêcher que ça recommence. Ce n’est jamais ta faute." },
+                { "id": "b", "text": "Je ne dis rien à personne.", "why": "Garder ça pour toi peut te faire du souci. En parler à un adulte, c’est toujours une bonne idée." },
+                { "id": "c", "text": "Je la montre à mon petit frère.", "why": "Elle pourrait lui faire peur aussi. Le bon réflexe : arrêter et en parler à un adulte." }] }]
+        },
+        {
+            "id": "temps-ecran", "level": 0, "picto": "reveil",
+            "steps": [{ "text": "Ça fait longtemps que tu joues sur la tablette et tes yeux piquent.", "choices": [
+                { "id": "a", "text": "Je fais une pause et je vais bouger un peu.", "best": true, "why": "Faire des pauses repose les yeux et le corps. Les jeux t’attendront !" },
+                { "id": "b", "text": "Je continue, je veux finir.", "why": "Quand les yeux piquent, c’est le moment de faire une pause." },
+                { "id": "c", "text": "Je mets l’écran tout près de mes yeux.", "why": "C’est encore plus fatigant pour les yeux. Une pause, c’est mieux." }] }]
+        },
+
+        {
+            "id": "gagne", "level": 1, "picto": "message",
+            "message": "BRAVO !!! Tu as gagné une tablette gratuite ! Clique vite ici et donne ton adresse !",
+            "steps": [{ "text": "Tu reçois ce message d’un inconnu.", "choices": [
+                { "id": "a", "text": "Je ne clique pas et je le montre à un adulte.", "best": true, "why": "« Tu as gagné », « vite », « donne ton adresse » : ce sont des pièges classiques. Un adulte t’aidera à le supprimer." },
+                { "id": "b", "text": "Je clique vite pour ne pas rater le cadeau.", "why": "Ce genre de message cherche à te faire cliquer vite. Personne ne donne de tablette gratuite comme ça." },
+                { "id": "c", "text": "Je réponds avec mon adresse.", "why": "On ne donne jamais son adresse à un inconnu, même pour un cadeau." }] }]
+        },
+        {
+            "id": "ami-inconnu", "level": 1, "picto": "message",
+            "message": "Salut ! Je m’appelle Max, j’ai ton âge. On peut être amis ? Tu habites où ?",
+            "steps": [{ "text": "Un inconnu t’écrit dans un jeu en ligne.", "choices": [
+                { "id": "a", "text": "Je ne donne pas où j’habite et j’en parle à un adulte.", "best": true, "why": "On ne sait jamais vraiment qui est derrière un écran. Où tu habites, ton école, ton nom complet : ça ne se donne pas à un inconnu." },
+                { "id": "b", "text": "Je lui dis où j’habite, il a l’air gentil.", "why": "Il a peut-être l’air gentil, mais on ne sait pas qui il est vraiment. Ces informations restent privées." },
+                { "id": "c", "text": "Je lui envoie une photo de ma maison.", "why": "Une photo peut montrer où tu habites. Parles-en plutôt à un adulte." }] }]
+        },
+        {
+            "id": "moquerie", "level": 1, "picto": "message",
+            "message": "Regardez la photo de Léo, trop nul hahaha",
+            "steps": [{ "text": "Dans un groupe de discussion, des élèves se moquent d’un camarade.", "choices": [
+                { "id": "a", "text": "Je ne participe pas et je préviens un adulte.", "best": true, "why": "Se moquer en ligne fait mal, comme dans la cour. Prévenir un adulte aide Léo, et ce n’est pas « rapporter »." },
+                { "id": "b", "text": "J’ajoute un message rigolo moi aussi.", "why": "Ajouter un message, c’est participer à la moquerie. Léo pourrait être très triste." },
+                { "id": "c", "text": "Je partage la photo ailleurs.", "why": "La moquerie se répandrait encore plus. Le bon réflexe : ne pas participer et prévenir un adulte." }] }]
+        },
+        {
+            "id": "faux-site", "level": 1, "picto": "lien",
+            "message": "Ton jeu va être supprimé ! Entre ton mot de passe ici pour le garder : jeux-gratuitz.example",
+            "steps": [{ "text": "Ce message apparaît pendant que tu joues.", "choices": [
+                { "id": "a", "text": "Je n’entre rien et je demande à un adulte.", "best": true, "why": "Un message qui fait peur et demande un mot de passe est un piège. L’adresse bizarre (« gratuitz ») est un autre indice." },
+                { "id": "b", "text": "J’entre mon mot de passe pour sauver mon jeu.", "why": "C’est exactement ce que veut le piège. On ne donne jamais son mot de passe sur un message qui fait peur." },
+                { "id": "c", "text": "Je clique sur le lien pour voir.", "why": "Cliquer sur un lien inconnu peut être dangereux. Mieux vaut demander à un adulte." }] }]
+        },
+
+        {
+            "id": "rencontre", "level": 2, "picto": "message",
+            "message": "On s’entend trop bien ! Viens me voir samedi au parc, mais ne le dis pas à tes parents.",
+            "steps": [
+                { "text": "Un « ami » rencontré dans un jeu en ligne t’écrit ce message.", "choices": [
+                    { "id": "a", "text": "Je ne réponds pas et je montre le message à mes parents.", "best": true, "why": "« Ne le dis pas à tes parents » est un signal d’alerte très important. Un vrai ami ne te demande jamais de cacher quelque chose à tes parents." },
+                    { "id": "b", "text": "J’y vais sans rien dire, c’est mon ami.", "why": "On ne va jamais seul rencontrer quelqu’un connu en ligne. Et un secret imposé, c’est un signal d’alerte." }] },
+                { "text": "Tes parents ont vu le message. Que faites-vous ensemble ?", "choices": [
+                    { "id": "a", "text": "On bloque cette personne et on le signale dans le jeu.", "best": true, "why": "Bloquer et signaler protège aussi les autres enfants. Tu as très bien réagi en en parlant." },
+                    { "id": "b", "text": "On lui répond pour lui dire qu’il n’est pas gentil.", "why": "Mieux vaut ne pas discuter avec cette personne : on la bloque et on la signale." }] }]
+        },
+        {
+            "id": "achat", "level": 2, "picto": "tablette",
+            "steps": [
+                { "text": "Dans un jeu, un bouton propose « 1000 diamants pour seulement 9,99 € ».", "choices": [
+                    { "id": "a", "text": "Je ne touche pas et je demande à un adulte.", "best": true, "why": "Ce bouton coûte de l’argent réel, celui de tes parents. On demande toujours avant." },
+                    { "id": "b", "text": "Je touche, ce ne sont que des diamants.", "why": "Les diamants sont virtuels, mais l’argent payé est bien réel." }] },
+                { "text": "Ton frère a déjà acheté sans demander. Que fais-tu ?", "choices": [
+                    { "id": "a", "text": "On le dit aux parents, même si on a peur d’être grondés.", "best": true, "why": "Les parents peuvent souvent régler le problème. Le dire vite, c’est la bonne décision." },
+                    { "id": "b", "text": "On cache la tablette.", "why": "Cacher ne règle rien et peut coûter plus cher. Mieux vaut le dire." }] }]
+        },
+        {
+            "id": "rumeur", "level": 2, "picto": "message",
+            "message": "Info secrète : demain il n’y a pas école ! Partage à tous tes contacts !!!",
+            "steps": [
+                { "text": "Tu reçois ce message dans un groupe.", "choices": [
+                    { "id": "a", "text": "Je vérifie auprès d’un adulte avant de le croire.", "best": true, "why": "« Partage à tous », « info secrète » : une information doit être vérifiée avant d’être crue ou partagée." },
+                    { "id": "b", "text": "Je le crois, c’est écrit en gros.", "why": "Écrire en gros ou avec des points d’exclamation ne rend pas une information vraie." }] },
+                { "text": "À l’école, on te dit que c’est faux. Que fais-tu ?", "choices": [
+                    { "id": "a", "text": "Je ne le partage pas et je préviens le groupe que c’est faux.", "best": true, "why": "Arrêter une fausse information aide tout le monde. Bravo, détective du numérique !" },
+                    { "id": "b", "text": "Je le partage quand même, c’est drôle.", "why": "Partager une fausse information peut inquiéter ou tromper d’autres familles." }] }]
+        }
+    ]
+}

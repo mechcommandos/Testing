@@ -1,0 +1,85 @@
+{
+    "version": 1,
+    "review": "Propriétés des animaux simplifiées pour des enfants de 3 à 8 ans ; les cas ambigus (canard, tortue, phoque, renard, chien…) sont volontairement exclus de la règle concernée. À faire relire.",
+    "rules": {
+        "famille": {
+            "label": "sa famille",
+            "prompt": "Range chaque image dans la bonne famille.",
+            "boxes": [
+                { "id": "animal", "label": "Animaux", "picto": "chat" },
+                { "id": "fruit", "label": "Fruits et légumes", "picto": "pomme" },
+                { "id": "vehicule", "label": "Véhicules", "picto": "voiture" }
+            ]
+        },
+        "milieu": {
+            "label": "l’endroit où il vit",
+            "prompt": "Range chaque animal selon l’endroit où il vit : dans l’eau ou sur la terre.",
+            "boxes": [
+                { "id": "eau", "label": "Dans l’eau", "picto": "mer" },
+                { "id": "terre", "label": "Sur la terre", "picto": "foret" }
+            ]
+        },
+        "pattes": {
+            "label": "son nombre de pattes",
+            "prompt": "Range chaque animal selon son nombre de pattes.",
+            "boxes": [
+                { "id": "4", "label": "4 pattes" },
+                { "id": "2", "label": "2 pattes" },
+                { "id": "0", "label": "Pas de pattes" }
+            ]
+        },
+        "regime": {
+            "label": "ce qu’il mange",
+            "prompt": "Range chaque animal selon ce qu’il mange : des plantes ou de la viande.",
+            "boxes": [
+                { "id": "plantes", "label": "Des plantes", "picto": "feuille" },
+                { "id": "viande", "label": "De la viande" }
+            ]
+        },
+        "lieu": {
+            "label": "s’il vit à la ferme ou dans la nature",
+            "prompt": "Range chaque animal : est-ce qu’il vit à la ferme, ou dans la nature sauvage ?",
+            "boxes": [
+                { "id": "ferme", "label": "À la ferme", "picto": "ferme" },
+                { "id": "sauvage", "label": "Dans la nature", "picto": "savane" }
+            ]
+        }
+    },
+    "levels": {
+        "0": [["famille", ["animal", "fruit"]], ["famille", ["animal", "vehicule"]], ["famille", ["fruit", "vehicule"]], ["milieu", null], ["regime", null], ["lieu", null]],
+        "1": [["famille", null], ["pattes", null]],
+        "2": [["milieu", "pattes"], ["regime", "lieu"]]
+    },
+    "items": [
+        { "id": "chat", "name": "le chat", "picto": "chat", "famille": "animal", "milieu": "terre", "pattes": "4", "regime": "viande" },
+        { "id": "vache", "name": "la vache", "picto": "vache", "famille": "animal", "milieu": "terre", "pattes": "4", "regime": "plantes", "lieu": "ferme" },
+        { "id": "mouton", "name": "le mouton", "picto": "mouton", "famille": "animal", "milieu": "terre", "pattes": "4", "regime": "plantes", "lieu": "ferme" },
+        { "id": "cheval", "name": "le cheval", "picto": "cheval", "famille": "animal", "milieu": "terre", "pattes": "4", "regime": "plantes", "lieu": "ferme" },
+        { "id": "cochon", "name": "le cochon", "picto": "cochon", "famille": "animal", "milieu": "terre", "pattes": "4", "lieu": "ferme" },
+        { "id": "poule", "name": "la poule", "picto": "poule", "famille": "animal", "milieu": "terre", "pattes": "2", "lieu": "ferme" },
+        { "id": "lion", "name": "le lion", "picto": "lion", "famille": "animal", "milieu": "terre", "pattes": "4", "regime": "viande", "lieu": "sauvage" },
+        { "id": "loup", "name": "le loup", "picto": "loup", "famille": "animal", "milieu": "terre", "pattes": "4", "regime": "viande", "lieu": "sauvage" },
+        { "id": "zebre", "name": "le zèbre", "picto": "zebre", "famille": "animal", "milieu": "terre", "pattes": "4", "regime": "plantes", "lieu": "sauvage" },
+        { "id": "girafe", "name": "la girafe", "picto": "girafe", "famille": "animal", "milieu": "terre", "pattes": "4", "regime": "plantes", "lieu": "sauvage" },
+        { "id": "elephant", "name": "l’éléphant", "picto": "elephant", "famille": "animal", "milieu": "terre", "pattes": "4", "regime": "plantes", "lieu": "sauvage" },
+        { "id": "panda", "name": "le panda", "picto": "panda", "famille": "animal", "milieu": "terre", "pattes": "4", "regime": "plantes", "lieu": "sauvage" },
+        { "id": "hibou", "name": "le hibou", "picto": "hibou", "famille": "animal", "pattes": "2", "regime": "viande", "lieu": "sauvage" },
+        { "id": "manchot", "name": "le manchot", "picto": "manchot", "famille": "animal", "pattes": "2" },
+        { "id": "dauphin", "name": "le dauphin", "picto": "dauphin", "famille": "animal", "milieu": "eau", "pattes": "0", "lieu": "sauvage" },
+        { "id": "baleine", "name": "la baleine", "picto": "baleine", "famille": "animal", "milieu": "eau", "pattes": "0", "lieu": "sauvage" },
+        { "id": "poisson", "name": "le poisson", "picto": "poisson", "famille": "animal", "milieu": "eau", "pattes": "0" },
+        { "id": "pieuvre", "name": "la pieuvre", "picto": "pieuvre", "famille": "animal", "milieu": "eau", "lieu": "sauvage" },
+        { "id": "pomme", "name": "la pomme", "picto": "pomme", "famille": "fruit" },
+        { "id": "poire", "name": "la poire", "picto": "poire", "famille": "fruit" },
+        { "id": "fraise", "name": "la fraise", "picto": "fraise", "famille": "fruit" },
+        { "id": "banane", "name": "la banane", "picto": "banane", "famille": "fruit" },
+        { "id": "carotte", "name": "la carotte", "picto": "carotte", "famille": "fruit" },
+        { "id": "citron", "name": "le citron", "picto": "citron", "famille": "fruit" },
+        { "id": "velo", "name": "le vélo", "picto": "velo", "famille": "vehicule" },
+        { "id": "voiture", "name": "la voiture", "picto": "voiture", "famille": "vehicule" },
+        { "id": "train", "name": "le train", "picto": "train", "famille": "vehicule" },
+        { "id": "bateau", "name": "le bateau", "picto": "bateau", "famille": "vehicule" },
+        { "id": "helicoptere", "name": "l’hélicoptère", "picto": "helicoptere", "famille": "vehicule" },
+        { "id": "moto", "name": "la moto", "picto": "moto", "famille": "vehicule" }
+    ]
+}

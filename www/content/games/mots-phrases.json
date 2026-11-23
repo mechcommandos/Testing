@@ -1,0 +1,25 @@
+{
+    "version": 1,
+    "review": "Phrases, accords et ordres acceptés à faire relire (relecture linguistique).",
+    "sentences": [
+        { "id": "chat-dort", "level": 0, "picto": "chat", "orders": ["le chat dort"] },
+        { "id": "chien-court", "level": 0, "picto": "chien", "orders": ["le chien court"] },
+        { "id": "poisson-nage", "level": 0, "picto": "poisson", "orders": ["le poisson nage"] },
+        { "id": "bebe-rit", "level": 0, "picto": "bebe", "orders": ["le bébé rit"] },
+        { "id": "lapin-saute", "level": 0, "picto": "lapin", "orders": ["le lapin saute"] },
+        { "id": "hibou-vole", "level": 0, "picto": "hibou", "orders": ["le hibou vole"] },
+
+        { "id": "chats-dorment", "level": 1, "picto": "chat", "count": 2, "orders": ["les chats dorment"], "distractors": ["dort"], "rule": "Il y a plusieurs chats : on écrit « les chats dorment »." },
+        { "id": "vache-mange", "level": 1, "picto": "vache", "orders": ["la vache mange"], "distractors": ["le"], "rule": "« Vache » est un mot féminin : on dit « la vache »." },
+        { "id": "lapins-sautent", "level": 1, "picto": "lapin", "count": 2, "orders": ["les lapins sautent"], "distractors": ["saute"], "rule": "Il y a plusieurs lapins : le verbe s’accorde, « ils sautent »." },
+        { "id": "cheval-galope", "level": 1, "picto": "cheval", "orders": ["le cheval galope"], "distractors": ["galopent"], "rule": "Il y a un seul cheval : « il galope »." },
+        { "id": "poules-picorent", "level": 1, "picto": "poule", "count": 2, "orders": ["les poules picorent"], "distractors": ["picore"], "rule": "Il y a plusieurs poules : « elles picorent »." },
+        { "id": "girafe-grande", "level": 1, "picto": "girafe", "orders": ["la girafe est grande"], "distractors": ["grand"], "rule": "« Girafe » est féminin : on écrit « grande », avec un e." },
+
+        { "id": "chien-jardin", "level": 2, "picto": "chien", "orders": ["ce matin, le chien joue dans le jardin", "le chien joue dans le jardin ce matin"] },
+        { "id": "fille-pomme", "level": 2, "picto": "pomme", "orders": ["la petite fille mange une pomme rouge"] },
+        { "id": "lea-lit", "level": 2, "picto": "journal", "orders": ["le soir, Léa lit un journal", "Léa lit un journal le soir"] },
+        { "id": "dauphins", "level": 2, "picto": "dauphin", "count": 2, "orders": ["dans la mer, les dauphins nagent vite", "les dauphins nagent vite dans la mer"] },
+        { "id": "parapluie", "level": 2, "picto": "parapluie", "orders": ["quand il pleut, je prends mon parapluie", "je prends mon parapluie quand il pleut"] }
+    ]
+}

@@ -1,0 +1,115 @@
+{
+    "version": 1,
+    "review": "Contenus scientifiques à faire relire (formulations simplifiées). Aucune expérience réelle n’est proposée.",
+    "simplifications": [
+        "Flotte ou coule : on dit « léger ou lourd pour sa taille » pour la densité. On ne parle pas de la poussée d’Archimède.",
+        "Circuit : le courant est présenté comme quelque chose qui fait le tour d’une boucle fermée ; pas de tension ni d’intensité.",
+        "Plantes : seuls l’eau et la lumière varient ; la terre, la chaleur et l’air sont supposés présents."
+    ],
+    "float": [
+        {
+            "id": "bois",
+            "picto": "bois",
+            "name": "un morceau de bois",
+            "floats": true,
+            "why": "Le bois est léger pour sa taille : il flotte."
+        },
+        {
+            "id": "caillou",
+            "picto": "caillou",
+            "name": "un caillou",
+            "floats": false,
+            "why": "Le caillou est lourd pour sa taille : il coule."
+        },
+        {
+            "id": "cle",
+            "picto": "cle",
+            "name": "une clé en métal",
+            "floats": false,
+            "why": "Le métal est lourd pour sa taille : la clé coule."
+        },
+        {
+            "id": "pomme",
+            "picto": "pomme",
+            "name": "une pomme",
+            "floats": true,
+            "why": "Une pomme contient de l’air : elle est légère pour sa taille et flotte."
+        },
+        {
+            "id": "glacon",
+            "picto": "glacon",
+            "name": "un glaçon",
+            "floats": true,
+            "why": "La glace est un peu plus légère que l’eau liquide de même taille : le glaçon flotte."
+        },
+        {
+            "id": "piece",
+            "picto": "piece",
+            "name": "une pièce de monnaie",
+            "floats": false,
+            "why": "La pièce est en métal, lourde pour sa taille : elle coule. (Un grand bateau en métal flotte grâce à sa forme creuse remplie d’air.)"
+        },
+        {
+            "id": "feuille",
+            "picto": "feuille",
+            "name": "une feuille d’arbre",
+            "floats": true,
+            "why": "La feuille est très légère et plate : elle flotte."
+        },
+        {
+            "id": "ancre",
+            "picto": "ancre",
+            "name": "une ancre",
+            "floats": false,
+            "why": "L’ancre est en métal plein, lourde pour sa taille : elle coule. C’est pour ça qu’elle retient le bateau."
+        },
+        {
+            "id": "eponge",
+            "picto": "eponge",
+            "name": "une éponge sèche",
+            "floats": true,
+            "why": "L’éponge sèche est pleine d’air : elle flotte."
+        },
+        {
+            "id": "vis",
+            "picto": "boulon",
+            "name": "un boulon",
+            "floats": false,
+            "why": "Le boulon est en métal plein : il coule."
+        }
+    ],
+    "plants": [
+        {
+            "id": "eau-lumiere",
+            "water": true,
+            "light": true,
+            "result": "verte",
+            "text": "La graine reçoit de l’eau et de la lumière.",
+            "why": "Avec de l’eau et de la lumière, la plante pousse bien et ses feuilles sont vertes."
+        },
+        {
+            "id": "eau-noir",
+            "water": true,
+            "light": false,
+            "result": "pale",
+            "text": "La graine reçoit de l’eau mais reste dans le noir.",
+            "why": "Grâce à l’eau, la graine germe. Mais sans lumière, la petite plante reste pâle et fragile : elle a besoin de lumière pour grandir."
+        },
+        {
+            "id": "sec-lumiere",
+            "water": false,
+            "light": true,
+            "result": "rien",
+            "text": "La graine est à la lumière mais ne reçoit pas d’eau.",
+            "why": "Sans eau, la graine ne germe pas : rien ne pousse."
+        },
+        {
+            "id": "sec-noir",
+            "water": false,
+            "light": false,
+            "result": "rien",
+            "text": "La graine ne reçoit ni eau ni lumière.",
+            "why": "Sans eau, la graine ne germe pas : rien ne pousse."
+        }
+    ]
+}

@@ -1,0 +1,118 @@
+{
+    "version": 1,
+    "review": "Histoires courtes et ordres acceptés à faire relire (les variantes listées dans « orders » doivent toutes être cohérentes).",
+    "stories": [
+        {
+            "id": "graine", "level": 0, "title": "La graine",
+            "steps": [
+                { "id": "a", "picto": "graine", "text": "On plante une graine." },
+                { "id": "b", "picto": "pousse", "text": "Une petite pousse sort de la terre." },
+                { "id": "c", "picto": "tournesol", "text": "La fleur a grandi." }
+            ],
+            "orders": [["a", "b", "c"]]
+        },
+        {
+            "id": "banane", "level": 0, "title": "Le goûter",
+            "steps": [
+                { "id": "a", "picto": "banane", "text": "Lina prend une banane pour le goûter." },
+                { "id": "b", "picto": "peau-banane", "text": "Elle l’a mangée : il reste la peau." },
+                { "id": "c", "picto": "compost", "text": "Elle met la peau au compost." }
+            ],
+            "orders": [["a", "b", "c"]]
+        },
+        {
+            "id": "pique-nique", "level": 0, "title": "Le pique-nique",
+            "steps": [
+                { "id": "a", "picto": "panier", "text": "On prépare le panier du pique-nique." },
+                { "id": "b", "picto": "pomme", "text": "On mange dans l’herbe." },
+                { "id": "c", "picto": "poubelle", "text": "On jette les déchets avant de partir." }
+            ],
+            "orders": [["a", "b", "c"]]
+        },
+        {
+            "id": "bateau-papier", "level": 0, "title": "Le bateau en papier",
+            "steps": [
+                { "id": "a", "picto": "feuille-papier", "text": "Sami prend une feuille de papier." },
+                { "id": "b", "picto": "bateau", "text": "Il la plie en forme de bateau." },
+                { "id": "c", "picto": "flotte", "text": "Il pose le bateau sur l’eau : il flotte !" }
+            ],
+            "orders": [["a", "b", "c"]]
+        },
+        {
+            "id": "matin", "level": 1, "title": "Le matin",
+            "steps": [
+                { "id": "a", "picto": "reveil", "text": "Le réveil sonne." },
+                { "id": "b", "picto": "tasse", "text": "On prend le petit-déjeuner." },
+                { "id": "c", "picto": "brosse-dents", "text": "On se brosse les dents." },
+                { "id": "d", "picto": "sac-a-dos", "text": "On prend son sac pour aller à l’école." }
+            ],
+            "orders": [["a", "b", "c", "d"], ["a", "c", "b", "d"]]
+        },
+        {
+            "id": "anniversaire", "level": 1, "title": "L’anniversaire",
+            "steps": [
+                { "id": "a", "picto": "cadeau", "text": "Noé emballe un cadeau pour son amie." },
+                { "id": "b", "picto": "maison", "text": "Il arrive chez elle pour la fête." },
+                { "id": "c", "picto": "gateau", "text": "Tout le monde chante et elle souffle les bougies." },
+                { "id": "d", "picto": "peluche", "text": "Elle ouvre le cadeau : une peluche !" }
+            ],
+            "orders": [["a", "b", "c", "d"], ["a", "b", "d", "c"]]
+        },
+        {
+            "id": "lettre", "level": 1, "title": "La lettre à Mamie",
+            "steps": [
+                { "id": "a", "picto": "feuille-papier", "text": "Jade écrit une lettre." },
+                { "id": "b", "picto": "enveloppe", "text": "Elle la met dans une enveloppe." },
+                { "id": "c", "picto": "velo", "text": "Le facteur l’emporte à vélo." },
+                { "id": "d", "picto": "maison", "text": "Mamie la reçoit chez elle." }
+            ],
+            "orders": [["a", "b", "c", "d"]]
+        },
+        {
+            "id": "bateau-coule", "level": 1, "title": "Le bateau qui prend l’eau",
+            "steps": [
+                { "id": "a", "picto": "feuille-papier", "text": "Sami plie une feuille en bateau." },
+                { "id": "b", "picto": "flotte", "text": "Sur l’eau, le bateau flotte." },
+                { "id": "c", "picto": "eponge", "text": "Le papier boit l’eau et devient tout mou." },
+                { "id": "d", "picto": "coule", "text": "Le bateau coule." }
+            ],
+            "orders": [["a", "b", "c", "d"]]
+        },
+        {
+            "id": "plante", "level": 2, "title": "La plante oubliée",
+            "steps": [
+                { "id": "a", "picto": "graine", "text": "On plante une graine." },
+                { "id": "b", "picto": "pousse", "text": "Une pousse bien verte apparaît." },
+                { "id": "c", "picto": "pousse-pale", "text": "On oublie de l’arroser : elle devient pâle et penche." },
+                { "id": "d", "picto": "tasse", "text": "On l’arrose enfin." },
+                { "id": "e", "picto": "tournesol", "text": "Elle reprend des forces et fleurit." }
+            ],
+            "orders": [["a", "b", "c", "d", "e"]],
+            "why": "La plante devient pâle parce qu’elle n’a pas d’eau ; elle fleurit parce qu’on l’arrose."
+        },
+        {
+            "id": "pluie", "level": 2, "title": "Le bateau sous la pluie",
+            "steps": [
+                { "id": "a", "picto": "feuille-papier", "text": "Sami plie une feuille en bateau." },
+                { "id": "b", "picto": "flotte", "text": "Il le pose sur la flaque : il flotte." },
+                { "id": "c", "picto": "parapluie", "text": "Il se met à pleuvoir très fort." },
+                { "id": "d", "picto": "eponge", "text": "La pluie mouille le papier, qui devient tout mou." },
+                { "id": "e", "picto": "coule", "text": "Le bateau coule." }
+            ],
+            "orders": [["a", "b", "c", "d", "e"]],
+            "why": "Le bateau coule parce que la pluie a mouillé le papier."
+        },
+        {
+            "id": "recyclage", "level": 2, "title": "La boîte de conserve",
+            "steps": [
+                { "id": "a", "picto": "conserve", "text": "On ouvre une boîte de petits pois." },
+                { "id": "b", "picto": "eponge", "text": "Une fois vide, on rince la boîte." },
+                { "id": "c", "picto": "bac-jaune", "text": "On jette la boîte vide dans le bac jaune." },
+                { "id": "d", "picto": "boulon", "text": "À l’usine, le métal de la boîte est fondu." },
+                { "id": "e", "picto": "velo", "text": "Ce métal sert à fabriquer un vélo." }
+            ],
+            "orders": [["a", "b", "c", "d", "e"]],
+            "why": "La boîte peut devenir un vélo parce qu’elle a été triée dans le bac jaune, puis recyclée."
+        }
+    ]
+}

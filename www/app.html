@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="fr" class="booting">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Layjou · Jouer</title>
+  <!-- L'application elle-même n'est pas une page à indexer : les pages publiques (accueil, /jeux/…) le sont. -->
+  <meta name="robots" content="noindex, follow">
+  <meta name="theme-color" content="#1a56b8">
+  <meta name="color-scheme" content="light">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="assets/img/icon-192.png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="stylesheet" href="css/app.css">
+  <!-- Chrome en mode « Site pour ordinateur » sur téléphone : rétablit l'affichage mobile (voir le fichier). -->
+  <script src="js/fit-viewport.js"></script>
+  <!-- Applis installées : écran de démarrage (mascotte et logo) pendant au moins 3 secondes. -->
+  <script src="js/app-splash.js"></script>
+  <link rel="modulepreload" href="js/app.js">
+  <script type="module" src="js/app.js"></script>
+  <!-- Mesure d'audience Google : pas de bandeau dans les jeux ; seulement si l'accord a été donné sur le site. -->
+</head>
+<body>
+  <a class="skip" href="#main">Aller au contenu</a>
+  <header id="header" class="header"></header>
+  <main id="main" tabindex="-1">
+    <noscript>Layjou a besoin de JavaScript pour fonctionner.</noscript>
+  </main>
+</body>
+</html>

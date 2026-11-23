@@ -1,0 +1,64 @@
+{
+    "version": 1,
+    "note": "Cartes fictives. Lignes de 9 cases : . herbe, = route, T forêt, ~ rivière, B pont, ^ montagne ; lettres = lieux de la légende. Toute route valide est acceptée.",
+    "legend": {
+        "M": { "label": "la maison", "picto": "maison" },
+        "F": { "label": "la ferme", "picto": "ferme" },
+        "G": { "label": "la gare", "picto": "train" },
+        "E": { "label": "l’école", "picto": "sac-a-dos" },
+        "P": { "label": "la boulangerie", "picto": "gateau" },
+        "S": { "label": "le parc", "picto": "tournesol" },
+        "H": { "label": "le port", "picto": "ancre" }
+    },
+    "terrain": {
+        ".": { "label": "herbe", "walk": true },
+        "=": { "label": "route", "walk": true },
+        "T": { "label": "forêt", "walk": true },
+        "B": { "label": "pont", "walk": true },
+        "~": { "label": "rivière", "walk": false },
+        "^": { "label": "montagne", "walk": false }
+    },
+    "maps": {
+        "village": [
+            "...TT...F",
+            ".M==T===.",
+            "...=T.^=.",
+            "~~~B~~~B~",
+            "...=...=.",
+            ".P=====.G",
+            "....S...."
+        ],
+        "riviere": [
+            "^^..E....",
+            "^..==T...",
+            "..==.T.S.",
+            "M=...T...",
+            "~~B~~~~B~",
+            "...=..=..",
+            "F..=..P.G"
+        ],
+        "port": [
+            "S...T..^^",
+            ".==.T..^E",
+            ".=..T....",
+            ".M..===..",
+            "~~~~B~~B~",
+            "..P...=..",
+            "H.....=.F"
+        ]
+    },
+    "tasks": [
+        { "level": 0, "map": "village", "from": "M", "to": "F" },
+        { "level": 0, "map": "village", "from": "P", "to": "S" },
+        { "level": 0, "map": "riviere", "from": "M", "to": "E" },
+        { "level": 0, "map": "port", "from": "M", "to": "S" },
+        { "level": 1, "map": "village", "from": "M", "to": "G" },
+        { "level": 1, "map": "riviere", "from": "E", "to": "P" },
+        { "level": 1, "map": "port", "from": "S", "to": "H" },
+        { "level": 1, "map": "riviere", "from": "M", "to": "F" },
+        { "level": 2, "map": "village", "from": "M", "to": "G", "via": ["P"], "avoid": ["T"], "slack": 2 },
+        { "level": 2, "map": "riviere", "from": "M", "to": "S", "via": ["E"], "avoid": ["T"], "slack": 2 },
+        { "level": 2, "map": "port", "from": "M", "to": "F", "via": ["P"], "avoid": [], "slack": 2 },
+        { "level": 2, "map": "port", "from": "E", "to": "H", "via": [], "avoid": ["T"], "slack": 1 }
+    ]
+}

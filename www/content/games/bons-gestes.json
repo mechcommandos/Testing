@@ -1,0 +1,263 @@
+{
+    "version": 1,
+    "review": "À vérifier avec les consignes nationales en vigueur et à adapter par commune ; référentiel à documenter pour chaque pays.",
+    "referential": {
+        "id": "fr-simplifie-2024",
+        "label": "France, consignes simplifiées",
+        "notice": "Les règles de tri changent d’une commune à l’autre : vérifie celles de chez toi.",
+        "bins": [
+            {
+                "id": "jaune",
+                "picto": "bac-jaune",
+                "label": "Bac jaune",
+                "detail": "emballages et papiers"
+            },
+            {
+                "id": "verre",
+                "picto": "conteneur-verre",
+                "label": "Verre",
+                "detail": "bouteilles et pots en verre"
+            },
+            {
+                "id": "compost",
+                "picto": "compost",
+                "label": "Compost",
+                "detail": "restes de fruits et légumes"
+            },
+            {
+                "id": "ordures",
+                "picto": "poubelle",
+                "label": "Poubelle",
+                "detail": "ordures ménagères"
+            }
+        ],
+        "binsByDifficulty": [
+            [
+                "jaune",
+                "verre"
+            ],
+            [
+                "jaune",
+                "verre",
+                "compost",
+                "ordures"
+            ]
+        ]
+    },
+    "items": [
+        {
+            "id": "boite-conserve",
+            "picto": "conserve",
+            "name": "une boîte de conserve vide",
+            "bin": "jaune",
+            "why": "C’est un emballage en métal : bac jaune."
+        },
+        {
+            "id": "carton",
+            "picto": "carton",
+            "name": "un carton",
+            "bin": "jaune",
+            "why": "Les cartons d’emballage vont dans le bac jaune, bien aplatis."
+        },
+        {
+            "id": "journal",
+            "picto": "journal",
+            "name": "un journal",
+            "bin": "jaune",
+            "why": "Les papiers vont dans le bac jaune."
+        },
+        {
+            "id": "brique",
+            "picto": "brique",
+            "name": "une brique de jus",
+            "bin": "jaune",
+            "why": "C’est un emballage : bac jaune."
+        },
+        {
+            "id": "flacon",
+            "picto": "flacon",
+            "name": "un flacon en plastique vide",
+            "bin": "jaune",
+            "why": "Les emballages en plastique vont dans le bac jaune."
+        },
+        {
+            "id": "enveloppe",
+            "picto": "enveloppe",
+            "name": "une enveloppe",
+            "bin": "jaune",
+            "why": "Les papiers vont dans le bac jaune."
+        },
+        {
+            "id": "bouteille-verre",
+            "picto": "bouteille-verre",
+            "name": "une bouteille en verre",
+            "bin": "verre",
+            "why": "Les bouteilles en verre vont dans le conteneur à verre."
+        },
+        {
+            "id": "bocal",
+            "picto": "bocal",
+            "name": "un pot de confiture en verre",
+            "bin": "verre",
+            "why": "Les pots en verre vont dans le conteneur à verre, sans leur couvercle."
+        },
+        {
+            "id": "pelure",
+            "picto": "peau-banane",
+            "name": "une peau de banane",
+            "bin": "compost",
+            "why": "Les restes de fruits se transforment en compost."
+        },
+        {
+            "id": "coquille",
+            "picto": "coquilles",
+            "name": "des coquilles d’œuf",
+            "bin": "compost",
+            "why": "Les coquilles d’œuf vont au compost."
+        },
+        {
+            "id": "carotte",
+            "picto": "carotte",
+            "name": "des épluchures de carotte",
+            "bin": "compost",
+            "why": "Les épluchures de légumes vont au compost."
+        },
+        {
+            "id": "brosse-dents",
+            "picto": "brosse-dents",
+            "name": "une brosse à dents usée",
+            "bin": "ordures",
+            "why": "Ce n’est pas un emballage : poubelle des ordures ménagères."
+        },
+        {
+            "id": "eponge",
+            "picto": "eponge",
+            "name": "une éponge usée",
+            "bin": "ordures",
+            "why": "Une éponge usée va dans la poubelle des ordures ménagères."
+        },
+        {
+            "id": "assiette",
+            "picto": "assiette-cassee",
+            "name": "une assiette cassée",
+            "bin": "ordures",
+            "why": "La vaisselle n’est pas du verre d’emballage : poubelle des ordures ménagères, emballée pour ne blesser personne."
+        }
+    ],
+    "situations": [
+        {
+            "id": "dents",
+            "picto": "brosse-dents",
+            "text": "Tu te brosses les dents.",
+            "options": [
+                {
+                    "id": "fermer",
+                    "text": "Je ferme le robinet pendant que je brosse.",
+                    "best": true,
+                    "why": "Bravo : l’eau ne coule que quand tu en as besoin."
+                },
+                {
+                    "id": "couler",
+                    "text": "Je laisse couler l’eau.",
+                    "best": false,
+                    "why": "L’eau coule pour rien pendant tout le brossage."
+                }
+            ]
+        },
+        {
+            "id": "lumiere",
+            "picto": "ampoule",
+            "text": "Tu sors de ta chambre et la lumière est allumée.",
+            "options": [
+                {
+                    "id": "eteindre",
+                    "text": "J’éteins la lumière.",
+                    "best": true,
+                    "why": "Une lumière éteinte dans une pièce vide, c’est de l’énergie économisée."
+                },
+                {
+                    "id": "laisser",
+                    "text": "Je la laisse allumée.",
+                    "best": false,
+                    "why": "La lampe consomme de l’énergie alors que personne n’en profite."
+                }
+            ]
+        },
+        {
+            "id": "feuille",
+            "picto": "feuille-papier",
+            "text": "Ton dessin est fini, mais le dos de la feuille est encore blanc.",
+            "options": [
+                {
+                    "id": "dos",
+                    "text": "Je dessine aussi au dos.",
+                    "best": true,
+                    "why": "Utiliser les deux côtés, c’est moitié moins de papier."
+                },
+                {
+                    "id": "jeter",
+                    "text": "Je prends une nouvelle feuille.",
+                    "best": false,
+                    "why": "Le dos blanc aurait pu servir encore."
+                }
+            ]
+        },
+        {
+            "id": "gourde",
+            "picto": "sac-a-dos",
+            "text": "Tu prépares ton sac pour une sortie.",
+            "options": [
+                {
+                    "id": "gourde",
+                    "text": "Je prends ma gourde.",
+                    "best": true,
+                    "why": "Une gourde se remplit encore et encore : pas de bouteille jetée."
+                },
+                {
+                    "id": "bouteille",
+                    "text": "J’achète une petite bouteille en plastique.",
+                    "best": false,
+                    "why": "La bouteille sera jetée après la sortie."
+                }
+            ]
+        },
+        {
+            "id": "pique-nique",
+            "picto": "panier",
+            "text": "Le pique-nique est fini. Il reste des papiers et des emballages.",
+            "options": [
+                {
+                    "id": "ramasser",
+                    "text": "Je ramasse tout et je le mets dans un sac.",
+                    "best": true,
+                    "why": "Rien ne reste dans la nature, et tout pourra être trié à la maison."
+                },
+                {
+                    "id": "laisser-herbe",
+                    "text": "Je les laisse dans l’herbe.",
+                    "best": false,
+                    "why": "Les déchets restent dans la nature et peuvent blesser les animaux."
+                }
+            ]
+        },
+        {
+            "id": "jouet",
+            "picto": "peluche",
+            "text": "Tu ne joues plus avec un jouet, mais il est en bon état.",
+            "options": [
+                {
+                    "id": "donner",
+                    "text": "Je le donne pour qu’un autre enfant joue avec.",
+                    "best": true,
+                    "why": "Le jouet continue de servir au lieu d’être jeté."
+                },
+                {
+                    "id": "poubelle",
+                    "text": "Je le mets à la poubelle.",
+                    "best": false,
+                    "why": "Un jouet en bon état peut encore faire plaisir."
+                }
+            ]
+        }
+    ]
+}

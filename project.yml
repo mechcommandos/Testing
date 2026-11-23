@@ -1,0 +1,55 @@
+# Projet Xcode de Layjou pour iPhone et iPad, généré par XcodeGen (https://github.com/yonaskolb/XcodeGen).
+# Sur un Mac : brew install xcodegen && cd ios && xcodegen  → Layjou.xcodeproj
+name: Layjou
+options:
+  bundleIdPrefix: com.layjou
+  deploymentTarget:
+    iOS: "15.0"
+settings:
+  base:
+    MARKETING_VERSION: "1.3.0"
+    CURRENT_PROJECT_VERSION: "4"
+    SWIFT_VERSION: "5.9"
+    TARGETED_DEVICE_FAMILY: "1,2"
+    ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+    # Équipe Apple Developer : à choisir dans Xcode (Signing & Capabilities) ou ici.
+    DEVELOPMENT_TEAM: ""
+    CODE_SIGN_STYLE: Automatic
+targets:
+  Layjou:
+    type: application
+    platform: iOS
+    sources:
+      - path: Layjou
+      # Application web embarquée (copiée par tools/build-release.php) : servie par SchemeHandler sous app://layjou/.
+      - path: www
+        type: folder
+        buildPhase: resources
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.layjou.app
+        INFOPLIST_KEY_CFBundleDisplayName: Layjou
+    info:
+      path: Layjou/Info.plist
+      properties:
+        CFBundleDisplayName: Layjou
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        LSRequiresIPhoneOS: true
+        ITSAppUsesNonExemptEncryption: false
+        UILaunchScreen:
+          UIImageName: Splash
+          UIColorName: LaunchBackground
+          UIImageRespectsSafeAreaInsets: true
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+        UISupportedInterfaceOrientations~ipad:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationPortraitUpsideDown
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: false
+        UIStatusBarStyle: UIStatusBarStyleDarkContent

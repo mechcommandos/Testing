@@ -1,0 +1,503 @@
+{
+    "version": 1,
+    "note": "Généré par tools/audio-placeholders.php. Pour un vrai son : remplacer le fichier, puis passer \"placeholder\" à false et renseigner source et licence.",
+    "clips": {
+        "cri-baleine": {
+            "file": "assets/audio/animaux/baleine.mp3",
+            "game": "animaux-sons",
+            "placeholder": false,
+            "expected": "Cri réel : la baleine, 1 à 3 secondes, sans voix humaine.",
+            "source": "Pixabay : Whale Song, DRAGON-STUDIO (https://pixabay.com/fr/sound-effects/nature-whale-song-382729/)",
+            "licence": "Pixabay Content License (https://pixabay.com/fr/service/license-summary/)"
+        },
+        "cri-canard": {
+            "file": "assets/audio/animaux/canard.mp3",
+            "game": "animaux-sons",
+            "placeholder": false,
+            "expected": "Cri réel : le canard, 1 à 3 secondes, sans voix humaine.",
+            "source": "Pixabay : 075176_Duck Quack, freesound_community (https://pixabay.com/fr/sound-effects/nature-075176-duck-quack-40345/)",
+            "licence": "Pixabay Content License (https://pixabay.com/fr/service/license-summary/)"
+        },
+        "cri-chat": {
+            "file": "assets/audio/animaux/chat.mp3",
+            "game": "animaux-sons",
+            "placeholder": false,
+            "expected": "Cri réel : le chat, 1 à 3 secondes, sans voix humaine.",
+            "source": "Pixabay : Cute Cat Meow, DRAGON-STUDIO (https://pixabay.com/fr/sound-effects/nature-cute-cat-meow-472372/)",
+            "licence": "Pixabay Content License (https://pixabay.com/fr/service/license-summary/)"
+        },
+        "cri-cheval": {
+            "file": "assets/audio/animaux/cheval.mp3",
+            "game": "animaux-sons",
+            "placeholder": false,
+            "expected": "Cri réel : le cheval, 1 à 3 secondes, sans voix humaine.",
+            "source": "Pixabay : Horse Neigh, DRAGON-STUDIO (https://pixabay.com/fr/sound-effects/nature-horse-neigh-515279/)",
+            "licence": "Pixabay Content License (https://pixabay.com/fr/service/license-summary/)"
+        },
+        "cri-chien": {
+            "file": "assets/audio/animaux/chien.mp3",
+            "game": "animaux-sons",
+            "placeholder": false,
+            "expected": "Cri réel : le chien, 1 à 3 secondes, sans voix humaine.",
+            "source": "Pixabay : Free Dog Bark, DRAGON-STUDIO (https://pixabay.com/fr/sound-effects/nature-free-dog-bark-419014/)",
+            "licence": "Pixabay Content License (https://pixabay.com/fr/service/license-summary/)"
+        },
+        "cri-cochon": {
+            "file": "assets/audio/animaux/cochon.mp3",
+            "game": "animaux-sons",
+            "placeholder": false,
+            "expected": "Cri réel : le cochon, 1 à 3 secondes, sans voix humaine.",
+            "source": "Pixabay : oink, freesound_community (https://pixabay.com/fr/sound-effects/nature-oink-40664/)",
+            "licence": "Pixabay Content License (https://pixabay.com/fr/service/license-summary/)"
+        },
+        "cri-dauphin": {
+            "file": "assets/audio/animaux/dauphin.mp3",
+            "game": "animaux-sons",
+            "placeholder": false,
+            "expected": "Cri réel : le dauphin, 1 à 3 secondes, sans voix humaine.",
+            "source": "Pixabay : Dolphin Noise, freesound_community (https://pixabay.com/fr/sound-effects/nature-dolphin-noise-6968/)",
+            "licence": "Pixabay Content License (https://pixabay.com/fr/service/license-summary/)"
+        },
+        "cri-elephant": {
+            "file": "assets/audio/animaux/elephant.mp3",
+            "game": "animaux-sons",
+            "placeholder": false,
+            "expected": "Cri réel : l’éléphant, 1 à 3 secondes, sans voix humaine.",
+            "source": "Pixabay : elephant, u_tococonino969 (https://pixabay.com/fr/sound-effects/nature-elephant-225994/)",
+            "licence": "Pixabay Content License (https://pixabay.com/fr/service/license-summary/)"
+        },
+        "cri-hibou": {
+            "file": "assets/audio/animaux/hibou.mp3",
+            "game": "animaux-sons",
+            "placeholder": false,
+            "expected": "Cri réel : le hibou, 1 à 3 secondes, sans voix humaine.",
+            "source": "Pixabay : owl hooting, LazyChillZone (https://pixabay.com/fr/sound-effects/nature-owl-hooting-223549/)",
+            "licence": "Pixabay Content License (https://pixabay.com/fr/service/license-summary/)"
+        },
+        "cri-lion": {
+            "file": "assets/audio/animaux/lion.mp3",
+            "game": "animaux-sons",
+            "placeholder": false,
+            "expected": "Cri réel : le lion, 1 à 3 secondes, sans voix humaine.",
+            "source": "Pixabay : Powerful Lion Roar, PWLPL (https://pixabay.com/fr/sound-effects/nature-powerful-lion-roar-sound-effect-high-quality-sfx-444190/)",
+            "licence": "Pixabay Content License (https://pixabay.com/fr/service/license-summary/)"
+        },
+        "cri-loup": {
+            "file": "assets/audio/animaux/loup.mp3",
+            "game": "animaux-sons",
+            "placeholder": false,
+            "expected": "Cri réel : le loup, 1 à 3 secondes, sans voix humaine.",
+            "source": "Pixabay : Wolf Howl 2, DRAGON-STUDIO (https://pixabay.com/fr/sound-effects/nature-wolf-howl-2-631469/)",
+            "licence": "Pixabay Content License (https://pixabay.com/fr/service/license-summary/)"
+        },
+        "cri-manchot": {
+            "file": "assets/audio/animaux/manchot.mp3",
+            "game": "animaux-sons",
+            "placeholder": false,
+            "expected": "Cri réel : le manchot, 1 à 3 secondes, sans voix humaine.",
+            "source": "Pixabay : Pinguin, SondangSirait419 (https://pixabay.com/fr/sound-effects/nature-pinguin-220042/)",
+            "licence": "Pixabay Content License (https://pixabay.com/fr/service/license-summary/)"
+        },
+        "cri-mouton": {
+            "file": "assets/audio/animaux/mouton.mp3",
+            "game": "animaux-sons",
+            "placeholder": false,
+            "expected": "Cri réel : le mouton, 1 à 3 secondes, sans voix humaine.",
+            "source": "Pixabay : Sheep bleating, Teoglas (https://pixabay.com/fr/sound-effects/nature-sheep-bleating-223324/)",
+            "licence": "Pixabay Content License (https://pixabay.com/fr/service/license-summary/)"
+        },
+        "cri-phoque": {
+            "file": "assets/audio/animaux/phoque.wav",
+            "game": "animaux-sons",
+            "placeholder": true,
+            "expected": "Cri réel : le phoque, 1 à 3 secondes, sans voix humaine.",
+            "source": null,
+            "licence": null
+        },
+        "cri-poule": {
+            "file": "assets/audio/animaux/poule.mp3",
+            "game": "animaux-sons",
+            "placeholder": false,
+            "expected": "Cri réel : la poule, 1 à 3 secondes, sans voix humaine.",
+            "source": "Pixabay : Chicken Sounds, DRAGON-STUDIO (https://pixabay.com/fr/sound-effects/nature-chicken-sounds-487676/)",
+            "licence": "Pixabay Content License (https://pixabay.com/fr/service/license-summary/)"
+        },
+        "cri-renard": {
+            "file": "assets/audio/animaux/renard.mp3",
+            "game": "animaux-sons",
+            "placeholder": false,
+            "expected": "Cri réel : le renard, 1 à 3 secondes, sans voix humaine.",
+            "source": "Pixabay : foxBark2, freesound_community (https://pixabay.com/fr/sound-effects/film-special-effects-foxbark2-89104/)",
+            "licence": "Pixabay Content License (https://pixabay.com/fr/service/license-summary/)"
+        },
+        "cri-vache": {
+            "file": "assets/audio/animaux/vache.mp3",
+            "game": "animaux-sons",
+            "placeholder": false,
+            "expected": "Cri réel : la vache, 1 à 3 secondes, sans voix humaine.",
+            "source": "Pixabay : cow mooing, u_jd81cxyq22 (https://pixabay.com/fr/sound-effects/nature-cow-mooing-343423/)",
+            "licence": "Pixabay Content License (https://pixabay.com/fr/service/license-summary/)"
+        },
+        "cri-zebre": {
+            "file": "assets/audio/animaux/zebre.mp3",
+            "game": "animaux-sons",
+            "placeholder": false,
+            "expected": "Cri réel : le zèbre, 1 à 3 secondes, sans voix humaine.",
+            "source": "Pixabay : Zebra whinnying, cartoon_music (https://pixabay.com/fr/sound-effects/film-special-effects-zebra-whinnying-555100/)",
+            "licence": "Pixabay Content License (https://pixabay.com/fr/service/license-summary/)",
+            "end": 4
+        },
+        "mot-bateau": {
+            "file": "assets/audio/mots/bateau.wav",
+            "game": "ile-lettres",
+            "placeholder": true,
+            "expected": "Le mot « bateau » prononcé lentement, syllabes audibles.",
+            "source": null,
+            "licence": null
+        },
+        "mot-bebe": {
+            "file": "assets/audio/mots/bebe.wav",
+            "game": "ile-lettres",
+            "placeholder": true,
+            "expected": "Le mot « bébé » prononcé lentement, syllabes audibles.",
+            "source": null,
+            "licence": null
+        },
+        "mot-cadeau": {
+            "file": "assets/audio/mots/cadeau.wav",
+            "game": "ile-lettres",
+            "placeholder": true,
+            "expected": "Le mot « cadeau » prononcé lentement, syllabes audibles.",
+            "source": null,
+            "licence": null
+        },
+        "mot-cafe": {
+            "file": "assets/audio/mots/cafe.wav",
+            "game": "ile-lettres",
+            "placeholder": true,
+            "expected": "Le mot « café » prononcé lentement, syllabes audibles.",
+            "source": null,
+            "licence": null
+        },
+        "mot-citron": {
+            "file": "assets/audio/mots/citron.wav",
+            "game": "ile-lettres",
+            "placeholder": true,
+            "expected": "Le mot « citron » prononcé lentement, syllabes audibles.",
+            "source": null,
+            "licence": null
+        },
+        "mot-lama": {
+            "file": "assets/audio/mots/lama.wav",
+            "game": "ile-lettres",
+            "placeholder": true,
+            "expected": "Le mot « lama » prononcé lentement, syllabes audibles.",
+            "source": null,
+            "licence": null
+        },
+        "mot-lapin": {
+            "file": "assets/audio/mots/lapin.wav",
+            "game": "ile-lettres",
+            "placeholder": true,
+            "expected": "Le mot « lapin » prononcé lentement, syllabes audibles.",
+            "source": null,
+            "licence": null
+        },
+        "mot-melon": {
+            "file": "assets/audio/mots/melon.wav",
+            "game": "ile-lettres",
+            "placeholder": true,
+            "expected": "Le mot « melon » prononcé lentement, syllabes audibles.",
+            "source": null,
+            "licence": null
+        },
+        "mot-moto": {
+            "file": "assets/audio/mots/moto.wav",
+            "game": "ile-lettres",
+            "placeholder": true,
+            "expected": "Le mot « moto » prononcé lentement, syllabes audibles.",
+            "source": null,
+            "licence": null
+        },
+        "mot-panda": {
+            "file": "assets/audio/mots/panda.wav",
+            "game": "ile-lettres",
+            "placeholder": true,
+            "expected": "Le mot « panda » prononcé lentement, syllabes audibles.",
+            "source": null,
+            "licence": null
+        },
+        "mot-robot": {
+            "file": "assets/audio/mots/robot.wav",
+            "game": "ile-lettres",
+            "placeholder": true,
+            "expected": "Le mot « robot » prononcé lentement, syllabes audibles.",
+            "source": null,
+            "licence": null
+        },
+        "mot-sapin": {
+            "file": "assets/audio/mots/sapin.wav",
+            "game": "ile-lettres",
+            "placeholder": true,
+            "expected": "Le mot « sapin » prononcé lentement, syllabes audibles.",
+            "source": null,
+            "licence": null
+        },
+        "mot-tortue": {
+            "file": "assets/audio/mots/tortue.wav",
+            "game": "ile-lettres",
+            "placeholder": true,
+            "expected": "Le mot « tortue » prononcé lentement, syllabes audibles.",
+            "source": null,
+            "licence": null
+        },
+        "mot-velo": {
+            "file": "assets/audio/mots/velo.wav",
+            "game": "ile-lettres",
+            "placeholder": true,
+            "expected": "Le mot « vélo » prononcé lentement, syllabes audibles.",
+            "source": null,
+            "licence": null
+        },
+        "son-a": {
+            "file": "assets/audio/lettres/son-a.wav",
+            "game": "ile-lettres",
+            "placeholder": true,
+            "expected": "Le son « a » prononcé seul (le son, pas le nom de la lettre), voix claire, moins d'une seconde.",
+            "source": null,
+            "licence": null
+        },
+        "son-e": {
+            "file": "assets/audio/lettres/son-e.wav",
+            "game": "ile-lettres",
+            "placeholder": true,
+            "expected": "Le son « e » prononcé seul (le son, pas le nom de la lettre), voix claire, moins d'une seconde.",
+            "source": null,
+            "licence": null
+        },
+        "son-e-aigu": {
+            "file": "assets/audio/lettres/son-e-aigu.wav",
+            "game": "ile-lettres",
+            "placeholder": true,
+            "expected": "Le son « é » prononcé seul (le son, pas le nom de la lettre), voix claire, moins d'une seconde.",
+            "source": null,
+            "licence": null
+        },
+        "son-i": {
+            "file": "assets/audio/lettres/son-i.wav",
+            "game": "ile-lettres",
+            "placeholder": true,
+            "expected": "Le son « i » prononcé seul (le son, pas le nom de la lettre), voix claire, moins d'une seconde.",
+            "source": null,
+            "licence": null
+        },
+        "son-o": {
+            "file": "assets/audio/lettres/son-o.wav",
+            "game": "ile-lettres",
+            "placeholder": true,
+            "expected": "Le son « o » prononcé seul (le son, pas le nom de la lettre), voix claire, moins d'une seconde.",
+            "source": null,
+            "licence": null
+        },
+        "son-u": {
+            "file": "assets/audio/lettres/son-u.wav",
+            "game": "ile-lettres",
+            "placeholder": true,
+            "expected": "Le son « u » prononcé seul (le son, pas le nom de la lettre), voix claire, moins d'une seconde.",
+            "source": null,
+            "licence": null
+        },
+        "syl-la": {
+            "file": "assets/audio/lettres/syl-la.wav",
+            "game": "ile-lettres",
+            "placeholder": true,
+            "expected": "La syllabe « la » prononcée seule, voix claire.",
+            "source": null,
+            "licence": null
+        },
+        "syl-li": {
+            "file": "assets/audio/lettres/syl-li.wav",
+            "game": "ile-lettres",
+            "placeholder": true,
+            "expected": "La syllabe « li » prononcée seule, voix claire.",
+            "source": null,
+            "licence": null
+        },
+        "syl-lo": {
+            "file": "assets/audio/lettres/syl-lo.wav",
+            "game": "ile-lettres",
+            "placeholder": true,
+            "expected": "La syllabe « lo » prononcée seule, voix claire.",
+            "source": null,
+            "licence": null
+        },
+        "syl-lu": {
+            "file": "assets/audio/lettres/syl-lu.wav",
+            "game": "ile-lettres",
+            "placeholder": true,
+            "expected": "La syllabe « lu » prononcée seule, voix claire.",
+            "source": null,
+            "licence": null
+        },
+        "syl-ma": {
+            "file": "assets/audio/lettres/syl-ma.wav",
+            "game": "ile-lettres",
+            "placeholder": true,
+            "expected": "La syllabe « ma » prononcée seule, voix claire.",
+            "source": null,
+            "licence": null
+        },
+        "syl-mi": {
+            "file": "assets/audio/lettres/syl-mi.wav",
+            "game": "ile-lettres",
+            "placeholder": true,
+            "expected": "La syllabe « mi » prononcée seule, voix claire.",
+            "source": null,
+            "licence": null
+        },
+        "syl-mo": {
+            "file": "assets/audio/lettres/syl-mo.wav",
+            "game": "ile-lettres",
+            "placeholder": true,
+            "expected": "La syllabe « mo » prononcée seule, voix claire.",
+            "source": null,
+            "licence": null
+        },
+        "syl-mu": {
+            "file": "assets/audio/lettres/syl-mu.wav",
+            "game": "ile-lettres",
+            "placeholder": true,
+            "expected": "La syllabe « mu » prononcée seule, voix claire.",
+            "source": null,
+            "licence": null
+        },
+        "syl-pa": {
+            "file": "assets/audio/lettres/syl-pa.wav",
+            "game": "ile-lettres",
+            "placeholder": true,
+            "expected": "La syllabe « pa » prononcée seule, voix claire.",
+            "source": null,
+            "licence": null
+        },
+        "syl-pi": {
+            "file": "assets/audio/lettres/syl-pi.wav",
+            "game": "ile-lettres",
+            "placeholder": true,
+            "expected": "La syllabe « pi » prononcée seule, voix claire.",
+            "source": null,
+            "licence": null
+        },
+        "syl-po": {
+            "file": "assets/audio/lettres/syl-po.wav",
+            "game": "ile-lettres",
+            "placeholder": true,
+            "expected": "La syllabe « po » prononcée seule, voix claire.",
+            "source": null,
+            "licence": null
+        },
+        "syl-pu": {
+            "file": "assets/audio/lettres/syl-pu.wav",
+            "game": "ile-lettres",
+            "placeholder": true,
+            "expected": "La syllabe « pu » prononcée seule, voix claire.",
+            "source": null,
+            "licence": null
+        },
+        "syl-ra": {
+            "file": "assets/audio/lettres/syl-ra.wav",
+            "game": "ile-lettres",
+            "placeholder": true,
+            "expected": "La syllabe « ra » prononcée seule, voix claire.",
+            "source": null,
+            "licence": null
+        },
+        "syl-ri": {
+            "file": "assets/audio/lettres/syl-ri.wav",
+            "game": "ile-lettres",
+            "placeholder": true,
+            "expected": "La syllabe « ri » prononcée seule, voix claire.",
+            "source": null,
+            "licence": null
+        },
+        "syl-ro": {
+            "file": "assets/audio/lettres/syl-ro.wav",
+            "game": "ile-lettres",
+            "placeholder": true,
+            "expected": "La syllabe « ro » prononcée seule, voix claire.",
+            "source": null,
+            "licence": null
+        },
+        "syl-ru": {
+            "file": "assets/audio/lettres/syl-ru.wav",
+            "game": "ile-lettres",
+            "placeholder": true,
+            "expected": "La syllabe « ru » prononcée seule, voix claire.",
+            "source": null,
+            "licence": null
+        },
+        "syl-sa": {
+            "file": "assets/audio/lettres/syl-sa.wav",
+            "game": "ile-lettres",
+            "placeholder": true,
+            "expected": "La syllabe « sa » prononcée seule, voix claire.",
+            "source": null,
+            "licence": null
+        },
+        "syl-si": {
+            "file": "assets/audio/lettres/syl-si.wav",
+            "game": "ile-lettres",
+            "placeholder": true,
+            "expected": "La syllabe « si » prononcée seule, voix claire.",
+            "source": null,
+            "licence": null
+        },
+        "syl-so": {
+            "file": "assets/audio/lettres/syl-so.wav",
+            "game": "ile-lettres",
+            "placeholder": true,
+            "expected": "La syllabe « so » prononcée seule, voix claire.",
+            "source": null,
+            "licence": null
+        },
+        "syl-su": {
+            "file": "assets/audio/lettres/syl-su.wav",
+            "game": "ile-lettres",
+            "placeholder": true,
+            "expected": "La syllabe « su » prononcée seule, voix claire.",
+            "source": null,
+            "licence": null
+        },
+        "syl-ta": {
+            "file": "assets/audio/lettres/syl-ta.wav",
+            "game": "ile-lettres",
+            "placeholder": true,
+            "expected": "La syllabe « ta » prononcée seule, voix claire.",
+            "source": null,
+            "licence": null
+        },
+        "syl-ti": {
+            "file": "assets/audio/lettres/syl-ti.wav",
+            "game": "ile-lettres",
+            "placeholder": true,
+            "expected": "La syllabe « ti » prononcée seule, voix claire.",
+            "source": null,
+            "licence": null
+        },
+        "syl-to": {
+            "file": "assets/audio/lettres/syl-to.wav",
+            "game": "ile-lettres",
+            "placeholder": true,
+            "expected": "La syllabe « to » prononcée seule, voix claire.",
+            "source": null,
+            "licence": null
+        },
+        "syl-tu": {
+            "file": "assets/audio/lettres/syl-tu.wav",
+            "game": "ile-lettres",
+            "placeholder": true,
+            "expected": "La syllabe « tu » prononcée seule, voix claire.",
+            "source": null,
+            "licence": null
+        }
+    }
+}

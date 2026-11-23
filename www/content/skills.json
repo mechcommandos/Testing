@@ -1,0 +1,312 @@
+{
+    "version": 1,
+    "note": "Référentiel de démonstration, à valider par un ou une spécialiste de l'éducation avant toute communication publique. Les statuts décrivent des observations dans Layjou, jamais une maîtrise scolaire.",
+    "rules": {
+        "discovery": "Au moins 1 activité terminée liée à la compétence.",
+        "practice": "Au moins 3 activités terminées, dans au moins 2 sessions différentes.",
+        "regular": "Au moins 5 activités réussies sur les 8 dernières liées à la compétence, dont au moins 3 sans indice, dans au moins 2 jeux ou 2 niveaux de difficulté différents.",
+        "insufficient": "Moins de 3 activités terminées : les données ne suffisent pas pour décrire une régularité."
+    },
+    "domains": [
+        {
+            "id": "math",
+            "label": "Nombres et calcul"
+        },
+        {
+            "id": "logic",
+            "label": "Logique et code"
+        },
+        {
+            "id": "language",
+            "label": "Langage et lecture"
+        },
+        {
+            "id": "perception",
+            "label": "Observation et perception"
+        },
+        {
+            "id": "world",
+            "label": "Découverte du monde"
+        },
+        {
+            "id": "social",
+            "label": "Émotions et vie ensemble"
+        },
+        {
+            "id": "arts",
+            "label": "Musique et création"
+        }
+    ],
+    "skills": [
+        {
+            "id": "colors",
+            "domain": "perception",
+            "label": "Reconnaître les couleurs",
+            "description": "Retrouver et associer des objets d'une même couleur."
+        },
+        {
+            "id": "shapes",
+            "domain": "perception",
+            "label": "Reconnaître les formes",
+            "description": "Identifier cercle, carré, triangle et autres formes simples."
+        },
+        {
+            "id": "sizes",
+            "domain": "perception",
+            "label": "Comparer et ranger des tailles",
+            "description": "Ordonner des objets du plus petit au plus grand."
+        },
+        {
+            "id": "visual-discrimination",
+            "domain": "perception",
+            "label": "Observer les détails",
+            "description": "Repérer des ressemblances et des différences visuelles."
+        },
+        {
+            "id": "memory",
+            "domain": "perception",
+            "label": "Mémoire visuelle",
+            "description": "Retenir l'emplacement et l'identité d'éléments."
+        },
+        {
+            "id": "spatial",
+            "domain": "perception",
+            "label": "Se repérer dans l'espace",
+            "description": "Directions, orientation, plans et symétries."
+        },
+        {
+            "id": "counting",
+            "domain": "math",
+            "label": "Dénombrer une quantité",
+            "description": "Associer une quantité d'objets à un nombre."
+        },
+        {
+            "id": "number-compare",
+            "domain": "math",
+            "label": "Comparer des quantités",
+            "description": "Dire quelle collection a plus, moins ou autant."
+        },
+        {
+            "id": "addition",
+            "domain": "math",
+            "label": "Ajouter et retirer",
+            "description": "Compléter une quantité, découvrir l'addition et la soustraction."
+        },
+        {
+            "id": "measures",
+            "domain": "math",
+            "label": "Mesures et unités",
+            "description": "Longueurs, masses, contenances, durées et monnaie."
+        },
+        {
+            "id": "fractions",
+            "domain": "math",
+            "label": "Partager en parts égales",
+            "description": "Fractions simples et équivalences."
+        },
+        {
+            "id": "sequencing",
+            "domain": "logic",
+            "label": "Suites et motifs",
+            "description": "Compléter ou prolonger une suite logique."
+        },
+        {
+            "id": "categorizing",
+            "domain": "logic",
+            "label": "Classer selon un critère",
+            "description": "Regrouper des éléments selon une règle explicite."
+        },
+        {
+            "id": "algorithmic",
+            "domain": "logic",
+            "label": "Programmer une séquence",
+            "description": "Prévoir une suite d'instructions pour atteindre un but."
+        },
+        {
+            "id": "debugging",
+            "domain": "logic",
+            "label": "Repérer et corriger une erreur",
+            "description": "Comprendre pourquoi un programme ne fait pas ce qui est attendu."
+        },
+        {
+            "id": "problem-solving",
+            "domain": "logic",
+            "label": "Résoudre un problème",
+            "description": "Essayer, observer le résultat et ajuster sa stratégie."
+        },
+        {
+            "id": "letters-sounds",
+            "domain": "language",
+            "label": "Lettres et sons",
+            "description": "Distinguer le nom d'une lettre et le son qu'elle produit."
+        },
+        {
+            "id": "vocabulary",
+            "domain": "language",
+            "label": "Vocabulaire",
+            "description": "Associer des mots, des images et des sons."
+        },
+        {
+            "id": "sentences",
+            "domain": "language",
+            "label": "Construire des phrases",
+            "description": "Ordonner des mots et respecter les accords."
+        },
+        {
+            "id": "reading-comprehension",
+            "domain": "language",
+            "label": "Comprendre un texte",
+            "description": "Retrouver une information et faire un lien entre indices."
+        },
+        {
+            "id": "narrative",
+            "domain": "language",
+            "label": "Ordonner une histoire",
+            "description": "Remettre des événements dans un ordre cohérent."
+        },
+        {
+            "id": "second-language",
+            "domain": "language",
+            "label": "Découvrir une autre langue",
+            "description": "Reconnaître du vocabulaire en anglais."
+        },
+        {
+            "id": "living-world",
+            "domain": "world",
+            "label": "Le vivant",
+            "description": "Animaux, plantes et leurs besoins."
+        },
+        {
+            "id": "physics",
+            "domain": "world",
+            "label": "Expériences et phénomènes",
+            "description": "Prédire, observer et expliquer un phénomène simple."
+        },
+        {
+            "id": "environment",
+            "domain": "world",
+            "label": "Prendre soin de la planète",
+            "description": "Ressources, déchets et gestes utiles."
+        },
+        {
+            "id": "time",
+            "domain": "world",
+            "label": "Le temps qui passe",
+            "description": "Heures, durées, météo et saisons."
+        },
+        {
+            "id": "digital-citizenship",
+            "domain": "world",
+            "label": "Bons réflexes numériques",
+            "description": "Reconnaître une situation à risque et demander de l'aide."
+        },
+        {
+            "id": "emotions",
+            "domain": "social",
+            "label": "Explorer les émotions",
+            "description": "Nommer des émotions possibles et des réponses adaptées."
+        },
+        {
+            "id": "music",
+            "domain": "arts",
+            "label": "Écoute et rythme",
+            "description": "Reconnaître des sons et reproduire des séquences."
+        },
+        {
+            "id": "creativity",
+            "domain": "arts",
+            "label": "Créer librement",
+            "description": "Composer, construire et inventer sans évaluation."
+        },
+        {
+            "id": "fine-motor",
+            "domain": "perception",
+            "label": "Motricité fine",
+            "description": "Suivre un tracé du doigt avec précision."
+        },
+        {
+            "id": "body-health",
+            "domain": "world",
+            "label": "Le corps et la santé",
+            "description": "Parties du corps, sens et gestes d’hygiène."
+        },
+        {
+            "id": "safety",
+            "domain": "world",
+            "label": "Sécurité au quotidien",
+            "description": "Bons gestes dans la rue, en voiture et à vélo."
+        },
+        {
+            "id": "community",
+            "domain": "social",
+            "label": "Les métiers et la vie en société",
+            "description": "Découvrir les métiers, leurs outils et leurs lieux."
+        },
+        {
+            "id": "calm",
+            "domain": "social",
+            "label": "Se calmer",
+            "description": "Respirer calmement et mettre des mots sur ce que l’on ressent."
+        },
+        {
+            "id": "multiplication",
+            "domain": "math",
+            "label": "Comprendre la multiplication",
+            "description": "Groupes égaux, tableaux en rangées et premières tables."
+        },
+        {
+            "id": "estimation",
+            "domain": "math",
+            "label": "Estimer une quantité",
+            "description": "Donner un ordre de grandeur, puis vérifier en comptant."
+        },
+        {
+            "id": "data",
+            "domain": "math",
+            "label": "Lire et construire des graphiques",
+            "description": "Pictogrammes, diagrammes en barres et comparaisons."
+        },
+        {
+            "id": "space",
+            "domain": "world",
+            "label": "Le ciel et l’espace",
+            "description": "Soleil, Terre, Lune, planètes, jour et nuit."
+        },
+        {
+            "id": "history",
+            "domain": "world",
+            "label": "Repères dans le temps",
+            "description": "Ordonner de grandes périodes et quelques dates."
+        },
+        {
+            "id": "strategy",
+            "domain": "logic",
+            "label": "Anticiper et choisir une stratégie",
+            "description": "Prévoir le coup suivant et chercher une méthode gagnante."
+        },
+        {
+            "id": "codes",
+            "domain": "logic",
+            "label": "Coder et décoder",
+            "description": "Appliquer une règle de transformation à un message."
+        },
+        {
+            "id": "probability",
+            "domain": "math",
+            "label": "Le hasard et les chances",
+            "description": "Certain, possible, impossible ; comparer des chances."
+        },
+        {
+            "id": "geography",
+            "domain": "world",
+            "label": "Se repérer sur la carte du monde",
+            "description": "Continents, pays, animaux et monuments du monde."
+        },
+        {
+            "id": "spelling",
+            "domain": "language",
+            "label": "Orthographe des mots qui se prononcent pareil",
+            "description": "Choisir entre a et à, et et est, son et sont, on et ont, ou et où."
+        }
+    ]
+}

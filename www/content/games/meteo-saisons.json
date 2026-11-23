@@ -1,0 +1,40 @@
+{
+    "version": 1,
+    "review": "Situations et explications à faire relire. Les saisons décrites sont celles de la France métropolitaine (dit à l'écran) ; les lieux du monde sont nommés et situés.",
+    "items": {
+        "parapluie": { "name": "le parapluie", "why": "il protège de la pluie" },
+        "impermeable": { "name": "l’imperméable", "why": "il garde au sec sous la pluie" },
+        "bottes": { "name": "les bottes", "why": "elles gardent les pieds au sec et au chaud" },
+        "lunettes-soleil": { "name": "les lunettes de soleil", "why": "elles protègent les yeux de la lumière forte" },
+        "chapeau-soleil": { "name": "le chapeau de soleil", "why": "il protège la tête du soleil" },
+        "creme-solaire": { "name": "la crème solaire", "why": "elle protège la peau des coups de soleil" },
+        "maillot": { "name": "le maillot de bain", "why": "il sert à se baigner" },
+        "sandales": { "name": "les sandales", "why": "elles laissent les pieds au frais" },
+        "tshirt": { "name": "le tee-shirt", "why": "il est léger quand il fait chaud" },
+        "short": { "name": "le short", "why": "il est léger quand il fait chaud" },
+        "pull": { "name": "le pull", "why": "il tient chaud quand il fait frais" },
+        "manteau": { "name": "le manteau", "why": "il tient chaud quand il fait froid" },
+        "bonnet": { "name": "le bonnet", "why": "il garde la tête et les oreilles au chaud" },
+        "gants": { "name": "les gants", "why": "ils gardent les mains au chaud" },
+        "echarpe": { "name": "l’écharpe", "why": "elle garde le cou au chaud" },
+        "gourde": { "name": "la gourde", "why": "il faut boire souvent quand il fait chaud" },
+        "luge": { "name": "la luge", "why": "elle sert à glisser sur la neige" }
+    },
+    "situations": [
+        { "id": "pluie-ecole", "level": 0, "weather": "pluie", "place": "Ici", "text": "Il pleut ce matin. Prépare-toi pour aller à l’école.", "offer": ["parapluie", "impermeable", "bottes", "lunettes-soleil", "sandales", "creme-solaire"], "needs": [["parapluie", "impermeable"], ["bottes"]], "avoid": ["lunettes-soleil", "sandales", "creme-solaire"] },
+        { "id": "soleil-parc", "level": 0, "weather": "soleil", "place": "Ici", "text": "Il fait grand soleil et très chaud au parc.", "offer": ["chapeau-soleil", "creme-solaire", "gourde", "bonnet", "gants", "bottes"], "needs": [["chapeau-soleil"], ["creme-solaire"], ["gourde"]], "avoid": ["bonnet", "gants", "bottes"] },
+        { "id": "averse", "level": 0, "weather": "pluie", "place": "Ici", "text": "Une grosse averse arrive pendant la promenade.", "offer": ["impermeable", "parapluie", "bottes", "maillot", "chapeau-soleil", "sandales"], "needs": [["impermeable", "parapluie"]], "avoid": ["maillot", "chapeau-soleil", "sandales"] },
+        { "id": "soleil-chaud", "level": 0, "weather": "soleil", "place": "Ici", "text": "Le soleil tape fort cet après-midi.", "offer": ["lunettes-soleil", "chapeau-soleil", "tshirt", "manteau", "echarpe", "parapluie"], "needs": [["chapeau-soleil", "lunettes-soleil"], ["tshirt"]], "avoid": ["manteau", "echarpe"] },
+
+        { "id": "hiver-france", "level": 1, "weather": "neige", "place": "En France, en hiver", "text": "En hiver, en France, il fait souvent froid et il peut neiger.", "offer": ["bonnet", "gants", "echarpe", "manteau", "maillot", "sandales", "short"], "needs": [["bonnet"], ["gants", "echarpe"], ["manteau"]], "avoid": ["maillot", "sandales", "short"] },
+        { "id": "printemps-france", "level": 1, "weather": "nuage", "place": "En France, au printemps", "text": "Au printemps, en France, il fait doux et il y a souvent des averses.", "offer": ["pull", "impermeable", "parapluie", "gants", "maillot", "bonnet"], "needs": [["pull"], ["impermeable", "parapluie"]], "avoid": ["maillot"] },
+        { "id": "ete-france", "level": 1, "weather": "soleil", "place": "En France, en été", "text": "En été, en France, il fait souvent chaud et le soleil brille longtemps.", "offer": ["chapeau-soleil", "creme-solaire", "short", "bonnet", "gants", "manteau"], "needs": [["chapeau-soleil"], ["creme-solaire"], ["short"]], "avoid": ["bonnet", "gants", "manteau"] },
+        { "id": "automne-france", "level": 1, "weather": "vent", "place": "En France, en automne", "text": "En automne, en France, il fait plus frais, il y a du vent et de la pluie.", "offer": ["pull", "impermeable", "bottes", "maillot", "sandales", "creme-solaire"], "needs": [["pull"], ["impermeable", "bottes"]], "avoid": ["maillot", "sandales"] },
+
+        { "id": "sahara", "level": 2, "weather": "soleil", "place": "Dans le désert du Sahara (Afrique)", "text": "Dans le désert du Sahara, il fait très chaud le jour et le soleil est très fort.", "offer": ["chapeau-soleil", "gourde", "lunettes-soleil", "creme-solaire", "bonnet", "bottes", "gants"], "needs": [["chapeau-soleil"], ["gourde"], ["lunettes-soleil", "creme-solaire"]], "avoid": ["bonnet", "gants"] },
+        { "id": "alpes", "level": 2, "weather": "neige", "place": "À la montagne, dans les Alpes, en hiver", "text": "En hiver dans les Alpes, il fait froid, et la neige renvoie la lumière du soleil.", "offer": ["bonnet", "gants", "lunettes-soleil", "manteau", "luge", "maillot", "sandales"], "needs": [["bonnet"], ["gants"], ["manteau"], ["lunettes-soleil"]], "avoid": ["maillot", "sandales"] },
+        { "id": "antilles", "level": 2, "weather": "soleil", "place": "Sur une plage des Antilles", "text": "Aux Antilles, il fait chaud toute l’année : aujourd’hui, on va à la plage.", "offer": ["maillot", "creme-solaire", "chapeau-soleil", "lunettes-soleil", "bonnet", "manteau", "bottes"], "needs": [["maillot"], ["creme-solaire"], ["chapeau-soleil", "lunettes-soleil"]], "avoid": ["bonnet", "manteau", "bottes"] },
+        { "id": "canada", "level": 2, "weather": "neige", "place": "Au Canada, en hiver", "text": "En hiver, au Canada, il peut faire très froid et la neige reste longtemps.", "offer": ["bonnet", "gants", "manteau", "bottes", "echarpe", "short", "tshirt", "sandales"], "needs": [["bonnet"], ["gants"], ["manteau"], ["bottes"]], "avoid": ["short", "sandales"] },
+        { "id": "londres", "level": 2, "weather": "pluie", "place": "À Londres (Angleterre), un jour de pluie", "text": "À Londres, aujourd’hui, il pleut et il fait frais.", "offer": ["parapluie", "impermeable", "pull", "maillot", "sandales", "creme-solaire"], "needs": [["parapluie", "impermeable"], ["pull"]], "avoid": ["maillot", "sandales"] }
+    ]
+}

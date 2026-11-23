@@ -1,0 +1,92 @@
+{
+    "version": 1,
+    "review": "Textes, indices et conclusions à faire relire (niveau de lecture CE1 à CM2).",
+    "cases": [
+        {
+            "id": "gateau", "level": 0, "title": "Le gâteau disparu",
+            "sentences": ["Maman a fait un gâteau au chocolat.", "Elle l’a posé sur la table de la cuisine.", "Une heure plus tard, il a disparu.", "Le chien Biscuit a du chocolat plein les moustaches."],
+            "clues": [3], "question": "Qui a mangé le gâteau ?",
+            "choices": [{ "id": "chien", "text": "Le chien Biscuit" }, { "id": "maman", "text": "Maman" }, { "id": "chat", "text": "Le chat" }],
+            "answer": "chien", "why": "Biscuit a du chocolat sur les moustaches."
+        },
+        {
+            "id": "cle", "level": 0, "title": "La clé perdue",
+            "sentences": ["Papi cherche ses clés partout.", "Il a regardé dans sa veste et sur la table.", "Ce matin, il est allé au jardin pour arroser les fleurs.", "Près de l’arrosoir, quelque chose brille dans l’herbe."],
+            "clues": [3], "question": "Où sont sans doute les clés ?",
+            "choices": [{ "id": "jardin", "text": "Dans l’herbe du jardin" }, { "id": "veste", "text": "Dans la veste" }, { "id": "voiture", "text": "Dans la voiture" }],
+            "answer": "jardin", "why": "Quelque chose brille dans l’herbe, près de l’arrosoir."
+        },
+        {
+            "id": "ballon", "level": 0, "title": "Le ballon",
+            "sentences": ["Inès joue au ballon dans la cour.", "Soudain, on entend un grand bruit de verre.", "Le ballon n’est plus dans la cour.", "Il est dans la salle de classe, à côté de la fenêtre cassée."],
+            "clues": [3], "question": "Qu’a cassé le ballon ?",
+            "choices": [{ "id": "fenetre", "text": "La fenêtre" }, { "id": "porte", "text": "La porte" }, { "id": "lampe", "text": "La lampe" }],
+            "answer": "fenetre", "why": "Le ballon est à côté de la fenêtre cassée."
+        },
+        {
+            "id": "dessin", "level": 0, "title": "Le dessin",
+            "sentences": ["Sur le mur, il y a un beau dessin de soleil.", "Lou adore dessiner des soleils.", "Ses crayons jaunes sont posés juste en dessous.", "Tom, lui, préfère dessiner des bateaux."],
+            "clues": [2], "question": "Qui a sans doute fait le dessin ?",
+            "choices": [{ "id": "lou", "text": "Lou" }, { "id": "tom", "text": "Tom" }],
+            "answer": "lou", "why": "Les crayons de Lou sont juste sous le dessin."
+        },
+
+        {
+            "id": "velo", "level": 1, "title": "Le vélo mouillé",
+            "sentences": ["Le vélo de Malik est tout mouillé.", "Pourtant, il est resté dans le garage cette nuit.", "Ce matin, la route est sèche.", "La porte du garage est restée ouverte.", "Et l’arrosage du jardin s’est allumé tout seul à six heures."],
+            "clues": [3, 4], "useful": [2], "question": "Pourquoi le vélo est-il mouillé ?",
+            "choices": [{ "id": "arrosage", "text": "L’arrosage l’a mouillé par la porte ouverte" }, { "id": "pluie", "text": "Il a plu cette nuit" }, { "id": "lavage", "text": "Malik l’a lavé" }],
+            "answer": "arrosage", "why": "La porte était ouverte et l’arrosage s’est allumé ; la route sèche montre qu’il n’a pas plu."
+        },
+        {
+            "id": "biscuits", "level": 1, "title": "Les biscuits du goûter",
+            "sentences": ["Il manque trois biscuits dans la boîte.", "La boîte est rangée tout en haut du placard.", "Léna est trop petite pour l’attraper.", "Son grand frère Sam est le seul à pouvoir y arriver.", "Et il y a des miettes sur le pull de Sam."],
+            "clues": [3, 4], "useful": [2], "question": "Qui a pris les biscuits ?",
+            "choices": [{ "id": "sam", "text": "Sam" }, { "id": "lena", "text": "Léna" }, { "id": "personne", "text": "Personne" }],
+            "answer": "sam", "why": "Seul Sam peut atteindre la boîte, et il a des miettes sur son pull."
+        },
+        {
+            "id": "plante", "level": 1, "title": "La plante triste",
+            "sentences": ["La plante du salon est toute triste.", "Ses feuilles penchent vers le bas.", "Personne ne l’a arrosée depuis deux semaines.", "Sa terre est sèche comme du sable.", "Elle est pourtant bien au soleil."],
+            "clues": [2, 3], "useful": [4], "question": "De quoi la plante a-t-elle besoin ?",
+            "choices": [{ "id": "eau", "text": "D’eau" }, { "id": "soleil", "text": "De soleil" }, { "id": "pot", "text": "D’un autre pot" }],
+            "answer": "eau", "why": "Personne ne l’a arrosée et sa terre est sèche ; elle a déjà du soleil."
+        },
+        {
+            "id": "train", "level": 1, "title": "Le train en retard",
+            "sentences": ["Le train de neuf heures n’est pas arrivé.", "Sur le quai, les gens attendent.", "Un arbre est tombé sur la voie pendant la tempête.", "Les ouvriers sont en train de le couper.", "Le soleil est revenu ce matin."],
+            "clues": [2, 3], "question": "Pourquoi le train est-il en retard ?",
+            "choices": [{ "id": "arbre", "text": "Un arbre bloque la voie" }, { "id": "soleil", "text": "Il fait trop beau" }, { "id": "quai", "text": "Il y a trop de monde sur le quai" }],
+            "answer": "arbre", "why": "Un arbre est tombé sur la voie et les ouvriers le coupent."
+        },
+
+        {
+            "id": "empreintes", "level": 2, "title": "Les traces dans la neige",
+            "sentences": ["Ce matin, il y a des traces dans la neige du jardin.", "Elles sont petites, rondes, avec quatre doigts.", "Elles partent de la chatière de la maison.", "Elles vont jusqu’au muret, puis s’arrêtent net.", "Sur le muret, la neige est un peu effacée."],
+            "clues": [1, 2, 4], "question": "Que s’est-il sans doute passé ?",
+            "choices": [{ "id": "chat", "text": "Le chat est sorti et a sauté sur le muret" }, { "id": "oiseau", "text": "Un oiseau s’est posé dans le jardin" }, { "id": "voisin", "text": "Le voisin a traversé le jardin" }],
+            "answer": "chat", "why": "Petites traces rondes qui sortent de la chatière, puis s’arrêtent au muret où la neige est effacée : le chat a sauté dessus."
+        },
+        {
+            "id": "pique-nique", "level": 2, "title": "Le pique-nique annulé",
+            "sentences": ["Anna avait préparé son panier de pique-nique.", "Elle regarde par la fenêtre et soupire.", "Le ciel est tout gris.", "Les gens dans la rue marchent vite sous leurs parapluies.", "Elle range le panier dans le placard."],
+            "clues": [2, 3], "question": "Pourquoi Anna range-t-elle son panier ?",
+            "choices": [{ "id": "pluie", "text": "Parce qu’il pleut" }, { "id": "faim", "text": "Parce qu’elle n’a plus faim" }, { "id": "perdu", "text": "Parce qu’elle a perdu son panier" }],
+            "answer": "pluie", "why": "Le ciel est gris et les gens ont des parapluies : il pleut, le pique-nique est annulé."
+        },
+        {
+            "id": "sac", "level": 2, "title": "Le sac oublié",
+            "sentences": ["Un sac de sport est resté au gymnase.", "Dedans, il y a des chaussures de taille 31.", "Il y a aussi une gourde avec un autocollant de dauphin.", "Zoé chausse du 31 et adore les dauphins.", "Hugo chausse du 35."],
+            "clues": [1, 2, 3], "useful": [4], "question": "À qui est sans doute le sac ?",
+            "choices": [{ "id": "zoe", "text": "À Zoé" }, { "id": "hugo", "text": "À Hugo" }, { "id": "prof", "text": "Au professeur" }],
+            "answer": "zoe", "why": "Les chaussures sont en 31, comme celles de Zoé, et la gourde a un dauphin, son animal préféré."
+        },
+        {
+            "id": "lumiere", "level": 2, "title": "La lumière du grenier",
+            "sentences": ["Chaque soir, une lumière s’allume au grenier.", "Personne n’habite là-haut.", "Grand-père y range ses outils et ses livres.", "Il monte toujours lire après le dîner.", "La lumière s’allume juste après le dîner."],
+            "clues": [3, 4], "useful": [1], "question": "Qui allume la lumière du grenier ?",
+            "choices": [{ "id": "grand-pere", "text": "Grand-père, qui monte lire" }, { "id": "fantome", "text": "Un fantôme" }, { "id": "chat", "text": "Le chat" }],
+            "answer": "grand-pere", "why": "Grand-père monte lire après le dîner, et la lumière s’allume juste après le dîner."
+        }
+    ]
+}

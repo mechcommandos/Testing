@@ -1,0 +1,192 @@
+{
+    "version": 1,
+    "note": "Objets regroupés par famille : la difficulté 3 compare des objets d'une même famille. Les ombres sont les illustrations noircies ; les silhouettes trop proches (ours polaire et panda) ne sont jamais dans la même famille.",
+    "groups": [
+        {
+            "id": "ferme",
+            "label": "Animaux de la ferme",
+            "items": [
+                {
+                    "id": "vache",
+                    "name": "la vache",
+                    "picto": "vache"
+                },
+                {
+                    "id": "cochon",
+                    "name": "le cochon",
+                    "picto": "cochon"
+                },
+                {
+                    "id": "mouton",
+                    "name": "le mouton",
+                    "picto": "mouton"
+                },
+                {
+                    "id": "poule",
+                    "name": "la poule",
+                    "picto": "poule"
+                },
+                {
+                    "id": "lapin",
+                    "name": "le lapin",
+                    "picto": "lapin"
+                }
+            ]
+        },
+        {
+            "id": "sauvages",
+            "label": "Animaux sauvages",
+            "items": [
+                {
+                    "id": "elephant",
+                    "name": "l’éléphant",
+                    "picto": "elephant"
+                },
+                {
+                    "id": "girafe",
+                    "name": "la girafe",
+                    "picto": "girafe"
+                },
+                {
+                    "id": "lion",
+                    "name": "le lion",
+                    "picto": "lion"
+                },
+                {
+                    "id": "herisson",
+                    "name": "le hérisson",
+                    "picto": "herisson"
+                },
+                {
+                    "id": "lama",
+                    "name": "le lama",
+                    "picto": "lama"
+                }
+            ]
+        },
+        {
+            "id": "mer",
+            "label": "Animaux de la mer",
+            "items": [
+                {
+                    "id": "baleine",
+                    "name": "la baleine",
+                    "picto": "baleine"
+                },
+                {
+                    "id": "pieuvre",
+                    "name": "la pieuvre",
+                    "picto": "pieuvre"
+                },
+                {
+                    "id": "crabe",
+                    "name": "le crabe",
+                    "picto": "crabe"
+                },
+                {
+                    "id": "tortue",
+                    "name": "la tortue",
+                    "picto": "tortue"
+                },
+                {
+                    "id": "poisson",
+                    "name": "le poisson",
+                    "picto": "poisson"
+                }
+            ]
+        },
+        {
+            "id": "fruits",
+            "label": "Fruits",
+            "items": [
+                {
+                    "id": "pomme",
+                    "name": "la pomme",
+                    "picto": "pomme"
+                },
+                {
+                    "id": "banane",
+                    "name": "la banane",
+                    "picto": "banane"
+                },
+                {
+                    "id": "raisin",
+                    "name": "le raisin",
+                    "picto": "raisin"
+                },
+                {
+                    "id": "poire",
+                    "name": "la poire",
+                    "picto": "poire"
+                },
+                {
+                    "id": "ananas",
+                    "name": "l’ananas",
+                    "picto": "ananas"
+                }
+            ]
+        },
+        {
+            "id": "vehicules",
+            "label": "Véhicules",
+            "items": [
+                {
+                    "id": "velo",
+                    "name": "le vélo",
+                    "picto": "velo"
+                },
+                {
+                    "id": "voiture",
+                    "name": "la voiture",
+                    "picto": "voiture"
+                },
+                {
+                    "id": "train",
+                    "name": "le train",
+                    "picto": "train"
+                },
+                {
+                    "id": "helicoptere",
+                    "name": "l’hélicoptère",
+                    "picto": "helicoptere"
+                },
+                {
+                    "id": "bateau",
+                    "name": "le bateau",
+                    "picto": "bateau"
+                }
+            ]
+        },
+        {
+            "id": "objets",
+            "label": "Objets de la maison",
+            "items": [
+                {
+                    "id": "parapluie",
+                    "name": "le parapluie",
+                    "picto": "parapluie"
+                },
+                {
+                    "id": "cle",
+                    "name": "la clé",
+                    "picto": "cle"
+                },
+                {
+                    "id": "ciseaux",
+                    "name": "les ciseaux",
+                    "picto": "ciseaux"
+                },
+                {
+                    "id": "reveil",
+                    "name": "le réveil",
+                    "picto": "reveil"
+                },
+                {
+                    "id": "marteau",
+                    "name": "le marteau",
+                    "picto": "marteau"
+                }
+            ]
+        }
+    ]
+}

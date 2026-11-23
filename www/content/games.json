@@ -1,0 +1,2698 @@
+{
+    "version": 1,
+    "statusLegend": {
+        "available": "Jouable, progression enregistrée.",
+        "planned": "Conçu, pas encore développé : affiché comme indisponible."
+    },
+    "games": [
+        {
+            "id": "jardin-couleurs",
+            "n": 1,
+            "name": "Le jardin des couleurs et des formes",
+            "ages": [
+                2,
+                5
+            ],
+            "theme": "perception",
+            "skills": [
+                "colors",
+                "shapes",
+                "sizes"
+            ],
+            "difficultySkills": [
+                [
+                    "colors"
+                ],
+                [
+                    "shapes",
+                    "colors"
+                ],
+                [
+                    "sizes"
+                ]
+            ],
+            "status": "available",
+            "module": "jardin-couleurs",
+            "goals": "Associer et trier des objets par couleur, par forme et par taille.",
+            "loop": "Une consigne est dite et montrée (une fleur rouge, un pot rond…). L'enfant touche les objets qui conviennent ou les range dans le bon pot. Une manche compte 3 à 6 objets à placer.",
+            "controls": "Toucher l'objet puis sa destination (sans glisser-déposer). Glisser-déposer possible en plus. Clavier : Tab puis Entrée.",
+            "difficulties": [
+                "Couleurs : 2 couleurs, gros objets, une seule consigne.",
+                "Formes : 3 formes et 3 couleurs mêlées.",
+                "Tailles : ranger 3 à 5 objets du plus petit au plus grand."
+            ],
+            "cues": "Consigne lue par la synthèse vocale et montrée par un modèle visuel (la couleur ou la forme à chercher). Aucune lecture nécessaire.",
+            "hints": "Une erreur fait trembler l'objet, sans son négatif. Le bouton indice fait briller un bon choix. Après 3 erreurs, un indice est proposé.",
+            "success": "Tous les objets de la manche sont placés.",
+            "recorded": "Manche terminée, difficulté, nombre d'erreurs, indices utilisés, durée active.",
+            "resume": "La manche en cours n'est pas reprise (elle dure moins d'une minute) ; la difficulté et le nombre de manches terminées le sont.",
+            "adaptations": "Grandes zones de toucher (au moins 64 px), 6 objets maximum à l'écran.",
+            "youtube": "Pas de son indispensable, partie courte : bon candidat.",
+            "acceptance": "Une manche de chaque difficulté se termine au toucher seul, sans son, et apparaît dans la progression du profil."
+        },
+        {
+            "id": "animaux-sons",
+            "n": 2,
+            "name": "Les animaux et leurs sons",
+            "ages": [
+                2,
+                5
+            ],
+            "theme": "world",
+            "skills": [
+                "living-world",
+                "vocabulary",
+                "music"
+            ],
+            "status": "available",
+            "goals": "Reconnaître des animaux, leurs cris et leurs habitats.",
+            "loop": "Une série de 4 questions. Selon le mode : un cri est joué et l'enfant touche l'animal ; ou le nom est dit à voix haute ; ou l'animal est montré et l'enfant touche son habitat.",
+            "controls": "Toucher une image parmi 2 à 4.",
+            "difficulties": [
+                "Animaux familiers, 2 choix : reconnaître le cri (ou le nom dit à voix haute).",
+                "Habitats, 3 choix : où vit cet animal ?",
+                "Animaux moins connus, 4 choix : reconnaître le cri (ou le nom)."
+            ],
+            "cues": "Cri joué (enregistrement), nom dit par la synthèse vocale. Sans son : seules les questions animal → habitat sont proposées et notées.",
+            "hints": "L'indice retire un mauvais choix.",
+            "success": "Toutes les associations d'une série sont trouvées.",
+            "recorded": "Série terminée, mode (cri, nom ou habitat), erreurs, indices. La compétence d'écoute n'est créditée qu'en mode cri, avec de vrais enregistrements.",
+            "resume": "Reprise à la série suivante.",
+            "adaptations": "Cris : fichiers déclarés dans content/audio.json, provisoires (bips) tant que de vrais enregistrements libres de droits ne sont pas fournis. Images : émojis du système, provisoires.",
+            "youtube": "Vérifier les règles sur l'audio au démarrage.",
+            "acceptance": "Le mode sans son ne compte jamais une reconnaissance sonore.",
+            "module": "animaux-sons",
+            "levelNames": [
+                "Familiers",
+                "Habitats",
+                "Moins connus"
+            ],
+            "difficultySkills": [
+                [
+                    "living-world",
+                    "music"
+                ],
+                [
+                    "living-world"
+                ],
+                [
+                    "living-world",
+                    "music"
+                ]
+            ],
+            "review": "Cris à fournir (enregistrements réels sous licence permettant la diffusion) et à vérifier un par un."
+        },
+        {
+            "id": "marche-nombres",
+            "n": 3,
+            "name": "Le petit marché des nombres",
+            "ages": [
+                3,
+                8
+            ],
+            "theme": "math",
+            "skills": [
+                "counting",
+                "number-compare",
+                "addition"
+            ],
+            "difficultySkills": [
+                [
+                    "counting"
+                ],
+                [
+                    "number-compare",
+                    "counting"
+                ],
+                [
+                    "addition",
+                    "counting"
+                ]
+            ],
+            "status": "available",
+            "module": "marche-nombres",
+            "goals": "Dénombrer, comparer des quantités et découvrir l'addition.",
+            "loop": "Un client demande une quantité de fruits. L'enfant remplit le panier, compare deux paniers ou complète une commande, puis vérifie.",
+            "controls": "Toucher un fruit pour l'ajouter, toucher le panier pour en retirer un. Boutons « Vérifier » et « Recommencer ».",
+            "difficulties": [
+                "Compter jusqu'à 5 : mettre N fruits dans le panier.",
+                "Comparer : quel panier en a le plus, ou autant ? Jusqu'à 10.",
+                "Compléter : il y a déjà 3 pommes, il en faut 7 ; symboles + et = affichés."
+            ],
+            "cues": "Quantité dite à voix haute et montrée par des points (sans chiffre au niveau 1, puis chiffre et points).",
+            "hints": "L'indice compte à voix haute les fruits déjà posés. Une erreur montre la différence (« il en manque 2 ») sans pénalité.",
+            "success": "La commande est exacte au moment de vérifier.",
+            "recorded": "Commande réussie ou non, quantité cible, difficulté, tentatives (vérifications), indices.",
+            "resume": "Difficulté et nombre de commandes réussies conservés.",
+            "adaptations": "Fruits dessinés en SVG, 10 au maximum à l'écran.",
+            "youtube": "Bon candidat : pas de réseau ni de texte obligatoire.",
+            "acceptance": "Les trois difficultés produisent des commandes résolubles, vérifiées par les tests de règles."
+        },
+        {
+            "id": "ile-lettres",
+            "n": 4,
+            "name": "L'île des lettres et des mots",
+            "ages": [
+                4,
+                8
+            ],
+            "theme": "language",
+            "skills": [
+                "letters-sounds",
+                "vocabulary"
+            ],
+            "status": "available",
+            "goals": "Explorer lettres, sons, syllabes et mots simples.",
+            "loop": "Une série de 5 questions : toucher la lettre ou la syllabe qui correspond au son, au modèle ou au mot à compléter.",
+            "controls": "Toucher une lettre ou une syllabe.",
+            "difficulties": [
+                "Voyelles : entendre un son et trouver la lettre (sans enregistrement : associer majuscule et minuscule).",
+                "Syllabes simples (pa, mi…) : entendre et trouver (sans enregistrement : assembler consonne + voyelle).",
+                "Mots de 2 syllabes à compléter, avec une image."
+            ],
+            "cues": "Sons des voyelles, syllabes et mots : enregistrements déclarés dans content/audio.json, provisoires tant qu'ils ne sont pas fournis. Sans enregistrement valable, le jeu passe sur un modèle visuel et ne note aucune reconnaissance sonore.",
+            "hints": "Réécouter le son, voir une image du mot.",
+            "success": "Série terminée.",
+            "recorded": "Série terminée, mode (son, visuel, assemblage ou mot), erreurs, indices.",
+            "resume": "Série suivante.",
+            "adaptations": "Police d'apprentissage de la lecture à choisir (Verdana provisoire). Images des mots : émojis provisoires.",
+            "youtube": "Dépend de l'audio.",
+            "acceptance": "Validation linguistique des sons et des mots avant publication.",
+            "module": "ile-lettres",
+            "levelNames": [
+                "Voyelles",
+                "Syllabes",
+                "Mots"
+            ],
+            "difficultySkills": [
+                [
+                    "letters-sounds"
+                ],
+                [
+                    "letters-sounds"
+                ],
+                [
+                    "letters-sounds",
+                    "vocabulary"
+                ]
+            ],
+            "review": "Validation linguistique des sons, des syllabes et du découpage des mots avant publication ; enregistrements à fournir."
+        },
+        {
+            "id": "memory-explorateurs",
+            "n": 5,
+            "name": "Le memory des explorateurs",
+            "ages": [
+                3,
+                12
+            ],
+            "theme": "perception",
+            "skills": [
+                "memory",
+                "living-world",
+                "addition"
+            ],
+            "status": "available",
+            "goals": "Retrouver des paires identiques puis des associations.",
+            "loop": "Retourner deux cartes, garder les paires.",
+            "controls": "Toucher deux cartes.",
+            "difficulties": [
+                "6 cartes : 3 paires d'images identiques.",
+                "12 cartes : 6 paires animal et habitat.",
+                "16 cartes : 8 paires calcul et résultat (additions et soustractions jusqu'à 20)."
+            ],
+            "cues": "Images grandes, aucun texte au niveau 1.",
+            "hints": "Montrer brièvement une carte déjà vue.",
+            "success": "Toutes les paires trouvées.",
+            "recorded": "Partie terminée, nombre de tours, retournements sans paire (comptés à part, jamais comme des erreurs), indices. Pas de chronomètre.",
+            "resume": "Le plateau en cours est sauvegardé à chaque tour et retrouvé au retour dans le jeu, pour la même difficulté.",
+            "adaptations": "Grille de 3 ou 4 colonnes selon le nombre de cartes ; cartes de 72 px minimum. Images : émojis du système, provisoires.",
+            "youtube": "Bon candidat.",
+            "acceptance": "Aucune pression de temps par défaut.",
+            "module": "memory-explorateurs",
+            "levelNames": [
+                "Images",
+                "Animaux et habitats",
+                "Calculs"
+            ],
+            "difficultySkills": [
+                [
+                    "memory"
+                ],
+                [
+                    "memory",
+                    "living-world"
+                ],
+                [
+                    "memory",
+                    "addition"
+                ]
+            ]
+        },
+        {
+            "id": "robot-labyrinthes",
+            "n": 6,
+            "name": "Le robot des labyrinthes",
+            "ages": [
+                5,
+                12
+            ],
+            "theme": "logic",
+            "skills": [
+                "algorithmic",
+                "spatial",
+                "problem-solving"
+            ],
+            "difficultySkills": [
+                [
+                    "algorithmic",
+                    "spatial"
+                ],
+                [
+                    "algorithmic",
+                    "spatial",
+                    "problem-solving"
+                ],
+                [
+                    "algorithmic",
+                    "problem-solving"
+                ]
+            ],
+            "status": "available",
+            "module": "robot-labyrinthes",
+            "goals": "Préparer une suite de déplacements, puis utiliser des répétitions, pour guider un robot.",
+            "loop": "L'enfant compose un programme avec des flèches, le lance, observe le robot pas à pas, corrige et relance jusqu'à atteindre l'étoile.",
+            "controls": "Toucher les flèches pour les ajouter au programme, toucher une instruction pour la retirer. Boutons Lancer, Pas à pas, Effacer. Clavier : flèches pour ajouter, Entrée pour lancer.",
+            "levelNames": [
+                "Premiers pas",
+                "Les murs",
+                "Répéter"
+            ],
+            "difficulties": [
+                "Petites grilles, 3 à 5 déplacements, peu de murs.",
+                "Grilles avec murs, jusqu'à 12 instructions.",
+                "Répétitions : un bloc « répéter ×N » pour tenir dans une limite d'instructions."
+            ],
+            "cues": "Le but et le robot sont visibles ; la consigne est dite. Les flèches sont absolues (haut, bas, gauche, droite) pour ne pas exiger la rotation mentale.",
+            "hints": "L'indice montre la prochaine bonne instruction à partir du début du programme. Un mur heurté arrête le robot sur la case, sans punition.",
+            "success": "Le robot atteint l'étoile.",
+            "recorded": "Niveau réussi, nombre de lancements, instructions utilisées, utilisation du pas à pas et des indices.",
+            "resume": "Chaque niveau terminé est conservé ; l'enfant reprend au premier niveau non terminé de la difficulté choisie.",
+            "adaptations": "Cases d'au moins 48 px ; animation du robot désactivable (mouvements réduits).",
+            "youtube": "Bon candidat : logique pure, pas de son nécessaire.",
+            "acceptance": "Chaque niveau a une solution vérifiée par un solveur dans les tests."
+        },
+        {
+            "id": "puzzles-suites",
+            "n": 7,
+            "name": "L'atelier des puzzles et des suites",
+            "ages": [
+                3,
+                12
+            ],
+            "theme": "logic",
+            "skills": [
+                "sequencing",
+                "spatial",
+                "visual-discrimination"
+            ],
+            "status": "available",
+            "goals": "Reconstituer des images et compléter des suites visuelles.",
+            "loop": "Les activités alternent : un puzzle (toucher une pièce, puis sa place), puis une série de 3 suites (toucher l'élément qui vient ensuite).",
+            "controls": "Toucher la pièce puis sa place ; toucher un choix pour les suites.",
+            "difficulties": [
+                "Puzzle de 4 pièces ; suites AB (deux éléments qui alternent).",
+                "Puzzle de 9 pièces ; suites ABC.",
+                "Puzzle de 16 pièces ; suites à deux règles (la forme alterne sur 2, la couleur tourne sur 3)."
+            ],
+            "cues": "Modèle visible en miniature.",
+            "hints": "Montrer l'emplacement d'une pièce.",
+            "success": "Image complète ou suite correcte.",
+            "recorded": "Puzzle ou série de suites terminé, erreurs, indices ; compétence spatiale pour les puzzles, compétence de suite logique pour les suites.",
+            "resume": "Activité suivante (un puzzle ou une série dure moins de deux minutes).",
+            "adaptations": "Images des puzzles dessinées pour le projet (SVG). Pièces de 56 à 84 px selon l'écran. Les éléments d'une suite diffèrent à la fois par la forme et par la couleur.",
+            "youtube": "Bon candidat.",
+            "acceptance": "Toutes les suites générées ont une seule réponse ou toutes les réponses valides sont acceptées.",
+            "module": "puzzles-suites",
+            "levelNames": [
+                "4 pièces · AB",
+                "9 pièces · ABC",
+                "16 pièces · 2 règles"
+            ],
+            "difficultySkills": [
+                [
+                    "spatial",
+                    "sequencing",
+                    "visual-discrimination"
+                ],
+                [
+                    "spatial",
+                    "sequencing",
+                    "visual-discrimination"
+                ],
+                [
+                    "spatial",
+                    "sequencing",
+                    "visual-discrimination"
+                ]
+            ]
+        },
+        {
+            "id": "petits-scientifiques",
+            "n": 8,
+            "name": "Les petits scientifiques",
+            "ages": [
+                6,
+                12
+            ],
+            "theme": "world",
+            "skills": [
+                "physics",
+                "problem-solving",
+                "living-world"
+            ],
+            "status": "available",
+            "goals": "Prédire, manipuler, observer et expliquer des phénomènes simples.",
+            "loop": "Une série de 4 expériences : prédire (jamais noté), observer le résultat à l'écran, écouter l'explication. Pour le circuit, l'enfant peut ensuite actionner l'interrupteur.",
+            "controls": "Toucher une prédiction, puis « Expérience suivante ».",
+            "difficulties": [
+                "Flotte ou coule, avec des objets du quotidien.",
+                "Circuit avec pile, fils, interrupteur et ampoule.",
+                "Ce dont une graine a besoin : eau et lumière."
+            ],
+            "cues": "Courte explication lue à voix haute.",
+            "hints": "Rappel de ce qui a été observé.",
+            "success": "Expérience menée jusqu'à l'explication ; la prédiction n'est jamais notée.",
+            "recorded": "Expériences menées, nombre de prédictions confirmées (sans erreur comptée). Aucune expérience réelle proposée.",
+            "resume": "Expérience suivante.",
+            "adaptations": "Simplifications documentées dans content/games/petits-scientifiques.json. Images : émojis et dessins provisoires.",
+            "youtube": "À évaluer.",
+            "acceptance": "Contenus scientifiques relus ; aucune expérience réelle dangereuse suggérée.",
+            "module": "petits-scientifiques",
+            "levelNames": [
+                "Flotte ou coule",
+                "Circuit",
+                "Plantes"
+            ],
+            "difficultySkills": [
+                [
+                    "physics",
+                    "problem-solving"
+                ],
+                [
+                    "physics",
+                    "problem-solving"
+                ],
+                [
+                    "living-world",
+                    "problem-solving"
+                ]
+            ],
+            "review": "Contenus scientifiques et formulations simplifiées à faire relire."
+        },
+        {
+            "id": "bons-gestes",
+            "n": 9,
+            "name": "La planète des bons gestes",
+            "ages": [
+                4,
+                10
+            ],
+            "theme": "world",
+            "skills": [
+                "environment",
+                "categorizing"
+            ],
+            "status": "available",
+            "goals": "Explorer les ressources, les déchets et la protection de la nature.",
+            "loop": "Trier des déchets selon un référentiel configurable, choisir des gestes utiles.",
+            "controls": "Toucher l'objet puis le bac.",
+            "difficulties": [
+                "Trier 6 objets entre le bac jaune et le verre.",
+                "Trier 6 objets entre bac jaune, verre, compost et poubelle.",
+                "Situations du quotidien : choisir le geste utile."
+            ],
+            "cues": "Référentiel affiché à l'écran : « France, consignes simplifiées », avec le rappel de vérifier les règles de sa commune. Explication après chaque réponse.",
+            "hints": "Montrer le pictogramme du bac.",
+            "success": "Série triée.",
+            "recorded": "Série terminée, référentiel utilisé, erreurs, indices.",
+            "resume": "Série suivante.",
+            "adaptations": "Référentiel par pays à documenter.",
+            "youtube": "Bon candidat avec un référentiel générique.",
+            "acceptance": "Le référentiel affiché correspond aux règles appliquées.",
+            "module": "bons-gestes",
+            "levelNames": [
+                "2 bacs",
+                "4 bacs",
+                "Bons gestes"
+            ],
+            "difficultySkills": [
+                [
+                    "environment",
+                    "categorizing"
+                ],
+                [
+                    "environment",
+                    "categorizing"
+                ],
+                [
+                    "environment",
+                    "categorizing"
+                ]
+            ],
+            "review": "Règles de tri à vérifier avec les consignes nationales en vigueur ; référentiel à adapter par commune et par pays."
+        },
+        {
+            "id": "histoires-emotions",
+            "n": 10,
+            "name": "Les histoires des émotions",
+            "ages": [
+                4,
+                12
+            ],
+            "theme": "social",
+            "skills": [
+                "emotions",
+                "reading-comprehension"
+            ],
+            "status": "available",
+            "goals": "Observer des situations et explorer plusieurs émotions et réponses possibles.",
+            "loop": "Une courte scène est lue ; l'enfant propose une émotion pour un personnage, ou une idée de réponse, et le jeu reformule. Toutes les réponses sont acceptées.",
+            "controls": "Toucher un ou plusieurs choix.",
+            "difficulties": [
+                "Scènes simples, 2 émotions proposées.",
+                "Scènes à deux personnages, 3 émotions proposées pour chacun.",
+                "Idées de réponses et leurs conséquences."
+            ],
+            "cues": "Narration audio.",
+            "hints": "Rappel d'un détail de la scène.",
+            "success": "Scène explorée ; plusieurs interprétations sont acceptées.",
+            "recorded": "Nombre de scènes explorées uniquement : jamais l'émotion choisie, jamais d'émotion attribuée à l'enfant.",
+            "resume": "Scène suivante.",
+            "adaptations": "Aucune analyse de visage, aucun usage diagnostique.",
+            "youtube": "À évaluer.",
+            "acceptance": "Relecture par un ou une spécialiste de l'enfance.",
+            "module": "histoires-emotions",
+            "levelNames": [
+                "Une émotion",
+                "Deux personnages",
+                "Et alors ?"
+            ],
+            "difficultySkills": [
+                [
+                    "emotions"
+                ],
+                [
+                    "emotions"
+                ],
+                [
+                    "emotions",
+                    "reading-comprehension"
+                ]
+            ],
+            "review": "Relecture par un ou une spécialiste de l'enfance : scènes, émotions proposées, idées de réponses et conséquences."
+        },
+        {
+            "id": "orchestre",
+            "n": 11,
+            "name": "L'orchestre des petits",
+            "ages": [
+                2,
+                6
+            ],
+            "theme": "arts",
+            "skills": [
+                "music",
+                "memory"
+            ],
+            "status": "available",
+            "goals": "Découvrir des instruments et reproduire des séquences sonores.",
+            "loop": "Une série de 3 séquences : la séquence s'allume et se joue, puis l'enfant la rejoue en touchant les instruments. Une erreur rejoue la séquence.",
+            "controls": "Toucher des instruments.",
+            "difficulties": [
+                "2 notes (grave et aiguë), séquences de 2.",
+                "3 instruments, séquences de 3.",
+                "4 instruments, séquences de 5."
+            ],
+            "cues": "Chaque instrument a sa couleur et sa lumière. Sons synthétisés dans le navigateur (piano, trompette, cloche, tambour approchés), pas des enregistrements.",
+            "hints": "Rejouer la séquence plus lentement.",
+            "success": "Séquence reproduite.",
+            "recorded": "Série terminée, mode avec son ou silencieux, erreurs, indices. Mode avec son : compétences musique et mémoire ; mode silencieux : mémoire seulement.",
+            "resume": "Niveau suivant.",
+            "adaptations": "Mode silencieux : séquence de couleurs, notée séparément.",
+            "youtube": "À évaluer.",
+            "acceptance": "Les deux modes ne sont pas confondus dans la progression.",
+            "module": "orchestre",
+            "levelNames": [
+                "2 notes",
+                "3 instruments",
+                "Séquences de 5"
+            ],
+            "difficultySkills": [
+                [
+                    "music",
+                    "memory"
+                ],
+                [
+                    "music",
+                    "memory"
+                ],
+                [
+                    "music",
+                    "memory"
+                ]
+            ]
+        },
+        {
+            "id": "ombres",
+            "n": 12,
+            "name": "Les ombres mystérieuses",
+            "ages": [
+                2,
+                5
+            ],
+            "theme": "perception",
+            "skills": [
+                "visual-discrimination",
+                "shapes"
+            ],
+            "status": "available",
+            "goals": "Associer des objets à leur silhouette.",
+            "loop": "Une série de 5 ombres : trouver l'objet qui fait cette ombre.",
+            "controls": "Toucher l'objet.",
+            "difficulties": [
+                "2 objets de familles différentes.",
+                "3 objets de familles différentes, ombre retournée ou penchée.",
+                "4 objets de la même famille."
+            ],
+            "cues": "Consigne audio.",
+            "hints": "Premier indice : l'ombre se colore légèrement. Indices suivants : un mauvais choix disparaît.",
+            "success": "Série terminée.",
+            "recorded": "Associations, erreurs, indices.",
+            "resume": "Série suivante.",
+            "adaptations": "Gros objets (images de 56 px, ombre de 110 px). Images et ombres : émojis du système noircis, provisoires.",
+            "youtube": "Bon candidat.",
+            "acceptance": "Distracteurs jamais identiques à la bonne réponse.",
+            "module": "ombres",
+            "levelNames": [
+                "Très différents",
+                "Ombres tournées",
+                "Objets proches"
+            ],
+            "difficultySkills": [
+                [
+                    "visual-discrimination",
+                    "shapes"
+                ],
+                [
+                    "visual-discrimination",
+                    "shapes"
+                ],
+                [
+                    "visual-discrimination",
+                    "shapes"
+                ]
+            ]
+        },
+        {
+            "id": "petit-batisseur",
+            "n": 13,
+            "name": "Le petit bâtisseur",
+            "ages": [
+                3,
+                8
+            ],
+            "theme": "logic",
+            "skills": [
+                "spatial",
+                "problem-solving"
+            ],
+            "status": "available",
+            "goals": "Reproduire des constructions avec des blocs.",
+            "loop": "Observer un modèle, placer les blocs.",
+            "controls": "Toucher un bloc de la réserve puis une colonne (ou le glisser) : il tombe sur la pile, sans viser une case précise. « Retirer » enlève le bloc du haut.",
+            "difficulties": [
+                "Reproduire un modèle de 3 blocs.",
+                "Reproduire un modèle de 6 blocs de couleurs.",
+                "Défis de construction (hauteur, équilibre, ordre des couleurs) : plusieurs constructions sont justes."
+            ],
+            "cues": "Modèle à côté.",
+            "hints": "Montrer le prochain bloc.",
+            "success": "Construction identique au modèle.",
+            "recorded": "Constructions réussies, erreurs de placement, indices.",
+            "resume": "Construction suivante (une construction en cours n’est pas gardée).",
+            "adaptations": "Alternative au glisser-déposer obligatoire.",
+            "youtube": "À évaluer.",
+            "acceptance": "Placement tolérant vérifié sur mobile.",
+            "levelNames": [
+                "3 blocs",
+                "6 blocs en couleurs",
+                "Défis"
+            ],
+            "difficultySkills": [
+                [
+                    "spatial"
+                ],
+                [
+                    "spatial"
+                ],
+                [
+                    "spatial",
+                    "problem-solving"
+                ]
+            ],
+            "module": "petit-batisseur"
+        },
+        {
+            "id": "differences",
+            "n": 14,
+            "name": "La chasse aux différences",
+            "ages": [
+                4,
+                12
+            ],
+            "theme": "perception",
+            "skills": [
+                "visual-discrimination"
+            ],
+            "status": "available",
+            "goals": "Comparer deux scènes et repérer leurs différences.",
+            "loop": "Toucher les différences entre deux images.",
+            "controls": "Toucher la différence sur l’une ou l’autre image ; zone de toucher large.",
+            "difficulties": [
+                "3 grosses différences (objet absent, autre couleur).",
+                "5 différences (absent, ajouté, couleur, forme).",
+                "7 différences fines (taille, nuance, forme)."
+            ],
+            "cues": "Compteur de différences restantes.",
+            "hints": "Entourer une zone.",
+            "success": "Toutes trouvées.",
+            "recorded": "Trouvées, indices.",
+            "resume": "Scène suivante (scènes générées à chaque partie).",
+            "adaptations": "Sur petit écran, les deux images sont l’une sous l’autre, chacune sur toute la largeur.",
+            "youtube": "Bon candidat.",
+            "acceptance": "Zones de toucher assez larges.",
+            "levelNames": [
+                "3 différences",
+                "5 différences",
+                "7 différences fines"
+            ],
+            "difficultySkills": [
+                [
+                    "visual-discrimination"
+                ],
+                [
+                    "visual-discrimination"
+                ],
+                [
+                    "visual-discrimination"
+                ]
+            ],
+            "module": "differences"
+        },
+        {
+            "id": "detectives-categories",
+            "n": 15,
+            "name": "Les détectives des catégories",
+            "ages": [
+                3,
+                8
+            ],
+            "theme": "logic",
+            "skills": [
+                "categorizing"
+            ],
+            "status": "available",
+            "goals": "Classer des objets selon un critère explicite.",
+            "loop": "Ranger des objets dans des boîtes selon la règle affichée.",
+            "controls": "Toucher l'objet puis la boîte.",
+            "difficulties": [
+                "Une règle, 2 boîtes.",
+                "Une règle, 3 boîtes.",
+                "Choisir sa règle parmi deux ; les deux classements sont justes."
+            ],
+            "cues": "Règle montrée par un pictogramme.",
+            "hints": "Rappel de la règle.",
+            "success": "Classement cohérent avec la règle.",
+            "recorded": "Classements, critère.",
+            "resume": "Série suivante.",
+            "adaptations": "—",
+            "youtube": "Bon candidat.",
+            "acceptance": "Les classements alternatifs valides sont acceptés.",
+            "levelNames": [
+                "2 boîtes",
+                "3 boîtes",
+                "Ma règle"
+            ],
+            "difficultySkills": [
+                [
+                    "categorizing"
+                ],
+                [
+                    "categorizing"
+                ],
+                [
+                    "categorizing"
+                ]
+            ],
+            "review": "Propriétés des animaux simplifiées ; cas ambigus exclus de la règle concernée. À faire relire.",
+            "module": "detectives-categories"
+        },
+        {
+            "id": "histoires-ordre",
+            "n": 16,
+            "name": "Les histoires à remettre en ordre",
+            "ages": [
+                4,
+                9
+            ],
+            "theme": "language",
+            "skills": [
+                "narrative",
+                "sequencing"
+            ],
+            "status": "available",
+            "goals": "Reconstituer des événements et explorer cause et effet.",
+            "loop": "Remettre des images dans l'ordre.",
+            "controls": "Toucher les images dans l’ordre ; toucher une image posée pour la retirer. Chaque phrase est lue.",
+            "difficulties": [
+                "Histoires de 3 images.",
+                "Histoires de 4 images (variantes cohérentes acceptées).",
+                "Histoires de 5 images avec une cause et sa conséquence, expliquées à la fin."
+            ],
+            "cues": "Narration.",
+            "hints": "Montrer la première image.",
+            "success": "Ordre cohérent (alternatives acceptées).",
+            "recorded": "Histoires, essais.",
+            "resume": "Histoire suivante.",
+            "adaptations": "—",
+            "youtube": "Bon candidat.",
+            "acceptance": "Les séquences alternatives cohérentes sont listées dans le contenu.",
+            "levelNames": [
+                "3 images",
+                "4 images",
+                "Cause et effet"
+            ],
+            "difficultySkills": [
+                [
+                    "sequencing"
+                ],
+                [
+                    "sequencing",
+                    "narrative"
+                ],
+                [
+                    "narrative",
+                    "sequencing"
+                ]
+            ],
+            "review": "Histoires et ordres acceptés à faire relire.",
+            "module": "histoires-ordre"
+        },
+        {
+            "id": "cuisine-mesures",
+            "n": 17,
+            "name": "La cuisine des mesures",
+            "ages": [
+                6,
+                12
+            ],
+            "theme": "math",
+            "skills": [
+                "measures"
+            ],
+            "status": "available",
+            "goals": "Comparer longueurs, masses et contenances, découvrir unités et conversions.",
+            "loop": "Suivre une recette en mesurant.",
+            "controls": "Toucher pour verser, poser ou retirer des poids, choisir une réponse.",
+            "difficulties": [
+                "Comparer : plus long, plus lourd (balance), contient le plus.",
+                "Mesurer : verser dans un verre doseur gradué, peser avec des poids, choisir l’unité.",
+                "Conversions g ↔ kg et mL ↔ L, puis mesurer dans l’autre unité."
+            ],
+            "cues": "Recette illustrée.",
+            "hints": "Montrer la graduation.",
+            "success": "Recette réussie.",
+            "recorded": "Mesures, erreurs.",
+            "resume": "Recette suivante.",
+            "adaptations": "Masses (g, kg) et contenances (mL, L) jamais mélangées : on pèse les solides, on verse les liquides.",
+            "youtube": "À évaluer.",
+            "acceptance": "Relecture des conversions.",
+            "levelNames": [
+                "Comparer",
+                "Mesurer",
+                "Convertir"
+            ],
+            "difficultySkills": [
+                [
+                    "measures"
+                ],
+                [
+                    "measures"
+                ],
+                [
+                    "measures"
+                ]
+            ],
+            "review": "Conversions et formulations à faire relire.",
+            "module": "cuisine-mesures"
+        },
+        {
+            "id": "pizzeria-fractions",
+            "n": 18,
+            "name": "La pizzeria des fractions",
+            "ages": [
+                7,
+                12
+            ],
+            "theme": "math",
+            "skills": [
+                "fractions"
+            ],
+            "status": "available",
+            "goals": "Partager en parts égales, comparer et trouver des fractions équivalentes.",
+            "loop": "Couper et servir des parts.",
+            "controls": "Choisir le découpage, toucher les parts, servir.",
+            "difficulties": [
+                "Couper en 2 ou en 4, servir la moitié, un quart, trois quarts.",
+                "Tiers et sixièmes (découpage au choix parmi 2, 3, 4, 6).",
+                "Pizza déjà coupée autrement que la commande, et comparaisons de fractions."
+            ],
+            "cues": "La fraction écrite n’apparaît qu’à côté des parts choisies (manipulation avant le symbole).",
+            "hints": "Superposer les parts.",
+            "success": "Commande servie.",
+            "recorded": "Fractions, erreurs.",
+            "resume": "Commande suivante.",
+            "adaptations": "—",
+            "youtube": "Bon candidat.",
+            "acceptance": "Parts toujours égales.",
+            "levelNames": [
+                "Moitiés et quarts",
+                "Tiers et sixièmes",
+                "Équivalences"
+            ],
+            "difficultySkills": [
+                [
+                    "fractions"
+                ],
+                [
+                    "fractions"
+                ],
+                [
+                    "fractions"
+                ]
+            ],
+            "module": "pizzeria-fractions"
+        },
+        {
+            "id": "horloge",
+            "n": 19,
+            "name": "L'horloge des aventures",
+            "ages": [
+                6,
+                10
+            ],
+            "theme": "world",
+            "skills": [
+                "time",
+                "measures"
+            ],
+            "status": "available",
+            "goals": "Lire l'heure et calculer des durées.",
+            "loop": "Régler une horloge, comparer avec l'affichage numérique, calculer une durée.",
+            "controls": "Boutons pour tourner les aiguilles (l’aiguille des heures suit les minutes), choisir une réponse.",
+            "difficulties": [
+                "Régler et lire des heures pleines.",
+                "Régler et lire les demi-heures et les quarts d’heure.",
+                "Durées : combien de temps entre deux heures, à quelle heure ça finit."
+            ],
+            "cues": "Horloge à aiguilles et affichage numérique côte à côte. Heures écrites « 15 h 30 », durées « 1 h 30 min ».",
+            "hints": "Aiguille qui clignote.",
+            "success": "Heure ou durée correcte.",
+            "recorded": "Exercices, erreurs.",
+            "resume": "Série suivante.",
+            "adaptations": "—",
+            "youtube": "Bon candidat.",
+            "acceptance": "Distinction heure/durée vérifiée.",
+            "levelNames": [
+                "Heures pleines",
+                "Demi-heures et quarts",
+                "Durées"
+            ],
+            "difficultySkills": [
+                [
+                    "time"
+                ],
+                [
+                    "time"
+                ],
+                [
+                    "time",
+                    "measures"
+                ]
+            ],
+            "module": "horloge"
+        },
+        {
+            "id": "boutique-budgets",
+            "n": 20,
+            "name": "La boutique des petits budgets",
+            "ages": [
+                6,
+                12
+            ],
+            "theme": "math",
+            "skills": [
+                "measures",
+                "addition"
+            ],
+            "status": "available",
+            "goals": "Composer un panier, respecter un budget et rendre la monnaie (virtuelle).",
+            "loop": "Choisir des articles sans dépasser le budget.",
+            "controls": "Toucher les pièces, les billets et les articles ; toucher une pièce posée pour la reprendre.",
+            "difficulties": [
+                "Payer le prix exact d’un article (prix entiers sous 10 €).",
+                "Composer un panier d’au moins 2 articles sans dépasser son budget ; dire si un achat est possible.",
+                "Rendre la monnaie après un paiement avec un billet."
+            ],
+            "cues": "Pièces et billets dessinés.",
+            "hints": "Le total est affiché ; une façon de payer est proposée.",
+            "success": "Panier valide.",
+            "recorded": "Paniers, erreurs.",
+            "resume": "Situation suivante.",
+            "adaptations": "Aucun achat réel.",
+            "youtube": "Bon candidat.",
+            "acceptance": "Aucun lien vers un achat réel.",
+            "levelNames": [
+                "Payer",
+                "Budget",
+                "Rendre la monnaie"
+            ],
+            "difficultySkills": [
+                [
+                    "addition",
+                    "measures"
+                ],
+                [
+                    "addition"
+                ],
+                [
+                    "addition",
+                    "measures"
+                ]
+            ],
+            "module": "boutique-budgets"
+        },
+        {
+            "id": "voyage-cartes",
+            "n": 21,
+            "name": "Le voyage des cartes",
+            "ages": [
+                6,
+                12
+            ],
+            "theme": "world",
+            "skills": [
+                "spatial"
+            ],
+            "status": "available",
+            "goals": "Se repérer sur un plan, lire une légende, préparer un itinéraire.",
+            "loop": "Suivre ou tracer un chemin sur une carte fictive.",
+            "controls": "Toucher les cases du chemin une par une ; toucher une case du chemin pour le raccourcir.",
+            "difficulties": [
+                "Tracer un chemin d’un lieu à un autre.",
+                "Trouver le lieu d’arrivée grâce à la légende, traverser la rivière par un pont.",
+                "Itinéraire avec contraintes : passer par un lieu, éviter la forêt, nombre de pas limité."
+            ],
+            "cues": "Légende illustrée.",
+            "hints": "Montrer un repère.",
+            "success": "Itinéraire valide.",
+            "recorded": "Itinéraires.",
+            "resume": "Carte suivante.",
+            "adaptations": "Cartes fictives.",
+            "youtube": "Bon candidat.",
+            "acceptance": "Plusieurs chemins valides acceptés.",
+            "levelNames": [
+                "Plan simple",
+                "Légende",
+                "Itinéraire"
+            ],
+            "difficultySkills": [
+                [
+                    "spatial"
+                ],
+                [
+                    "spatial"
+                ],
+                [
+                    "spatial"
+                ]
+            ],
+            "module": "voyage-cartes"
+        },
+        {
+            "id": "meteo-saisons",
+            "n": 22,
+            "name": "Mission météo et saisons",
+            "ages": [
+                4,
+                9
+            ],
+            "theme": "world",
+            "skills": [
+                "time",
+                "living-world"
+            ],
+            "status": "available",
+            "goals": "Choisir des objets adaptés à une météo ; distinguer météo, saison et lieu.",
+            "loop": "Habiller un personnage selon la situation.",
+            "controls": "Toucher les objets pour les choisir ou les enlever, puis « C’est prêt ».",
+            "difficulties": [
+                "Soleil ou pluie, ici : choisir ce qu’il faut.",
+                "Les saisons, en France (le lieu est dit à l’écran).",
+                "Des lieux du monde nommés : désert, montagne, plage, grand froid."
+            ],
+            "cues": "Scène illustrée.",
+            "hints": "Montrer un élément météo.",
+            "success": "Tenue adaptée (plusieurs possibles).",
+            "recorded": "Situations.",
+            "resume": "Suivante.",
+            "adaptations": "Pas de modèle unique de saisons.",
+            "youtube": "Bon candidat.",
+            "acceptance": "Contexte géographique explicite.",
+            "levelNames": [
+                "Soleil ou pluie",
+                "Saisons",
+                "Lieux du monde"
+            ],
+            "difficultySkills": [
+                [
+                    "living-world"
+                ],
+                [
+                    "time",
+                    "living-world"
+                ],
+                [
+                    "living-world"
+                ]
+            ],
+            "review": "Situations et explications à faire relire ; saisons de la France métropolitaine.",
+            "module": "meteo-saisons"
+        },
+        {
+            "id": "jardin-vivant",
+            "n": 23,
+            "name": "Le jardin vivant",
+            "ages": [
+                4,
+                10
+            ],
+            "theme": "world",
+            "skills": [
+                "living-world",
+                "problem-solving"
+            ],
+            "status": "available",
+            "goals": "Faire évoluer un jardin virtuel et observer les interactions du vivant.",
+            "loop": "Planter, arroser, observer sur des jours simulés.",
+            "controls": "Choisir un outil (graine, arrosoir, coccinelles), toucher une parcelle, « Jour suivant ».",
+            "difficulties": [
+                "Faire fleurir une fleur : planter, arroser, passer les jours.",
+                "Trois plantes ; des pucerons arrivent, les coccinelles les mangent.",
+                "Des tomates : il faut des fleurs pour attirer les abeilles qui pollinisent."
+            ],
+            "cues": "Jours simulés en accéléré.",
+            "hints": "Conseil du jardinier.",
+            "success": "Objectif du jardin atteint.",
+            "recorded": "Simulations.",
+            "resume": "Jardin conservé.",
+            "adaptations": "Jours simulés en accéléré : aucune attente réelle. Règles du vivant simplifiées (docs/jeux.md).",
+            "youtube": "À évaluer (persistance).",
+            "acceptance": "Progression sans attente en temps réel.",
+            "levelNames": [
+                "Une fleur",
+                "Pucerons",
+                "Abeilles et tomates"
+            ],
+            "difficultySkills": [
+                [
+                    "living-world"
+                ],
+                [
+                    "living-world",
+                    "problem-solving"
+                ],
+                [
+                    "living-world",
+                    "problem-solving"
+                ]
+            ],
+            "review": "Simplifications du vivant à faire relire.",
+            "module": "jardin-vivant"
+        },
+        {
+            "id": "mots-phrases",
+            "n": 24,
+            "name": "L'atelier des mots et des phrases",
+            "ages": [
+                6,
+                12
+            ],
+            "theme": "language",
+            "skills": [
+                "sentences",
+                "vocabulary"
+            ],
+            "status": "available",
+            "goals": "Construire des phrases et explorer les accords.",
+            "loop": "Ordonner des étiquettes de mots.",
+            "controls": "Toucher les mots dans l’ordre ; toucher un mot posé pour l’enlever.",
+            "difficulties": [
+                "Remettre 3 mots dans l’ordre.",
+                "Accords simples : une étiquette piège (singulier/pluriel, masculin/féminin).",
+                "Phrases longues, plusieurs ordres acceptés."
+            ],
+            "cues": "Image de la situation.",
+            "hints": "Premier mot montré.",
+            "success": "Phrase valide (plusieurs ordres possibles).",
+            "recorded": "Phrases.",
+            "resume": "Suivante.",
+            "adaptations": "—",
+            "youtube": "À évaluer.",
+            "acceptance": "Relecture linguistique.",
+            "levelNames": [
+                "3 mots",
+                "Accords",
+                "Phrases longues"
+            ],
+            "difficultySkills": [
+                [
+                    "sentences"
+                ],
+                [
+                    "sentences",
+                    "vocabulary"
+                ],
+                [
+                    "sentences"
+                ]
+            ],
+            "review": "Relecture linguistique des phrases et des ordres acceptés.",
+            "module": "mots-phrases"
+        },
+        {
+            "id": "detectives-lecture",
+            "n": 25,
+            "name": "Les détectives de la lecture",
+            "ages": [
+                7,
+                12
+            ],
+            "theme": "language",
+            "skills": [
+                "reading-comprehension"
+            ],
+            "status": "available",
+            "goals": "Lire de courts textes et trouver des indices pour résoudre une enquête.",
+            "loop": "Lire, relever des indices, conclure.",
+            "controls": "Toucher les phrases-indices, puis la conclusion.",
+            "difficulties": [
+                "Textes courts : trouver la phrase qui donne l’indice, puis conclure.",
+                "Relever deux indices avant de conclure.",
+                "Inférences : rapprocher plusieurs indices, la réponse n’est pas écrite telle quelle."
+            ],
+            "cues": "« Lire à voix haute » : aide facultative, enregistrée comme telle (réussite aidée, pas en lecture autonome).",
+            "hints": "Surligner le passage utile.",
+            "success": "Enquête résolue.",
+            "recorded": "Enquêtes, aide audio utilisée.",
+            "resume": "Enquête en cours.",
+            "adaptations": "—",
+            "youtube": "À évaluer.",
+            "acceptance": "Lecture autonome et avec aide audio distinguées.",
+            "levelNames": [
+                "Un indice",
+                "Deux indices",
+                "Déductions"
+            ],
+            "difficultySkills": [
+                [
+                    "reading-comprehension"
+                ],
+                [
+                    "reading-comprehension"
+                ],
+                [
+                    "reading-comprehension"
+                ]
+            ],
+            "review": "Textes et conclusions à faire relire.",
+            "module": "detectives-lecture"
+        },
+        {
+            "id": "passeport-langues",
+            "n": 26,
+            "name": "Le passeport des langues",
+            "ages": [
+                4,
+                12
+            ],
+            "theme": "language",
+            "skills": [
+                "second-language",
+                "vocabulary"
+            ],
+            "status": "available",
+            "goals": "Découvrir du vocabulaire anglais.",
+            "loop": "Associer image, mot et son.",
+            "controls": "Écouter (et lire) le mot anglais, toucher la bonne image. Pas de micro.",
+            "difficulties": [
+                "Couleurs et animaux en anglais.",
+                "Objets du quotidien en anglais.",
+                "Petites phrases en anglais."
+            ],
+            "cues": "Voix anglaise de l’appareil (anglais britannique de préférence) ; sans voix anglaise, le mot est écrit.",
+            "hints": "Réécouter.",
+            "success": "Série terminée.",
+            "recorded": "Mots.",
+            "resume": "Série suivante.",
+            "adaptations": "Pas de micro.",
+            "youtube": "À évaluer.",
+            "acceptance": "Audio relu par un locuteur natif.",
+            "levelNames": [
+                "Couleurs et animaux",
+                "Objets",
+                "Petites phrases"
+            ],
+            "difficultySkills": [
+                [
+                    "second-language",
+                    "vocabulary"
+                ],
+                [
+                    "second-language",
+                    "vocabulary"
+                ],
+                [
+                    "second-language"
+                ]
+            ],
+            "review": "Prononciation des voix de synthèse et vocabulaire à faire relire par un locuteur natif.",
+            "module": "passeport-langues"
+        },
+        {
+            "id": "mecanismes",
+            "n": 27,
+            "name": "Le laboratoire des mécanismes",
+            "ages": [
+                7,
+                12
+            ],
+            "theme": "world",
+            "skills": [
+                "physics",
+                "problem-solving"
+            ],
+            "status": "available",
+            "goals": "Assembler leviers, poulies et engrenages virtuels.",
+            "loop": "Construire un mécanisme pour un objectif.",
+            "controls": "Choisir une réponse ; le mécanisme s’anime pour montrer pourquoi.",
+            "difficulties": [
+                "Le levier : où placer le point d’appui, où appuyer.",
+                "Les poulies : combien de brins pour soulever une charge.",
+                "Les engrenages : sens de rotation et nombre de tours."
+            ],
+            "cues": "Animation du mécanisme.",
+            "hints": "Montrer une pièce.",
+            "success": "Objectif atteint.",
+            "recorded": "Défis.",
+            "resume": "Défi en cours.",
+            "adaptations": "Simplifications documentées : pas de frottement, planche et cordes sans poids, engrenages sans glissement.",
+            "youtube": "À évaluer.",
+            "acceptance": "Relecture scientifique.",
+            "levelNames": [
+                "Levier",
+                "Poulies",
+                "Engrenages"
+            ],
+            "difficultySkills": [
+                [
+                    "physics"
+                ],
+                [
+                    "physics",
+                    "problem-solving"
+                ],
+                [
+                    "physics",
+                    "problem-solving"
+                ]
+            ],
+            "review": "Relecture scientifique des explications.",
+            "module": "mecanismes"
+        },
+        {
+            "id": "code-debogage",
+            "n": 28,
+            "name": "Mission code et débogage",
+            "ages": [
+                8,
+                12
+            ],
+            "theme": "logic",
+            "skills": [
+                "debugging",
+                "algorithmic"
+            ],
+            "status": "available",
+            "goals": "Corriger des programmes visuels avec boucles, conditions et variables.",
+            "loop": "Un programme échoue ; trouver et corriger l'erreur.",
+            "controls": "Lancer le programme (exécution pas à pas), toucher le bloc fautif, choisir la correction, relancer.",
+            "difficulties": [
+                "Une commande fausse à trouver et corriger.",
+                "Boucles : nombre de répétitions, bloc dans la boucle.",
+                "Conditions (« si mur devant ») et variable."
+            ],
+            "cues": "Exécution pas à pas : le bloc en cours s’allume, le robot se déplace.",
+            "hints": "Montrer le bloc fautif.",
+            "success": "Programme corrigé.",
+            "recorded": "Défis, indices.",
+            "resume": "Défi suivant.",
+            "adaptations": "Distinct du jeu 6.",
+            "youtube": "Bon candidat.",
+            "acceptance": "Chaque programme faux échoue et chaque correction mène à l’étoile : vérifié par l’interpréteur dans les tests.",
+            "levelNames": [
+                "Une erreur",
+                "Boucles",
+                "Conditions et variables"
+            ],
+            "difficultySkills": [
+                [
+                    "debugging"
+                ],
+                [
+                    "debugging",
+                    "algorithmic"
+                ],
+                [
+                    "debugging",
+                    "algorithmic"
+                ]
+            ],
+            "module": "code-debogage"
+        },
+        {
+            "id": "explorateurs-numerique",
+            "n": 29,
+            "name": "Les explorateurs du numérique",
+            "ages": [
+                7,
+                12
+            ],
+            "theme": "world",
+            "skills": [
+                "digital-citizenship"
+            ],
+            "status": "available",
+            "goals": "Reconnaître des situations numériques à risque et demander l'aide d'un adulte.",
+            "loop": "Situations fictives : lien suspect, demande d'information, message inconnu.",
+            "controls": "Toucher une réponse. Aucun champ de saisie.",
+            "difficulties": [
+                "Situations simples : mot de passe, photo, image qui fait peur, temps d’écran.",
+                "Messages ambigus affichés comme dans une messagerie (fictifs).",
+                "Scénarios en plusieurs étapes."
+            ],
+            "cues": "Narration.",
+            "hints": "Rappel du bon réflexe.",
+            "success": "Scénario terminé.",
+            "recorded": "Scénarios.",
+            "resume": "Suivant.",
+            "adaptations": "Jamais de vrai mot de passe ni de donnée personnelle demandée.",
+            "youtube": "À évaluer.",
+            "acceptance": "Aucun champ de saisie de donnée personnelle.",
+            "levelNames": [
+                "Situations simples",
+                "Messages",
+                "Scénarios"
+            ],
+            "difficultySkills": [
+                [
+                    "digital-citizenship"
+                ],
+                [
+                    "digital-citizenship"
+                ],
+                [
+                    "digital-citizenship"
+                ]
+            ],
+            "review": "Situations et conseils de prévention à faire relire.",
+            "module": "explorateurs-numerique"
+        },
+        {
+            "id": "studio-motifs",
+            "n": 30,
+            "name": "Le studio des motifs et des symétries",
+            "ages": [
+                4,
+                12
+            ],
+            "theme": "arts",
+            "skills": [
+                "spatial",
+                "sequencing",
+                "creativity"
+            ],
+            "status": "available",
+            "goals": "Compléter des symétries, reproduire des motifs, créer des mosaïques.",
+            "loop": "Colorier des cases selon un modèle, ou créer librement.",
+            "controls": "Choisir une couleur, toucher les cases ; retoucher une case de la même couleur l’efface.",
+            "difficulties": [
+                "Symétrie verticale : colorier la moitié droite en miroir.",
+                "Motifs : continuer chaque ligne.",
+                "Symétrie double : compléter les trois quarts."
+            ],
+            "cues": "Axe de symétrie visible.",
+            "hints": "Montrer une case.",
+            "success": "Défi complété ; la création libre n’est jamais notée ni enregistrée.",
+            "recorded": "Défis.",
+            "resume": "Création conservée.",
+            "adaptations": "—",
+            "youtube": "Bon candidat.",
+            "acceptance": "Mode libre sans score.",
+            "levelNames": [
+                "Miroir",
+                "Motifs",
+                "Double miroir"
+            ],
+            "difficultySkills": [
+                [
+                    "spatial"
+                ],
+                [
+                    "sequencing"
+                ],
+                [
+                    "spatial"
+                ]
+            ],
+            "module": "studio-motifs"
+        },
+        {
+            "id": "trace-magique",
+            "n": 31,
+            "name": "Le tracé magique",
+            "ages": [
+                2,
+                5
+            ],
+            "theme": "arts",
+            "skills": [
+                "fine-motor",
+                "shapes",
+                "counting"
+            ],
+            "status": "available",
+            "goals": "Suivre un chemin du doigt, sans le quitter, pour préparer le geste d’écriture.",
+            "loop": "Une série de 4 chemins : guider un animal jusqu’à sa maison en suivant les pointillés.",
+            "controls": "Glisser le doigt (ou la souris) le long du chemin.",
+            "difficulties": [
+                "Lignes droites et obliques.",
+                "Courbes, vagues et zigzags.",
+                "Tracé des chiffres de 1 à 5."
+            ],
+            "cues": "Consigne lue à voix haute et écrite.",
+            "hints": "Une étoile parcourt le chemin pour montrer le geste.",
+            "success": "Série de 4 chemins terminée.",
+            "recorded": "Chemins terminés, reprises, indices.",
+            "resume": "Série suivante.",
+            "adaptations": "Large tolérance autour du chemin ; on peut reprendre là où on s’est arrêté.",
+            "youtube": "À évaluer.",
+            "acceptance": "Chaque repère du chemin doit être touché dans l’ordre ; sortir du chemin n’efface rien.",
+            "module": "trace-magique",
+            "levelNames": [
+                "Lignes",
+                "Courbes",
+                "Chiffres"
+            ],
+            "difficultySkills": [
+                [
+                    "fine-motor"
+                ],
+                [
+                    "fine-motor",
+                    "shapes"
+                ],
+                [
+                    "fine-motor",
+                    "counting"
+                ]
+            ]
+        },
+        {
+            "id": "dessus-dessous",
+            "n": 32,
+            "name": "Dessus, dessous, à gauche",
+            "ages": [
+                3,
+                6
+            ],
+            "theme": "logic",
+            "skills": [
+                "spatial",
+                "vocabulary"
+            ],
+            "status": "available",
+            "goals": "Comprendre et utiliser les mots de position : sur, sous, dans, devant, derrière, à gauche, à droite, entre.",
+            "loop": "Une série de 5 consignes : poser un objet au bon endroit autour d’un meuble.",
+            "controls": "Toucher l’endroit où poser l’objet.",
+            "difficulties": [
+                "Sur et sous.",
+                "Dans, devant, derrière.",
+                "À gauche, à droite, entre."
+            ],
+            "cues": "Consigne lue à voix haute et écrite.",
+            "hints": "Premier indice : la consigne est redite plus lentement. Ensuite, le bon endroit brille.",
+            "success": "Série terminée.",
+            "recorded": "Positions demandées, erreurs, indices.",
+            "resume": "Série suivante.",
+            "adaptations": "Gauche et droite sont celles de l’enfant qui regarde l’écran (dit dans la consigne).",
+            "youtube": "À évaluer.",
+            "acceptance": "Une seule place correspond à chaque consigne.",
+            "module": "dessus-dessous",
+            "levelNames": [
+                "Sur, sous",
+                "Devant, derrière",
+                "Gauche, droite"
+            ],
+            "difficultySkills": [
+                [
+                    "spatial",
+                    "vocabulary"
+                ],
+                [
+                    "spatial",
+                    "vocabulary"
+                ],
+                [
+                    "spatial",
+                    "vocabulary"
+                ]
+            ]
+        },
+        {
+            "id": "docteur-doudous",
+            "n": 33,
+            "name": "Le docteur des doudous",
+            "ages": [
+                3,
+                7
+            ],
+            "theme": "social",
+            "skills": [
+                "body-health",
+                "vocabulary"
+            ],
+            "status": "available",
+            "goals": "Nommer les parties du corps, les cinq sens et les gestes d’hygiène.",
+            "loop": "Une série de 5 patients : trouver où le doudou a mal, avec quoi il sent, ce qui le soigne.",
+            "controls": "Toucher une partie du doudou, ou une carte.",
+            "difficulties": [
+                "Les parties du corps.",
+                "Les cinq sens.",
+                "Les gestes d’hygiène et de soin."
+            ],
+            "cues": "Consigne lue à voix haute et écrite.",
+            "hints": "Un mauvais choix disparaît, puis le bon brille.",
+            "success": "Série terminée.",
+            "recorded": "Réponses, erreurs, indices.",
+            "resume": "Série suivante.",
+            "adaptations": "Aucun conseil médical : seulement des gestes du quotidien (se laver les mains, se moucher, dire à un adulte).",
+            "youtube": "À évaluer.",
+            "acceptance": "Les soins proposés sont des gestes d’enfant ; un adulte est toujours cité pour les vrais bobos.",
+            "module": "docteur-doudous",
+            "levelNames": [
+                "Le corps",
+                "Les sens",
+                "Les bons gestes"
+            ],
+            "difficultySkills": [
+                [
+                    "body-health",
+                    "vocabulary"
+                ],
+                [
+                    "body-health",
+                    "vocabulary"
+                ],
+                [
+                    "body-health"
+                ]
+            ]
+        },
+        {
+            "id": "metiers",
+            "n": 34,
+            "name": "À chacun son métier",
+            "ages": [
+                3,
+                6
+            ],
+            "theme": "social",
+            "skills": [
+                "community",
+                "vocabulary",
+                "reading-comprehension"
+            ],
+            "status": "available",
+            "goals": "Découvrir des métiers, leurs outils et les lieux où l’on travaille.",
+            "loop": "Une série de 5 personnages : leur rendre leur outil, leur lieu de travail, ou les deviner.",
+            "controls": "Toucher la bonne carte.",
+            "difficulties": [
+                "Un outil pour chaque métier.",
+                "Le lieu de travail.",
+                "Devinettes : qui suis-je ?"
+            ],
+            "cues": "Consigne lue à voix haute et écrite.",
+            "hints": "Un mauvais choix disparaît, puis le bon brille.",
+            "success": "Série terminée.",
+            "recorded": "Réponses, erreurs, indices.",
+            "resume": "Série suivante.",
+            "adaptations": "Métiers présentés au féminin et au masculin, en alternance.",
+            "youtube": "À évaluer.",
+            "acceptance": "Chaque outil n’appartient qu’à un métier de la question.",
+            "module": "metiers",
+            "levelNames": [
+                "Les outils",
+                "Les lieux",
+                "Qui suis-je ?"
+            ],
+            "difficultySkills": [
+                [
+                    "community",
+                    "vocabulary"
+                ],
+                [
+                    "community"
+                ],
+                [
+                    "community",
+                    "reading-comprehension"
+                ]
+            ]
+        },
+        {
+            "id": "rue-securite",
+            "n": 35,
+            "name": "La rue en sécurité",
+            "ages": [
+                4,
+                8
+            ],
+            "theme": "world",
+            "skills": [
+                "safety"
+            ],
+            "status": "available",
+            "goals": "Reconnaître les bons gestes de piéton, de passager et de cycliste.",
+            "loop": "Une série de 5 situations dans la rue : choisir ce qu’il faut faire, puis écouter pourquoi.",
+            "controls": "Toucher la bonne carte.",
+            "difficulties": [
+                "Le feu des piétons.",
+                "Où traverser ?",
+                "Le parcours complet : piéton, voiture, vélo."
+            ],
+            "cues": "Consigne lue à voix haute et écrite.",
+            "hints": "Un mauvais choix disparaît, puis le bon brille.",
+            "success": "Série terminée.",
+            "recorded": "Réponses, erreurs, indices.",
+            "resume": "Série suivante.",
+            "adaptations": "Règles françaises ; toujours accompagné d’un adulte pour les plus petits (dit dans le jeu).",
+            "youtube": "À évaluer.",
+            "acceptance": "Chaque bonne réponse est expliquée.",
+            "module": "rue-securite",
+            "levelNames": [
+                "Le feu",
+                "Traverser",
+                "Le parcours"
+            ],
+            "difficultySkills": [
+                [
+                    "safety"
+                ],
+                [
+                    "safety"
+                ],
+                [
+                    "safety"
+                ]
+            ]
+        },
+        {
+            "id": "bulle-calme",
+            "n": 36,
+            "name": "La bulle de calme",
+            "ages": [
+                3,
+                12
+            ],
+            "theme": "social",
+            "skills": [
+                "calm",
+                "emotions"
+            ],
+            "status": "available",
+            "goals": "Prendre un moment pour respirer calmement et dire comment on se sent.",
+            "loop": "Un moment guidé : suivre la bulle qui grossit et rétrécit, ou choisir sa météo intérieure.",
+            "controls": "Suivre l’animation ; toucher une carte pour la météo intérieure.",
+            "difficulties": [
+                "Respiration de la bulle (5 respirations).",
+                "Respiration du carré.",
+                "Ma météo intérieure."
+            ],
+            "cues": "Consigne lue à voix haute et écrite.",
+            "hints": "La consigne est redite.",
+            "success": "Moment terminé (il n’y a rien à réussir).",
+            "recorded": "Moments terminés ; la météo choisie n’est pas enregistrée.",
+            "resume": "Série suivante.",
+            "adaptations": "Rythme lent, aucune note ; on peut arrêter à tout moment.",
+            "youtube": "À évaluer.",
+            "acceptance": "Aucune réponse n’est fausse.",
+            "module": "bulle-calme",
+            "levelNames": [
+                "La bulle",
+                "Le carré",
+                "Ma météo"
+            ],
+            "difficultySkills": [
+                [
+                    "calm"
+                ],
+                [
+                    "calm"
+                ],
+                [
+                    "calm",
+                    "emotions"
+                ]
+            ]
+        },
+        {
+            "id": "ruche-multiplications",
+            "n": 37,
+            "name": "La ruche des multiplications",
+            "ages": [
+                6,
+                10
+            ],
+            "theme": "math",
+            "skills": [
+                "multiplication",
+                "counting"
+            ],
+            "status": "available",
+            "goals": "Comprendre la multiplication comme des groupes égaux, avant les tables.",
+            "loop": "Une série de 5 questions : compter des abeilles par groupes, des alvéoles en rangées, puis les tables.",
+            "controls": "Toucher la bonne réponse.",
+            "difficulties": [
+                "Groupes égaux (2 à 4 groupes).",
+                "Tableaux en rangées.",
+                "Tables de 2, 5 et 10."
+            ],
+            "cues": "Consigne lue à voix haute et écrite.",
+            "hints": "Les groupes sont comptés un par un, puis un mauvais choix disparaît.",
+            "success": "Série terminée.",
+            "recorded": "Multiplications, erreurs, indices.",
+            "resume": "Série suivante.",
+            "adaptations": "Le dessin reste visible ; on peut toujours compter.",
+            "youtube": "À évaluer.",
+            "acceptance": "Les mauvaises réponses sont des erreurs plausibles (addition au lieu de multiplication, une rangée en trop).",
+            "module": "ruche-multiplications",
+            "levelNames": [
+                "Les groupes",
+                "Les rangées",
+                "Les tables"
+            ],
+            "difficultySkills": [
+                [
+                    "multiplication",
+                    "counting"
+                ],
+                [
+                    "multiplication"
+                ],
+                [
+                    "multiplication"
+                ]
+            ]
+        },
+        {
+            "id": "bocal-estimation",
+            "n": 38,
+            "name": "Le bocal d’estimation",
+            "ages": [
+                6,
+                12
+            ],
+            "theme": "math",
+            "skills": [
+                "estimation",
+                "counting"
+            ],
+            "status": "available",
+            "goals": "Estimer une quantité, puis vérifier : apprendre à donner un ordre de grandeur.",
+            "loop": "Une série de 4 bocaux : choisir une estimation, puis compter ensemble.",
+            "controls": "Toucher une estimation.",
+            "difficulties": [
+                "Moins de 20 billes.",
+                "Moins de 100 billes.",
+                "Estimer par paquets de 10."
+            ],
+            "cues": "Consigne lue à voix haute et écrite.",
+            "hints": "Un paquet de 10 billes est entouré.",
+            "success": "Série terminée (une estimation lointaine n’est pas une erreur).",
+            "recorded": "Estimations proches ou lointaines, indices.",
+            "resume": "Série suivante.",
+            "adaptations": "Le comptage final est montré et dit.",
+            "youtube": "À évaluer.",
+            "acceptance": "La meilleure estimation est la plus proche du vrai nombre ; les autres sont nettement plus loin.",
+            "module": "bocal-estimation",
+            "levelNames": [
+                "Petit bocal",
+                "Grand bocal",
+                "Par dizaines"
+            ],
+            "difficultySkills": [
+                [
+                    "estimation",
+                    "counting"
+                ],
+                [
+                    "estimation"
+                ],
+                [
+                    "estimation",
+                    "counting"
+                ]
+            ]
+        },
+        {
+            "id": "astronaute",
+            "n": 39,
+            "name": "L’astronaute du système solaire",
+            "ages": [
+                6,
+                12
+            ],
+            "theme": "world",
+            "skills": [
+                "space",
+                "sequencing",
+                "time"
+            ],
+            "status": "available",
+            "goals": "Découvrir le Soleil, la Terre, la Lune et les planètes, le jour et la nuit.",
+            "loop": "Une mission de 5 étapes : répondre aux questions de la base ou ranger les planètes.",
+            "controls": "Toucher une carte ; toucher les planètes dans l’ordre.",
+            "difficulties": [
+                "Soleil, Terre et Lune.",
+                "Les 8 planètes, dans l’ordre.",
+                "Jour, nuit, saisons et phases de la Lune."
+            ],
+            "cues": "Consigne lue à voix haute et écrite.",
+            "hints": "Un mauvais choix disparaît, ou la prochaine planète brille.",
+            "success": "Mission terminée.",
+            "recorded": "Réponses, erreurs, indices.",
+            "resume": "Série suivante.",
+            "adaptations": "Tailles et distances non respectées sur le dessin (dit dans le jeu).",
+            "youtube": "À évaluer.",
+            "acceptance": "Contenus scientifiques simplifiés et exacts.",
+            "module": "astronaute",
+            "levelNames": [
+                "Terre et Lune",
+                "Les planètes",
+                "Jour et saisons"
+            ],
+            "difficultySkills": [
+                [
+                    "space"
+                ],
+                [
+                    "space",
+                    "sequencing"
+                ],
+                [
+                    "space",
+                    "time"
+                ]
+            ]
+        },
+        {
+            "id": "sondage-classe",
+            "n": 40,
+            "name": "Le sondage de la classe",
+            "ages": [
+                7,
+                12
+            ],
+            "theme": "math",
+            "skills": [
+                "data",
+                "counting",
+                "number-compare"
+            ],
+            "status": "available",
+            "goals": "Lire un pictogramme et un diagramme en barres, puis en construire un.",
+            "loop": "Une série de 4 questions sur un sondage, ou la construction d’un graphique.",
+            "controls": "Toucher la bonne réponse ; monter ou descendre les barres.",
+            "difficulties": [
+                "Pictogrammes.",
+                "Diagramme en barres avec graduations.",
+                "Construire le diagramme d’un sondage."
+            ],
+            "cues": "Consigne lue à voix haute et écrite.",
+            "hints": "La bonne colonne est surlignée, puis un mauvais choix disparaît.",
+            "success": "Série terminée.",
+            "recorded": "Réponses, erreurs, indices.",
+            "resume": "Série suivante.",
+            "adaptations": "Sondages inventés, aucun vrai enfant cité.",
+            "youtube": "À évaluer.",
+            "acceptance": "Pas d’égalité quand on demande le plus ou le moins aimé.",
+            "module": "sondage-classe",
+            "levelNames": [
+                "Pictogrammes",
+                "Barres",
+                "Construire"
+            ],
+            "difficultySkills": [
+                [
+                    "data",
+                    "counting"
+                ],
+                [
+                    "data",
+                    "number-compare"
+                ],
+                [
+                    "data"
+                ]
+            ]
+        },
+        {
+            "id": "code-secret",
+            "n": 41,
+            "name": "Le code secret des espions",
+            "ages": [
+                8,
+                12
+            ],
+            "theme": "logic",
+            "skills": [
+                "codes",
+                "problem-solving",
+                "letters-sounds"
+            ],
+            "status": "available",
+            "goals": "Coder et décoder des messages avec un décalage de l’alphabet.",
+            "loop": "Une série de 4 messages : décoder, trouver le décalage, puis coder un mot soi-même.",
+            "controls": "Toucher une réponse ; toucher les lettres de l’alphabet.",
+            "difficulties": [
+                "Décalage d’une lettre.",
+                "Trouver le décalage.",
+                "Coder un mot lettre par lettre."
+            ],
+            "cues": "Consigne lue à voix haute et écrite.",
+            "hints": "La roue de l’alphabet montre la lettre correspondante.",
+            "success": "Série terminée.",
+            "recorded": "Messages, erreurs, indices.",
+            "resume": "Série suivante.",
+            "adaptations": "Lettres capitales sans accent ; après Z on revient à A (dit dans la consigne).",
+            "youtube": "À évaluer.",
+            "acceptance": "Chaque mot codé se décode en un seul mot de la liste.",
+            "module": "code-secret",
+            "levelNames": [
+                "Décaler d’un",
+                "Le décalage",
+                "Coder"
+            ],
+            "difficultySkills": [
+                [
+                    "codes",
+                    "letters-sounds"
+                ],
+                [
+                    "codes",
+                    "problem-solving"
+                ],
+                [
+                    "codes"
+                ]
+            ]
+        },
+        {
+            "id": "petits-strateges",
+            "n": 42,
+            "name": "Les petits stratèges",
+            "ages": [
+                7,
+                12
+            ],
+            "theme": "logic",
+            "skills": [
+                "strategy",
+                "problem-solving"
+            ],
+            "status": "available",
+            "goals": "Anticiper : jouer contre le robot au jeu des pommes et découvrir la stratégie gagnante.",
+            "loop": "Une partie : chacun prend 1, 2 ou 3 pommes ; celui qui prend la dernière gagne.",
+            "controls": "Toucher le nombre de pommes à prendre.",
+            "difficulties": [
+                "Robot qui joue au hasard.",
+                "Robot prudent.",
+                "Robot qui connaît la stratégie : à toi de la trouver."
+            ],
+            "cues": "Consigne lue à voix haute et écrite.",
+            "hints": "Le robot conseille combien de pommes prendre, et pourquoi.",
+            "success": "Partie gagnée (on peut rejouer autant qu’on veut).",
+            "recorded": "Parties gagnées ou perdues, indices.",
+            "resume": "Série suivante.",
+            "adaptations": "Au dernier niveau, l’enfant commence toujours dans une position gagnante.",
+            "youtube": "À évaluer.",
+            "acceptance": "Le robot du niveau 3 joue toujours le meilleur coup.",
+            "module": "petits-strateges",
+            "levelNames": [
+                "Robot rêveur",
+                "Robot prudent",
+                "Robot malin"
+            ],
+            "difficultySkills": [
+                [
+                    "strategy"
+                ],
+                [
+                    "strategy",
+                    "problem-solving"
+                ],
+                [
+                    "strategy",
+                    "problem-solving"
+                ]
+            ]
+        },
+        {
+            "id": "frise-temps",
+            "n": 43,
+            "name": "La frise du temps",
+            "ages": [
+                7,
+                12
+            ],
+            "theme": "language",
+            "skills": [
+                "history",
+                "narrative",
+                "measures"
+            ],
+            "status": "available",
+            "goals": "Placer de grandes périodes et inventions sur une frise chronologique.",
+            "loop": "Une série de 5 questions : avant ou après, remettre dans l’ordre, retrouver une date.",
+            "controls": "Toucher une carte ; toucher les cartes dans l’ordre.",
+            "difficulties": [
+                "Avant ou après ?",
+                "Remettre 4 à 5 événements dans l’ordre.",
+                "Dates et durées."
+            ],
+            "cues": "Consigne lue à voix haute et écrite.",
+            "hints": "Un mauvais choix disparaît, ou la carte suivante brille.",
+            "success": "Série terminée.",
+            "recorded": "Réponses, erreurs, indices.",
+            "resume": "Série suivante.",
+            "adaptations": "Dates arrondies et signalées par « vers » ou « il y a environ ».",
+            "youtube": "À évaluer.",
+            "acceptance": "Dates vérifiées ; aucun écart ambigu entre deux événements comparés.",
+            "module": "frise-temps",
+            "levelNames": [
+                "Avant, après",
+                "Dans l’ordre",
+                "Les dates"
+            ],
+            "difficultySkills": [
+                [
+                    "history"
+                ],
+                [
+                    "history",
+                    "narrative"
+                ],
+                [
+                    "history",
+                    "measures"
+                ]
+            ]
+        },
+        {
+            "id": "amis-de-dix",
+            "n": 44,
+            "name": "Les amis de 10",
+            "ages": [
+                5,
+                9
+            ],
+            "theme": "math",
+            "skills": [
+                "addition",
+                "counting"
+            ],
+            "status": "available",
+            "goals": "Trouver ce qui manque pour faire 10, 20 ou 100 : la base du calcul mental.",
+            "loop": "Une série de 6 questions : des ronds dans des cadres de 10 (ou une plaque de 100), combien en manque-t-il ?",
+            "controls": "Toucher la bonne carte.",
+            "difficulties": [
+                "Compléments à 10.",
+                "Compléments à 20.",
+                "Compléments à 100 (dizaines, puis unités)."
+            ],
+            "cues": "Consigne lue à voix haute et écrite.",
+            "hints": "Un mauvais choix disparaît, puis le bon brille ; une astuce est dite à voix haute.",
+            "success": "Série de 6 questions terminée.",
+            "recorded": "Réponses, erreurs, indices.",
+            "resume": "Série suivante.",
+            "adaptations": "Les cases vides sont visibles ; elles se remplissent après la bonne réponse.",
+            "youtube": "À évaluer.",
+            "acceptance": "Une seule bonne réponse ; les pièges sont les erreurs habituelles (un de trop, oubli de la retenue).",
+            "module": "amis-de-dix",
+            "levelNames": [
+                "Jusqu’à 10",
+                "Jusqu’à 20",
+                "Jusqu’à 100"
+            ],
+            "difficultySkills": [
+                [
+                    "addition",
+                    "counting"
+                ],
+                [
+                    "addition"
+                ],
+                [
+                    "addition"
+                ]
+            ]
+        },
+        {
+            "id": "droite-nombres",
+            "n": 45,
+            "name": "La droite des nombres",
+            "ages": [
+                6,
+                11
+            ],
+            "theme": "math",
+            "skills": [
+                "number-compare",
+                "estimation"
+            ],
+            "status": "available",
+            "goals": "Lire et placer des nombres sur une droite graduée, de 0 à 10, 100 et 1 000.",
+            "loop": "Une série de 6 questions : quel nombre montre la flèche ? Où se trouve ce nombre : A, B ou C ?",
+            "controls": "Toucher la bonne carte.",
+            "difficulties": [
+                "De 0 à 10.",
+                "De 0 à 100, de 10 en 10.",
+                "De 0 à 1 000, de 50 en 50."
+            ],
+            "cues": "Consigne lue à voix haute et écrite.",
+            "hints": "Un mauvais choix disparaît, puis le bon brille ; une astuce est dite à voix haute.",
+            "success": "Série de 6 questions terminée.",
+            "recorded": "Réponses, erreurs, indices.",
+            "resume": "Série suivante.",
+            "adaptations": "Quelques nombres repères sont écrits ; les autres se déduisent en comptant les traits.",
+            "youtube": "À évaluer.",
+            "acceptance": "Les nombres demandés tombent sur un trait ; les repères A, B, C sont bien séparés.",
+            "module": "droite-nombres",
+            "levelNames": [
+                "0 à 10",
+                "0 à 100",
+                "0 à 1 000"
+            ],
+            "difficultySkills": [
+                [
+                    "number-compare"
+                ],
+                [
+                    "number-compare",
+                    "estimation"
+                ],
+                [
+                    "number-compare",
+                    "estimation"
+                ]
+            ]
+        },
+        {
+            "id": "chasse-rimes",
+            "n": 46,
+            "name": "La chasse aux rimes",
+            "ages": [
+                4,
+                7
+            ],
+            "theme": "language",
+            "skills": [
+                "letters-sounds",
+                "vocabulary"
+            ],
+            "status": "available",
+            "goals": "Entendre les sons des mots : les rimes, le premier son, les syllabes. Préparer la lecture, sans lire.",
+            "loop": "Une série de 6 mots illustrés et dits à voix haute.",
+            "controls": "Toucher la bonne carte.",
+            "difficulties": [
+                "Quel mot rime ?",
+                "Quel mot commence par le même son ?",
+                "Combien de syllabes ?"
+            ],
+            "cues": "Consigne lue à voix haute et écrite.",
+            "hints": "Un mauvais choix disparaît, puis le bon brille ; une astuce est dite à voix haute.",
+            "success": "Série de 6 questions terminée.",
+            "recorded": "Réponses, erreurs, indices.",
+            "resume": "Série suivante.",
+            "adaptations": "Tout se joue à l’oreille ; chaque mot a une image. Mots choisis pour n’avoir qu’un découpage en syllabes.",
+            "youtube": "À évaluer.",
+            "acceptance": "Les mots proposés en piège ne riment pas (ou ne commencent pas pareil).",
+            "module": "chasse-rimes",
+            "levelNames": [
+                "Les rimes",
+                "Le premier son",
+                "Les syllabes"
+            ],
+            "difficultySkills": [
+                [
+                    "letters-sounds",
+                    "vocabulary"
+                ],
+                [
+                    "letters-sounds"
+                ],
+                [
+                    "letters-sounds"
+                ]
+            ]
+        },
+        {
+            "id": "homophones",
+            "n": 47,
+            "name": "Le tri des homophones",
+            "ages": [
+                7,
+                11
+            ],
+            "theme": "language",
+            "skills": [
+                "spelling",
+                "sentences"
+            ],
+            "status": "available",
+            "goals": "Choisir entre a et à, et et est, son et sont, on et ont, ou et où, avec l’astuce de remplacement.",
+            "loop": "Une série de 6 phrases à compléter.",
+            "controls": "Toucher la bonne carte.",
+            "difficulties": [
+                "a ou à.",
+                "et ou est ; son ou sont.",
+                "on ou ont ; ou ou où ; tout mélangé."
+            ],
+            "cues": "Consigne lue à voix haute et écrite.",
+            "hints": "Un mauvais choix disparaît, puis le bon brille ; une astuce est dite à voix haute.",
+            "success": "Série de 6 questions terminée.",
+            "recorded": "Réponses, erreurs, indices.",
+            "resume": "Série suivante.",
+            "adaptations": "La phrase est lue à voix haute ; l’astuce (« avait », « était »…) est donnée en indice et après chaque réponse.",
+            "youtube": "À évaluer.",
+            "acceptance": "Chaque phrase n’admet qu’un des deux mots.",
+            "module": "homophones",
+            "levelNames": [
+                "a / à",
+                "et / est",
+                "on / ont"
+            ],
+            "difficultySkills": [
+                [
+                    "spelling"
+                ],
+                [
+                    "spelling",
+                    "sentences"
+                ],
+                [
+                    "spelling",
+                    "sentences"
+                ]
+            ]
+        },
+        {
+            "id": "machine-temps",
+            "n": 48,
+            "name": "La machine à remonter le temps",
+            "ages": [
+                6,
+                10
+            ],
+            "theme": "language",
+            "skills": [
+                "sentences",
+                "time"
+            ],
+            "status": "available",
+            "goals": "Reconnaître le passé, le présent et le futur, et choisir le verbe qui va avec le moment et le sujet.",
+            "loop": "Une série de 6 phrases : hier, maintenant ou demain ? Quel verbe va avec « demain » ?",
+            "controls": "Toucher la bonne carte.",
+            "difficulties": [
+                "Hier, maintenant ou demain ?",
+                "Le verbe qui va avec le mot de temps.",
+                "Le temps et l’accord avec le sujet."
+            ],
+            "cues": "Consigne lue à voix haute et écrite.",
+            "hints": "Un mauvais choix disparaît, puis le bon brille ; une astuce est dite à voix haute.",
+            "success": "Série de 6 questions terminée.",
+            "recorded": "Réponses, erreurs, indices.",
+            "resume": "Série suivante.",
+            "adaptations": "Les phrases sont lues à voix haute ; un cadran montre le moment choisi.",
+            "youtube": "À évaluer.",
+            "acceptance": "Une seule forme correcte ; les pièges changent soit le temps, soit l’accord.",
+            "module": "machine-temps",
+            "levelNames": [
+                "Quand ?",
+                "Le bon verbe",
+                "Temps et accord"
+            ],
+            "difficultySkills": [
+                [
+                    "time"
+                ],
+                [
+                    "sentences",
+                    "time"
+                ],
+                [
+                    "sentences"
+                ]
+            ]
+        },
+        {
+            "id": "atelier-solides",
+            "n": 49,
+            "name": "L’atelier des solides",
+            "ages": [
+                4,
+                9
+            ],
+            "theme": "logic",
+            "skills": [
+                "shapes",
+                "spatial"
+            ],
+            "status": "available",
+            "goals": "Reconnaître cube, pavé, boule, cylindre, cône et pyramide, dans les objets et par leurs propriétés.",
+            "loop": "Une série de 6 questions : touche le cylindre ; la canette ressemble à quel solide ? Combien de faces a le cube ?",
+            "controls": "Toucher la bonne carte.",
+            "difficulties": [
+                "Les noms des solides.",
+                "Les solides dans les objets.",
+                "Faces, sommets, rouler ou non."
+            ],
+            "cues": "Consigne lue à voix haute et écrite.",
+            "hints": "Un mauvais choix disparaît, puis le bon brille ; une astuce est dite à voix haute.",
+            "success": "Série de 6 questions terminée.",
+            "recorded": "Réponses, erreurs, indices.",
+            "resume": "Série suivante.",
+            "adaptations": "Dessins en perspective simple, nom écrit sous chaque solide.",
+            "youtube": "À évaluer.",
+            "acceptance": "Une seule carte répond à chaque propriété demandée.",
+            "module": "atelier-solides",
+            "levelNames": [
+                "Les solides",
+                "Les objets",
+                "Les propriétés"
+            ],
+            "difficultySkills": [
+                [
+                    "shapes"
+                ],
+                [
+                    "shapes",
+                    "spatial"
+                ],
+                [
+                    "shapes",
+                    "spatial"
+                ]
+            ]
+        },
+        {
+            "id": "potager-surfaces",
+            "n": 50,
+            "name": "Le potager des surfaces",
+            "ages": [
+                8,
+                12
+            ],
+            "theme": "math",
+            "skills": [
+                "measures",
+                "multiplication"
+            ],
+            "status": "available",
+            "goals": "Comprendre l’aire (compter les carreaux) et le périmètre (faire le tour), sans les confondre.",
+            "loop": "Une série de 6 parcelles de potager sur un quadrillage.",
+            "controls": "Toucher la bonne carte.",
+            "difficulties": [
+                "Compter les carreaux.",
+                "Rectangles et comparaisons.",
+                "Le tour de la parcelle (périmètre)."
+            ],
+            "cues": "Consigne lue à voix haute et écrite.",
+            "hints": "Un mauvais choix disparaît, puis le bon brille ; une astuce est dite à voix haute.",
+            "success": "Série de 6 questions terminée.",
+            "recorded": "Réponses, erreurs, indices.",
+            "resume": "Série suivante.",
+            "adaptations": "Un carreau = 1 mètre ; les carreaux sont numérotés ou la clôture est posée après la réponse.",
+            "youtube": "À évaluer.",
+            "acceptance": "Parcelles d’un seul tenant, sans trou ; aires comparées toujours différentes.",
+            "module": "potager-surfaces",
+            "levelNames": [
+                "Compter",
+                "Rectangles",
+                "Le tour"
+            ],
+            "difficultySkills": [
+                [
+                    "measures"
+                ],
+                [
+                    "measures",
+                    "multiplication"
+                ],
+                [
+                    "measures"
+                ]
+            ]
+        },
+        {
+            "id": "roue-hasard",
+            "n": 51,
+            "name": "La roue du hasard",
+            "ages": [
+                7,
+                12
+            ],
+            "theme": "math",
+            "skills": [
+                "probability",
+                "number-compare"
+            ],
+            "status": "available",
+            "goals": "Découvrir le hasard : certain, possible, impossible ; comparer des chances ; « 3 chances sur 8 ».",
+            "loop": "Une série de 6 roues de couleurs.",
+            "controls": "Toucher la bonne carte.",
+            "difficulties": [
+                "Certain, possible ou impossible ?",
+                "La couleur ou la roue la plus probable.",
+                "Chances sur n ; roues de tailles différentes."
+            ],
+            "cues": "Consigne lue à voix haute et écrite.",
+            "hints": "Un mauvais choix disparaît, puis le bon brille ; une astuce est dite à voix haute.",
+            "success": "Série de 6 questions terminée.",
+            "recorded": "Réponses, erreurs, indices.",
+            "resume": "Série suivante.",
+            "adaptations": "Après la réponse, la roue tourne pour de vrai : on voit que le hasard peut surprendre.",
+            "youtube": "À évaluer.",
+            "acceptance": "Jamais d’égalité entre les chances comparées.",
+            "module": "roue-hasard",
+            "levelNames": [
+                "Certain ?",
+                "Le plus probable",
+                "Chances sur n"
+            ],
+            "difficultySkills": [
+                [
+                    "probability"
+                ],
+                [
+                    "probability",
+                    "number-compare"
+                ],
+                [
+                    "probability",
+                    "number-compare"
+                ]
+            ]
+        },
+        {
+            "id": "tour-du-monde",
+            "n": 52,
+            "name": "Le tour du monde",
+            "ages": [
+                6,
+                11
+            ],
+            "theme": "world",
+            "skills": [
+                "geography",
+                "living-world"
+            ],
+            "status": "available",
+            "goals": "Situer les sept continents, des animaux sauvages, des monuments et des pays.",
+            "loop": "Une série de 6 questions sur une carte du monde simplifiée.",
+            "controls": "Toucher la bonne carte.",
+            "difficulties": [
+                "Les continents sur la carte.",
+                "Où vivent ces animaux ?",
+                "Monuments et pays."
+            ],
+            "cues": "Consigne lue à voix haute et écrite.",
+            "hints": "Un mauvais choix disparaît, puis le bon brille ; une astuce est dite à voix haute.",
+            "success": "Série de 6 questions terminée.",
+            "recorded": "Réponses, erreurs, indices.",
+            "resume": "Série suivante.",
+            "adaptations": "Le continent de la réponse s’allume sur la carte, avec une phrase pour en savoir plus.",
+            "youtube": "À évaluer.",
+            "acceptance": "Seulement des animaux qui ne vivent à l’état sauvage que sur un continent.",
+            "module": "tour-du-monde",
+            "levelNames": [
+                "Continents",
+                "Animaux",
+                "Monuments"
+            ],
+            "difficultySkills": [
+                [
+                    "geography"
+                ],
+                [
+                    "geography",
+                    "living-world"
+                ],
+                [
+                    "geography"
+                ]
+            ]
+        },
+        {
+            "id": "assiette-equilibree",
+            "n": 53,
+            "name": "L’assiette équilibrée",
+            "ages": [
+                4,
+                9
+            ],
+            "theme": "world",
+            "skills": [
+                "body-health",
+                "categorizing"
+            ],
+            "status": "available",
+            "goals": "Reconnaître les familles d’aliments et composer un repas et un goûter équilibrés.",
+            "loop": "Une série de 6 questions : trouver un produit laitier, compléter l’assiette, tous les jours ou de temps en temps.",
+            "controls": "Toucher la bonne carte.",
+            "difficulties": [
+                "Les familles d’aliments.",
+                "Compléter le repas.",
+                "Tous les jours ou de temps en temps ; le goûter."
+            ],
+            "cues": "Consigne lue à voix haute et écrite.",
+            "hints": "Un mauvais choix disparaît, puis le bon brille ; une astuce est dite à voix haute.",
+            "success": "Série de 6 questions terminée.",
+            "recorded": "Réponses, erreurs, indices.",
+            "resume": "Série suivante.",
+            "adaptations": "Aucun aliment n’est « interdit » : les produits sucrés sont « pour de temps en temps ».",
+            "youtube": "À évaluer.",
+            "acceptance": "Familles simplifiées pour les enfants ; un seul bon choix par question.",
+            "module": "assiette-equilibree",
+            "levelNames": [
+                "Les familles",
+                "Le repas",
+                "Le goûter"
+            ],
+            "difficultySkills": [
+                [
+                    "categorizing",
+                    "body-health"
+                ],
+                [
+                    "body-health"
+                ],
+                [
+                    "body-health"
+                ]
+            ]
+        },
+        {
+            "id": "mots-semaine",
+            "n": 54,
+            "name": "Les mots de la semaine",
+            "ages": [
+                5,
+                10
+            ],
+            "theme": "language",
+            "skills": [
+                "spelling",
+                "letters-sounds"
+            ],
+            "status": "available",
+            "goals": "Apprendre à écrire les mots de la liste donnée par l’école, en les écoutant puis en les reconstituant lettre par lettre.",
+            "loop": "Une série de 6 mots : écouter le mot, puis l’écrire avec des lettres.",
+            "controls": "Toucher les lettres dans l’ordre ; toucher une case pour retirer sa lettre.",
+            "difficulties": [
+                "Recopier : le mot reste affiché.",
+                "Écouter puis écrire, avec 2 lettres en trop.",
+                "Dictée : 4 lettres en trop."
+            ],
+            "cues": "Le mot est lu à voix haute ; bouton « Réécouter ».",
+            "hints": "La lettre suivante se pose toute seule.",
+            "success": "Série de 6 mots écrits.",
+            "recorded": "Mots écrits, erreurs, indices.",
+            "resume": "Série suivante.",
+            "adaptations": "Liste de l’enfant saisie par le parent (offre Famille), sinon mots d’exemple. Les lettres justes restent en place après une erreur.",
+            "youtube": "À évaluer.",
+            "acceptance": "Seules les lettres du mot (et quelques lettres en trop) sont proposées ; trait d’union et apostrophe déjà placés.",
+            "module": "mots-semaine",
+            "levelNames": [
+                "Recopier",
+                "Écouter",
+                "Dictée"
+            ],
+            "difficultySkills": [
+                [
+                    "spelling"
+                ],
+                [
+                    "spelling",
+                    "letters-sounds"
+                ],
+                [
+                    "spelling",
+                    "letters-sounds"
+                ]
+            ]
+        }
+    ]
+}

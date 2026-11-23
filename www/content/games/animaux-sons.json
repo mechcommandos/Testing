@@ -1,0 +1,222 @@
+{
+    "version": 1,
+    "note": "Images : illustrations SVG de js/ui/pictos.js (champ picto). Cris : fichiers déclarés dans content/audio.json.",
+    "habitats": [
+        {
+            "id": "maison",
+            "picto": "maison",
+            "label": "la maison"
+        },
+        {
+            "id": "ferme",
+            "picto": "ferme",
+            "label": "la ferme"
+        },
+        {
+            "id": "foret",
+            "picto": "foret",
+            "label": "la forêt"
+        },
+        {
+            "id": "mer",
+            "picto": "mer",
+            "label": "la mer"
+        },
+        {
+            "id": "banquise",
+            "picto": "banquise",
+            "label": "la banquise"
+        },
+        {
+            "id": "savane",
+            "picto": "savane",
+            "label": "la savane"
+        }
+    ],
+    "animals": [
+        {
+            "id": "chat",
+            "picto": "chat",
+            "name": "le chat",
+            "habitat": "maison",
+            "familiar": true,
+            "cry": "cri-chat"
+        },
+        {
+            "id": "chien",
+            "picto": "chien",
+            "name": "le chien",
+            "habitat": "maison",
+            "familiar": true,
+            "cry": "cri-chien"
+        },
+        {
+            "id": "vache",
+            "picto": "vache",
+            "name": "la vache",
+            "habitat": "ferme",
+            "familiar": true,
+            "cry": "cri-vache"
+        },
+        {
+            "id": "cochon",
+            "picto": "cochon",
+            "name": "le cochon",
+            "habitat": "ferme",
+            "familiar": true,
+            "cry": "cri-cochon"
+        },
+        {
+            "id": "mouton",
+            "picto": "mouton",
+            "name": "le mouton",
+            "habitat": "ferme",
+            "familiar": true,
+            "cry": "cri-mouton"
+        },
+        {
+            "id": "poule",
+            "picto": "poule",
+            "name": "la poule",
+            "habitat": "ferme",
+            "familiar": true,
+            "cry": "cri-poule"
+        },
+        {
+            "id": "canard",
+            "picto": "canard",
+            "name": "le canard",
+            "habitat": "ferme",
+            "familiar": true,
+            "cry": "cri-canard"
+        },
+        {
+            "id": "cheval",
+            "picto": "cheval",
+            "name": "le cheval",
+            "habitat": "ferme",
+            "familiar": true,
+            "cry": "cri-cheval"
+        },
+        {
+            "id": "lion",
+            "picto": "lion",
+            "name": "le lion",
+            "habitat": "savane",
+            "familiar": false,
+            "cry": "cri-lion"
+        },
+        {
+            "id": "elephant",
+            "picto": "elephant",
+            "name": "l’éléphant",
+            "habitat": "savane",
+            "familiar": false,
+            "cry": "cri-elephant"
+        },
+        {
+            "id": "zebre",
+            "picto": "zebre",
+            "name": "le zèbre",
+            "habitat": "savane",
+            "familiar": false,
+            "cry": "cri-zebre"
+        },
+        {
+            "id": "girafe",
+            "picto": "girafe",
+            "name": "la girafe",
+            "habitat": "savane",
+            "familiar": false,
+            "cry": null
+        },
+        {
+            "id": "hibou",
+            "picto": "hibou",
+            "name": "le hibou",
+            "habitat": "foret",
+            "familiar": false,
+            "cry": "cri-hibou"
+        },
+        {
+            "id": "loup",
+            "picto": "loup",
+            "name": "le loup",
+            "habitat": "foret",
+            "familiar": false,
+            "cry": "cri-loup"
+        },
+        {
+            "id": "renard",
+            "picto": "renard",
+            "name": "le renard",
+            "habitat": "foret",
+            "familiar": false,
+            "cry": "cri-renard"
+        },
+        {
+            "id": "herisson",
+            "picto": "herisson",
+            "name": "le hérisson",
+            "habitat": "foret",
+            "familiar": false,
+            "cry": null
+        },
+        {
+            "id": "dauphin",
+            "picto": "dauphin",
+            "name": "le dauphin",
+            "habitat": "mer",
+            "familiar": false,
+            "cry": "cri-dauphin"
+        },
+        {
+            "id": "baleine",
+            "picto": "baleine",
+            "name": "la baleine",
+            "habitat": "mer",
+            "familiar": false,
+            "cry": "cri-baleine"
+        },
+        {
+            "id": "pieuvre",
+            "picto": "pieuvre",
+            "name": "la pieuvre",
+            "habitat": "mer",
+            "familiar": false,
+            "cry": null
+        },
+        {
+            "id": "crabe",
+            "picto": "crabe",
+            "name": "le crabe",
+            "habitat": "mer",
+            "familiar": false,
+            "cry": null
+        },
+        {
+            "id": "manchot",
+            "picto": "manchot",
+            "name": "le manchot",
+            "habitat": "banquise",
+            "familiar": false,
+            "cry": "cri-manchot"
+        },
+        {
+            "id": "phoque",
+            "picto": "phoque",
+            "name": "le phoque",
+            "habitat": "banquise",
+            "familiar": false,
+            "cry": "cri-phoque"
+        },
+        {
+            "id": "ours-polaire",
+            "picto": "ours-polaire",
+            "name": "l’ours polaire",
+            "habitat": "banquise",
+            "familiar": false,
+            "cry": null
+        }
+    ]
+}

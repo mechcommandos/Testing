@@ -1,0 +1,190 @@
+{
+    "version": 1,
+    "note": "À faire valider par une personne compétente (orthophonie, enseignement) avant publication : sons, syllabes, découpage des mots.",
+    "vowels": [
+        {
+            "id": "a",
+            "upper": "A",
+            "lower": "a",
+            "name": "a",
+            "sound": "son-a"
+        },
+        {
+            "id": "e",
+            "upper": "E",
+            "lower": "e",
+            "name": "e",
+            "sound": "son-e"
+        },
+        {
+            "id": "e-aigu",
+            "upper": "É",
+            "lower": "é",
+            "name": "é",
+            "sound": "son-e-aigu"
+        },
+        {
+            "id": "i",
+            "upper": "I",
+            "lower": "i",
+            "name": "i",
+            "sound": "son-i"
+        },
+        {
+            "id": "o",
+            "upper": "O",
+            "lower": "o",
+            "name": "o",
+            "sound": "son-o"
+        },
+        {
+            "id": "u",
+            "upper": "U",
+            "lower": "u",
+            "name": "u",
+            "sound": "son-u"
+        }
+    ],
+    "consonants": [
+        "p",
+        "m",
+        "l",
+        "t",
+        "r",
+        "s"
+    ],
+    "syllableVowels": [
+        "a",
+        "i",
+        "o",
+        "u"
+    ],
+    "words": [
+        {
+            "id": "lapin",
+            "picto": "lapin",
+            "syllables": [
+                "la",
+                "pin"
+            ],
+            "sound": "mot-lapin"
+        },
+        {
+            "id": "robot",
+            "picto": "robot",
+            "syllables": [
+                "ro",
+                "bot"
+            ],
+            "sound": "mot-robot"
+        },
+        {
+            "id": "velo",
+            "picto": "velo",
+            "syllables": [
+                "vé",
+                "lo"
+            ],
+            "sound": "mot-velo"
+        },
+        {
+            "id": "moto",
+            "picto": "moto",
+            "syllables": [
+                "mo",
+                "to"
+            ],
+            "sound": "mot-moto"
+        },
+        {
+            "id": "lama",
+            "picto": "lama",
+            "syllables": [
+                "la",
+                "ma"
+            ],
+            "sound": "mot-lama"
+        },
+        {
+            "id": "panda",
+            "picto": "panda",
+            "syllables": [
+                "pan",
+                "da"
+            ],
+            "sound": "mot-panda"
+        },
+        {
+            "id": "cafe",
+            "picto": "tasse",
+            "syllables": [
+                "ca",
+                "fé"
+            ],
+            "sound": "mot-cafe"
+        },
+        {
+            "id": "bebe",
+            "picto": "bebe",
+            "syllables": [
+                "bé",
+                "bé"
+            ],
+            "sound": "mot-bebe"
+        },
+        {
+            "id": "sapin",
+            "picto": "sapin",
+            "syllables": [
+                "sa",
+                "pin"
+            ],
+            "sound": "mot-sapin"
+        },
+        {
+            "id": "melon",
+            "picto": "melon",
+            "syllables": [
+                "me",
+                "lon"
+            ],
+            "sound": "mot-melon"
+        },
+        {
+            "id": "bateau",
+            "picto": "bateau",
+            "syllables": [
+                "ba",
+                "teau"
+            ],
+            "sound": "mot-bateau"
+        },
+        {
+            "id": "cadeau",
+            "picto": "cadeau",
+            "syllables": [
+                "ca",
+                "deau"
+            ],
+            "sound": "mot-cadeau"
+        },
+        {
+            "id": "citron",
+            "picto": "citron",
+            "syllables": [
+                "ci",
+                "tron"
+            ],
+            "sound": "mot-citron"
+        },
+        {
+            "id": "tortue",
+            "picto": "tortue",
+            "syllables": [
+                "tor",
+                "tue"
+            ],
+            "sound": "mot-tortue"
+        }
+    ]
+}

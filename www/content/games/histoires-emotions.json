@@ -1,0 +1,328 @@
+{
+    "version": 1,
+    "review": "Relecture par un ou une spécialiste de l’enfance : scènes, émotions proposées, idées de réponses et conséquences.",
+    "principles": [
+        "Plusieurs émotions sont possibles dans une même situation : toutes les réponses sont acceptées.",
+        "On parle des émotions des personnages, jamais de celles de l’enfant.",
+        "Rien n’est noté ni enregistré sur les émotions choisies : seul le nombre de scènes explorées l’est."
+    ],
+    "emotions": [
+        {
+            "id": "joie",
+            "picto": "visage-joie",
+            "label": "la joie",
+            "noun": "de la joie"
+        },
+        {
+            "id": "tristesse",
+            "picto": "visage-tristesse",
+            "label": "la tristesse",
+            "noun": "de la tristesse"
+        },
+        {
+            "id": "colere",
+            "picto": "visage-colere",
+            "label": "la colère",
+            "noun": "de la colère"
+        },
+        {
+            "id": "peur",
+            "picto": "visage-peur",
+            "label": "la peur",
+            "noun": "de la peur"
+        },
+        {
+            "id": "surprise",
+            "picto": "visage-surprise",
+            "label": "la surprise",
+            "noun": "de la surprise"
+        },
+        {
+            "id": "gene",
+            "picto": "visage-gene",
+            "label": "la gêne",
+            "noun": "de la gêne"
+        }
+    ],
+    "simple": [
+        {
+            "id": "tour",
+            "text": "Léo a construit une grande tour de cubes. Son petit frère la fait tomber.",
+            "who": "Léo",
+            "plausible": [
+                "colere",
+                "tristesse"
+            ]
+        },
+        {
+            "id": "lettre",
+            "text": "Maya reçoit une lettre de sa grand-mère.",
+            "who": "Maya",
+            "plausible": [
+                "joie",
+                "surprise"
+            ]
+        },
+        {
+            "id": "orage",
+            "text": "Sami entend un gros coup de tonnerre pendant la nuit.",
+            "who": "Sami",
+            "plausible": [
+                "peur",
+                "surprise"
+            ]
+        },
+        {
+            "id": "doudou",
+            "text": "Inès a perdu son doudou au parc.",
+            "who": "Inès",
+            "plausible": [
+                "tristesse",
+                "peur"
+            ]
+        },
+        {
+            "id": "velo",
+            "text": "Tom fait du vélo sans les petites roues pour la première fois.",
+            "who": "Tom",
+            "plausible": [
+                "joie",
+                "peur"
+            ]
+        },
+        {
+            "id": "anniversaire",
+            "text": "Adam ouvre la porte : tous ses amis crient « Joyeux anniversaire ! »",
+            "who": "Adam",
+            "plausible": [
+                "surprise",
+                "joie"
+            ]
+        },
+        {
+            "id": "chute",
+            "text": "Lou trébuche devant toute la classe.",
+            "who": "Lou",
+            "plausible": [
+                "gene",
+                "tristesse"
+            ]
+        },
+        {
+            "id": "file",
+            "text": "Nour attend son tour au toboggan. Un enfant passe devant elle.",
+            "who": "Nour",
+            "plausible": [
+                "colere",
+                "tristesse"
+            ]
+        }
+    ],
+    "duo": [
+        {
+            "id": "fleur",
+            "text": "Léo joue au ballon. Le ballon casse une fleur que Maya avait plantée.",
+            "characters": [
+                {
+                    "who": "Léo",
+                    "plausible": [
+                        "gene",
+                        "peur",
+                        "tristesse"
+                    ]
+                },
+                {
+                    "who": "Maya",
+                    "plausible": [
+                        "tristesse",
+                        "colere"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "course",
+            "text": "Sami gagne la course. Inès arrive juste derrière lui.",
+            "characters": [
+                {
+                    "who": "Sami",
+                    "plausible": [
+                        "joie"
+                    ]
+                },
+                {
+                    "who": "Inès",
+                    "plausible": [
+                        "tristesse",
+                        "colere",
+                        "joie"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "dessin",
+            "text": "Tom offre un dessin à Lou, sans prévenir.",
+            "characters": [
+                {
+                    "who": "Tom",
+                    "plausible": [
+                        "joie",
+                        "gene"
+                    ]
+                },
+                {
+                    "who": "Lou",
+                    "plausible": [
+                        "joie",
+                        "surprise"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "livre",
+            "text": "Nour et Adam veulent le même livre. Il n’en reste qu’un.",
+            "characters": [
+                {
+                    "who": "Nour",
+                    "plausible": [
+                        "colere",
+                        "tristesse"
+                    ]
+                },
+                {
+                    "who": "Adam",
+                    "plausible": [
+                        "colere",
+                        "tristesse"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "chien",
+            "text": "Le chien de Maya s’est échappé. Léo le retrouve et le ramène.",
+            "characters": [
+                {
+                    "who": "Maya",
+                    "plausible": [
+                        "joie",
+                        "surprise",
+                        "peur"
+                    ]
+                },
+                {
+                    "who": "Léo",
+                    "plausible": [
+                        "joie"
+                    ]
+                }
+            ]
+        }
+    ],
+    "responses": [
+        {
+            "id": "tour",
+            "who": "Léo",
+            "text": "Léo est en colère : son petit frère a fait tomber sa tour.",
+            "question": "Que pourrait faire Léo ?",
+            "options": [
+                {
+                    "id": "dire",
+                    "text": "Respirer doucement, puis dire : « Je suis fâché, tu as cassé ma tour. »",
+                    "consequence": "Son frère comprend que Léo est fâché. Ils reconstruisent la tour ensemble."
+                },
+                {
+                    "id": "pousser",
+                    "text": "Crier très fort et pousser son frère.",
+                    "consequence": "Son frère tombe et pleure. Léo est toujours en colère, et maintenant triste aussi."
+                },
+                {
+                    "id": "adulte",
+                    "text": "Aller chercher un adulte.",
+                    "consequence": "L’adulte écoute les deux frères et les aide à trouver une solution."
+                }
+            ]
+        },
+        {
+            "id": "recreation",
+            "who": "Inès",
+            "text": "Inès est triste : personne ne joue avec elle à la récréation.",
+            "question": "Que pourrait faire Inès ?",
+            "options": [
+                {
+                    "id": "demander",
+                    "text": "Demander : « Je peux jouer avec vous ? »",
+                    "consequence": "Les autres enfants disent oui. Inès joue à chat avec eux."
+                },
+                {
+                    "id": "seule",
+                    "text": "Rester seule sans rien dire.",
+                    "consequence": "Personne ne sait qu’elle aimerait jouer. Inès reste triste."
+                },
+                {
+                    "id": "enseignant",
+                    "text": "En parler à la maîtresse.",
+                    "consequence": "La maîtresse propose un jeu où tout le monde peut participer."
+                }
+            ]
+        },
+        {
+            "id": "piscine",
+            "who": "Sami",
+            "text": "Sami a peur de mettre la tête sous l’eau à la piscine.",
+            "question": "Que pourrait faire Sami ?",
+            "options": [
+                {
+                    "id": "dire-peur",
+                    "text": "Dire au maître-nageur qu’il a peur.",
+                    "consequence": "Le maître-nageur lui propose d’essayer petit à petit, d’abord le menton, puis la bouche."
+                },
+                {
+                    "id": "malade",
+                    "text": "Faire semblant d’être malade.",
+                    "consequence": "Sami ne va pas dans l’eau aujourd’hui, mais sa peur reste là pour la prochaine fois."
+                },
+                {
+                    "id": "copain",
+                    "text": "Essayer en tenant la main d’un copain.",
+                    "consequence": "Avec la main de son copain, Sami ose un peu. Il est fier de lui."
+                }
+            ]
+        },
+        {
+            "id": "vase",
+            "who": "Maya",
+            "text": "Maya a cassé un vase sans le faire exprès.",
+            "question": "Que pourrait faire Maya ?",
+            "options": [
+                {
+                    "id": "dire",
+                    "text": "Le dire tout de suite à un adulte.",
+                    "consequence": "L’adulte ramasse les morceaux pour que personne ne se coupe, et remercie Maya d’avoir prévenu."
+                },
+                {
+                    "id": "cacher",
+                    "text": "Cacher les morceaux.",
+                    "consequence": "Les morceaux sont trouvés plus tard. C’est plus difficile à expliquer, et quelqu’un aurait pu se couper."
+                },
+                {
+                    "id": "chat",
+                    "text": "Dire que c’est le chat.",
+                    "consequence": "Le chat est grondé à sa place. Maya se sent mal de ne pas avoir dit la vérité."
+                }
+            ]
+        }
+    ],
+    "characters": {
+        "Léo": "renard",
+        "Maya": "chat",
+        "Sami": "hibou",
+        "Inès": "lapin",
+        "Tom": "tortue",
+        "Adam": "robot",
+        "Lou": "lapin",
+        "Nour": "chat"
+    }
+}
