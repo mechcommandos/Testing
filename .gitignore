@@ -1,5 +1,7 @@
 # Xcode
 *.xcodeproj/
+# Projet recréé pour compiler sous Windows avec kxbuild (équivalent de project.yml) : versionné.
+!Layjou.xcodeproj/
 build/
 DerivedData/
 xcuserdata/
